@@ -1,7 +1,7 @@
 CNOEC Project on Spacecraft Attitude determination and orbital trajectory control
 
 MILESTONES:
-- Create the Matlba/Simulink Model
+- Create the Matlab/Simulink Model
     - Attitude Dynamics
         - Quaternion
     - Orbital Dynamics
