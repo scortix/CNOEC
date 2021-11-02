@@ -6,7 +6,8 @@ clc
 J = [0.09 0 0; 0 0.14 0; 0 0 0.07]; % Inertia Matrix
 e = 0.1; %Orbit eccentricity
 mu = 398600; %Gravitational Constant
-par = [14000 e deg2rad(53) deg2rad(30) 0]; % Orbital parameters (semimajor axis, eccentricity, inclination...
+par = [14000 e deg2rad(53) deg2rad(30) 0];
+% Orbital parameters (semimajor axis, eccentricity, inclination...
 % Longitude of the ascending node, argument of periapsis)
 nt0 = 0; %Starting point
 
