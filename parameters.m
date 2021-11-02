@@ -35,7 +35,7 @@ n6 = -n5;
 solar_par.nb = [ n1 n2 n3 n4 n5 n6 ];
 
 %% solar pannel geometry
-solar_par.Ap = [0.2*0.3, 0.2*0.3, 0.2*0.3, 0.2*0.3];    % vector that contains solar pannel surface [m^2]
+solar_par.As = [0.2*0.3, 0.2*0.3, 0.2*0.3, 0.2*0.3];    % vector that contains solar pannel surface [m^2]
 
 % distance from geometry center of solar pannel (column vector) [m]
 dp1 = [0.15 0.25 0]';
@@ -50,7 +50,7 @@ n7 = [1; 0; 0];
 n8 = -n7;
 n9 = [1; 0; 0];
 n10 = -n7;
-solar_par.np = [ n7 n8 n9 n10 ]; 
+solar_par.ns = [ n7 n8 n9 n10 ]; 
 
 solar_par_info = Simulink.Bus.createObject(solar_par);
 solar_par_bus = evalin('base', solar_par_info.busName);
