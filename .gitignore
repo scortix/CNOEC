@@ -2,3 +2,6 @@
 *.r2021a
 *.asv
 **/slprj
+**/Local
+ignoreTxt.txt
+gitLocal.py
