@@ -14,6 +14,10 @@ par = [14000 e deg2rad(53) deg2rad(30) 0];
 T = 2*pi*sqrt(par(1)^3/mu); % Orbital period
 nt0 = 0; %Starting point
 load('IGRF.mat') % Magnetic field coefficients (row -> n; column -> m+1; 3rd dimension -> g and h)
+% Creation of bus to use in Simulink
+Sch_info = Simulink.Bus.createObject(Sch);
+Sch_bus = evalin('base', Sch_info.busName);
+m_par = [.1 .1 .1]; % Parasitic magnetic induciton
 
 
 %% baricentre position
