@@ -13,6 +13,7 @@ par = [14000 e deg2rad(53) deg2rad(30) 0];
 % Longitude of the ascending node, argument of periapsis)
 T = 2*pi*sqrt(par(1)^3/mu); % Orbital period
 nt0 = 0; %Starting point
+load('IGRF.mat') % Magnetic field coefficients (row -> n; column -> m+1; 3rd dimension -> g and h)
 
 
 %% baricentre position
