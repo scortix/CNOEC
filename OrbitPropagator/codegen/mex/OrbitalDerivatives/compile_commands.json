@@ -1,0 +1,56 @@
+[
+  {
+    "directory": "D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\\codegen\\mex\\OrbitalDerivatives",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /source-charset:utf-8 /I \".\" /I \"D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\" /I \".\\interface\" /I \"P:\\Matlab\\R2021b\\extern\\include\" /I \".\" -DMODEL=OrbitalDerivatives_mex   OrbitalDerivatives_data.c /Fobuild\\win64\\OrbitalDerivatives_data.obj",
+    "file": "OrbitalDerivatives_data.c",
+    "output": "build/win64/OrbitalDerivatives_data.obj"
+  },
+  {
+    "directory": "D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\\codegen\\mex\\OrbitalDerivatives",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /source-charset:utf-8 /I \".\" /I \"D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\" /I \".\\interface\" /I \"P:\\Matlab\\R2021b\\extern\\include\" /I \".\" -DMODEL=OrbitalDerivatives_mex   rt_nonfinite.c /Fobuild\\win64\\rt_nonfinite.obj",
+    "file": "rt_nonfinite.c",
+    "output": "build/win64/rt_nonfinite.obj"
+  },
+  {
+    "directory": "D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\\codegen\\mex\\OrbitalDerivatives",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /source-charset:utf-8 /I \".\" /I \"D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\" /I \".\\interface\" /I \"P:\\Matlab\\R2021b\\extern\\include\" /I \".\" -DMODEL=OrbitalDerivatives_mex   OrbitalDerivatives_initialize.c /Fobuild\\win64\\OrbitalDerivatives_initialize.obj",
+    "file": "OrbitalDerivatives_initialize.c",
+    "output": "build/win64/OrbitalDerivatives_initialize.obj"
+  },
+  {
+    "directory": "D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\\codegen\\mex\\OrbitalDerivatives",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /source-charset:utf-8 /I \".\" /I \"D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\" /I \".\\interface\" /I \"P:\\Matlab\\R2021b\\extern\\include\" /I \".\" -DMODEL=OrbitalDerivatives_mex   OrbitalDerivatives_terminate.c /Fobuild\\win64\\OrbitalDerivatives_terminate.obj",
+    "file": "OrbitalDerivatives_terminate.c",
+    "output": "build/win64/OrbitalDerivatives_terminate.obj"
+  },
+  {
+    "directory": "D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\\codegen\\mex\\OrbitalDerivatives",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /source-charset:utf-8 /I \".\" /I \"D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\" /I \".\\interface\" /I \"P:\\Matlab\\R2021b\\extern\\include\" /I \".\" -DMODEL=OrbitalDerivatives_mex   OrbitalDerivatives.c /Fobuild\\win64\\OrbitalDerivatives.obj",
+    "file": "OrbitalDerivatives.c",
+    "output": "build/win64/OrbitalDerivatives.obj"
+  },
+  {
+    "directory": "D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\\codegen\\mex\\OrbitalDerivatives",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /source-charset:utf-8 /I \".\" /I \"D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\" /I \".\\interface\" /I \"P:\\Matlab\\R2021b\\extern\\include\" /I \".\" -DMODEL=OrbitalDerivatives_mex   interface\\_coder_OrbitalDerivatives_api.c /Fobuild\\win64\\_coder_OrbitalDerivatives_api.obj",
+    "file": "interface/_coder_OrbitalDerivatives_api.c",
+    "output": "build/win64/_coder_OrbitalDerivatives_api.obj"
+  },
+  {
+    "directory": "D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\\codegen\\mex\\OrbitalDerivatives",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /source-charset:utf-8 /I \".\" /I \"D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\" /I \".\\interface\" /I \"P:\\Matlab\\R2021b\\extern\\include\" /I \".\" -DMODEL=OrbitalDerivatives_mex   interface\\_coder_OrbitalDerivatives_mex.c /Fobuild\\win64\\_coder_OrbitalDerivatives_mex.obj",
+    "file": "interface/_coder_OrbitalDerivatives_mex.c",
+    "output": "build/win64/_coder_OrbitalDerivatives_mex.obj"
+  },
+  {
+    "directory": "D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\\codegen\\mex\\OrbitalDerivatives",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /source-charset:utf-8 /I \".\" /I \"D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\" /I \".\\interface\" /I \"P:\\Matlab\\R2021b\\extern\\include\" /I \".\" -DMODEL=OrbitalDerivatives_mex   interface\\_coder_OrbitalDerivatives_info.c /Fobuild\\win64\\_coder_OrbitalDerivatives_info.obj",
+    "file": "interface/_coder_OrbitalDerivatives_info.c",
+    "output": "build/win64/_coder_OrbitalDerivatives_info.obj"
+  },
+  {
+    "directory": "D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\\codegen\\mex\\OrbitalDerivatives",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /source-charset:utf-8 /I \".\" /I \"D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\" /I \".\\interface\" /I \"P:\\Matlab\\R2021b\\extern\\include\" /I \".\" -DMODEL=OrbitalDerivatives_mex   P:\\Matlab\\R2021b\\extern\\version\\c_mexapi_version.c /Fobuild\\win64\\c_mexapi_version.obj",
+    "file": "P:/Matlab/R2021b/extern/version/c_mexapi_version.c",
+    "output": "build/win64/c_mexapi_version.obj"
+  }
+]

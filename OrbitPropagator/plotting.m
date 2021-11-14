@@ -4,7 +4,7 @@ theta = zeros(size(y,1),1);
 Eout = theta;
 opt = optimset('Display', 'none');
 for k = 1:length(theta)
-    k
+    
     E = fzero(@(E) E-y(k,2)*sin(E)-y(k,6),pi/4, opt);
     ctheta = (y(k,2)-cos(E))/(y(k,2)*cos(E)-1);
     r = y(k,1)*(1-y(k,2)^2)/(1+y(k,2)*ctheta);
