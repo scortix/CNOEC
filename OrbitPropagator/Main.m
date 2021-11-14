@@ -5,8 +5,13 @@ close all
 clear all
 clc
 
-opt_ode = odeset('MaxStep',200);
+opt_ode = odeset('MaxStep',1);
 opt_fzero = optimset('Display', 'none');
+
+[t,y] = ode45(@(t,x) EOEDerivatives(x, [1e-1*cos(0.025*t) 1e-1*sin(0.01*t) 0]', 398600), [0 1e3], COE2EOE([1e4 0.2 pi/4 pi/2 pi/3 0]'), opt_ode);
+plotEOE(y)
+return
+%%
 [t,y] = ode45(@(t,x) OrbitalDerivatives(t,x,[1e-2 0 0]',398600, opt_fzero), [0 1e4], [1e4 0.2 pi/4 pi/2 pi/3 0]',opt_ode);
 %%
 [theta, E] = plotting(y);
