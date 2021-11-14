@@ -7,7 +7,7 @@ clc
 
 opt_ode = odeset('MaxStep',200);
 opt_fzero = optimset('Display', 'none');
-[t,y] = ode45(@(t,x) OrbitalDerivatives_mex(t,x,[1e-4 0 0]',398600, opt_fzero), [0 1e3], [1e4 0.2 pi/4 pi/2 pi/3 0]',opt_ode);
+[t,y] = ode45(@(t,x) OrbitalDerivatives(t,x,[1e-2 0 0]',398600, opt_fzero), [0 1e4], [1e4 0.2 pi/4 pi/2 pi/3 0]',opt_ode);
 %%
 [theta, E] = plotting(y);
 return
