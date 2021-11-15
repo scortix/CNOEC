@@ -1,4 +1,4 @@
-function xdot = EOEDerivatives(x, u, mu)
+function xdot = EOEDerivatives(t, x, u, mu)
 
 p = x(1);
 f = x(2);
