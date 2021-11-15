@@ -1,0 +1,62 @@
+[
+  {
+    "directory": "D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\\codegen\\mex\\cost",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /source-charset:utf-8 /I \".\" /I \"D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\" /I \".\\interface\" /I \"P:\\Matlab\\R2021b\\extern\\include\" /I \".\" -DMODEL=cost_mex   cost_data.c /Fobuild\\win64\\cost_data.obj",
+    "file": "cost_data.c",
+    "output": "build/win64/cost_data.obj"
+  },
+  {
+    "directory": "D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\\codegen\\mex\\cost",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /source-charset:utf-8 /I \".\" /I \"D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\" /I \".\\interface\" /I \"P:\\Matlab\\R2021b\\extern\\include\" /I \".\" -DMODEL=cost_mex   rt_nonfinite.c /Fobuild\\win64\\rt_nonfinite.obj",
+    "file": "rt_nonfinite.c",
+    "output": "build/win64/rt_nonfinite.obj"
+  },
+  {
+    "directory": "D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\\codegen\\mex\\cost",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /source-charset:utf-8 /I \".\" /I \"D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\" /I \".\\interface\" /I \"P:\\Matlab\\R2021b\\extern\\include\" /I \".\" -DMODEL=cost_mex   cost_initialize.c /Fobuild\\win64\\cost_initialize.obj",
+    "file": "cost_initialize.c",
+    "output": "build/win64/cost_initialize.obj"
+  },
+  {
+    "directory": "D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\\codegen\\mex\\cost",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /source-charset:utf-8 /I \".\" /I \"D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\" /I \".\\interface\" /I \"P:\\Matlab\\R2021b\\extern\\include\" /I \".\" -DMODEL=cost_mex   cost_terminate.c /Fobuild\\win64\\cost_terminate.obj",
+    "file": "cost_terminate.c",
+    "output": "build/win64/cost_terminate.obj"
+  },
+  {
+    "directory": "D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\\codegen\\mex\\cost",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /source-charset:utf-8 /I \".\" /I \"D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\" /I \".\\interface\" /I \"P:\\Matlab\\R2021b\\extern\\include\" /I \".\" -DMODEL=cost_mex   cost.c /Fobuild\\win64\\cost.obj",
+    "file": "cost.c",
+    "output": "build/win64/cost.obj"
+  },
+  {
+    "directory": "D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\\codegen\\mex\\cost",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /source-charset:utf-8 /I \".\" /I \"D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\" /I \".\\interface\" /I \"P:\\Matlab\\R2021b\\extern\\include\" /I \".\" -DMODEL=cost_mex   interface\\_coder_cost_api.c /Fobuild\\win64\\_coder_cost_api.obj",
+    "file": "interface/_coder_cost_api.c",
+    "output": "build/win64/_coder_cost_api.obj"
+  },
+  {
+    "directory": "D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\\codegen\\mex\\cost",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /source-charset:utf-8 /I \".\" /I \"D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\" /I \".\\interface\" /I \"P:\\Matlab\\R2021b\\extern\\include\" /I \".\" -DMODEL=cost_mex   interface\\_coder_cost_mex.c /Fobuild\\win64\\_coder_cost_mex.obj",
+    "file": "interface/_coder_cost_mex.c",
+    "output": "build/win64/_coder_cost_mex.obj"
+  },
+  {
+    "directory": "D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\\codegen\\mex\\cost",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /source-charset:utf-8 /I \".\" /I \"D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\" /I \".\\interface\" /I \"P:\\Matlab\\R2021b\\extern\\include\" /I \".\" -DMODEL=cost_mex   cost_emxutil.c /Fobuild\\win64\\cost_emxutil.obj",
+    "file": "cost_emxutil.c",
+    "output": "build/win64/cost_emxutil.obj"
+  },
+  {
+    "directory": "D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\\codegen\\mex\\cost",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /source-charset:utf-8 /I \".\" /I \"D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\" /I \".\\interface\" /I \"P:\\Matlab\\R2021b\\extern\\include\" /I \".\" -DMODEL=cost_mex   interface\\_coder_cost_info.c /Fobuild\\win64\\_coder_cost_info.obj",
+    "file": "interface/_coder_cost_info.c",
+    "output": "build/win64/_coder_cost_info.obj"
+  },
+  {
+    "directory": "D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\\codegen\\mex\\cost",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /source-charset:utf-8 /I \".\" /I \"D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\" /I \".\\interface\" /I \"P:\\Matlab\\R2021b\\extern\\include\" /I \".\" -DMODEL=cost_mex   P:\\Matlab\\R2021b\\extern\\version\\c_mexapi_version.c /Fobuild\\win64\\c_mexapi_version.obj",
+    "file": "P:/Matlab/R2021b/extern/version/c_mexapi_version.c",
+    "output": "build/win64/c_mexapi_version.obj"
+  }
+]
