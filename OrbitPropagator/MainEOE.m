@@ -29,7 +29,7 @@ options = optimoptions(@fminunc,'Display','iter',...
     'UseParallel', false, 'MaxIterations', 50,...
     'OptimalityTolerance', 1e-8); % options for fminunc solver
 
-[u, fval, ~, out] = fminunc(@(x) cost(tmax,Ts,y0,x,ybar), u, options); % Actual Optimization
+[u, fval, ~, out] = fminunc(@(u) cost_mex(tmax,Ts,y0,u,ybar), u, options); % Actual Optimization
 
 
 %% Plotting Results
