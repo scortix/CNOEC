@@ -1,5 +1,7 @@
 function [] = plotEOE(x)
 
+% Function to plot EOE orbital elements.
+
 y = x';
 for k = 1:size(x,1)
     y(:,k) = EOE2COE(x(k,:));

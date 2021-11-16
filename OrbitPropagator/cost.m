@@ -1,9 +1,21 @@
 function J = cost(tmax,Ts,y0,u,ybar)
-t = 0:Ts:tmax;
+
+%COST Function calculates the cost of the orbital maneuvre considering
+%   arbitrary defined weigthed sums. The cost takes into account both the
+%   state error and the input magnitude. In addition, an hard constraint on
+%   the maximum value of the input has been considered.
+%   As inputs, the function needs:
+%       tmax: final instant of the maneuvre
+%       Ts: time step of the discrete system
+%       y0: initial condition vector
+%       u: input vector
+%       ybar: desired state vector
+
+t = 0:Ts:tmax; % Time vector
 y = zeros(6,length(t)+1); % Initialization of vector state
 y(:,1) = y0; % Set initial conditions
 J = 0; % Initialization of cost function
-umax = 1e-3; % Definition of maximum acceleration
+umax = Inf; % Definition of maximum acceleration (the mex function consider umax = 1e-4)
 
 %% Weights Definition
 dyinv = abs(y0-ybar); for i = 1:length(dyinv); dyinv(i) = (dyinv(i) ~= 0)/(dyinv(i)+(dyinv(i)==0)); end

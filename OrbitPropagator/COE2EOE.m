@@ -1,5 +1,20 @@
 function [y] = COE2EOE(x)
 
+%COE2EOE  Function to convert Classical Orbital Elements to Equinoctial 
+%   Orbital Elements.
+%   EOE = COE2EOE(COE) receives as input a vector of the 6 classical OE and
+%   gives as output a column vector of the 6 equinoctial OE.
+%   In particular, the input vector must be of the form 
+%   COE = [a e i om OM theta], where
+%       a: semimajor axis
+%       e: eccentricity
+%       i: inclination
+%       om: argument of periapsis
+%       OM: longitude of the ascending node
+%       theta: true anomaly
+%   The output vector is in the form EOE = [p f g h k L], where p is the 
+%   semilatus rectum and L is the true longitude
+
 a = x(1);
 e = x(2);
 i = x(3);

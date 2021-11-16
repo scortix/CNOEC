@@ -6,6 +6,13 @@ function [y] = EOE2COE(x)
 %   gives as output a column vector of the 6 classical OE.
 %   In particular, the input vector must be of the form EOE = [p f g h k L],
 %   where p is the semilatus rectum and L is the true longitude
+%   The output vector is in the form COE = [a e i om OM theta]', where
+%       a: semimajor axis
+%       e: eccentricity
+%       i: inclination
+%       om: argument of periapsis
+%       OM: longitude of the ascending node
+%       theta: true anomaly
 
 p = x(1);
 f = x(2);

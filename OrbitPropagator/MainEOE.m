@@ -28,9 +28,10 @@ options = optimoptions(@fminunc,'Display','iter',...
     'MaxFunctionEvaluation', 5e5, 'StepTolerance', 1e-10,...
     'UseParallel', false, 'MaxIterations', 50,...
     'OptimalityTolerance', 1e-8); % options for fminunc solver
-tic
+
 [u, fval, ~, out] = fminunc(@(x) cost(tmax,Ts,y0,x,ybar), u, options); % Actual Optimization
-toc
+
+
 %% Plotting Results
 for k = 1:length(t)
     y(:,k+1) = y(:,k) + Ts*EOEDerivatives(t(k),y(:,k),u(:,k),398600);
