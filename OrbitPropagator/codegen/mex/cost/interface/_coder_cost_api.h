@@ -21,6 +21,6 @@
 #include <string.h>
 
 /* Function Declarations */
-void cost_api(const mxArray *const prhs[5], const mxArray **plhs);
+void cost_api(const mxArray *const prhs[6], const mxArray **plhs);
 
 /* End of code generation (_coder_cost_api.h) */

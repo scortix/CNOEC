@@ -175,7 +175,7 @@ static void i_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src,
   emlrtDestroyArray(&src);
 }
 
-void cost_api(const mxArray *const prhs[5], const mxArray **plhs)
+void cost_api(const mxArray *const prhs[6], const mxArray **plhs)
 {
   emlrtStack st = {
       NULL, /* site */
@@ -187,6 +187,7 @@ void cost_api(const mxArray *const prhs[5], const mxArray **plhs)
   real_T(*ybar)[6];
   real_T Ts;
   real_T tmax;
+  real_T umax;
   st.tls = emlrtRootTLSGlobal;
   emlrtHeapReferenceStackEnterFcnR2012b(&st);
   emxInit_real_T(&st, &u, &j_emlrtRTEI);
@@ -197,8 +198,9 @@ void cost_api(const mxArray *const prhs[5], const mxArray **plhs)
   u->canFreeData = false;
   e_emlrt_marshallIn(&st, emlrtAlias(prhs[3]), "u", u);
   ybar = c_emlrt_marshallIn(&st, emlrtAlias(prhs[4]), "ybar");
+  umax = emlrt_marshallIn(&st, emlrtAliasP(prhs[5]), "umax");
   /* Invoke the target function */
-  tmax = cost(&st, tmax, Ts, *b_y0, u, *ybar);
+  tmax = cost(&st, tmax, Ts, *b_y0, u, *ybar, umax);
   /* Marshall function outputs */
   *plhs = emlrt_marshallOut(tmax);
   emxFree_real_T(&st, &u);

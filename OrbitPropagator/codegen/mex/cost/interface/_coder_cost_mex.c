@@ -19,7 +19,7 @@
 
 /* Function Definitions */
 void cost_mexFunction(int32_T nlhs, mxArray *plhs[1], int32_T nrhs,
-                      const mxArray *prhs[5])
+                      const mxArray *prhs[6])
 {
   emlrtStack st = {
       NULL, /* site */
@@ -29,8 +29,8 @@ void cost_mexFunction(int32_T nlhs, mxArray *plhs[1], int32_T nrhs,
   const mxArray *outputs;
   st.tls = emlrtRootTLSGlobal;
   /* Check for proper number of arguments. */
-  if (nrhs != 5) {
-    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, 12, 5, 4,
+  if (nrhs != 6) {
+    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, 12, 6, 4,
                         4, "cost");
   }
   if (nlhs > 1) {

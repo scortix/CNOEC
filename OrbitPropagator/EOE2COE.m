@@ -24,10 +24,10 @@ L = x(6);
 a = p/(1-f^2-g^2);
 e = sqrt(f^2+g^2);
 i = atan2(2*sqrt(h^2+k^2), 1-h^2-k^2);
-om = atan2(g*h-f*k, f*h+g*k);
 OM = atan2(k,h);
+om = atan2(g*h-f*k, f*h+g*k);
 theta = L-OM-om;
 
-y = [a e i om OM theta]';
+y = [a e i OM om theta]';
 
 % u = om+theta Argument of latitude

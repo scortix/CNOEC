@@ -9,11 +9,16 @@ tmax = 1e5; % Maximum time
 t = 0:Ts:tmax; % Time vector
 y = zeros(6,length(t)); % State vector initialization
 u = zeros(3,length(t)); u(1,:) = 1e-4; % Input vector initialization
-y0 = COE2EOE([1e4 0.2 pi/4 pi/2 pi/3 0]'); % Initial condition conversion to EOE state
+
+orb_in = struct('a', 1e4, 'e', 0.2, 'i', pi/4, 'OM', pi/2, 'om', pi/2, 'theta', 0);
+orb_end = struct('a', 1.5e4, 'e', 0.25, 'i', pi/3, 'OM', pi/3, 'om', pi/4, 'theta', 0);
+
+
+y0 = COE2EOE(orb_in); % Initial condition conversion to EOE state
 y(:,1) = y0; % Set first state vector equal to initial condition
 
 %% Optimization
-ybar = COE2EOE([1.1e4; 0.25; pi/4; 0; pi/3; 1]); % Desired state vector
+ybar = COE2EOE(orb_end); % Desired state vector
 dy = abs(ybar-y0); % Absolute difference between IC and ybar
 
 % Weight sum of states
@@ -25,20 +30,20 @@ dy = abs(ybar-y0); % Absolute difference between IC and ybar
 % For now, coef is set equal to 1
 
 options = optimoptions(@fminunc,'Display','iter',...
-    'MaxFunctionEvaluation', 5e5, 'StepTolerance', 1e-10,...
-    'UseParallel', false, 'MaxIterations', 50,...
+    'MaxFunctionEvaluation', 5e6, 'StepTolerance', 1e-10,...
+    'UseParallel', false, 'MaxIterations', 250,...
     'OptimalityTolerance', 1e-8); % options for fminunc solver
 
-[u, fval, ~, out] = fminunc(@(u) cost_mex(tmax,Ts,y0,u,ybar), u, options); % Actual Optimization
+[u, fval, ~, out] = fminunc(@(u) cost_mex(tmax,Ts,y0,u,ybar,1e-4), u, options); % Actual Optimization
 
 
 %% Plotting Results
 for k = 1:length(t)
     y(:,k+1) = y(:,k) + Ts*EOEDerivatives(t(k),y(:,k),u(:,k),398600);
 end
-plotEOE(y');
 
 x = y;
 for k = 1:size(y,2)
     x(:,k) = EOE2COE(y(:,k)); % Conversion of EOE state vector to COE state vector
 end
+fig = Orb_Earth_plot(orb_in, orb_end, x, u);

@@ -1,4 +1,4 @@
-function J = cost(tmax,Ts,y0,u,ybar)
+function J = cost(tmax,Ts,y0,u,ybar,umax)
 
 %COST Function calculates the cost of the orbital maneuvre considering
 %   arbitrary defined weigthed sums. The cost takes into account both the
@@ -15,7 +15,6 @@ t = 0:Ts:tmax; % Time vector
 y = zeros(6,length(t)+1); % Initialization of vector state
 y(:,1) = y0; % Set initial conditions
 J = 0; % Initialization of cost function
-umax = Inf; % Definition of maximum acceleration (the mex function consider umax = 1e-4)
 
 %% Weights Definition
 dyinv = abs(y0-ybar); for i = 1:length(dyinv); dyinv(i) = (dyinv(i) ~= 0)/(dyinv(i)+(dyinv(i)==0)); end

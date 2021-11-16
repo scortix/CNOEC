@@ -23,6 +23,6 @@
 
 /* Function Declarations */
 real_T cost(const emlrtStack *sp, real_T tmax, real_T Ts, const real_T b_y0[6],
-            const emxArray_real_T *u, const real_T ybar[6]);
+            const emxArray_real_T *u, const real_T ybar[6], real_T umax);
 
 /* End of code generation (cost.h) */

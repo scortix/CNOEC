@@ -15,18 +15,36 @@ function [y] = COE2EOE(x)
 %   The output vector is in the form EOE = [p f g h k L], where p is the 
 %   semilatus rectum and L is the true longitude
 
-a = x(1);
-e = x(2);
-i = x(3);
-om = x(4);
-OM = x(5);
-theta = x(6);
+if isa(x, 'double')
+    a = x(1);
+    e = x(2);
+    i = x(3);
+    OM = x(4);
+    om = x(5);
+    theta = x(6);
 
-p = a*(1-e^2);
-f = e*cos(om+OM);
-g = e*sin(om+OM);
-h = cos(OM)*tan(i/2);
-k = sin(OM)*tan(i/2);
-L = OM+om+theta;
+    p = a*(1-e^2);
+    f = e*cos(om+OM);
+    g = e*sin(om+OM);
+    h = cos(OM)*tan(i/2);
+    k = sin(OM)*tan(i/2);
+    L = OM+om+theta;
 
-y = [p, f, g, h, k, L]';
+    y = [p, f, g, h, k, L]';
+elseif isa(x, 'struct')
+    a = x.a;
+    e = x.e;
+    i = x.i;
+    om = x.om;
+    OM = x.OM;
+    theta = x.theta;
+
+    p = a*(1-e^2);
+    f = e*cos(om+OM);
+    g = e*sin(om+OM);
+    h = cos(OM)*tan(i/2);
+    k = sin(OM)*tan(i/2);
+    L = OM+om+theta;
+
+    y = [p, f, g, h, k, L]';
+end  
