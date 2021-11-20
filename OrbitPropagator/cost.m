@@ -10,6 +10,7 @@ function J = cost(tmax,Ts,y0,u,ybar,umax)
 %       y0: initial condition vector
 %       u: input vector
 %       ybar: desired state vector
+%       umax: maximum value for inputs
 
 t = 0:Ts:tmax; % Time vector
 y = zeros(6,length(t)+1); % Initialization of vector state

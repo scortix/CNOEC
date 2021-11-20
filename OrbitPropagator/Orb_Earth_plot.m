@@ -8,7 +8,7 @@ hold on
 fig.WindowState='maximized';
 grid on
 plot3(orb_in.pos_ge_tot(:,1,1),orb_in.pos_ge_tot(:,2,1),orb_in.pos_ge_tot(:,3,1),'Color','w','LineWidth',2.5,'LineStyle','--');
-plot3(orb_end.pos_ge_tot(:,1,1),orb_end.pos_ge_tot(:,2,1),orb_end.pos_ge_tot(:,3,1),'Color','w','LineWidth',2.5,'LineStyle','--');
+plot3(orb_end.pos_ge_tot(:,1,1),orb_end.pos_ge_tot(:,2,1),orb_end.pos_ge_tot(:,3,1),'Color','c','LineWidth',2.5,'LineStyle','--');
 r = zeros(3,size(trsf,2));
 c = parula(size(trsf,2)-1);
 %u = 1e7*u;
@@ -18,6 +18,6 @@ for k = 1:size(trsf,2)
     if k >= 2
         plot3(r(1,k-1:k),r(2,k-1:k),r(3,k-1:k),'Color',c(k-1,:), 'LineWidth', 2);
         %plot3(r(1,k-1)+[0 u(1,k-1)], r(2,k-1)+[0 u(2,k-1)], r(3,k-1)+[0 u(3,k-1)], '->' , 'Color','r')
-        quiver3(r(1,k-1), r(2,k-1), r(3,k-1), u(1,k-1), u(2,k-1), u(3,k-1), 1e7, 'Color', [0.8500 0.3250 0.0980])
+        quiver3(r(1,k-1), r(2,k-1), r(3,k-1), u(1,k-1), u(2,k-1), u(3,k-1), 5e6, 'Color', [0.8500 0.3250 0.0980])
     end
 end

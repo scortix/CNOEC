@@ -5,7 +5,8 @@ clc
 %% Parameters Definition and Initialization
 % Forward Euler: x(k+1) = x(k) + Ts*xdot(k)
 Ts = 100; % Discrete time step
-tmax = 1e5; % Maximum time
+tmax = 1e4; % Maximum time
+umax = 1e-3; % Maximum input value
 t = 0:Ts:tmax; % Time vector
 y = zeros(6,length(t)); % State vector initialization
 u = zeros(3,length(t)); u(1,:) = 1e-4; % Input vector initialization
@@ -34,7 +35,7 @@ options = optimoptions(@fminunc,'Display','iter',...
     'UseParallel', false, 'MaxIterations', 250,...
     'OptimalityTolerance', 1e-8); % options for fminunc solver
 
-[u, fval, ~, out] = fminunc(@(u) cost_mex(tmax,Ts,y0,u,ybar,1e-4), u, options); % Actual Optimization
+[u, fval, ~, out] = fminunc(@(u) cost_mex(tmax,Ts,y0,u,ybar,umax), u, options); % Actual Optimization
 
 
 %% Plotting Results
