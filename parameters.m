@@ -72,10 +72,10 @@ solar_par_bus = evalin('base', solar_par_info.busName);
 ARW = (1/4*deg2rad([0.2 0.2 0.2]/sqrt(3600))).^2; %[0.2 deg/h^.5]
 RRW = (1/4*deg2rad([0.3 0.3 0.3]/3600)).^2; % [0.3 deg/h]
 %sampling rate
-tsg = 1e2;
+tsg = 1e-1;
 %gyro inertia parameters 
-Ir = 1e-7; 
-Jz = 2e-7;
+Ir = 1e-2; 
+Jz = 2e-2;
 %tuning parameter for visco-elastic reaction torque
 k=10;
 %tuning law for c for fastest convergence
