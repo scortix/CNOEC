@@ -67,3 +67,18 @@ solar_par.ns = [ n7 n8 n9 n10 ];
 % Creation of bus to use in Simulink
 solar_par_info = Simulink.Bus.createObject(solar_par);
 solar_par_bus = evalin('base', solar_par_info.busName);
+
+%% Sensor Parameters
+ARW = (1/4*deg2rad([0.2 0.2 0.2]/sqrt(3600))).^2; %[0.2 deg/h^.5]
+RRW = (1/4*deg2rad([0.3 0.3 0.3]/3600)).^2; % [0.3 deg/h]
+%sampling rate
+tsg = 1e2;
+%gyro inertia parameters 
+Ir = 1e-7; 
+Jz = 2e-7;
+%tuning parameter for visco-elastic reaction torque
+k=10;
+%tuning law for c for fastest convergence
+c_gyro = 2*sqrt(k*Jz); 
+%angular velocity of gyro wheel (100 deg/s)
+wr = 100*pi/180;
