@@ -74,8 +74,8 @@ RRW = (1/4*deg2rad([0.3 0.3 0.3]/3600)).^2; % [0.3 deg/h]
 %sampling rate
 tsg = 1e-1;
 %gyro inertia parameters 
-Ir = 1e-2; 
-Jz = 2e-2;
+Ir = 1e-2; % Keep e-2 for development. At the end inertia must be lowered
+Jz = 2e-2; % Keep e-2 for development. At the end inertia must be lowered
 %tuning parameter for visco-elastic reaction torque
 k=10;
 %tuning law for c for fastest convergence
