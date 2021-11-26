@@ -15,9 +15,9 @@ an = u(3);
 
 % Definition of useful values
 w = 1 + f*cos(L)+g*sin(L);
-%r = p/w;
+% r = p/w;
 s2 = 1+h^2+k^2;
-%alpha2 = h^2-k^2;
+% alpha2 = h^2-k^2;
 p_mu05 = sqrt(p/mu);
 
 % State Derivative Calculation
@@ -28,4 +28,4 @@ hdot = p_mu05*s2*an/2/w*cos(L);
 kdot = p_mu05*s2*an/2/w*sin(L);
 Ldot = sqrt(mu*p)*(w/p)^2+p_mu05/w*(h*sin(L)-k*cos(L))*an;
 
-xdot = [pdot; fdot; gdot; hdot; kdot; Ldot];
+xdot = [pdot fdot gdot hdot kdot Ldot]';

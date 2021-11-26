@@ -18,7 +18,10 @@ y(:,1) = y0; % Set initial conditions
 J = 0; % Initialization of cost function
 
 %% Weights Definition
-dyinv = abs(y0-ybar); for i = 1:length(dyinv); dyinv(i) = (dyinv(i) ~= 0)/(dyinv(i)+(dyinv(i)==0)); end
+dyinv = abs(y0-ybar);
+for i = 1:length(dyinv)
+    dyinv(i) = (dyinv(i) ~= 0)/(dyinv(i)+(dyinv(i)==0));
+end
 Q = diag([1 1 1 1 1 0]'.*dyinv.^2);
 R = diag([1 1 1]/umax^2);
 
