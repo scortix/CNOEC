@@ -1,6 +1,4 @@
-close all
-clear all
-clc
+function [fval] = EOEf(theta0)
 
 %% Parameters Definition and Initialization
 % Forward Euler: x(k+1) = x(k) + Ts*xdot(k)
@@ -11,7 +9,7 @@ t = 0:Ts:tmax; % Time vector
 y = zeros(6,length(t)); % State vector initialization
 u = zeros(3,length(t)); u(1,:) = 1e-4; % Input vector initialization
 
-orb_in = struct('a', 1e4, 'e', 0.2, 'i', pi/4, 'OM', pi/2, 'om', pi/2, 'theta', 0);
+orb_in = struct('a', 1e4, 'e', 0.2, 'i', pi/4, 'OM', pi/2, 'om', pi/2, 'theta', theta0);
 orb_end = struct('a', 1.5e4, 'e', 0.25, 'i', pi/3, 'OM', pi/3, 'om', pi/4, 'theta', 0);
 
 
@@ -30,7 +28,7 @@ dy = abs(ybar-y0); % Absolute difference between IC and ybar
 % Q = coef*diag([1 1 1 1 1 0]) The last 0 is to avoid considering x(6)
 % For now, coef is set equal to 1
 
-options = optimoptions(@fminunc,'Display','iter',...
+options = optimoptions(@fminunc,'Display','none',...
     'MaxFunctionEvaluation', 5e6, 'StepTolerance', 1e-10,...
     'UseParallel', false, 'MaxIterations', 500,...
     'OptimalityTolerance', 1e-8); % options for fminunc solver
@@ -39,12 +37,12 @@ options = optimoptions(@fminunc,'Display','iter',...
 
 
 %% Plotting Results
-for k = 1:length(t)
-    y(:,k+1) = y(:,k) + Ts*EOEDerivatives(t(k),y(:,k),u(:,k),398600);
-end
-
-x = y;
-for k = 1:size(y,2)
-    x(:,k) = EOE2COE(y(:,k)); % Conversion of EOE state vector to COE state vector
-end
-fig = Orb_Earth_plot(orb_in, orb_end, x, u);
+% for k = 1:length(t)
+%     y(:,k+1) = y(:,k) + Ts*EOEDerivatives(t(k),y(:,k),u(:,k),398600);
+% end
+% 
+% x = y;
+% for k = 1:size(y,2)
+%     x(:,k) = EOE2COE(y(:,k)); % Conversion of EOE state vector to COE state vector
+% end
+% fig = Orb_Earth_plot(orb_in, orb_end, x, u);
