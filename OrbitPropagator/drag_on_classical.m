@@ -6,8 +6,9 @@ function [drag] = drag_on_classical(x,ad)
 
 %%%% pay attention %%%%
 % variation of mean anomaly calculated instead of the true one;
-% n missing
-% ad to be inplemented elsewhere, ad = Cd*Aper/2/m*rho*va^2;
+
+mu = 398600;
+n = sqrt(mu/a^3);
 
 if isa(x, 'double')
 
