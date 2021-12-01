@@ -18,6 +18,10 @@ orb_end = struct('a', 1.5e4, 'e', 0.25, 'i', pi/3, 'OM', pi/3, 'om', pi/4, 'thet
 y0 = COE2EOE(orb_in); % Initial condition conversion to EOE state
 y(:,1) = y0; % Set first state vector equal to initial condition
 
+Cd = 2.2; % drag coefficient
+m = 1; % mass
+rho_table = rho_tab();
+
 %% Optimization
 ybar = COE2EOE(orb_end); % Desired state vector
 dy = abs(ybar-y0); % Absolute difference between IC and ybar
