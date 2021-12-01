@@ -20,19 +20,19 @@
 
 /* Variable Definitions */
 static emlrtRSInfo emlrtRSI = {
-    14,                                                 /* lineNo */
+    15,                                                 /* lineNo */
     "cost",                                             /* fcnName */
     "D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\\cost.m" /* pathName */
 };
 
 static emlrtRSInfo b_emlrtRSI = {
-    22,                                                 /* lineNo */
+    26,                                                 /* lineNo */
     "cost",                                             /* fcnName */
     "D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\\cost.m" /* pathName */
 };
 
 static emlrtRSInfo c_emlrtRSI = {
-    27,                                                 /* lineNo */
+    31,                                                 /* lineNo */
     "cost",                                             /* fcnName */
     "D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\\cost.m" /* pathName */
 };
@@ -57,19 +57,19 @@ static emlrtRSInfo f_emlrtRSI = {
 };
 
 static emlrtRSInfo h_emlrtRSI = {
-    19,                                                           /* lineNo */
+    23,                                                           /* lineNo */
     "EOEDerivatives",                                             /* fcnName */
     "D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\\EOEDerivatives.m" /* pathName */
 };
 
 static emlrtRSInfo i_emlrtRSI = {
-    21,                                                           /* lineNo */
+    25,                                                           /* lineNo */
     "EOEDerivatives",                                             /* fcnName */
     "D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\\EOEDerivatives.m" /* pathName */
 };
 
 static emlrtRSInfo j_emlrtRSI = {
-    29,                                                           /* lineNo */
+    33,                                                           /* lineNo */
     "EOEDerivatives",                                             /* fcnName */
     "D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\\EOEDerivatives.m" /* pathName */
 };
@@ -77,7 +77,7 @@ static emlrtRSInfo j_emlrtRSI = {
 static emlrtBCInfo emlrtBCI = {
     -1,                                                  /* iFirst */
     -1,                                                  /* iLast */
-    26,                                                  /* lineNo */
+    30,                                                  /* lineNo */
     37,                                                  /* colNo */
     "u",                                                 /* aName */
     "cost",                                              /* fName */
@@ -88,7 +88,7 @@ static emlrtBCInfo emlrtBCI = {
 static emlrtBCInfo b_emlrtBCI = {
     -1,                                                  /* iFirst */
     -1,                                                  /* iLast */
-    27,                                                  /* lineNo */
+    31,                                                  /* lineNo */
     20,                                                  /* colNo */
     "y",                                                 /* aName */
     "cost",                                              /* fName */
@@ -99,7 +99,7 @@ static emlrtBCInfo b_emlrtBCI = {
 static emlrtBCInfo c_emlrtBCI = {
     -1,                                                  /* iFirst */
     -1,                                                  /* iLast */
-    27,                                                  /* lineNo */
+    31,                                                  /* lineNo */
     45,                                                  /* colNo */
     "t",                                                 /* aName */
     "cost",                                              /* fName */
@@ -110,7 +110,7 @@ static emlrtBCInfo c_emlrtBCI = {
 static emlrtBCInfo d_emlrtBCI = {
     -1,                                                  /* iFirst */
     -1,                                                  /* iLast */
-    27,                                                  /* lineNo */
+    31,                                                  /* lineNo */
     52,                                                  /* colNo */
     "y",                                                 /* aName */
     "cost",                                              /* fName */
@@ -121,7 +121,7 @@ static emlrtBCInfo d_emlrtBCI = {
 static emlrtBCInfo e_emlrtBCI = {
     -1,                                                  /* iFirst */
     -1,                                                  /* iLast */
-    27,                                                  /* lineNo */
+    31,                                                  /* lineNo */
     9,                                                   /* colNo */
     "y",                                                 /* aName */
     "cost",                                              /* fName */
@@ -132,7 +132,7 @@ static emlrtBCInfo e_emlrtBCI = {
 static emlrtBCInfo f_emlrtBCI = {
     -1,                                                  /* iFirst */
     -1,                                                  /* iLast */
-    28,                                                  /* lineNo */
+    32,                                                  /* lineNo */
     17,                                                  /* colNo */
     "u",                                                 /* aName */
     "cost",                                              /* fName */
@@ -143,7 +143,7 @@ static emlrtBCInfo f_emlrtBCI = {
 static emlrtBCInfo g_emlrtBCI = {
     -1,                                                  /* iFirst */
     -1,                                                  /* iLast */
-    28,                                                  /* lineNo */
+    32,                                                  /* lineNo */
     27,                                                  /* colNo */
     "u",                                                 /* aName */
     "cost",                                              /* fName */
@@ -154,7 +154,7 @@ static emlrtBCInfo g_emlrtBCI = {
 static emlrtBCInfo h_emlrtBCI = {
     -1,                                                  /* iFirst */
     -1,                                                  /* iLast */
-    28,                                                  /* lineNo */
+    32,                                                  /* lineNo */
     37,                                                  /* colNo */
     "y",                                                 /* aName */
     "cost",                                              /* fName */
@@ -165,7 +165,7 @@ static emlrtBCInfo h_emlrtBCI = {
 static emlrtBCInfo i_emlrtBCI = {
     -1,                                                  /* iFirst */
     -1,                                                  /* iLast */
-    28,                                                  /* lineNo */
+    32,                                                  /* lineNo */
     56,                                                  /* colNo */
     "y",                                                 /* aName */
     "cost",                                              /* fName */
@@ -176,7 +176,7 @@ static emlrtBCInfo i_emlrtBCI = {
 static emlrtBCInfo j_emlrtBCI = {
     -1,                                                  /* iFirst */
     -1,                                                  /* iLast */
-    30,                                                  /* lineNo */
+    34,                                                  /* lineNo */
     18,                                                  /* colNo */
     "y",                                                 /* aName */
     "cost",                                              /* fName */
@@ -191,15 +191,8 @@ static emlrtRTEInfo emlrtRTEI = {
     "P:\\Matlab\\R2021b\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" /* pName */
 };
 
-static emlrtRTEInfo b_emlrtRTEI = {
-    13,                                                            /* lineNo */
-    9,                                                             /* colNo */
-    "sqrt",                                                        /* fName */
-    "P:\\Matlab\\R2021b\\toolbox\\eml\\lib\\matlab\\elfun\\sqrt.m" /* pName */
-};
-
 static emlrtDCInfo emlrtDCI = {
-    15,                                                  /* lineNo */
+    16,                                                  /* lineNo */
     13,                                                  /* colNo */
     "cost",                                              /* fName */
     "D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\\cost.m", /* pName */
@@ -207,57 +200,57 @@ static emlrtDCInfo emlrtDCI = {
 };
 
 static emlrtDCInfo b_emlrtDCI = {
-    15,                                                  /* lineNo */
+    16,                                                  /* lineNo */
     1,                                                   /* colNo */
     "cost",                                              /* fName */
     "D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\\cost.m", /* pName */
     1                                                    /* checkKind */
 };
 
-static emlrtRTEInfo c_emlrtRTEI = {
+static emlrtRTEInfo b_emlrtRTEI = {
     84,                                                           /* lineNo */
     5,                                                            /* colNo */
     "colon",                                                      /* fName */
     "P:\\Matlab\\R2021b\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" /* pName */
 };
 
-static emlrtRTEInfo d_emlrtRTEI = {
-    15,                                                 /* lineNo */
+static emlrtRTEInfo c_emlrtRTEI = {
+    16,                                                 /* lineNo */
     1,                                                  /* colNo */
     "cost",                                             /* fName */
     "D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\\cost.m" /* pName */
 };
 
-static emlrtRTEInfo e_emlrtRTEI = {
+static emlrtRTEInfo d_emlrtRTEI = {
     90,                                                           /* lineNo */
     5,                                                            /* colNo */
     "colon",                                                      /* fName */
     "P:\\Matlab\\R2021b\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" /* pName */
 };
 
-static emlrtRTEInfo f_emlrtRTEI = {
+static emlrtRTEInfo e_emlrtRTEI = {
     88,                                                           /* lineNo */
     5,                                                            /* colNo */
     "colon",                                                      /* fName */
     "P:\\Matlab\\R2021b\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" /* pName */
 };
 
-static emlrtRTEInfo g_emlrtRTEI = {
+static emlrtRTEInfo f_emlrtRTEI = {
     105,                                                          /* lineNo */
     9,                                                            /* colNo */
     "colon",                                                      /* fName */
     "P:\\Matlab\\R2021b\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" /* pName */
 };
 
-static emlrtRTEInfo h_emlrtRTEI = {
+static emlrtRTEInfo g_emlrtRTEI = {
     312,                                                          /* lineNo */
     20,                                                           /* colNo */
     "colon",                                                      /* fName */
     "P:\\Matlab\\R2021b\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" /* pName */
 };
 
-static emlrtRTEInfo i_emlrtRTEI = {
-    14,                                                 /* lineNo */
+static emlrtRTEInfo h_emlrtRTEI = {
+    15,                                                 /* lineNo */
     5,                                                  /* colNo */
     "cost",                                             /* fName */
     "D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\\cost.m" /* pName */
@@ -282,9 +275,9 @@ real_T cost(const emlrtStack *sp, real_T tmax, real_T Ts, const real_T b_y0[6],
   real_T a;
   real_T apnd;
   real_T b_w_tmp;
-  real_T b_x;
   real_T cdiff;
   real_T ndbl;
+  real_T p;
   real_T p_mu05;
   real_T w;
   real_T w_tmp;
@@ -306,7 +299,7 @@ real_T cost(const emlrtStack *sp, real_T tmax, real_T Ts, const real_T b_y0[6],
   c_st.tls = b_st.tls;
   u_data = u->data;
   emlrtHeapReferenceStackEnterFcnR2012b((emlrtCTX)sp);
-  emxInit_real_T(sp, &y, &i_emlrtRTEI);
+  emxInit_real_T(sp, &y, &h_emlrtRTEI);
   /* COST Function calculates the cost of the orbital maneuvre considering */
   /*    arbitrary defined weigthed sums. The cost takes into account both the */
   /*    state error and the input magnitude. In addition, an hard constraint on
@@ -318,11 +311,12 @@ real_T cost(const emlrtStack *sp, real_T tmax, real_T Ts, const real_T b_y0[6],
   /*        y0: initial condition vector */
   /*        u: input vector */
   /*        ybar: desired state vector */
+  /*        umax: maximum value for inputs */
   st.site = &emlrtRSI;
   if (muDoubleScalarIsNaN(Ts) || muDoubleScalarIsNaN(tmax)) {
     i = y->size[0] * y->size[1];
     y->size[1] = 1;
-    emxEnsureCapacity_real_T(&st, y, i, &c_emlrtRTEI);
+    emxEnsureCapacity_real_T(&st, y, i, &b_emlrtRTEI);
   } else if ((Ts == 0.0) || ((0.0 < tmax) && (Ts < 0.0)) ||
              ((tmax < 0.0) && (Ts > 0.0))) {
     y->size[1] = 0;
@@ -330,15 +324,15 @@ real_T cost(const emlrtStack *sp, real_T tmax, real_T Ts, const real_T b_y0[6],
              (muDoubleScalarIsInf(Ts) || (0.0 == tmax))) {
     i = y->size[0] * y->size[1];
     y->size[1] = 1;
-    emxEnsureCapacity_real_T(&st, y, i, &f_emlrtRTEI);
+    emxEnsureCapacity_real_T(&st, y, i, &e_emlrtRTEI);
   } else if (muDoubleScalarIsInf(Ts)) {
     i = y->size[0] * y->size[1];
     y->size[1] = 1;
-    emxEnsureCapacity_real_T(&st, y, i, &e_emlrtRTEI);
+    emxEnsureCapacity_real_T(&st, y, i, &d_emlrtRTEI);
   } else if (muDoubleScalarFloor(Ts) == Ts) {
     i = y->size[0] * y->size[1];
     y->size[1] = (int32_T)muDoubleScalarFloor(tmax / Ts) + 1;
-    emxEnsureCapacity_real_T(&st, y, i, &g_emlrtRTEI);
+    emxEnsureCapacity_real_T(&st, y, i, &f_emlrtRTEI);
   } else {
     b_st.site = &d_emlrtRSI;
     ndbl = muDoubleScalarFloor(tmax / Ts + 0.5);
@@ -371,7 +365,7 @@ real_T cost(const emlrtStack *sp, real_T tmax, real_T Ts, const real_T b_y0[6],
     i = y->size[0] * y->size[1];
     y->size[0] = 1;
     y->size[1] = n;
-    emxEnsureCapacity_real_T(&b_st, y, i, &h_emlrtRTEI);
+    emxEnsureCapacity_real_T(&b_st, y, i, &g_emlrtRTEI);
     y_data = y->data;
     if ((n > 0) && (n > 1)) {
       y_data[n - 1] = apnd;
@@ -390,17 +384,17 @@ real_T cost(const emlrtStack *sp, real_T tmax, real_T Ts, const real_T b_y0[6],
       }
     }
   }
-  emxInit_real_T(&st, &b_y, &d_emlrtRTEI);
+  emxInit_real_T(&st, &b_y, &c_emlrtRTEI);
   /*  Time vector */
   i = b_y->size[0] * b_y->size[1];
   b_y->size[0] = 6;
-  emxEnsureCapacity_real_T(sp, b_y, i, &d_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, b_y, i, &c_emlrtRTEI);
   if ((real_T)y->size[1] + 1.0 != y->size[1] + 1) {
     emlrtIntegerCheckR2012b((real_T)y->size[1] + 1.0, &emlrtDCI, (emlrtCTX)sp);
   }
   i = b_y->size[0] * b_y->size[1];
   b_y->size[1] = y->size[1] + 1;
-  emxEnsureCapacity_real_T(sp, b_y, i, &d_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, b_y, i, &c_emlrtRTEI);
   y_data = b_y->data;
   if ((real_T)y->size[1] + 1.0 != y->size[1] + 1) {
     emlrtIntegerCheckR2012b((real_T)y->size[1] + 1.0, &b_emlrtDCI,
@@ -466,6 +460,12 @@ real_T cost(const emlrtStack *sp, real_T tmax, real_T Ts, const real_T b_y0[6],
       emlrtDynamicBoundsCheckR2012b(k + 1, 1, b_y->size[1], &d_emlrtBCI, &st);
     }
     /*  Equinoctial Orbital Elements */
+    p = y_data[6 * k];
+    if (y_data[6 * k] < 0.0) {
+      p = -y_data[6 * k];
+      /* warning('p became negative. Switched to absolute value for
+       * calculations'); */
+    }
     /*  Accelerations */
     /*  Definition of useful values */
     nm1d2 = 6 * k + 5;
@@ -474,34 +474,21 @@ real_T cost(const emlrtStack *sp, real_T tmax, real_T Ts, const real_T b_y0[6],
     n = 6 * k + 1;
     c_w_tmp = 6 * k + 2;
     w = (y_data[n] * b_w_tmp + 1.0) + y_data[c_w_tmp] * w_tmp;
-    /* r = p/w; */
+    /*  r = p/w; */
     b_st.site = &h_emlrtRSI;
     b_st.site = &h_emlrtRSI;
-    /* alpha2 = h^2-k^2; */
+    /*  alpha2 = h^2-k^2; */
     b_st.site = &i_emlrtRSI;
-    p_mu05 = y_data[6 * k] / 398600.0;
-    if (p_mu05 < 0.0) {
-      emlrtErrorWithMessageIdR2018a(
-          &b_st, &b_emlrtRTEI, "Coder:toolbox:ElFunDomainError",
-          "Coder:toolbox:ElFunDomainError", 3, 4, 4, "sqrt");
-    }
-    p_mu05 = muDoubleScalarSqrt(p_mu05);
+    p_mu05 = muDoubleScalarSqrt(p / 398600.0);
     /*  State Derivative Calculation */
     b_st.site = &j_emlrtRSI;
-    a = w / y_data[6 * k];
+    a = w / p;
     b_st.site = &j_emlrtRSI;
-    b_x = 398600.0 * y_data[6 * k];
-    if (b_x < 0.0) {
-      emlrtErrorWithMessageIdR2018a(
-          &b_st, &b_emlrtRTEI, "Coder:toolbox:ElFunDomainError",
-          "Coder:toolbox:ElFunDomainError", 3, 4, 4, "sqrt");
-    }
-    b_x = muDoubleScalarSqrt(b_x);
     if (k + 1 > b_y->size[1]) {
       emlrtDynamicBoundsCheckR2012b(k + 1, 1, b_y->size[1], &b_emlrtBCI,
                                     (emlrtCTX)sp);
     }
-    x[0] = Ts * (2.0 * y_data[6 * k] / w * p_mu05 * cdiff);
+    x[0] = Ts * (2.0 * p / w * p_mu05 * cdiff);
     x_tmp = 6 * k + 3;
     b_x_tmp = 6 * k + 4;
     x[1] =
@@ -521,7 +508,7 @@ real_T cost(const emlrtStack *sp, real_T tmax, real_T Ts, const real_T b_y0[6],
            apnd / 2.0 / w;
     x[3] = Ts * (ndbl * b_w_tmp);
     x[4] = Ts * (ndbl * w_tmp);
-    x[5] = Ts * (b_x * (a * a) +
+    x[5] = Ts * (muDoubleScalarSqrt(398600.0 * p) * (a * a) +
                  p_mu05 / w *
                      (y_data[x_tmp] * muDoubleScalarSin(y_data[nm1d2]) -
                       y_data[b_x_tmp] * muDoubleScalarCos(y_data[nm1d2])) *

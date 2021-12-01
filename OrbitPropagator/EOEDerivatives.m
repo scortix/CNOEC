@@ -2,6 +2,10 @@ function xdot = EOEDerivatives(t, x, u, mu)
 
 % Equinoctial Orbital Elements
 p = x(1);
+if p < 0
+    p = -p;
+    %warning('p became negative. Switched to absolute value for calculations');
+end
 f = x(2);
 g = x(3);
 h = x(4);

@@ -18,7 +18,7 @@
 #include "rt_nonfinite.h"
 
 /* Variable Definitions */
-static emlrtRTEInfo j_emlrtRTEI = {
+static emlrtRTEInfo i_emlrtRTEI = {
     1,                 /* lineNo */
     1,                 /* colNo */
     "_coder_cost_api", /* fName */
@@ -190,7 +190,7 @@ void cost_api(const mxArray *const prhs[6], const mxArray **plhs)
   real_T umax;
   st.tls = emlrtRootTLSGlobal;
   emlrtHeapReferenceStackEnterFcnR2012b(&st);
-  emxInit_real_T(&st, &u, &j_emlrtRTEI);
+  emxInit_real_T(&st, &u, &i_emlrtRTEI);
   /* Marshall function inputs */
   tmax = emlrt_marshallIn(&st, emlrtAliasP(prhs[0]), "tmax");
   Ts = emlrt_marshallIn(&st, emlrtAliasP(prhs[1]), "Ts");

@@ -6,7 +6,7 @@ clc
 % Forward Euler: x(k+1) = x(k) + Ts*xdot(k)
 Ts = 100; % Discrete time step
 tmax = 1e4; % Maximum time
-umax = 1e-3; % Maximum input value
+umax = Inf; % Maximum input value
 t = 0:Ts:tmax; % Time vector
 y = zeros(6,length(t)); % State vector initialization
 u = zeros(3,length(t)); u(1,:) = 1e-4; % Input vector initialization
