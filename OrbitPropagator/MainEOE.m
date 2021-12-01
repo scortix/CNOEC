@@ -4,12 +4,12 @@ clc
 
 %% Parameters Definition and Initialization
 % Forward Euler: x(k+1) = x(k) + Ts*xdot(k)
-Ts = 100; % Discrete time step
-tmax = 1e4; % Maximum time
-umax = Inf; % Maximum input value
+Ts = 200; % Discrete time step
+tmax = 2e4; % Maximum time
+umax = 1e-3; % Maximum input value
 t = 0:Ts:tmax; % Time vector
 y = zeros(6,length(t)); % State vector initialization
-u = zeros(3,length(t)); u(1,:) = 1e-4; % Input vector initialization
+u = 1e-4*ones(3,length(t)); % Input vector initialization
 u = [120/180*pi;reshape(u,numel(u),1)];
 
 
@@ -35,14 +35,22 @@ dy = abs(ybar-y0); % Absolute difference between IC and ybar
 % dx = (x-xbar)./(dy) where dy is used as a normalization factor
 % Q = coef*diag([1 1 1 1 1 0]) The last 0 is to avoid considering x(6)
 % For now, coef is set equal to 1
+%%
+options = optimoptions(@fminunc,'Display','iter',...
+    'MaxFunctionEvaluation', 5e6, 'StepTolerance', 1e-10,...
+    'UseParallel', false, 'MaxIterations', 20,...
+    'OptimalityTolerance', 1e-8); % options for fminunc solver
+[uopt, fval, ~, out] = fminunc(@(u) cost(tmax,Ts,y0,ybar,umax,u), u, options); % Actual Optimization
 
 options = optimoptions(@fminunc,'Display','iter',...
     'MaxFunctionEvaluation', 5e6, 'StepTolerance', 1e-10,...
-    'UseParallel', false, 'MaxIterations', 500,...
+    'UseParallel', false, 'MaxIterations', 1500,...
     'OptimalityTolerance', 1e-8); % options for fminunc solver
+for k = 1:4
+    [uopt, fval, ~, out] = fminunc(@(u) cost_mex(tmax,Ts,y0,ybar,umax,u), uopt, options); % Actual Optimization
+end
 
-[uopt, fval, ~, out] = fminunc(@(ufun) cost(tmax,Ts,y0,reshape(ufun(2:end),3,length(t)),ybar,umax,ufun(1)), u, options); % Actual Optimization
-
+%%
 y0(6) = y0(6)+uopt(1);
 u = reshape(uopt(2:end),3,length(t));
 x0 = EOE2COE(y0);

@@ -29,6 +29,6 @@ void emxEnsureCapacity_real_T(const emlrtStack *sp, emxArray_real_T *emxArray,
 void emxFree_real_T(const emlrtStack *sp, emxArray_real_T **pEmxArray);
 
 void emxInit_real_T(const emlrtStack *sp, emxArray_real_T **pEmxArray,
-                    const emlrtRTEInfo *srcLocation);
+                    int32_T numDimensions, const emlrtRTEInfo *srcLocation);
 
 /* End of code generation (cost_emxutil.h) */

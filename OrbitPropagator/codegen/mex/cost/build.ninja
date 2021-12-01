@@ -41,6 +41,7 @@ build $builddir\rt_nonfinite.obj : cc $root\rt_nonfinite.c
 build $builddir\cost_initialize.obj : cc $root\cost_initialize.c
 build $builddir\cost_terminate.obj : cc $root\cost_terminate.c
 build $builddir\cost.obj : cc $root\cost.c
+build $builddir\indexShapeCheck.obj : cc $root\indexShapeCheck.c
 build $builddir\_coder_cost_api.obj : cc $root\interface\_coder_cost_api.c
 build $builddir\_coder_cost_mex.obj : cc $root\interface\_coder_cost_mex.c
 build $builddir\cost_emxutil.obj : cc $root\cost_emxutil.c
@@ -48,4 +49,4 @@ build $builddir\_coder_cost_info.obj : cc $root\interface\_coder_cost_info.c
 build $builddir\c_mexapi_version.obj : cc $matlabdir\extern\version\c_mexapi_version.c
 
 # Link
-build $root\cost_mex.mexw64 : link $builddir\cost_data.obj $builddir\rt_nonfinite.obj $builddir\cost_initialize.obj $builddir\cost_terminate.obj $builddir\cost.obj $builddir\_coder_cost_api.obj $builddir\_coder_cost_mex.obj $builddir\cost_emxutil.obj $builddir\_coder_cost_info.obj $builddir\c_mexapi_version.obj 
+build $root\cost_mex.mexw64 : link $builddir\cost_data.obj $builddir\rt_nonfinite.obj $builddir\cost_initialize.obj $builddir\cost_terminate.obj $builddir\cost.obj $builddir\indexShapeCheck.obj $builddir\_coder_cost_api.obj $builddir\_coder_cost_mex.obj $builddir\cost_emxutil.obj $builddir\_coder_cost_info.obj $builddir\c_mexapi_version.obj 

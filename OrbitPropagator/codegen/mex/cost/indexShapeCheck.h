@@ -3,16 +3,15 @@
  * course requirements at degree granting institutions only.  Not for
  * government, commercial, or other organizational use.
  *
- * cost.h
+ * indexShapeCheck.h
  *
- * Code generation for function 'cost'
+ * Code generation for function 'indexShapeCheck'
  *
  */
 
 #pragma once
 
 /* Include files */
-#include "cost_types.h"
 #include "rtwtypes.h"
 #include "emlrt.h"
 #include "mex.h"
@@ -22,7 +21,6 @@
 #include <string.h>
 
 /* Function Declarations */
-real_T cost(const emlrtStack *sp, real_T tmax, real_T Ts, const real_T b_y0[6],
-            const real_T ybar[6], real_T umax, const emxArray_real_T *u);
+void indexShapeCheck(const emlrtStack *sp, int32_T matrixSize);
 
-/* End of code generation (cost.h) */
+/* End of code generation (indexShapeCheck.h) */

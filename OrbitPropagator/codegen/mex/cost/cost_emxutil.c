@@ -73,7 +73,7 @@ void emxFree_real_T(const emlrtStack *sp, emxArray_real_T **pEmxArray)
 }
 
 void emxInit_real_T(const emlrtStack *sp, emxArray_real_T **pEmxArray,
-                    const emlrtRTEInfo *srcLocation)
+                    int32_T numDimensions, const emlrtRTEInfo *srcLocation)
 {
   emxArray_real_T *emxArray;
   int32_T i;
@@ -86,14 +86,14 @@ void emxInit_real_T(const emlrtStack *sp, emxArray_real_T **pEmxArray,
                                       NULL);
   emxArray = *pEmxArray;
   emxArray->data = (real_T *)NULL;
-  emxArray->numDimensions = 2;
-  emxArray->size = (int32_T *)emlrtMallocMex(sizeof(int32_T) * 2U);
+  emxArray->numDimensions = numDimensions;
+  emxArray->size = (int32_T *)emlrtMallocMex(sizeof(int32_T) * numDimensions);
   if ((void *)emxArray->size == NULL) {
     emlrtHeapAllocationErrorR2012b(srcLocation, (emlrtCTX)sp);
   }
   emxArray->allocatedSize = 0;
   emxArray->canFreeData = true;
-  for (i = 0; i < 2; i++) {
+  for (i = 0; i < numDimensions; i++) {
     emxArray->size[i] = 0;
   }
 }

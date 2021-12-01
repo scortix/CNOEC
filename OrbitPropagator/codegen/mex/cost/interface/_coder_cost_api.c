@@ -18,7 +18,7 @@
 #include "rt_nonfinite.h"
 
 /* Variable Definitions */
-static emlrtRTEInfo i_emlrtRTEI = {
+static emlrtRTEInfo j_emlrtRTEI = {
     1,                 /* lineNo */
     1,                 /* colNo */
     "_coder_cost_api", /* fName */
@@ -159,17 +159,16 @@ static void i_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src,
                                const emlrtMsgIdentifier *msgId,
                                emxArray_real_T *ret)
 {
-  static const int32_T dims[2] = {3, -1};
-  int32_T iv[2];
+  static const int32_T dims = -1;
   int32_T i;
-  const boolean_T bv[2] = {false, true};
+  int32_T i1;
+  const boolean_T b = true;
   emlrtCheckVsBuiltInR2012b((emlrtCTX)sp, msgId, src, (const char_T *)"double",
-                            false, 2U, (void *)&dims[0], &bv[0], &iv[0]);
-  ret->allocatedSize = iv[0] * iv[1];
-  i = ret->size[0] * ret->size[1];
-  ret->size[0] = iv[0];
-  ret->size[1] = iv[1];
-  emxEnsureCapacity_real_T(sp, ret, i, (emlrtRTEInfo *)NULL);
+                            false, 1U, (void *)&dims, &b, &i);
+  ret->allocatedSize = i;
+  i1 = ret->size[0];
+  ret->size[0] = i;
+  emxEnsureCapacity_real_T(sp, ret, i1, (emlrtRTEInfo *)NULL);
   ret->data = (real_T *)emlrtMxGetData(src);
   ret->canFreeData = false;
   emlrtDestroyArray(&src);
@@ -190,17 +189,17 @@ void cost_api(const mxArray *const prhs[6], const mxArray **plhs)
   real_T umax;
   st.tls = emlrtRootTLSGlobal;
   emlrtHeapReferenceStackEnterFcnR2012b(&st);
-  emxInit_real_T(&st, &u, &i_emlrtRTEI);
+  emxInit_real_T(&st, &u, 1, &j_emlrtRTEI);
   /* Marshall function inputs */
   tmax = emlrt_marshallIn(&st, emlrtAliasP(prhs[0]), "tmax");
   Ts = emlrt_marshallIn(&st, emlrtAliasP(prhs[1]), "Ts");
   b_y0 = c_emlrt_marshallIn(&st, emlrtAlias(prhs[2]), "y0");
+  ybar = c_emlrt_marshallIn(&st, emlrtAlias(prhs[3]), "ybar");
+  umax = emlrt_marshallIn(&st, emlrtAliasP(prhs[4]), "umax");
   u->canFreeData = false;
-  e_emlrt_marshallIn(&st, emlrtAlias(prhs[3]), "u", u);
-  ybar = c_emlrt_marshallIn(&st, emlrtAlias(prhs[4]), "ybar");
-  umax = emlrt_marshallIn(&st, emlrtAliasP(prhs[5]), "umax");
+  e_emlrt_marshallIn(&st, emlrtAlias(prhs[5]), "u", u);
   /* Invoke the target function */
-  tmax = cost(&st, tmax, Ts, *b_y0, u, *ybar, umax);
+  tmax = cost(&st, tmax, Ts, *b_y0, *ybar, umax, u);
   /* Marshall function outputs */
   *plhs = emlrt_marshallOut(tmax);
   emxFree_real_T(&st, &u);

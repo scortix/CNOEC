@@ -1,4 +1,4 @@
-function J = cost(tmax,Ts,y0,u,ybar,umax,theta0)
+function J = cost(tmax,Ts,y0,ybar,umax,u)
 
 %COST Function calculates the cost of the orbital maneuvre considering
 %   arbitrary defined weigthed sums. The cost takes into account both the
@@ -13,9 +13,8 @@ function J = cost(tmax,Ts,y0,u,ybar,umax,theta0)
 %       umax: maximum value for inputs
 
 t = 0:Ts:tmax; % Time vector
-y0(6) = y0(6)+theta0;
 y = zeros(6,length(t)+1); % Initialization of vector state
-y(:,1) = y0; % Set initial conditions
+y(:,1) = y0+[0 0 0 0 0 u(1)]'; % Set initial conditions
 J = 0; % Initialization of cost function
 
 %% Weights Definition
@@ -28,9 +27,9 @@ R = diag([1 1 1]/umax^2);
 
 %% Cost Function Calculation
 for k = 1:length(t)
-    usat = min(umax, max(-umax, u(:,k)));
+    usat = min(umax, max(-umax, u(3*k-1:3*k+1)));
     y(:,k+1) = y(:,k) + Ts*EOEDerivatives(t(k),y(:,k),usat,398600);
-    J = J + u(:,k)'*R*u(:,k) + (y(:,k+1)-ybar)'*Q*(y(:,k+1)-ybar);
+    J = J + u(3*k-1:3*k+1)'*R*u(3*k-1:3*k+1) + (y(:,k+1)-ybar)'*Q*(y(:,k+1)-ybar);
 end
-J = J + 1e6*(y(:,end)-ybar)'*Q*(y(:,end)-ybar);
+J = J + 1e3*(y(:,end)-ybar)'*Q*(y(:,end)-ybar);
 end

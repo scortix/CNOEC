@@ -31,6 +31,12 @@
   },
   {
     "directory": "D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\\codegen\\mex\\cost",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /source-charset:utf-8 /I \".\" /I \"D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\" /I \".\\interface\" /I \"P:\\Matlab\\R2021b\\extern\\include\" /I \".\" -DMODEL=cost_mex   indexShapeCheck.c /Fobuild\\win64\\indexShapeCheck.obj",
+    "file": "indexShapeCheck.c",
+    "output": "build/win64/indexShapeCheck.obj"
+  },
+  {
+    "directory": "D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\\codegen\\mex\\cost",
     "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /source-charset:utf-8 /I \".\" /I \"D:\\CNOEC\\CNOEC_Project\\OrbitPropagator\" /I \".\\interface\" /I \"P:\\Matlab\\R2021b\\extern\\include\" /I \".\" -DMODEL=cost_mex   interface\\_coder_cost_api.c /Fobuild\\win64\\_coder_cost_api.obj",
     "file": "interface/_coder_cost_api.c",
     "output": "build/win64/_coder_cost_api.obj"
