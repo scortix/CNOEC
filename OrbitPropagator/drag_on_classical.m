@@ -1,4 +1,4 @@
-function [drag] = drag_on_classical(x,ad)
+function [drag] = drag_on_classical(x, ad, mu)
 
 % drag_on_classical is a function that takes as inputs the classical
 % orbital elements with the drag acceleration and gives as output the ODE
@@ -6,8 +6,6 @@ function [drag] = drag_on_classical(x,ad)
 
 %%%% pay attention %%%%
 % variation of mean anomaly calculated instead of the true one;
-
-mu = 398600;
 n = sqrt(mu/a^3);
 
 if isa(x, 'double')

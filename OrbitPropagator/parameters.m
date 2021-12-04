@@ -1,4 +1,4 @@
-function [mu, par, ] = parameters()
+function [par , mu, J, m, A1] = parameters()
 
 close all
 clear all
@@ -6,7 +6,7 @@ clc
 
 %% Parameters definitions
 %J = 1e4* [2 0 0; 0 2 0; 0 0 2.5];
-J = [0.09 0 0; 0 0.14 0; 0 0 0.07]; % Inertia Matrix    
+% J = [0.09 0 0; 0 0.14 0; 0 0 0.07]; % Inertia Matrix to be modified    
 e = 0.1; %Orbit eccentricity
 mu = 398600; %Gravitational Constant
 par = [14000 e deg2rad(53) deg2rad(30) deg2rad(15)];
@@ -18,8 +18,8 @@ T = 2*pi*sqrt(par(1)^3/mu); % Orbital period
 nt0 = 0; %Starting point
 % load('IGRF.mat') % Magnetic field coefficients (row -> n; column -> m+1; 3rd dimension -> g and h)
 % Creation of bus to use in Simulink
-Sch_info = Simulink.Bus.createObject(Sch);
-Sch_bus = evalin('base', Sch_info.busName);
+% Sch_info = Simulink.Bus.createObject(Sch);
+% Sch_bus = evalin('base', Sch_info.busName);
 m_par = [.1 .1 .1]; % Parasitic magnetic induction
 
 
@@ -42,6 +42,14 @@ m = ro*V;
 db1 = [l1/2 0 0]';
 db2 = [0 l2/2 0]';
 db3 = [0 0 l3/2]';
+
+Jxx = ro*(l1*l2^3/12*l3+l1*l2*l3^3/12);
+Jyy = ro*(l1^3/12*l2*l3+l1*l2*l3^3/12);
+Jzz = ro*(l1*l2^3/12*l3+l1^3/12*l2*l3);
+
+J = [Jxx 0 0;
+    0 Jyy 0;
+    0 0 Jzz];
 
 solar_par.Ab = [ A1 A1 A2 A2 A3 A3];
 % vector that contains main body surface [m^2]
