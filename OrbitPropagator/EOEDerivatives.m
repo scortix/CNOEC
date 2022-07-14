@@ -4,7 +4,7 @@ function xdot = EOEDerivatives(t, x, u, mu)
 p = x(1);
 if p < 0
     p = -p;
-    %warning('p became negative. Switched to absolute value for calculations');
+%     warning('p became negative. Switched to absolute value for calculations');
 end
 f = x(2);
 g = x(3);

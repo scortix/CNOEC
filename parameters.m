@@ -5,9 +5,9 @@ clc
 %% Parameters definitions
 %J = 1e4* [2 0 0; 0 2 0; 0 0 2.5];
 J = [0.09 0 0; 0 0.14 0; 0 0 0.07]; % Inertia Matrix
-e = 0.1; %Orbit eccentricity
+e = 0.2524; %Orbit eccentricity
 mu = 398600; %Gravitational Constant
-par = [14000 e deg2rad(53) deg2rad(30) deg2rad(15)];
+par = [40073 e deg2rad(59.2548) deg2rad(50) deg2rad(280)];
 % semimajor axis (a), eccentricity (e), inclination of orbital plane (i),
 % longitude of the ascending node(OM), argument of the periapsis(om) 
 % Orbital parameters (semimajor axis, eccentricity, inclination...

@@ -1,0 +1,13 @@
+opt = struct;
+opt.tolgrad = 1e-8;
+opt.tolx = 1e-8;
+opt.tolf = 1e-9;
+opt.tolconstr = 1e-6;
+opt.nitermax = 1e3;
+opt.method = 'BFGS';
+opt.lstkmax = 10;
+opt.lsbeta = 0.7;
+opt.lsc = 0.9;
+opt.lsnitermax = 1e2;
+opt.gamma = 0.2;
+opt.gradmethod = 'CD';

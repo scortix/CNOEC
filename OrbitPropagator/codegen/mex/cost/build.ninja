@@ -6,7 +6,7 @@ ninja_required_version = 1.3
 root = .
 builddir = $root\build\win64
 matlabdir = P:\Matlab\R2021b
-startdir = D:\CNOEC\CNOEC_Project\OrbitPropagator
+startdir = P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator
 
 # Toolchain information
 cc = cl

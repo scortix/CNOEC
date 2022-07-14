@@ -28,9 +28,8 @@ R = diag([1 1 1]/umax^2);
 
 %% Cost Function Calculation
 for k = 1:length(t)
-    usat = min(umax, max(-umax, u(:,k)));
-    y(:,k+1) = y(:,k) + Ts*EOEDerivatives(t(k),y(:,k),usat,398600);
-    J = J + u(:,k)'*R*u(:,k) + (y(:,k+1)-ybar)'*Q*(y(:,k+1)-ybar);
+    y(:,k+1) = y(:,k) + Ts*EOEDerivatives(t(k),y(:,k),u(:,k),398600);
+    J = J + 0*u(:,k)'*R*u(:,k) + (y(:,k+1)-ybar)'*Q*(y(:,k+1)-ybar);
 end
-J = J + 1e6*(y(:,end)-ybar)'*Q*(y(:,end)-ybar);
+J = J/size(u,2) + 100*(y(:,end)-ybar)'*Q*(y(:,end)-ybar);
 end
