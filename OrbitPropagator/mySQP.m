@@ -205,6 +205,9 @@ while true
             s = 1e-14*pkstar/norm(pkstar);
         end
         Hk = Hk - (Hk*(s*s')*Hk)/(s'*Hk*s) + (y*y')/(s'*y);
+        if isequal(Hk,zeros(size(Hk)))
+            Hk = eye(size(Hk))*1e-14;
+        end
         if ~isequal(Hk,Hk')
             Hk  = (Hk+Hk')/2;
         end

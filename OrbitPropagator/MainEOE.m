@@ -5,12 +5,12 @@ clc
 %% Parameters Definition and Initialization
 % Forward Euler: x(k+1) = x(k) + Ts*xdot(k)
 Ts = 100; % Discrete time step
-tmax = 1e4; % Maximum time
-umax = 1e-3; % Maximum input value
+tmax = 5e4; % Maximum time
+umax = 5e-4; % Maximum input value
 t = 0:Ts:tmax; % Time vector
 y = zeros(6,length(t)); % State vector initialization
 
-u = zeros(3,length(t))+1e-4; %u(1,:) = 0; % Input vector initialization
+u = zeros(3,length(t))+1e-8; %u(1,:) = 0; % Input vector initialization
 u = [180/180*pi;reshape(u,numel(u),1)];
 % u = reshape(u,numel(u),1);
 
@@ -50,7 +50,8 @@ options = optimoptions(@fmincon,'Display','iter',...
 myoptimset;
 
 ff = @(ufun) cost_mex(tmax,Ts,y0,reshape(ufun(2:end),3,length(t)),ybar,umax,ufun(1));
-uopt = mySQP(ff,u,[],[], -[eye(length(u)); -eye(length(u))],-[umax+0*u(1:end);umax+0*u(1:end)],0,0,opt);
+uopt = mySQP(ff,u,[],[], -[eye(length(u)); -eye(length(u))],-[[2*pi;umax+0*u(2:end)];[0;umax+0*u(2:end)]],0,0,opt);
+
 theta0 = uopt(1);
 uopt = reshape(uopt(2:end),3,length(t));
 % [uoptfmin, fval, ~, out] = fmincon(@(ufun) cost_mex(tmax,Ts,y0,reshape(ufun(1:end),3,length(t)),ybar,umax,0), u, [eye(length(u)); -eye(length(u))],[umax+0*u(1:end);umax+0*u(1:end)], [], [], [], [], [], options); % Actual Optimization
@@ -62,9 +63,11 @@ x0 = EOE2COE(y0);
 x0(6) = theta0;
 orb_in.theta = x0(6);
 y0 = COE2EOE(x0);
+y(:,1) = y0;
 %% Plotting Results
 for k = 1:length(t)
     y(:,k+1) = y(:,k) + Ts*EOEDerivatives(t(k),y(:,k),uopt(:,k),398600);
+
 %     yfmin(:,k+1) = yfmin(:,k) + Ts*EOEDerivatives(t(k),yfmin(:,k),uoptfmin(:,k),398600);
 end
 

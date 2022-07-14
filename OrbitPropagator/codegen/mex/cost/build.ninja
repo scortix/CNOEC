@@ -5,7 +5,7 @@ ninja_required_version = 1.3
 # Basic folders
 root = .
 builddir = $root\build\win64
-matlabdir = P:\Matlab\R2021b
+matlabdir = P:\Matlab\R2022a
 startdir = P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator
 
 # Toolchain information
@@ -14,9 +14,9 @@ cxx = cl
 linker = link
 linkerxx = link
 
-cflags =  /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /source-charset:utf-8 /I "$root" /I "$startdir" /I "$root\interface" /I "$matlabdir\extern\include" /I "." -DMODEL=cost_mex  
+cflags =  /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I "$root" /I "$startdir" /I "$root\interface" /I "$matlabdir\extern\include" /I "." -DMODEL=cost_mex  
 
-cxxflags =   /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /source-charset:utf-8 /I "$root" /I "$startdir" /I "$root\interface" /I "$matlabdir\extern\include" /I "." -DMODEL=cost_mex  
+cxxflags =   /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I "$root" /I "$startdir" /I "$root\interface" /I "$matlabdir\extern\include" /I "." -DMODEL=cost_mex  
 
 ldflags =  /nologo /manifest   /DLL /LIBPATH:"$matlabdir\extern\lib\win64\microsoft" libmx.lib libmex.lib libmat.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib  /out:"cost_mex.mexw64" libemlrt.lib libcovrt.lib libut.lib libmwmathutil.lib  /export:mexFunction /export:mexfilerequiredapiversion /export:emlrtMexFcnProperties /export:cost /export:cost_initialize /export:cost_terminate /export:cost_atexit /export:emxFree_real_T /export:emxInit_real_T /export:emxEnsureCapacity_real_T
 
@@ -41,6 +41,7 @@ build $builddir\rt_nonfinite.obj : cc $root\rt_nonfinite.c
 build $builddir\cost_initialize.obj : cc $root\cost_initialize.c
 build $builddir\cost_terminate.obj : cc $root\cost_terminate.c
 build $builddir\cost.obj : cc $root\cost.c
+build $builddir\colon.obj : cc $root\colon.c
 build $builddir\_coder_cost_api.obj : cc $root\interface\_coder_cost_api.c
 build $builddir\_coder_cost_mex.obj : cc $root\interface\_coder_cost_mex.c
 build $builddir\cost_emxutil.obj : cc $root\cost_emxutil.c
@@ -48,4 +49,4 @@ build $builddir\_coder_cost_info.obj : cc $root\interface\_coder_cost_info.c
 build $builddir\c_mexapi_version.obj : cc $matlabdir\extern\version\c_mexapi_version.c
 
 # Link
-build $root\cost_mex.mexw64 : link $builddir\cost_data.obj $builddir\rt_nonfinite.obj $builddir\cost_initialize.obj $builddir\cost_terminate.obj $builddir\cost.obj $builddir\_coder_cost_api.obj $builddir\_coder_cost_mex.obj $builddir\cost_emxutil.obj $builddir\_coder_cost_info.obj $builddir\c_mexapi_version.obj 
+build $root\cost_mex.mexw64 : link $builddir\cost_data.obj $builddir\rt_nonfinite.obj $builddir\cost_initialize.obj $builddir\cost_terminate.obj $builddir\cost.obj $builddir\colon.obj $builddir\_coder_cost_api.obj $builddir\_coder_cost_mex.obj $builddir\cost_emxutil.obj $builddir\_coder_cost_info.obj $builddir\c_mexapi_version.obj 

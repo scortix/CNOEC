@@ -13,7 +13,10 @@ function J = cost(tmax,Ts,y0,u,ybar,umax,theta0)
 %       umax: maximum value for inputs
 
 t = 0:Ts:tmax; % Time vector
-y0(6) = y0(6)+theta0;
+x0 = EOE2COE(y0);
+x0(6) = theta0;
+y0 = COE2EOE(x0);
+% y0(6) = y0(6)+theta0;
 y = zeros(6,length(t)+1); % Initialization of vector state
 y(:,1) = y0; % Set initial conditions
 J = 0; % Initialization of cost function
@@ -29,7 +32,7 @@ R = diag([1 1 1]/umax^2);
 %% Cost Function Calculation
 for k = 1:length(t)
     y(:,k+1) = y(:,k) + Ts*EOEDerivatives(t(k),y(:,k),u(:,k),398600);
-    J = J + 0*u(:,k)'*R*u(:,k) + (y(:,k+1)-ybar)'*Q*(y(:,k+1)-ybar);
+    J = J + u(:,k)'*R*u(:,k) + (y(:,k+1)-ybar)'*Q*(y(:,k+1)-ybar)*(k/10);
 end
-J = J/size(u,2) + 100*(y(:,end)-ybar)'*Q*(y(:,end)-ybar);
+J = J/size(u,2) + 1e3*(y(:,end)-ybar)'*Q*(y(:,end)-ybar);
 end
