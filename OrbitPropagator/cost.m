@@ -34,5 +34,5 @@ for k = 1:length(t)
     y(:,k+1) = y(:,k) + Ts*EOEDerivatives(t(k),y(:,k),u(:,k),398600);
     J = J + u(:,k)'*R*u(:,k) + (y(:,k+1)-ybar)'*Q*(y(:,k+1)-ybar)*(k/10);
 end
-J = J/size(u,2) + 1e3*(y(:,end)-ybar)'*Q*(y(:,end)-ybar);
+J = J/size(u,2) + 1e3*length(t)/10*(y(:,end)-ybar)'*Q*(y(:,end)-ybar);
 end

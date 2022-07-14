@@ -191,7 +191,18 @@ static emlrtBCInfo j_emlrtBCI = {
     -1,                                                            /* iFirst */
     -1,                                                            /* iLast */
     37,                                                            /* lineNo */
-    28,                                                            /* colNo */
+    41,                                                            /* colNo */
+    "y",                                                           /* aName */
+    "cost",                                                        /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\cost.m", /* pName */
+    0 /* checkKind */
+};
+
+static emlrtBCInfo k_emlrtBCI = {
+    -1,                                                            /* iFirst */
+    -1,                                                            /* iLast */
+    37,                                                            /* lineNo */
+    60,                                                            /* colNo */
     "y",                                                           /* aName */
     "cost",                                                        /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\cost.m", /* pName */
@@ -558,8 +569,13 @@ real_T cost(const emlrtStack *sp, real_T tmax, real_T Ts, real_T b_y0[6],
     emlrtDynamicBoundsCheckR2012b(y->size[1], 1, y->size[1], &j_emlrtBCI,
                                   (emlrtCTX)sp);
   }
+  b_x_tmp = 1000.0 * (real_T)t_size_idx_1 / 10.0;
+  if (y->size[1] < 1) {
+    emlrtDynamicBoundsCheckR2012b(y->size[1], 1, y->size[1], &k_emlrtBCI,
+                                  (emlrtCTX)sp);
+  }
   for (w_tmp = 0; w_tmp < 6; w_tmp++) {
-    x0[w_tmp] = 1000.0 * (y_data[w_tmp + 6 * (y->size[1] - 1)] - ybar[w_tmp]);
+    x0[w_tmp] = b_x_tmp * (y_data[w_tmp + 6 * (y->size[1] - 1)] - ybar[w_tmp]);
   }
   b_x_tmp = 0.0;
   for (w_tmp = 0; w_tmp < 6; w_tmp++) {

@@ -5,18 +5,21 @@ clc
 %% Parameters Definition and Initialization
 % Forward Euler: x(k+1) = x(k) + Ts*xdot(k)
 Ts = 100; % Discrete time step
-tmax = 5e4; % Maximum time
-umax = 5e-4; % Maximum input value
+tmax = 3e4; % Maximum time
+umax = 1e-3; % Maximum input value
 t = 0:Ts:tmax; % Time vector
 y = zeros(6,length(t)); % State vector initialization
 
-u = zeros(3,length(t))+1e-8; %u(1,:) = 0; % Input vector initialization
+u = zeros(3,length(t)); %u(1,:) = 0; % Input vector initialization
+u(:,1) = 1e-4;
 u = [180/180*pi;reshape(u,numel(u),1)];
 % u = reshape(u,numel(u),1);
 
 
-orb_in = struct('a', 1e4, 'e', 0.2, 'i', pi/4, 'OM', pi/2, 'om', pi/2, 'theta', 0);
-orb_end = struct('a', 1.5e4, 'e', 0.25, 'i', pi/3, 'OM', pi/3, 'om', pi/4, 'theta', 0);
+% orb_in = struct('a', 1e4, 'e', 0.2, 'i', pi/4, 'OM', pi/2, 'om', pi/2, 'theta', 0);
+% orb_end = struct('a', 1.5e4, 'e', 0.25, 'i', pi/3, 'OM', pi/3, 'om', pi/4, 'theta', 0);
+orb_in = struct('a', 7000, 'e', 0.2, 'i', pi/4, 'OM', pi/2, 'om', pi/2, 'theta', 0);
+orb_end = struct('a', 2e4, 'e', 0.25, 'i', pi/3, 'OM', pi/3, 'om', pi/4, 'theta', 0);
 
 
 y0 = COE2EOE(orb_in); % Initial condition conversion to EOE state
