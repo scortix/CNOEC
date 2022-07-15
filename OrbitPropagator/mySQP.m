@@ -88,8 +88,8 @@ niter = 1;
 while true
     if ~strcmp(options.method,'BFGS') || niter == 1
         gradfxk = mygradcalc(f,xk(:,niter), fxk(niter), options.gradmethod);
-        gradgxk = [A'; mygradcalc(gs,xk(:,niter), gxk(size(A,1)+1:end,niter), options.gradmethod)];
-        gradhxk = [C'; mygradcalc(hs,xk(:,niter), hxk(size(C,1)+1:end,niter), options.gradmethod)];
+        gradgxk = [A', mygradcalc(gs,xk(:,niter), gxk(size(A,1)+1:end,niter), options.gradmethod)];
+        gradhxk = [C', mygradcalc(hs,xk(:,niter), hxk(size(C,1)+1:end,niter), options.gradmethod)];
         gradlxk = gradfxk-gradgxk*lam(:,niter)-gradhxk*mu(:,niter);
     end
     if strcmp(options.method, 'Gauss-Newton')

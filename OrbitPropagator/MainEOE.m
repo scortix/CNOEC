@@ -5,12 +5,13 @@ clc
 %% Parameters Definition and Initialization
 % Forward Euler: x(k+1) = x(k) + Ts*xdot(k)
 Ts = 100; % Discrete time step
-tmax = 3e4; % Maximum time
+tmax = 2e4; % Maximum time
+ratio = 5;
 umax = 1e-3; % Maximum input value
 t = 0:Ts:tmax; % Time vector
 y = zeros(6,length(t)); % State vector initialization
 
-u = zeros(3,length(t)); %u(1,:) = 0; % Input vector initialization
+u = zeros(3,(length(t)-1)/ratio+1); %u(1,:) = 0; % Input vector initialization
 u(:,1) = 1e-4;
 u = [180/180*pi;reshape(u,numel(u),1)];
 % u = reshape(u,numel(u),1);
@@ -18,7 +19,7 @@ u = [180/180*pi;reshape(u,numel(u),1)];
 
 % orb_in = struct('a', 1e4, 'e', 0.2, 'i', pi/4, 'OM', pi/2, 'om', pi/2, 'theta', 0);
 % orb_end = struct('a', 1.5e4, 'e', 0.25, 'i', pi/3, 'OM', pi/3, 'om', pi/4, 'theta', 0);
-orb_in = struct('a', 7000, 'e', 0.2, 'i', pi/4, 'OM', pi/2, 'om', pi/2, 'theta', 0);
+orb_in = struct('a', 10000, 'e', 0.2, 'i', pi/4, 'OM', pi/2, 'om', pi/2, 'theta', 0);
 orb_end = struct('a', 2e4, 'e', 0.25, 'i', pi/3, 'OM', pi/3, 'om', pi/4, 'theta', 0);
 
 
@@ -52,11 +53,16 @@ options = optimoptions(@fmincon,'Display','iter',...
     'OptimalityTolerance', 1e-8, 'Algorithm', 'sqp'); % options for fminunc solver
 myoptimset;
 
-ff = @(ufun) cost_mex(tmax,Ts,y0,reshape(ufun(2:end),3,length(t)),ybar,umax,ufun(1));
-uopt = mySQP(ff,u,[],[], -[eye(length(u)); -eye(length(u))],-[[2*pi;umax+0*u(2:end)];[0;umax+0*u(2:end)]],0,0,opt);
+% ff = @(ufun) cost_mex(tmax,Ts,y0,reshape(ufun(2:end),3,length(t)),ybar,umax,ufun(1));
+% uopt = mySQP(ff,u,[],[], -[eye(length(u)); -eye(length(u))],-[[2*pi;umax+0*u(2:end)];[0;umax+0*u(2:end)]],0,0,opt);
+
+gaussFun = @(u) costGauss_mex(tmax,Ts,y0,reshape(u(2:end),3,(length(t)-1)/ratio+1),ybar,umax,u(1),ratio);
+opt.method = "Gauss-Newton";
+opt.gradmethod = "FD";
+uopt = mySQP(gaussFun,u,[],[], -[eye(length(u)); -eye(length(u))],-[[2*pi;umax+0*u(2:end)];[0;umax+0*u(2:end)]],0,length(t)+1,opt);
 
 theta0 = uopt(1);
-uopt = reshape(uopt(2:end),3,length(t));
+uopt = reshape(uopt(2:end),3,(length(t)-1)/ratio+1);
 % [uoptfmin, fval, ~, out] = fmincon(@(ufun) cost_mex(tmax,Ts,y0,reshape(ufun(1:end),3,length(t)),ybar,umax,0), u, [eye(length(u)); -eye(length(u))],[umax+0*u(1:end);umax+0*u(1:end)], [], [], [], [], [], options); % Actual Optimization
 
 %%
@@ -69,18 +75,25 @@ y0 = COE2EOE(x0);
 y(:,1) = y0;
 %% Plotting Results
 for k = 1:length(t)
-    y(:,k+1) = y(:,k) + Ts*EOEDerivatives(t(k),y(:,k),uopt(:,k),398600);
+    ku = ceil(k/ratio);
+    y(:,k+1) = y(:,k) + Ts*EOEDerivatives(t(k),y(:,k),uopt(:,ku),398600);
 
 %     yfmin(:,k+1) = yfmin(:,k) + Ts*EOEDerivatives(t(k),yfmin(:,k),uoptfmin(:,k),398600);
 end
 
 x = y;
 % xfmin = yfmin;
+utot = zeros(3,length(t));
+for i = 1:length(t)
+    ku = ceil(i/ratio);
+    utot(:,i) = uopt(:,ku);
+end
+
 for k = 1:size(y,2)
     x(:,k) = EOE2COE(y(:,k)); % Conversion of EOE state vector to COE state vector
 %     xfmin(:,k) = EOE2COE(yfmin(:,k));
 end
-fig = Orb_Earth_plot(orb_in, orb_end, x, uopt);
+fig = Orb_Earth_plot(orb_in, orb_end, x, utot);
 % fig = Orb_Earth_plot(orb_in, orb_end, xfmin, uoptfmin,fig);
 
 
