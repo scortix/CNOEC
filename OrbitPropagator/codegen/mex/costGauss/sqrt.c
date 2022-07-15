@@ -26,7 +26,35 @@ static emlrtRSInfo x_emlrtRSI = {
 };
 
 /* Function Definitions */
-void b_sqrt(const emlrtStack *sp, emxArray_real_T *x)
+void b_sqrt(const emlrtStack *sp, real_T x[9])
+{
+  int32_T k;
+  boolean_T p;
+  p = false;
+  for (k = 0; k < 9; k++) {
+    if (p || (x[k] < 0.0)) {
+      p = true;
+    }
+  }
+  if (p) {
+    emlrtErrorWithMessageIdR2018a(
+        sp, &d_emlrtRTEI, "Coder:toolbox:ElFunDomainError",
+        "Coder:toolbox:ElFunDomainError", 3, 4, 4, "sqrt");
+  }
+  for (k = 0; k < 9; k++) {
+    x[k] = muDoubleScalarSqrt(x[k]);
+  }
+}
+
+void c_sqrt(real_T x[36])
+{
+  int32_T k;
+  for (k = 0; k < 36; k++) {
+    x[k] = muDoubleScalarSqrt(x[k]);
+  }
+}
+
+void d_sqrt(const emlrtStack *sp, emxArray_real_T *x)
 {
   emlrtStack b_st;
   emlrtStack c_st;
@@ -51,7 +79,7 @@ void b_sqrt(const emlrtStack *sp, emxArray_real_T *x)
   }
   if (p) {
     emlrtErrorWithMessageIdR2018a(
-        sp, &emlrtRTEI, "Coder:toolbox:ElFunDomainError",
+        sp, &d_emlrtRTEI, "Coder:toolbox:ElFunDomainError",
         "Coder:toolbox:ElFunDomainError", 3, 4, 4, "sqrt");
   }
   st.site = &x_emlrtRSI;

@@ -146,6 +146,8 @@ while true
     end
 
     switch options.method
+        case "Steepest"
+            Hk = eye(length(x0));
         case 'Gauss-Newton'
             Hk = 2*(gradFxk*gradFxk');
             Hk = Hk + 1e-14*eye(size(Hk));
@@ -186,29 +188,29 @@ while true
     if strcmp(options.method, 'BFGS')
         gradlxkup = gradfxk-gradgxk*lam(:,niter+1)-gradhxk*mu(:,niter+1);
         gradfxk = mygradcalc(f,xk(:,niter+1), fxk(niter+1), options.gradmethod);
-        gradgxk = [A'; mygradcalc(gs,xk(:,niter+1), gxk(size(A,1)+1:end,niter+1), options.gradmethod)];
-        gradhxk = [C'; mygradcalc(hs,xk(:,niter+1), hxk(size(C,1)+1:end,niter+1), options.gradmethod)];
+        gradgxk = [A', mygradcalc(gs,xk(:,niter+1), gxk(size(A,1)+1:end,niter+1), options.gradmethod)];
+        gradhxk = [C', mygradcalc(hs,xk(:,niter+1), hxk(size(C,1)+1:end,niter+1), options.gradmethod)];
         gradlxk = gradfxk-gradgxk*lam(:,niter+1)-gradhxk*mu(:,niter+1);
         
         y = gradlxk-gradlxkup;
         s = xk(:,niter+1)-xk(:,niter);
         if y'*s <= options.gamma*s'*Hk*s
             ynew = y + (options.gamma*s'*Hk*s-s'*y)/(s'*Hk*s-s'*y)*(Hk*s-y);
-%             if all(ynew~=0) && all(~isnan(ynew))
-%                 y = ynew;
-%             elseif any(ynew == 0) && all(~isnan(ynew))
-%                 y = ynew + 1e-14*ynew==0;
-%             else
-%                 y = 1e-14 * ones(length(y),1);
-%             end
-            y = ynew;
+            if all(ynew~=0) && all(~isnan(ynew))
+                y = ynew;
+            elseif any(ynew == 0) && all(~isnan(ynew))
+                y = ynew + 1e-14*ynew==0;
+            else
+                y = 1e-14 * ones(length(y),1);
+            end
+           
         end
         if all(s==0)
             s = 1e-14*pkstar/norm(pkstar);
         end
         Hk = Hk - ((Hk*s)*(Hk*s)')/(s'*Hk*s) + (y*y')/(s'*y);
-        if any(eig(Hk)<0) || ~issymmetric(Hk)
-            error("Hk");
+        if any(eig(Hk)<0)
+            warning("Hk");
         end
         if isequal(Hk,zeros(size(Hk)))
             Hk = eye(size(Hk))*1e-14;

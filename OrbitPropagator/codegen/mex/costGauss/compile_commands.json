@@ -43,6 +43,12 @@
   },
   {
     "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\codegen\\mex\\costGauss",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGauss_mex   COE2EOE.c /Fobuild\\win64\\COE2EOE.obj",
+    "file": "COE2EOE.c",
+    "output": "build/win64/COE2EOE.obj"
+  },
+  {
+    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\codegen\\mex\\costGauss",
     "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGauss_mex   diag.c /Fobuild\\win64\\diag.obj",
     "file": "diag.c",
     "output": "build/win64/diag.obj"
@@ -94,12 +100,6 @@
     "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGauss_mex   cos.c /Fobuild\\win64\\cos.obj",
     "file": "cos.c",
     "output": "build/win64/cos.obj"
-  },
-  {
-    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\codegen\\mex\\costGauss",
-    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGauss_mex   div.c /Fobuild\\win64\\div.obj",
-    "file": "div.c",
-    "output": "build/win64/div.obj"
   },
   {
     "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\codegen\\mex\\costGauss",

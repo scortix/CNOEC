@@ -23,14 +23,14 @@ static emlrtRSInfo l_emlrtRSI = {
     "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" /* pathName */
 };
 
-static emlrtRTEInfo b_emlrtRTEI = {
+static emlrtRTEInfo c_emlrtRTEI = {
     419,                                                          /* lineNo */
     15,                                                           /* colNo */
     "assert_pmaxsize",                                            /* fName */
     "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" /* pName */
 };
 
-static emlrtRTEInfo s_emlrtRTEI = {
+static emlrtRTEInfo v_emlrtRTEI = {
     320,                                                          /* lineNo */
     20,                                                           /* colNo */
     "colon",                                                      /* fName */
@@ -74,13 +74,13 @@ void eml_float_colon(const emlrtStack *sp, real_T d, real_T b,
   }
   st.site = &l_emlrtRSI;
   if (ndbl > 2.147483647E+9) {
-    emlrtErrorWithMessageIdR2018a(&st, &b_emlrtRTEI, "Coder:MATLAB:pmaxsize",
+    emlrtErrorWithMessageIdR2018a(&st, &c_emlrtRTEI, "Coder:MATLAB:pmaxsize",
                                   "Coder:MATLAB:pmaxsize", 0);
   }
   nm1d2 = y->size[0] * y->size[1];
   y->size[0] = 1;
   y->size[1] = n;
-  emxEnsureCapacity_real_T(sp, y, nm1d2, &s_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, y, nm1d2, &v_emlrtRTEI);
   y_data = y->data;
   if (n > 0) {
     y_data[0] = 0.0;

@@ -44,27 +44,11 @@ emlrtRSInfo y_emlrtRSI = {
     "internal\\applyScalarFunctionInPlace.m" /* pathName */
 };
 
-emlrtRTEInfo emlrtRTEI = {
+emlrtRTEInfo d_emlrtRTEI = {
     13,                                                            /* lineNo */
     9,                                                             /* colNo */
     "sqrt",                                                        /* fName */
     "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\elfun\\sqrt.m" /* pName */
-};
-
-emlrtRTEInfo n_emlrtRTEI = {
-    44,          /* lineNo */
-    6,           /* colNo */
-    "costGauss", /* fName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m" /* pName
-                                                                        */
-};
-
-emlrtRTEInfo o_emlrtRTEI = {
-    44,          /* lineNo */
-    15,          /* colNo */
-    "costGauss", /* fName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m" /* pName
-                                                                        */
 };
 
 /* End of code generation (costGauss_data.c) */

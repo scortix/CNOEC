@@ -62,7 +62,7 @@ static emlrtRSInfo fb_emlrtRSI = {
     "internal\\applyBinaryScalarFunction.m" /* pathName */
 };
 
-static emlrtRTEInfo c_emlrtRTEI =
+static emlrtRTEInfo e_emlrtRTEI =
     {
         14,             /* lineNo */
         15,             /* colNo */
@@ -71,7 +71,7 @@ static emlrtRTEInfo c_emlrtRTEI =
         "internal\\scalexpCheck.m" /* pName */
 };
 
-static emlrtRTEInfo t_emlrtRTEI = {
+static emlrtRTEInfo w_emlrtRTEI = {
     129,                         /* lineNo */
     6,                           /* colNo */
     "applyBinaryScalarFunction", /* fName */
@@ -120,7 +120,7 @@ void b_atan2(const emlrtStack *sp, const emxArray_real_T *y,
     p = false;
   }
   if (!p) {
-    emlrtErrorWithMessageIdR2018a(&d_st, &c_emlrtRTEI, "MATLAB:dimagree",
+    emlrtErrorWithMessageIdR2018a(&d_st, &e_emlrtRTEI, "MATLAB:dimagree",
                                   "MATLAB:dimagree", 0);
   }
   c_st.site = &db_emlrtRSI;
@@ -128,7 +128,7 @@ void b_atan2(const emlrtStack *sp, const emxArray_real_T *y,
   z_size_idx_1 = r->size[0] * r->size[1];
   r->size[0] = 1;
   r->size[1] = muIntScalarMin_sint32(y->size[1], x->size[1]);
-  emxEnsureCapacity_real_T(&c_st, r, z_size_idx_1, &t_emlrtRTEI);
+  emxEnsureCapacity_real_T(&c_st, r, z_size_idx_1, &w_emlrtRTEI);
   r_data = r->data;
   d_st.site = &fb_emlrtRSI;
   if (csz_idx_1 > 2147483646) {

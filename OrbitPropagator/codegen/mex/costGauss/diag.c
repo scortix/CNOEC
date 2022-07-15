@@ -15,12 +15,21 @@
 #include <string.h>
 
 /* Function Definitions */
-void diag(const real_T v[3], real_T d[9])
+void b_diag(const real_T v[3], real_T d[9])
 {
   memset(&d[0], 0, 9U * sizeof(real_T));
   d[0] = v[0];
   d[4] = v[1];
   d[8] = v[2];
+}
+
+void diag(const real_T v[6], real_T d[36])
+{
+  int32_T j;
+  memset(&d[0], 0, 36U * sizeof(real_T));
+  for (j = 0; j < 6; j++) {
+    d[j + 6 * j] = v[j];
+  }
 }
 
 /* End of code generation (diag.c) */

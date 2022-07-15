@@ -27,7 +27,7 @@ for i = 1:length(dyinv)
     dyinv(i) = (dyinv(i) ~= 0)/(dyinv(i)+(dyinv(i)==0));
 end
 Q = diag([1 1 1 1 1 0]'.*dyinv.^2);
-R = diag([1 1 1]/umax^2);
+R = diag([1 1 1]/umax^2)*0.1;
 F = zeros(9*length(u)+6,1); 
 %% Cost Function Calculation
 for k = 1:length(t)
@@ -35,12 +35,12 @@ for k = 1:length(t)
     y(:,k+1) = y(:,k) + Ts*EOEDerivatives(t(k),y(:,k),u(:,ku),398600);
 %     J = J + u(:,k)'*R*u(:,k) + (y(:,k+1)-ybar)'*Q*(y(:,k+1)-ybar)*(k/10);
 if k == ratio*ku
-    F(9*(ku-1)+1:9*ku) = [sqrt(R)*u(:,ku); sqrt(Q)*(y(:,k+1)-ybar)*sqrt(k/10)];
+    F(9*(ku-1)+1:9*ku) = [sqrt(R)*u(:,ku); sqrt(Q)*(y(:,k+1)-ybar)*sqrt(100*k/length(t))];
 end
 end
 F = F/sqrt(size(u,2));
-F(9*length(u)+1:end) = 10^1.5*sqrt(Q)*(y(:,end)-ybar)*sqrt(length(t)/10);
+F(9*length(u)+1:end) = 10^1*sqrt(Q)*(y(:,end)-ybar)*sqrt(100);
 % J = J/size(u,2) + 1e3*length(t)/10*(y(:,end)-ybar)'*Q*(y(:,end)-ybar);
-r = (y(1,:)./(1+sqrt(y(2,:).^2+y(3,:).^2).*cos(y(6,:)-atan2(y(3,:),y(2,:)))))';
-J = [F'*F;F];
+r = min((y(1,:)./(1+sqrt(y(2,:).^2+y(3,:).^2).*cos(y(6,:)-atan2(y(3,:),y(2,:)))))');
+J = [F'*F;r-6378.1;F];
 end

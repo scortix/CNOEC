@@ -21,6 +21,8 @@
 #include <string.h>
 
 /* Function Declarations */
-void diag(const real_T v[3], real_T d[9]);
+void b_diag(const real_T v[3], real_T d[9]);
+
+void diag(const real_T v[6], real_T d[36]);
 
 /* End of code generation (diag.h) */

@@ -18,7 +18,7 @@
 #include "rt_nonfinite.h"
 
 /* Variable Definitions */
-static emlrtRTEInfo u_emlrtRTEI = {
+static emlrtRTEInfo x_emlrtRTEI = {
     1,                      /* lineNo */
     1,                      /* colNo */
     "_coder_costGauss_api", /* fName */
@@ -199,8 +199,8 @@ void costGauss_api(const mxArray *const prhs[8], const mxArray **plhs)
   real_T umax;
   st.tls = emlrtRootTLSGlobal;
   emlrtHeapReferenceStackEnterFcnR2012b(&st);
-  emxInit_real_T(&st, &u, 2, &u_emlrtRTEI);
-  emxInit_real_T(&st, &J, 1, &u_emlrtRTEI);
+  emxInit_real_T(&st, &u, 2, &x_emlrtRTEI);
+  emxInit_real_T(&st, &J, 1, &x_emlrtRTEI);
   prhs_copy_idx_2 = emlrtProtectR2012b(prhs[2], 2, false, -1);
   /* Marshall function inputs */
   tmax = emlrt_marshallIn(&st, emlrtAliasP(prhs[0]), "tmax");
