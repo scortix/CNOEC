@@ -18,6 +18,6 @@ for niter = 1:nitermax
     end
     t = beta*t;
 end
-% if niter == nitermax
-%     warning('Iteration limit')
-% end
+if niter == nitermax
+    warning('Iteration limit')
+end

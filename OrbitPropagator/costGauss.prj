@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.coder" plugin-version="R2021a">
-  <configuration build-checksum="1526566972" file="P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\costGauss.prj" location="P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator" name="costGauss" target="target.unifiedcoder" target-name="MATLAB Coder">
+  <configuration build-checksum="2678918231" file="P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\costGauss.prj" location="P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator" name="costGauss" target="target.unifiedcoder" target-name="MATLAB Coder">
     <profile key="profile.mex">
       <param.BuiltInstrumentedMex>false</param.BuiltInstrumentedMex>
       <param.RanInstrumentedMex>false</param.RanInstrumentedMex>
@@ -593,12 +593,12 @@
     <param.hdlParamStorage />
     <var.gc.lastOutputRoot>codegen\mex\costGauss</var.gc.lastOutputRoot>
     <var.gc.lastOutputType>MEX_FILE</var.gc.lastOutputType>
-    <var.gc.preBuildChecksum>1526566972</var.gc.preBuildChecksum>
+    <var.gc.preBuildChecksum>2678918231</var.gc.preBuildChecksum>
     <var.cfi.lastOutputRoot>codegen\mex\costGauss</var.cfi.lastOutputRoot>
     <var.cfi.preBuildChecksum>4262928986</var.cfi.preBuildChecksum>
     <var.lastCfiTestSnippet>costGauss(tmax,Ts,y0,reshape(u(2:end),3,(length(t)-1)/ratio+1),ybar,umax,u(1),ratio)</var.lastCfiTestSnippet>
     <var.outdatedOnRestore>false</var.outdatedOnRestore>
-    <var.lastUserSourceChecksum>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;checksum&gt;&lt;includedFiles&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\COE2EOE.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\costGauss.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\EOE2COE.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\EOEDerivatives.m&lt;/file&gt;&lt;/includedFiles&gt;&lt;value&gt;3424661409&lt;/value&gt;&lt;/checksum&gt;</var.lastUserSourceChecksum>
+    <var.lastUserSourceChecksum>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;checksum&gt;&lt;includedFiles&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\COE2EOE.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\costGauss.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\EOE2COE.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\EOEDerivatives.m&lt;/file&gt;&lt;/includedFiles&gt;&lt;value&gt;3471937479&lt;/value&gt;&lt;/checksum&gt;</var.lastUserSourceChecksum>
     <var.sourceSetState>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;sourceModel&gt;&lt;primarySourceFiles&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\COE2EOE.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\costGauss.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\EOE2COE.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\EOEDerivatives.m&lt;/file&gt;&lt;/primarySourceFiles&gt;&lt;fixedPointSourceFiles/&gt;&lt;fixedPointSourceRegistered&gt;false&lt;/fixedPointSourceRegistered&gt;&lt;fixedPointSourceSelected&gt;false&lt;/fixedPointSourceSelected&gt;&lt;/sourceModel&gt;</var.sourceSetState>
     <param.forceMexBuild>false</param.forceMexBuild>
     <param.NoDefaultJIT>false</param.NoDefaultJIT>

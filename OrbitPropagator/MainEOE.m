@@ -5,14 +5,14 @@ clc
 %% Parameters Definition and Initialization
 % Forward Euler: x(k+1) = x(k) + Ts*xdot(k)
 Ts = 100; % Discrete time step
-tmax = 2e4; % Maximum time
+tmax = 5e4; % Maximum time
 ratio = 5;
 umax = 1e-3; % Maximum input value
 t = 0:Ts:tmax; % Time vector
 y = zeros(6,length(t)); % State vector initialization
 
 u = zeros(3,(length(t)-1)/ratio+1); %u(1,:) = 0; % Input vector initialization
-u(:,1) = 1e-4;
+u(:,1) = 1e-8;
 u = [180/180*pi;reshape(u,numel(u),1)];
 % u = reshape(u,numel(u),1);
 
@@ -58,8 +58,10 @@ myoptimset;
 
 gaussFun = @(u) costGauss_mex(tmax,Ts,y0,reshape(u(2:end),3,(length(t)-1)/ratio+1),ybar,umax,u(1),ratio);
 opt.method = "Gauss-Newton";
+opt.method = "BFGS";
 opt.gradmethod = "FD";
-uopt = mySQP(gaussFun,u,[],[], -[eye(length(u)); -eye(length(u))],-[[2*pi;umax+0*u(2:end)];[0;umax+0*u(2:end)]],0,length(t)+1,opt);
+
+uopt = mySQP(gaussFun,u,[],[], -[eye(length(u)); -eye(length(u))],-[[2*pi;umax+0*u(2:end)];[0;umax+0*u(2:end)]],0,0*(length(t)+1),opt);
 
 theta0 = uopt(1);
 uopt = reshape(uopt(2:end),3,(length(t)-1)/ratio+1);

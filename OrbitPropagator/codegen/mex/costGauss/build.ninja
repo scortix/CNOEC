@@ -52,9 +52,10 @@ build $builddir\_coder_costGauss_mex.obj : cc $root\interface\_coder_costGauss_m
 build $builddir\eml_int_forloop_overflow_check.obj : cc $root\eml_int_forloop_overflow_check.c
 build $builddir\sqrt.obj : cc $root\sqrt.c
 build $builddir\cos.obj : cc $root\cos.c
+build $builddir\div.obj : cc $root\div.c
 build $builddir\costGauss_emxutil.obj : cc $root\costGauss_emxutil.c
 build $builddir\_coder_costGauss_info.obj : cc $root\interface\_coder_costGauss_info.c
 build $builddir\c_mexapi_version.obj : cc $matlabdir\extern\version\c_mexapi_version.c
 
 # Link
-build $root\costGauss_mex.mexw64 : link $builddir\costGauss_data.obj $builddir\rt_nonfinite.obj $builddir\costGauss_initialize.obj $builddir\costGauss_terminate.obj $builddir\costGauss.obj $builddir\colon.obj $builddir\EOE2COE.obj $builddir\diag.obj $builddir\atan2.obj $builddir\assertCompatibleDims.obj $builddir\mtimes.obj $builddir\_coder_costGauss_api.obj $builddir\_coder_costGauss_mex.obj $builddir\eml_int_forloop_overflow_check.obj $builddir\sqrt.obj $builddir\cos.obj $builddir\costGauss_emxutil.obj $builddir\_coder_costGauss_info.obj $builddir\c_mexapi_version.obj 
+build $root\costGauss_mex.mexw64 : link $builddir\costGauss_data.obj $builddir\rt_nonfinite.obj $builddir\costGauss_initialize.obj $builddir\costGauss_terminate.obj $builddir\costGauss.obj $builddir\colon.obj $builddir\EOE2COE.obj $builddir\diag.obj $builddir\atan2.obj $builddir\assertCompatibleDims.obj $builddir\mtimes.obj $builddir\_coder_costGauss_api.obj $builddir\_coder_costGauss_mex.obj $builddir\eml_int_forloop_overflow_check.obj $builddir\sqrt.obj $builddir\cos.obj $builddir\div.obj $builddir\costGauss_emxutil.obj $builddir\_coder_costGauss_info.obj $builddir\c_mexapi_version.obj 

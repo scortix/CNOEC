@@ -42,5 +42,5 @@ F = F/sqrt(size(u,2));
 F(9*length(u)+1:end) = 10^1.5*sqrt(Q)*(y(:,end)-ybar)*sqrt(length(t)/10);
 % J = J/size(u,2) + 1e3*length(t)/10*(y(:,end)-ybar)'*Q*(y(:,end)-ybar);
 r = (y(1,:)./(1+sqrt(y(2,:).^2+y(3,:).^2).*cos(y(6,:)-atan2(y(3,:),y(2,:)))))';
-J = [F'*F;r-6378.1;F];
+J = [F'*F;F];
 end
