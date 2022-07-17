@@ -1,4 +1,4 @@
-function [IOEdot] = IOEDerivatives(s, IOE, u, Re, mu)
+function [IOEdot, kt] = IOEDerivatives(s, IOE, u, Re, mu)
 
 % u = [ur ut un]
 
@@ -13,6 +13,7 @@ kc = 1+ex*cos(s)+ey*sin(s);
 ks = ex*sin(s)-ey*cos(s);
 kx = 0.5*(1+hx^2-hy^2);
 ky = 0.5*(1-hx^2+hy^2);
+kt = sqrt(Re^2*rho^3/mu)/kc^2;
 
 coeff = sqrt(Re*rho/mu)/kc;
 
