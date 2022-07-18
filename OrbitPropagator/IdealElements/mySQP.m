@@ -81,7 +81,7 @@ fxk = zeros(options.nitermax+1, 1); fxk(1) = f(x0);
 gxk = zeros(options.nitermax+1, p)'; gxk(:,1) = g(x0);
 hxk = zeros(options.nitermax+1, q)'; hxk(:,1) = h(x0);
 tau = zeros(q,1); sigma = zeros(p,1);
-optQP = optimoptions("quadprog","Display","none",'Algorithm','interior-point-convex','MaxIterations',1e4,...
+optQP = optimoptions("quadprog","Display","final-detailed",'Algorithm','interior-point-convex','MaxIterations',1e4,...
     'OptimalityTolerance',1e-8);
 
 pkstar = ones(size(x0));
@@ -199,7 +199,7 @@ while true
             if all(ynew~=0) && all(~isnan(ynew))
                 y = ynew;
             elseif any(ynew == 0) && all(~isnan(ynew))
-                y = ynew + 1e-14*ynew==0;
+                y = ynew + 1e-14*(ynew==0);
             else
                 y = 1e-14 * ones(length(y),1);
             end
@@ -215,9 +215,9 @@ while true
         if isequal(Hk,zeros(size(Hk)))
             Hk = eye(size(Hk))*1e-14;
         end
-%         if ~isequal(Hk,Hk')
-%             Hk  = (Hk+Hk')/2;
-%         end
+        if ~isequal(Hk,Hk')
+            Hk  = (Hk+Hk')/2;
+        end
     end
 
     dx(niter+1) = norm(xk(:,niter+1)-xk(:,niter))/max(eps,norm(xk(:,niter)));

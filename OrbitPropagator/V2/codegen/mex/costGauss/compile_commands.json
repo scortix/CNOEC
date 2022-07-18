@@ -1,0 +1,104 @@
+[
+  {
+    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGauss",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGauss_mex   costGauss_data.c /Fobuild\\win64\\costGauss_data.obj",
+    "file": "costGauss_data.c",
+    "output": "build/win64/costGauss_data.obj"
+  },
+  {
+    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGauss",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGauss_mex   rt_nonfinite.c /Fobuild\\win64\\rt_nonfinite.obj",
+    "file": "rt_nonfinite.c",
+    "output": "build/win64/rt_nonfinite.obj"
+  },
+  {
+    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGauss",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGauss_mex   costGauss_initialize.c /Fobuild\\win64\\costGauss_initialize.obj",
+    "file": "costGauss_initialize.c",
+    "output": "build/win64/costGauss_initialize.obj"
+  },
+  {
+    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGauss",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGauss_mex   costGauss_terminate.c /Fobuild\\win64\\costGauss_terminate.obj",
+    "file": "costGauss_terminate.c",
+    "output": "build/win64/costGauss_terminate.obj"
+  },
+  {
+    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGauss",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGauss_mex   costGauss.c /Fobuild\\win64\\costGauss.obj",
+    "file": "costGauss.c",
+    "output": "build/win64/costGauss.obj"
+  },
+  {
+    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGauss",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGauss_mex   colon.c /Fobuild\\win64\\colon.obj",
+    "file": "colon.c",
+    "output": "build/win64/colon.obj"
+  },
+  {
+    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGauss",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGauss_mex   EOE2COE.c /Fobuild\\win64\\EOE2COE.obj",
+    "file": "EOE2COE.c",
+    "output": "build/win64/EOE2COE.obj"
+  },
+  {
+    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGauss",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGauss_mex   atan2.c /Fobuild\\win64\\atan2.obj",
+    "file": "atan2.c",
+    "output": "build/win64/atan2.obj"
+  },
+  {
+    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGauss",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGauss_mex   assertCompatibleDims.c /Fobuild\\win64\\assertCompatibleDims.obj",
+    "file": "assertCompatibleDims.c",
+    "output": "build/win64/assertCompatibleDims.obj"
+  },
+  {
+    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGauss",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGauss_mex   interface\\_coder_costGauss_api.c /Fobuild\\win64\\_coder_costGauss_api.obj",
+    "file": "interface/_coder_costGauss_api.c",
+    "output": "build/win64/_coder_costGauss_api.obj"
+  },
+  {
+    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGauss",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGauss_mex   interface\\_coder_costGauss_mex.c /Fobuild\\win64\\_coder_costGauss_mex.obj",
+    "file": "interface/_coder_costGauss_mex.c",
+    "output": "build/win64/_coder_costGauss_mex.obj"
+  },
+  {
+    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGauss",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGauss_mex   eml_int_forloop_overflow_check.c /Fobuild\\win64\\eml_int_forloop_overflow_check.obj",
+    "file": "eml_int_forloop_overflow_check.c",
+    "output": "build/win64/eml_int_forloop_overflow_check.obj"
+  },
+  {
+    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGauss",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGauss_mex   sqrt.c /Fobuild\\win64\\sqrt.obj",
+    "file": "sqrt.c",
+    "output": "build/win64/sqrt.obj"
+  },
+  {
+    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGauss",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGauss_mex   cos.c /Fobuild\\win64\\cos.obj",
+    "file": "cos.c",
+    "output": "build/win64/cos.obj"
+  },
+  {
+    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGauss",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGauss_mex   costGauss_emxutil.c /Fobuild\\win64\\costGauss_emxutil.obj",
+    "file": "costGauss_emxutil.c",
+    "output": "build/win64/costGauss_emxutil.obj"
+  },
+  {
+    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGauss",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGauss_mex   interface\\_coder_costGauss_info.c /Fobuild\\win64\\_coder_costGauss_info.obj",
+    "file": "interface/_coder_costGauss_info.c",
+    "output": "build/win64/_coder_costGauss_info.obj"
+  },
+  {
+    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGauss",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGauss_mex   P:\\Matlab\\R2022a\\extern\\version\\c_mexapi_version.c /Fobuild\\win64\\c_mexapi_version.obj",
+    "file": "P:/Matlab/R2022a/extern/version/c_mexapi_version.c",
+    "output": "build/win64/c_mexapi_version.obj"
+  }
+]

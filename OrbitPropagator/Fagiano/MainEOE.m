@@ -5,27 +5,39 @@ clc
 %% Parameters Definition and Initialization
 % Forward Euler: x(k+1) = x(k) + Ts*xdot(k)
 Ts = 100; % Discrete time step
-tmax = 1e4; % Maximum time
-ratio = 1;
+
+tmax = 1e5; % Maximum time
+ratio = 5; % Per quanto tempo mantiene l'input
 umax = 1e-3; % Maximum input value
+
 t = 0:Ts:tmax; % Time vector
 y = zeros(6,length(t)); % State vector initialization
+u = zeros(3,(length(t)-1)/ratio+1); %u(1,:) = 0; % Input vector initialization 
+u(:,1) =1e-4;
+tf = 2e4;
+u = [180/180*pi;reshape(u,numel(u),1);tf];
 
-u = zeros(3,(length(t)-1)/ratio+1); %u(1,:) = 0; % Input vector initialization
-u(:,1) = 0.9e-4;
-u = [180/180*pi;reshape(u,numel(u),1)];
+useInit = false;
+if useInit
+    load("initGuess.mat")
+    u(1:length(uoptlin)) = uoptlin;
+else
+    u(2:3:end-1)=umax/1e3;
+end
+
 % u = reshape(u,numel(u),1);
 
 
-orb_in = struct('a', 1e4, 'e', 0.2, 'i', pi/4, 'OM', pi/2, 'om', pi/2, 'theta', 0);
-orb_end = struct('a', 1.5e4, 'e', 0.25, 'i', pi/3, 'OM', pi/3, 'om', pi/4, 'theta', 0);
-% orb_in = struct('a', 6800, 'e', 0.05, 'i', pi/4, 'OM', pi/2, 'om', pi/2, 'theta', 0);
-% orb_end = struct('a', 2e4, 'e', 0.25, 'i', pi/3, 'OM', pi/3, 'om', pi/4, 'theta', 0);
-% 
+% orb_in = struct('a', 1e4, 'e', 0.2, 'i', pi/4, 'OM', pi/2, 'om', pi/2, 'theta', 0);
+% orb_end = struct('a', 1.5e4, 'e', 0.25, 'i', pi/3, 'OM', pi/3, 'om', pi/4, 'theta', 0);
+orb_in = struct('a', 12000, 'e', 0.2, 'i', pi/4, 'OM', pi/2, 'om', pi/2, 'theta', 0);
+orb_end = struct('a', 36000, 'e', 0.7, 'i', pi/3, 'OM', pi/3, 'om', pi/4, 'theta', 0);
+
 
 y0 = COE2EOE(orb_in); % Initial condition conversion to EOE state
 y(:,1) = y0; % Set first state vector equal to initial condition
 yfmin = y;
+
 
 
 %% Optimization
@@ -52,13 +64,23 @@ myoptimset;
 
 % ff = @(ufun) cost_mex(tmax,Ts,y0,reshape(ufun(2:end),3,length(t)),ybar,umax,ufun(1));
 % uopt = mySQP(ff,u,[],[], -[eye(length(u)); -eye(length(u))],-[[2*pi;umax+0*u(2:end)];[0;umax+0*u(2:end)]],0,0,opt);
+
+gaussFun = @(u) costGauss(u(end),Ts,y0,reshape(u(2:end-1),3,(length(t)-1)/ratio+1),ybar,umax,u(1),ratio);
+% opt.method = "Gauss-Newton";
+% opt.method = "BFGS";
+% opt.method = "Steepest";
+% opt.gradmethod = "FD";
+% opt.nitermax = 50;
 opt = myoptimset;
-gaussFun = @(u) costGauss_mex(tmax,Ts,y0,reshape(u(2:end),3,(length(t)-1)/ratio+1),ybar,umax,u(1),ratio)'*[1; 0;zeros(9*((length(t)-1)/ratio+1)+6,1)];
+% uoptlin = mySQP(gaussFun,u,[],[], -[eye(length(u)); -eye(length(u))],-[[2*pi;umax+0*u(2:end-1);tmax];[0;umax+0*u(2:end-1);0]],5,1+0*((length(t)-1)/ratio+1),opt);
+uoptlin = u;
+% opt.method = "BFGS";
+% opt.nitermax = 100;
+uoptlin = myfmincon(gaussFun,uoptlin,[],[], -[eye(length(u)); -eye(length(u))],-[[2*pi;umax+0*u(2:end-1);tmax];[0;umax+0*u(2:end-1);5e3]],5,1+0*((length(t)-1)/ratio+1),opt);
 
-uopt = myfmincon(gaussFun,u,[],[], -[eye(length(u)); -eye(length(u))],-[[2*pi;umax+0*u(2:end)];[0;umax+0*u(2:end)]],0,0*(length(t)+1),opt);
-
-theta0 = uopt(1);
-uopt = reshape(uopt(2:end),3,(length(t)-1)/ratio+1);
+theta0 = uoptlin(1);
+uopt = reshape(uoptlin(2:end-1),3,(length(t)-1)/ratio+1);
+tmax = uoptlin(end);
 % [uoptfmin, fval, ~, out] = fmincon(@(ufun) cost_mex(tmax,Ts,y0,reshape(ufun(1:end),3,length(t)),ybar,umax,0), u, [eye(length(u)); -eye(length(u))],[umax+0*u(1:end);umax+0*u(1:end)], [], [], [], [], [], options); % Actual Optimization
 
 %%
@@ -91,5 +113,12 @@ for k = 1:size(y,2)
 end
 fig = Orb_Earth_plot(orb_in, orb_end, x, utot);
 % fig = Orb_Earth_plot(orb_in, orb_end, xfmin, uoptfmin,fig);
+
+
+%%
+saveOpt = false;
+if saveOpt
+    save("initGuess.mat","uoptlin")
+end
 
 

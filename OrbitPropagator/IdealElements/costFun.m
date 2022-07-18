@@ -27,10 +27,10 @@ df = f(1)-f(end);
 g = C*x(1:5,end)-EOE2IOE(xfEOE,sf,Re);
 g = g(1:5);
 h = [x(6,end)+sf-L_lim(1);
-    -x(6,end)+sf+L_lim(2);
+    -x(6,end)-sf+L_lim(2);
     dt-dt_lim(1);
     -dt+dt_lim(2);
-    -vecnorm(w)'+1];
+    -vecnorm(w)'.^2+1];
 
 F = [sqrt((1-alpha)*dt); sqrt(alpha*df)];
 
