@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.coder" plugin-version="R2021a">
-  <configuration build-checksum="4088037172" file="P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\costGauss.prj" location="P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2" name="costGauss" target="target.unifiedcoder" target-name="MATLAB Coder">
+  <configuration build-checksum="2771398809" file="P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\costGaussGrad.prj" location="P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2" name="costGaussGrad" target="target.unifiedcoder" target-name="MATLAB Coder">
     <profile key="profile.mex">
       <param.BuiltInstrumentedMex>false</param.BuiltInstrumentedMex>
       <param.RanInstrumentedMex>false</param.RanInstrumentedMex>
@@ -495,7 +495,6 @@
         <param.HardwareAtomicIntegerSize.Production />
         <param.HardwareAtomicFloatSize.Production />
         <param.HardwareVendor.Target />
-        <param.HardwareType.Target />
         <param.HWDeviceType.Target />
         <var.instance.enabled.Target />
         <param.HardwareSizeChar.Target />
@@ -561,13 +560,10 @@
       </unset>
     </profile>
     <param.objective>option.objective.c</param.objective>
-    <param.WorkflowStep>inputTypes</param.WorkflowStep>
+    <param.WorkflowStep>generateCode</param.WorkflowStep>
     <param.TestSnippets>
+      <item>costGaussGrad(u,1e5,Ts,y0,ybar,m0,Tmax/g0/Isp,Tmax,ratio,1,true,C,d,C,d);</item>
       <item>costGaussGrad(u,Ts,y0,ybar,m0,Tmax/g0/Isp,Tmax,ratio,alpha,true,C,d,C,d);</item>
-      <item>costGaussGrad(u,Ts,y0,ybar,m0,Tmax/g0/Isp,Tmax,ratio,alpha,true,[],[],[],[]);</item>
-      <item>costGaussGrad(u,Ts,y0,ybar,m0,Tmax/g0/Isp,Tmax,ratio,alpha,true)</item>
-      <item>costGauss(tmax,Ts,y0,reshape(u(2:end),3,(length(t)-1)/ratio+1),ybar,umax,u(1),ratio)</item>
-      <item>costGauss(tmax,Ts,y0,uopt,ybar,umax,x0(6))</item>
     </param.TestSnippets>
     <param.ExternalFcnMajority>column</param.ExternalFcnMajority>
     <param.UseGlobals>option.UseGlobals.No</param.UseGlobals>
@@ -586,22 +582,22 @@
     <param.AutoInferUnboundedSizeThreshold>2048</param.AutoInferUnboundedSizeThreshold>
     <param.EnableFixedPointStep>false</param.EnableFixedPointStep>
     <param.EnableScreener>true</param.EnableScreener>
-    <param.AnnotationChecksum>1151771324</param.AnnotationChecksum>
+    <param.AnnotationChecksum>2338071622</param.AnnotationChecksum>
     <var.LegacyTarget />
     <var.MirrorOnOpen>false</var.MirrorOnOpen>
     <param.FixedPointEnabled>false</param.FixedPointEnabled>
     <var.redirectedInputTypeData />
-    <var.DismissScreener>true</var.DismissScreener>
+    <var.DismissScreener>false</var.DismissScreener>
     <param.unifiedParamStorage />
     <param.hdlParamStorage />
     <var.gc.lastOutputRoot>codegen\mex\costGaussGrad</var.gc.lastOutputRoot>
     <var.gc.lastOutputType>MEX_FILE</var.gc.lastOutputType>
-    <var.gc.preBuildChecksum>4088037172</var.gc.preBuildChecksum>
+    <var.gc.preBuildChecksum>2771398809</var.gc.preBuildChecksum>
     <var.cfi.lastOutputRoot>codegen\mex\costGaussGrad</var.cfi.lastOutputRoot>
-    <var.cfi.preBuildChecksum>3345486747</var.cfi.preBuildChecksum>
-    <var.lastCfiTestSnippet>costGaussGrad(u,Ts,y0,ybar,m0,Tmax/g0/Isp,Tmax,ratio,alpha,true)</var.lastCfiTestSnippet>
+    <var.cfi.preBuildChecksum>3419073692</var.cfi.preBuildChecksum>
+    <var.lastCfiTestSnippet>costGaussGrad(u,1e5,Ts,y0,ybar,m0,Tmax/g0/Isp,Tmax,ratio,1,true,C,d,C,d);</var.lastCfiTestSnippet>
     <var.outdatedOnRestore>false</var.outdatedOnRestore>
-    <var.lastUserSourceChecksum>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;checksum&gt;&lt;includedFiles&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\COE2EOE.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\costGaussGrad.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\EOE2COE.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\EOEDerivatives.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\mygradcalc.m&lt;/file&gt;&lt;/includedFiles&gt;&lt;value&gt;3525589345&lt;/value&gt;&lt;/checksum&gt;</var.lastUserSourceChecksum>
+    <var.lastUserSourceChecksum>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;checksum&gt;&lt;includedFiles&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\COE2EOE.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\costGaussGrad.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\EOE2COE.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\EOEDerivatives.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\mygradcalc.m&lt;/file&gt;&lt;/includedFiles&gt;&lt;value&gt;994587818&lt;/value&gt;&lt;/checksum&gt;</var.lastUserSourceChecksum>
     <var.sourceSetState>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;sourceModel&gt;&lt;primarySourceFiles&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\COE2EOE.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\costGaussGrad.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\EOE2COE.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\EOEDerivatives.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\mygradcalc.m&lt;/file&gt;&lt;/primarySourceFiles&gt;&lt;fixedPointSourceFiles/&gt;&lt;fixedPointSourceRegistered&gt;false&lt;/fixedPointSourceRegistered&gt;&lt;fixedPointSourceSelected&gt;false&lt;/fixedPointSourceSelected&gt;&lt;/sourceModel&gt;</var.sourceSetState>
     <param.forceMexBuild>false</param.forceMexBuild>
     <param.NoDefaultJIT>false</param.NoDefaultJIT>
@@ -652,8 +648,8 @@
     <param.deeplearning.DeepLearningCustomCallback />
     <param.deeplearning.TargetLib>option.deeplearning.targetlibrary.none</param.deeplearning.TargetLib>
     <var.cfiTargetLibSuppression>false</var.cfiTargetLibSuppression>
-    <var.hasMatlabDeepLearningSupportPackage>true</var.hasMatlabDeepLearningSupportPackage>
-    <var.hasGpuDeepLearningSupportPackage>true</var.hasGpuDeepLearningSupportPackage>
+    <var.hasMatlabDeepLearningSupportPackage>false</var.hasMatlabDeepLearningSupportPackage>
+    <var.hasGpuDeepLearningSupportPackage>false</var.hasGpuDeepLearningSupportPackage>
     <param.tensorrt.DataType>option.tensorrt.datatype.fp32</param.tensorrt.DataType>
     <param.tensorrt.DataPath />
     <param.tensorrt.NumCalibrationBatches>0</param.tensorrt.NumCalibrationBatches>
@@ -737,6 +733,7 @@
       <var.MirrorOnOpen />
       <param.FixedPointEnabled />
       <var.redirectedInputTypeData />
+      <var.DismissScreener />
       <param.unifiedParamStorage />
       <param.hdlParamStorage />
       <var.outdatedOnRestore />
@@ -787,8 +784,6 @@
       <param.deeplearning.DeepLearningCustomCallback />
       <param.deeplearning.TargetLib />
       <var.cfiTargetLibSuppression />
-      <var.hasMatlabDeepLearningSupportPackage />
-      <var.hasGpuDeepLearningSupportPackage />
       <param.tensorrt.DataType />
       <param.tensorrt.DataPath />
       <param.tensorrt.NumCalibrationBatches />
@@ -851,7 +846,7 @@
     </unset>
     <fileset.entrypoints>
       <file custom-data-expanded="false" value="${PROJECT_ROOT}\costGaussGrad.m">
-        <Marker>1658210844061</Marker>
+        <Marker>1658218997335</Marker>
       </file>
     </fileset.entrypoints>
     <fileset.testbench />
@@ -859,26 +854,27 @@
       <file custom-data-expanded="false" value="${PROJECT_ROOT}\costGaussGrad.m">
         <Inputs fileName="costGaussGrad.m" functionName="costGaussGrad">
           <Input Name="x" typeId="0" />
-          <Input Name="Ts" typeId="1" />
-          <Input Name="y0" typeId="2" />
-          <Input Name="ybar" typeId="2" />
-          <Input Name="m0" typeId="1" />
-          <Input Name="coeffT" typeId="1" />
-          <Input Name="Tmax" typeId="1" />
-          <Input Name="ratio" typeId="1" />
-          <Input Name="alpha" typeId="1" />
-          <Input Name="computeGrad" typeId="3" />
-          <Input Name="A" typeId="4" />
-          <Input Name="b" typeId="5" />
-          <Input Name="C" typeId="4" />
-          <Input Name="d" typeId="5" />
+          <Input Name="tmax" typeId="1" />
+          <Input Name="Ts" typeId="2" />
+          <Input Name="y0" typeId="3" />
+          <Input Name="ybar" typeId="3" />
+          <Input Name="m0" typeId="2" />
+          <Input Name="coeffT" typeId="2" />
+          <Input Name="Tmax" typeId="2" />
+          <Input Name="ratio" typeId="2" />
+          <Input Name="alpha" typeId="2" />
+          <Input Name="computeGrad" typeId="4" />
+          <Input Name="A" typeId="5" />
+          <Input Name="b" typeId="6" />
+          <Input Name="C" typeId="5" />
+          <Input Name="d" typeId="6" />
           <idpTable>
             <type typeId="0">
               <Class>double</Class>
               <Size>:inf x 1</Size>
               <Value />
               <InitialValue />
-              <UserDefined>false</UserDefined>
+              <UserDefined>true</UserDefined>
               <Complex>false</Complex>
               <Sparse>false</Sparse>
             </type>
@@ -887,11 +883,20 @@
               <Size>1 x 1</Size>
               <Value />
               <InitialValue />
-              <UserDefined>false</UserDefined>
+              <UserDefined>true</UserDefined>
               <Complex>false</Complex>
               <Sparse>false</Sparse>
             </type>
             <type typeId="2">
+              <Class>double</Class>
+              <Size>1 x 1</Size>
+              <Value />
+              <InitialValue />
+              <UserDefined>false</UserDefined>
+              <Complex>false</Complex>
+              <Sparse>false</Sparse>
+            </type>
+            <type typeId="3">
               <Class>double</Class>
               <Size>6 x 1</Size>
               <Value />
@@ -900,7 +905,7 @@
               <Complex>false</Complex>
               <Sparse>false</Sparse>
             </type>
-            <type typeId="3">
+            <type typeId="4">
               <Class>logical</Class>
               <Size>1 x 1</Size>
               <Value />
@@ -908,21 +913,21 @@
               <UserDefined>false</UserDefined>
               <Sparse>false</Sparse>
             </type>
-            <type typeId="4">
+            <type typeId="5">
               <Class>double</Class>
-              <Size>:206 x :406</Size>
+              <Size>:inf x :inf</Size>
               <Value />
               <InitialValue />
-              <UserDefined>false</UserDefined>
+              <UserDefined>true</UserDefined>
               <Complex>false</Complex>
               <Sparse>false</Sparse>
             </type>
-            <type typeId="5">
+            <type typeId="6">
               <Class>double</Class>
-              <Size>:206 x :1</Size>
+              <Size>:inf x :1</Size>
               <Value />
               <InitialValue />
-              <UserDefined>false</UserDefined>
+              <UserDefined>true</UserDefined>
               <Complex>false</Complex>
               <Sparse>false</Sparse>
             </type>

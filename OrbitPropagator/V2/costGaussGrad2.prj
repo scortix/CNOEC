@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.coder" plugin-version="R2021a">
-  <configuration build-checksum="4088037172" file="P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\costGauss.prj" location="P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2" name="costGauss" target="target.unifiedcoder" target-name="MATLAB Coder">
+  <configuration build-checksum="1196556820" file="P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\costGaussGrad2.prj" location="P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2" name="costGaussGrad2" target="target.unifiedcoder" target-name="MATLAB Coder">
     <profile key="profile.mex">
       <param.BuiltInstrumentedMex>false</param.BuiltInstrumentedMex>
       <param.RanInstrumentedMex>false</param.RanInstrumentedMex>
@@ -561,17 +561,16 @@
       </unset>
     </profile>
     <param.objective>option.objective.c</param.objective>
-    <param.WorkflowStep>inputTypes</param.WorkflowStep>
+    <param.WorkflowStep>generateCode</param.WorkflowStep>
     <param.TestSnippets>
+      <item>costGaussGrad2(u,1e5,Ts,y0,ybar,m0,Tmax/g0/Isp,Tmax,ratio,1,true,[],[],C,d);</item>
+      <item>costGaussGrad2(u,1e5,Ts,y0,ybar,m0,Tmax/g0/Isp,Tmax,ratio,1,true,C,d,C,d);</item>
+      <item>costGaussGrad(u,1e5,Ts,y0,ybar,m0,Tmax/g0/Isp,Tmax,ratio,1,true,C,d,C,d);</item>
       <item>costGaussGrad(u,Ts,y0,ybar,m0,Tmax/g0/Isp,Tmax,ratio,alpha,true,C,d,C,d);</item>
-      <item>costGaussGrad(u,Ts,y0,ybar,m0,Tmax/g0/Isp,Tmax,ratio,alpha,true,[],[],[],[]);</item>
-      <item>costGaussGrad(u,Ts,y0,ybar,m0,Tmax/g0/Isp,Tmax,ratio,alpha,true)</item>
-      <item>costGauss(tmax,Ts,y0,reshape(u(2:end),3,(length(t)-1)/ratio+1),ybar,umax,u(1),ratio)</item>
-      <item>costGauss(tmax,Ts,y0,uopt,ybar,umax,x0(6))</item>
     </param.TestSnippets>
     <param.ExternalFcnMajority>column</param.ExternalFcnMajority>
     <param.UseGlobals>option.UseGlobals.No</param.UseGlobals>
-    <param.outputfile>${PROJECT_ROOT}\costGaussGrad_mex.mexw64</param.outputfile>
+    <param.outputfile>${PROJECT_ROOT}\costGaussGrad2_mex.mexw64</param.outputfile>
     <param.version>R2012a</param.version>
     <param.HasECoderFeatures>true</param.HasECoderFeatures>
     <param.HasGpuCoder>true</param.HasGpuCoder>
@@ -586,23 +585,23 @@
     <param.AutoInferUnboundedSizeThreshold>2048</param.AutoInferUnboundedSizeThreshold>
     <param.EnableFixedPointStep>false</param.EnableFixedPointStep>
     <param.EnableScreener>true</param.EnableScreener>
-    <param.AnnotationChecksum>1151771324</param.AnnotationChecksum>
+    <param.AnnotationChecksum>397634073</param.AnnotationChecksum>
     <var.LegacyTarget />
     <var.MirrorOnOpen>false</var.MirrorOnOpen>
     <param.FixedPointEnabled>false</param.FixedPointEnabled>
     <var.redirectedInputTypeData />
-    <var.DismissScreener>true</var.DismissScreener>
+    <var.DismissScreener>false</var.DismissScreener>
     <param.unifiedParamStorage />
     <param.hdlParamStorage />
-    <var.gc.lastOutputRoot>codegen\mex\costGaussGrad</var.gc.lastOutputRoot>
+    <var.gc.lastOutputRoot>codegen\mex\costGaussGrad2</var.gc.lastOutputRoot>
     <var.gc.lastOutputType>MEX_FILE</var.gc.lastOutputType>
-    <var.gc.preBuildChecksum>4088037172</var.gc.preBuildChecksum>
-    <var.cfi.lastOutputRoot>codegen\mex\costGaussGrad</var.cfi.lastOutputRoot>
-    <var.cfi.preBuildChecksum>3345486747</var.cfi.preBuildChecksum>
-    <var.lastCfiTestSnippet>costGaussGrad(u,Ts,y0,ybar,m0,Tmax/g0/Isp,Tmax,ratio,alpha,true)</var.lastCfiTestSnippet>
+    <var.gc.preBuildChecksum>1196556820</var.gc.preBuildChecksum>
+    <var.cfi.lastOutputRoot>codegen\mex\costGaussGrad2</var.cfi.lastOutputRoot>
+    <var.cfi.preBuildChecksum>2543366476</var.cfi.preBuildChecksum>
+    <var.lastCfiTestSnippet>costGaussGrad2(u,1e5,Ts,y0,ybar,m0,Tmax/g0/Isp,Tmax,ratio,1,true,[],[],C,d);</var.lastCfiTestSnippet>
     <var.outdatedOnRestore>false</var.outdatedOnRestore>
-    <var.lastUserSourceChecksum>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;checksum&gt;&lt;includedFiles&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\COE2EOE.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\costGaussGrad.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\EOE2COE.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\EOEDerivatives.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\mygradcalc.m&lt;/file&gt;&lt;/includedFiles&gt;&lt;value&gt;3525589345&lt;/value&gt;&lt;/checksum&gt;</var.lastUserSourceChecksum>
-    <var.sourceSetState>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;sourceModel&gt;&lt;primarySourceFiles&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\COE2EOE.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\costGaussGrad.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\EOE2COE.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\EOEDerivatives.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\mygradcalc.m&lt;/file&gt;&lt;/primarySourceFiles&gt;&lt;fixedPointSourceFiles/&gt;&lt;fixedPointSourceRegistered&gt;false&lt;/fixedPointSourceRegistered&gt;&lt;fixedPointSourceSelected&gt;false&lt;/fixedPointSourceSelected&gt;&lt;/sourceModel&gt;</var.sourceSetState>
+    <var.lastUserSourceChecksum>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;checksum&gt;&lt;includedFiles&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\COE2EOE.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\costGaussGrad2.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\EOE2COE.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\EOEDerivatives.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\mygradcalc.m&lt;/file&gt;&lt;/includedFiles&gt;&lt;value&gt;3833535192&lt;/value&gt;&lt;/checksum&gt;</var.lastUserSourceChecksum>
+    <var.sourceSetState>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;sourceModel&gt;&lt;primarySourceFiles&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\COE2EOE.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\costGaussGrad2.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\EOE2COE.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\EOEDerivatives.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\mygradcalc.m&lt;/file&gt;&lt;/primarySourceFiles&gt;&lt;fixedPointSourceFiles/&gt;&lt;fixedPointSourceRegistered&gt;false&lt;/fixedPointSourceRegistered&gt;&lt;fixedPointSourceSelected&gt;false&lt;/fixedPointSourceSelected&gt;&lt;/sourceModel&gt;</var.sourceSetState>
     <param.forceMexBuild>false</param.forceMexBuild>
     <param.NoDefaultJIT>false</param.NoDefaultJIT>
     <param.configImportActive>false</param.configImportActive>
@@ -616,10 +615,10 @@
     <param.EnableStructExplosion>true</param.EnableStructExplosion>
     <param.ForceANSIC>false</param.ForceANSIC>
     <param.NumCompileJobs>1</param.NumCompileJobs>
-    <param.mex.outputfile>costGaussGrad_mex</param.mex.outputfile>
-    <param.grt.outputfile>costGaussGrad</param.grt.outputfile>
+    <param.mex.outputfile>costGaussGrad2_mex</param.mex.outputfile>
+    <param.grt.outputfile>costGaussGrad2</param.grt.outputfile>
     <param.artifact>option.target.artifact.mex</param.artifact>
-    <param.outputfile>${PROJECT_ROOT}\costGaussGrad_mex.mexw64</param.outputfile>
+    <param.outputfile>${PROJECT_ROOT}\costGaussGrad2_mex.mexw64</param.outputfile>
     <param.CppNamespace />
     <param.CppPackagesToNamespaces>true</param.CppPackagesToNamespaces>
     <param.CppNamespaceForMathworksCode>coder</param.CppNamespaceForMathworksCode>
@@ -737,6 +736,7 @@
       <var.MirrorOnOpen />
       <param.FixedPointEnabled />
       <var.redirectedInputTypeData />
+      <var.DismissScreener />
       <param.unifiedParamStorage />
       <param.hdlParamStorage />
       <var.outdatedOnRestore />
@@ -850,15 +850,16 @@
       <param.FixedPointUseDesignRanges />
     </unset>
     <fileset.entrypoints>
-      <file custom-data-expanded="false" value="${PROJECT_ROOT}\costGaussGrad.m">
-        <Marker>1658210844061</Marker>
+      <file custom-data-expanded="false" value="${PROJECT_ROOT}\costGaussGrad2.m">
+        <Marker>1658226645858</Marker>
       </file>
     </fileset.entrypoints>
     <fileset.testbench />
     <fileset.inputtypes>
-      <file custom-data-expanded="false" value="${PROJECT_ROOT}\costGaussGrad.m">
-        <Inputs fileName="costGaussGrad.m" functionName="costGaussGrad">
+      <file custom-data-expanded="false" value="${PROJECT_ROOT}\costGaussGrad2.m">
+        <Inputs fileName="costGaussGrad2.m" functionName="costGaussGrad2">
           <Input Name="x" typeId="0" />
+          <Input Name="tmax" typeId="1" />
           <Input Name="Ts" typeId="1" />
           <Input Name="y0" typeId="2" />
           <Input Name="ybar" typeId="2" />
@@ -878,7 +879,7 @@
               <Size>:inf x 1</Size>
               <Value />
               <InitialValue />
-              <UserDefined>false</UserDefined>
+              <UserDefined>true</UserDefined>
               <Complex>false</Complex>
               <Sparse>false</Sparse>
             </type>
@@ -910,19 +911,19 @@
             </type>
             <type typeId="4">
               <Class>double</Class>
-              <Size>:206 x :406</Size>
+              <Size>:inf x :inf</Size>
               <Value />
               <InitialValue />
-              <UserDefined>false</UserDefined>
+              <UserDefined>true</UserDefined>
               <Complex>false</Complex>
               <Sparse>false</Sparse>
             </type>
             <type typeId="5">
               <Class>double</Class>
-              <Size>:206 x :1</Size>
+              <Size>:inf x :1</Size>
               <Value />
               <InitialValue />
-              <UserDefined>false</UserDefined>
+              <UserDefined>true</UserDefined>
               <Complex>false</Complex>
               <Sparse>false</Sparse>
             </type>
@@ -931,7 +932,7 @@
       </file>
     </fileset.inputtypes>
     <build-deliverables>
-      <file location="${PROJECT_ROOT}" name="costGaussGrad_mex.mexw64" optional="false">P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\costGaussGrad_mex.mexw64</file>
+      <file location="${PROJECT_ROOT}" name="costGaussGrad2_mex.mexw64" optional="false">P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\costGaussGrad2_mex.mexw64</file>
     </build-deliverables>
     <workflow />
     <matlab>

@@ -1,13 +1,13 @@
 opt = struct;
 opt.tolgrad = 1e-12;
-opt.tolx = 1e-12;
+opt.tolx = 1e-30;
 opt.tolf = 1e-12;
-opt.tolconstr = 1e-8;
+opt.tolconstr = 1e-6;
 opt.nitermax = 200;
 opt.method = 'BFGS';
 opt.lstkmax = 1;
-opt.lsbeta = 0.7;
-opt.lsc = 0.5;
+opt.lsbeta = 0.9;
+opt.lsc = 0.8;
 opt.lsnitermax = 1e3;
 opt.gamma = 0.4;
 opt.gradmethod = 'FD';
