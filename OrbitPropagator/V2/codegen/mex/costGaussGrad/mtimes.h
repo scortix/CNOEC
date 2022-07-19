@@ -22,7 +22,10 @@
 #include <string.h>
 
 /* Function Declarations */
-void mtimes(const emlrtStack *sp, const emxArray_real_T *A,
-            const emxArray_real_T *B, emxArray_real_T *C);
+void b_mtimes(const emlrtStack *sp, const emxArray_real_T *A,
+              const emxArray_real_T *B, emxArray_real_T *C);
+
+void mtimes(const real_T A[25], const real_T B_data[], const int32_T B_size[2],
+            real_T C_data[], int32_T C_size[2]);
 
 /* End of code generation (mtimes.h) */

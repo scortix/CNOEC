@@ -3,15 +3,16 @@
  * course requirements at degree granting institutions only.  Not for
  * government, commercial, or other organizational use.
  *
- * _coder_costGaussGrad_api.h
+ * eye.h
  *
- * Code generation for function '_coder_costGaussGrad_api'
+ * Code generation for function 'eye'
  *
  */
 
 #pragma once
 
 /* Include files */
+#include "costGaussGrad_types.h"
 #include "rtwtypes.h"
 #include "emlrt.h"
 #include "mex.h"
@@ -21,7 +22,6 @@
 #include <string.h>
 
 /* Function Declarations */
-void costGaussGrad_api(const mxArray *const prhs[15], int32_T nlhs,
-                       const mxArray *plhs[11]);
+void eye(const emlrtStack *sp, real_T varargin_1, emxArray_real_T *b_I);
 
-/* End of code generation (_coder_costGaussGrad_api.h) */
+/* End of code generation (eye.h) */

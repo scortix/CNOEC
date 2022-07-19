@@ -14,11 +14,11 @@ cxx = cl
 linker = link
 linkerxx = link
 
-cflags =  /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I "$root" /I "$startdir" /I "$root\interface" /I "$matlabdir\extern\include" /I "." -DMODEL=costGaussGrad_mex  
+cflags =  /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I "$root" /I "$startdir" /I "$root\interface" /I "$matlabdir\extern\include" /I "." -DHAVE_LAPACK_CONFIG_H -DLAPACK_COMPLEX_STRUCTURE -DMW_HAVE_LAPACK_DECLS -DMODEL=costGaussGrad_mex  
 
-cxxflags =   /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I "$root" /I "$startdir" /I "$root\interface" /I "$matlabdir\extern\include" /I "." -DMODEL=costGaussGrad_mex  
+cxxflags =   /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I "$root" /I "$startdir" /I "$root\interface" /I "$matlabdir\extern\include" /I "." -DHAVE_LAPACK_CONFIG_H -DLAPACK_COMPLEX_STRUCTURE -DMW_HAVE_LAPACK_DECLS -DMODEL=costGaussGrad_mex  
 
-ldflags =  /nologo /manifest   /DLL /LIBPATH:"$matlabdir\extern\lib\win64\microsoft" libmx.lib libmex.lib libmat.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib  /out:"costGaussGrad_mex.mexw64" /LIBPATH:"$matlabdir\extern\lib\win64\microsoft" libmwblas.lib libemlrt.lib libcovrt.lib libut.lib libmwmathutil.lib  /export:mexFunction /export:mexfilerequiredapiversion /export:emlrtMexFcnProperties /export:costGaussGrad /export:costGaussGrad_initialize /export:costGaussGrad_terminate /export:costGaussGrad_atexit /export:emxEnsureCapacity_boolean_T /export:emxFree_boolean_T /export:emxInit_boolean_T /export:emxEnsureCapacity_int8_T /export:emxFree_int8_T /export:emxInit_int8_T /export:emxFree_real_T /export:emxInit_real_T /export:emxEnsureCapacity_real_T
+ldflags =  /nologo /manifest   /DLL /LIBPATH:"$matlabdir\extern\lib\win64\microsoft" libmx.lib libmex.lib libmat.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib  /out:"costGaussGrad_mex.mexw64" /LIBPATH:"$matlabdir\extern\lib\win64\microsoft" libmwblas.lib libmwlapack.lib libemlrt.lib libcovrt.lib libut.lib libmwmathutil.lib  /export:mexFunction /export:mexfilerequiredapiversion /export:emlrtMexFcnProperties /export:costGaussGrad /export:costGaussGrad_initialize /export:costGaussGrad_terminate /export:costGaussGrad_atexit /export:emxEnsureCapacity_boolean_T /export:emxFree_boolean_T /export:emxInit_boolean_T /export:emxFree_real_T /export:emxInit_real_T /export:emxEnsureCapacity_real_T
 
 # Build Rules
 rule cc
@@ -45,10 +45,15 @@ build $builddir\indexShapeCheck.obj : cc $root\indexShapeCheck.c
 build $builddir\colon.obj : cc $root\colon.c
 build $builddir\find.obj : cc $root\find.c
 build $builddir\EOE2COE.obj : cc $root\EOE2COE.c
+build $builddir\diag.obj : cc $root\diag.c
+build $builddir\norm.obj : cc $root\norm.c
 build $builddir\atan2.obj : cc $root\atan2.c
 build $builddir\assertCompatibleDims.obj : cc $root\assertCompatibleDims.c
-build $builddir\mygradcalc.obj : cc $root\mygradcalc.c
 build $builddir\mtimes.obj : cc $root\mtimes.c
+build $builddir\vecnorm.obj : cc $root\vecnorm.c
+build $builddir\mygradcalc.obj : cc $root\mygradcalc.c
+build $builddir\eye.obj : cc $root\eye.c
+build $builddir\eml_mtimes_helper.obj : cc $root\eml_mtimes_helper.c
 build $builddir\_coder_costGaussGrad_api.obj : cc $root\interface\_coder_costGaussGrad_api.c
 build $builddir\_coder_costGaussGrad_mex.obj : cc $root\interface\_coder_costGaussGrad_mex.c
 build $builddir\EOEDerivatives.obj : cc $root\EOEDerivatives.c
@@ -60,4 +65,4 @@ build $builddir\_coder_costGaussGrad_info.obj : cc $root\interface\_coder_costGa
 build $builddir\c_mexapi_version.obj : cc $matlabdir\extern\version\c_mexapi_version.c
 
 # Link
-build $root\costGaussGrad_mex.mexw64 : link $builddir\costGaussGrad_data.obj $builddir\rt_nonfinite.obj $builddir\costGaussGrad_initialize.obj $builddir\costGaussGrad_terminate.obj $builddir\costGaussGrad.obj $builddir\indexShapeCheck.obj $builddir\colon.obj $builddir\find.obj $builddir\EOE2COE.obj $builddir\atan2.obj $builddir\assertCompatibleDims.obj $builddir\mygradcalc.obj $builddir\mtimes.obj $builddir\_coder_costGaussGrad_api.obj $builddir\_coder_costGaussGrad_mex.obj $builddir\EOEDerivatives.obj $builddir\eml_int_forloop_overflow_check.obj $builddir\sqrt.obj $builddir\cos.obj $builddir\costGaussGrad_emxutil.obj $builddir\_coder_costGaussGrad_info.obj $builddir\c_mexapi_version.obj 
+build $root\costGaussGrad_mex.mexw64 : link $builddir\costGaussGrad_data.obj $builddir\rt_nonfinite.obj $builddir\costGaussGrad_initialize.obj $builddir\costGaussGrad_terminate.obj $builddir\costGaussGrad.obj $builddir\indexShapeCheck.obj $builddir\colon.obj $builddir\find.obj $builddir\EOE2COE.obj $builddir\diag.obj $builddir\norm.obj $builddir\atan2.obj $builddir\assertCompatibleDims.obj $builddir\mtimes.obj $builddir\vecnorm.obj $builddir\mygradcalc.obj $builddir\eye.obj $builddir\eml_mtimes_helper.obj $builddir\_coder_costGaussGrad_api.obj $builddir\_coder_costGaussGrad_mex.obj $builddir\EOEDerivatives.obj $builddir\eml_int_forloop_overflow_check.obj $builddir\sqrt.obj $builddir\cos.obj $builddir\costGaussGrad_emxutil.obj $builddir\_coder_costGaussGrad_info.obj $builddir\c_mexapi_version.obj 

@@ -3,15 +3,16 @@
  * course requirements at degree granting institutions only.  Not for
  * government, commercial, or other organizational use.
  *
- * _coder_costGaussGrad_api.h
+ * eml_mtimes_helper.h
  *
- * Code generation for function '_coder_costGaussGrad_api'
+ * Code generation for function 'eml_mtimes_helper'
  *
  */
 
 #pragma once
 
 /* Include files */
+#include "costGaussGrad_types.h"
 #include "rtwtypes.h"
 #include "emlrt.h"
 #include "mex.h"
@@ -21,7 +22,8 @@
 #include <string.h>
 
 /* Function Declarations */
-void costGaussGrad_api(const mxArray *const prhs[15], int32_T nlhs,
-                       const mxArray *plhs[11]);
+void dynamic_size_checks(const emlrtStack *sp, const emxArray_real_T *a,
+                         const emxArray_real_T *b, int32_T innerDimA,
+                         int32_T innerDimB);
 
-/* End of code generation (_coder_costGaussGrad_api.h) */
+/* End of code generation (eml_mtimes_helper.h) */

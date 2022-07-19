@@ -3,9 +3,9 @@
  * course requirements at degree granting institutions only.  Not for
  * government, commercial, or other organizational use.
  *
- * _coder_costGaussGrad_api.h
+ * norm.h
  *
- * Code generation for function '_coder_costGaussGrad_api'
+ * Code generation for function 'norm'
  *
  */
 
@@ -21,7 +21,6 @@
 #include <string.h>
 
 /* Function Declarations */
-void costGaussGrad_api(const mxArray *const prhs[15], int32_T nlhs,
-                       const mxArray *plhs[11]);
+real_T b_norm(const real_T x[3]);
 
-/* End of code generation (_coder_costGaussGrad_api.h) */
+/* End of code generation (norm.h) */

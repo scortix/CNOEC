@@ -3,15 +3,16 @@
  * course requirements at degree granting institutions only.  Not for
  * government, commercial, or other organizational use.
  *
- * _coder_costGaussGrad_api.h
+ * vecnorm.h
  *
- * Code generation for function '_coder_costGaussGrad_api'
+ * Code generation for function 'vecnorm'
  *
  */
 
 #pragma once
 
 /* Include files */
+#include "costGaussGrad_types.h"
 #include "rtwtypes.h"
 #include "emlrt.h"
 #include "mex.h"
@@ -21,7 +22,7 @@
 #include <string.h>
 
 /* Function Declarations */
-void costGaussGrad_api(const mxArray *const prhs[15], int32_T nlhs,
-                       const mxArray *plhs[11]);
+void vecnorm(const emlrtStack *sp, const emxArray_real_T *x,
+             emxArray_real_T *y);
 
-/* End of code generation (_coder_costGaussGrad_api.h) */
+/* End of code generation (vecnorm.h) */

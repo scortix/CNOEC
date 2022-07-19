@@ -18,7 +18,7 @@
 #include "rt_nonfinite.h"
 
 /* Function Definitions */
-void costGaussGrad_mexFunction(int32_T nlhs, mxArray *plhs[9], int32_T nrhs,
+void costGaussGrad_mexFunction(int32_T nlhs, mxArray *plhs[11], int32_T nrhs,
                                const mxArray *prhs[15])
 {
   emlrtStack st = {
@@ -26,7 +26,7 @@ void costGaussGrad_mexFunction(int32_T nlhs, mxArray *plhs[9], int32_T nrhs,
       NULL, /* tls */
       NULL  /* prev */
   };
-  const mxArray *outputs[9];
+  const mxArray *outputs[11];
   int32_T b_nlhs;
   st.tls = emlrtRootTLSGlobal;
   /* Check for proper number of arguments. */
@@ -34,7 +34,7 @@ void costGaussGrad_mexFunction(int32_T nlhs, mxArray *plhs[9], int32_T nrhs,
     emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, 12, 15, 4,
                         13, "costGaussGrad");
   }
-  if (nlhs > 9) {
+  if (nlhs > 11) {
     emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:TooManyOutputArguments", 3, 4, 13,
                         "costGaussGrad");
   }

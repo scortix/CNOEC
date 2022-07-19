@@ -21,7 +21,7 @@
 #include <string.h>
 
 /* Function Declarations */
-void costGaussGrad_mexFunction(int32_T nlhs, mxArray *plhs[9], int32_T nrhs,
+void costGaussGrad_mexFunction(int32_T nlhs, mxArray *plhs[11], int32_T nrhs,
                                const mxArray *prhs[15]);
 
 MEXFUNCTION_LINKAGE void mexFunction(int32_T nlhs, mxArray *plhs[],

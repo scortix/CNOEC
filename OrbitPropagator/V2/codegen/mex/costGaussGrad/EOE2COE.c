@@ -16,14 +16,14 @@
 #include "mwmathutil.h"
 
 /* Variable Definitions */
-static emlrtRSInfo db_emlrtRSI = {
+static emlrtRSInfo fb_emlrtRSI = {
     25,        /* lineNo */
     "EOE2COE", /* fcnName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\EOE2COE.m" /* pathName
                                                                           */
 };
 
-static emlrtRSInfo eb_emlrtRSI = {
+static emlrtRSInfo gb_emlrtRSI = {
     26,        /* lineNo */
     "EOE2COE", /* fcnName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\EOE2COE.m" /* pathName
@@ -59,23 +59,23 @@ void EOE2COE(const emlrtStack *sp, const real_T x[6], real_T y[6])
   /*        om: argument of periapsis */
   /*        OM: longitude of the ascending node */
   /*        theta: true anomaly */
-  st.site = &db_emlrtRSI;
+  st.site = &fb_emlrtRSI;
   e_tmp = x[1] * x[1];
   b_e_tmp = x[2] * x[2];
   e = e_tmp + b_e_tmp;
   if (e < 0.0) {
     emlrtErrorWithMessageIdR2018a(
-        &st, &n_emlrtRTEI, "Coder:toolbox:ElFunDomainError",
+        &st, &l_emlrtRTEI, "Coder:toolbox:ElFunDomainError",
         "Coder:toolbox:ElFunDomainError", 3, 4, 4, "sqrt");
   }
   e = muDoubleScalarSqrt(e);
-  st.site = &eb_emlrtRSI;
+  st.site = &gb_emlrtRSI;
   x_tmp = x[3] * x[3];
   b_x_tmp = x[4] * x[4];
   b_x = x_tmp + b_x_tmp;
   if (b_x < 0.0) {
     emlrtErrorWithMessageIdR2018a(
-        &st, &n_emlrtRTEI, "Coder:toolbox:ElFunDomainError",
+        &st, &l_emlrtRTEI, "Coder:toolbox:ElFunDomainError",
         "Coder:toolbox:ElFunDomainError", 3, 4, 4, "sqrt");
   }
   b_x = muDoubleScalarSqrt(b_x);

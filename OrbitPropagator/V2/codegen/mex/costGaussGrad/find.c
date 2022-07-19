@@ -17,28 +17,28 @@
 #include "rt_nonfinite.h"
 
 /* Variable Definitions */
-static emlrtRSInfo ab_emlrtRSI = {
+static emlrtRSInfo cb_emlrtRSI = {
     144,                                                           /* lineNo */
     "eml_find",                                                    /* fcnName */
     "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\elmat\\find.m" /* pathName
                                                                     */
 };
 
-static emlrtRSInfo bb_emlrtRSI = {
+static emlrtRSInfo db_emlrtRSI = {
     382,                                                           /* lineNo */
     "find_first_indices",                                          /* fcnName */
     "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\elmat\\find.m" /* pathName
                                                                     */
 };
 
-static emlrtRTEInfo l_emlrtRTEI = {
+static emlrtRTEInfo j_emlrtRTEI = {
     81,                                                            /* lineNo */
     1,                                                             /* colNo */
     "eml_find",                                                    /* fName */
     "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\elmat\\find.m" /* pName */
 };
 
-static emlrtRTEInfo m_emlrtRTEI = {
+static emlrtRTEInfo k_emlrtRTEI = {
     392,                                                           /* lineNo */
     1,                                                             /* colNo */
     "find_first_indices",                                          /* fName */
@@ -66,17 +66,17 @@ void eml_find(const emlrtStack *sp, const emxArray_boolean_T *x,
   x_data = x->data;
   k = (x->size[1] >= 1);
   if (k > x->size[1]) {
-    emlrtErrorWithMessageIdR2018a(sp, &l_emlrtRTEI,
+    emlrtErrorWithMessageIdR2018a(sp, &j_emlrtRTEI,
                                   "Coder:builtins:AssertionFailed",
                                   "Coder:builtins:AssertionFailed", 0);
   }
-  st.site = &ab_emlrtRSI;
+  st.site = &cb_emlrtRSI;
   idx = 0;
   i_size[0] = 1;
   i_size[1] = k;
-  b_st.site = &bb_emlrtRSI;
+  b_st.site = &db_emlrtRSI;
   if (x->size[1] > 2147483646) {
-    c_st.site = &x_emlrtRSI;
+    c_st.site = &ab_emlrtRSI;
     check_forloop_overflow_error(&c_st);
   }
   ii = 0;
@@ -91,7 +91,7 @@ void eml_find(const emlrtStack *sp, const emxArray_boolean_T *x,
     }
   }
   if (idx > k) {
-    emlrtErrorWithMessageIdR2018a(&st, &m_emlrtRTEI,
+    emlrtErrorWithMessageIdR2018a(&st, &k_emlrtRTEI,
                                   "Coder:builtins:AssertionFailed",
                                   "Coder:builtins:AssertionFailed", 0);
   }

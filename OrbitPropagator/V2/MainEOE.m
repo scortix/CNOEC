@@ -6,8 +6,8 @@ clc
 % Forward Euler: x(k+1) = x(k) + Ts*xdot(k)
 Ts = 100; % Discrete time step
 tmax = 1e5; % Maximum time
-ratio = 50; % Per quanto tempo mantiene l'input
-Tmax = 5;
+ratio = 10; % Per quanto tempo mantiene l'input
+Tmax = 1;
 Isp = 1800;
 g0 = 9.81;
 m0 = 1500;
@@ -27,7 +27,7 @@ end
 
 % orb_in = struct('a', 1e4, 'e', 0.2, 'i', pi/4, 'OM', pi/2, 'om', pi/2, 'theta', 0);
 % orb_end = struct('a', 1.5e4, 'e', 0.25, 'i', pi/3, 'OM', pi/3, 'om', pi/4, 'theta', 0);
-orb_in = struct('a', 8000, 'e', 0.2, 'i', pi/4, 'OM', pi/2, 'om', pi/2, 'theta', 0); % Initial orbit
+orb_in = struct('a', 12000, 'e', 0.2, 'i', pi/4, 'OM', pi/2, 'om', pi/2, 'theta', 0); % Initial orbit
 orb_end = struct('a', 36000, 'e', 0.7, 'i', pi/3, 'OM', pi/3, 'om', pi/4, 'theta', 0); % Final orbit
 
 y0 = COE2EOE(orb_in); % Initial condition conversion to EOE state
@@ -62,17 +62,19 @@ uoptlinInit = u;
 
 % gaussFun = @(u) costGauss(u(end),Ts,y0,ybar,u(1),m0,Tmax/g0/Isp,Tmax,u(2:1+lu),reshape(u(2+lu:end-1),3,lu),ratio,alpha);
 myoptimset;
+opt.method = "Gauss-Newton";
 opt.method = "Steepest";
-opt.nitermax = 1000;
+% opt.method = "BFGS";
+opt.nitermax = 500;
 opt.tolconstr = 5e-6;
 % uoptlin2 = mySQP(gaussFun,uoptlin,[],[],C,d,5,1+0*(lu),opt);
 alpha = [0; 0.33; 0.66; 0.999];
 alphaCell = cell(length(alpha),4);
-uoptlinInit(end) = 3.9e4;
+uoptlinInit(end) = 2e4;
 for k = 4:length(alpha)
-    alpha(k) = 1;
+    alpha(k) = 0;
     fun = @(x,computeGrad) costGaussGrad_mex(x,tmax,Ts,y0,ybar,m0,Tmax/g0/Isp,Tmax,ratio,alpha(k),computeGrad,[],[],C,d);
-    [uoptlin,cost] = mySQPGrad(fun,uoptlinInit,opt);
+    [uoptlin,cost,~,~,useq] = mySQPGrad(fun,uoptlinInit,opt);
     tf = uoptlin(end);
     dm = (cost/1e4-tf*alpha(k)/1e5)/(1-alpha(k))*m0;
     alphaCell(k,:) = {alpha(k),tf,dm,uoptlin};

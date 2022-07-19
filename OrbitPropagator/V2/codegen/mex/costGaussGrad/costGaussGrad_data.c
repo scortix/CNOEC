@@ -30,7 +30,7 @@ emlrtContext emlrtContextGlobal = {
     NULL                                                  /* fSigMem */
 };
 
-emlrtRSInfo emlrtRSI =
+emlrtRSInfo h_emlrtRSI =
     {
         4,               /* lineNo */
         "costGaussGrad", /* fcnName */
@@ -38,29 +38,54 @@ emlrtRSInfo emlrtRSI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pathName */
 };
 
-emlrtRSInfo x_emlrtRSI = {
+emlrtRSInfo ab_emlrtRSI = {
     20,                               /* lineNo */
     "eml_int_forloop_overflow_check", /* fcnName */
     "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\eml\\eml_int_forloop_"
     "overflow_check.m" /* pathName */
 };
 
-emlrtRSInfo mb_emlrtRSI = {
+emlrtRSInfo ob_emlrtRSI = {
     33,                           /* lineNo */
     "applyScalarFunctionInPlace", /* fcnName */
     "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
     "internal\\applyScalarFunctionInPlace.m" /* pathName */
 };
 
-emlrtRTEInfo n_emlrtRTEI = {
+emlrtRSInfo tc_emlrtRSI =
+    {
+        69,                  /* lineNo */
+        "eml_mtimes_helper", /* fcnName */
+        "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\ops\\eml_mtimes_helper."
+        "m" /* pathName */
+};
+
+emlrtRTEInfo h_emlrtRTEI = {
+    58,                   /* lineNo */
+    23,                   /* colNo */
+    "assertValidSizeArg", /* fName */
+    "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
+    "internal\\assertValidSizeArg.m" /* pName */
+};
+
+emlrtRTEInfo l_emlrtRTEI = {
     13,                                                            /* lineNo */
     9,                                                             /* colNo */
     "sqrt",                                                        /* fName */
     "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\elfun\\sqrt.m" /* pName */
 };
 
+emlrtRTEInfo o_emlrtRTEI =
+    {
+        138,                   /* lineNo */
+        23,                    /* colNo */
+        "dynamic_size_checks", /* fName */
+        "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\ops\\eml_mtimes_helper."
+        "m" /* pName */
+};
+
 emlrtRTEInfo
-    nc_emlrtRTEI =
+    uc_emlrtRTEI =
         {
             30,           /* lineNo */
             30,           /* colNo */

@@ -26,25 +26,16 @@ void emxEnsureCapacity_boolean_T(const emlrtStack *sp,
                                  emxArray_boolean_T *emxArray, int32_T oldNumel,
                                  const emlrtRTEInfo *srcLocation);
 
-void emxEnsureCapacity_int8_T(const emlrtStack *sp, emxArray_int8_T *emxArray,
-                              int32_T oldNumel,
-                              const emlrtRTEInfo *srcLocation);
-
 void emxEnsureCapacity_real_T(const emlrtStack *sp, emxArray_real_T *emxArray,
                               int32_T oldNumel,
                               const emlrtRTEInfo *srcLocation);
 
 void emxFree_boolean_T(const emlrtStack *sp, emxArray_boolean_T **pEmxArray);
 
-void emxFree_int8_T(const emlrtStack *sp, emxArray_int8_T **pEmxArray);
-
 void emxFree_real_T(const emlrtStack *sp, emxArray_real_T **pEmxArray);
 
 void emxInit_boolean_T(const emlrtStack *sp, emxArray_boolean_T **pEmxArray,
                        const emlrtRTEInfo *srcLocation);
-
-void emxInit_int8_T(const emlrtStack *sp, emxArray_int8_T **pEmxArray,
-                    const emlrtRTEInfo *srcLocation);
 
 void emxInit_real_T(const emlrtStack *sp, emxArray_real_T **pEmxArray,
                     int32_T numDimensions, const emlrtRTEInfo *srcLocation);

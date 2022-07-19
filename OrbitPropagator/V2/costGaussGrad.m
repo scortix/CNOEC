@@ -1,7 +1,7 @@
-function [J, f, gx, hx, Jf, Jg, Jh, p, q] = costGaussGrad(x,tmax,Ts,y0,ybar,m0,coeffT,Tmax,ratio,alpha,computeGrad,A,b,C,d)
+function [J, f, gx, hx, Jf, Jg, Jh, p, q, F, JF] = costGaussGrad(x,tmax,Ts,y0,ybar,m0,coeffT,Tmax,ratio,alpha,computeGrad,A,b,C,d)
 
 
-[f,g,h] = fun(x,tmax,Ts,y0,ybar,m0,coeffT,Tmax,ratio,alpha);
+[f,g,h,F] = fun(x,tmax,Ts,y0,ybar,m0,coeffT,Tmax,ratio,alpha);
 
 % lx = length(x);
 % lf = 1; lg = size(A,1) + length(g); lh = size(C,1) + length(h);
@@ -17,12 +17,13 @@ else
     q = length(h);
 end
 
-J = [f;g;h];
+J = [f;g;h;F];
 if computeGrad
     Jac = mygradcalc(@(x)costGaussGrad(x,tmax,Ts,y0,ybar,m0,coeffT,Tmax,ratio,alpha,false,[],[],[],[]),x, J, 'FD');
     Jf = Jac(:,1);
     Jg = [A', Jac(:,2:length(g)+1)];
-    Jh = [C', Jac(:,length(g)+2:end)];
+    Jh = [C', Jac(:,length(g)+2:length(g)+length(h)+1)];
+    JF = Jac(:,length(g)+length(h)+2:end);
     
     if ~isempty(A)
         gx = [A*x-b;g];
@@ -35,7 +36,7 @@ if computeGrad
         hx = h;
     end
 else
-    Jf = 0; Jg = 0; Jh = 0;
+    Jf = 0; Jg = 0; Jh = 0; JF = 0;
     if ~isempty(A)
         gx = [A*x-b;g];
     else
@@ -48,9 +49,9 @@ else
     end
 end
 
-    function [f,g,h] = fun(x,tmax,Ts,y0,ybar,m0,coeffT,Tmax,ratio,alpha)
+    function [f,g,h,F] = fun(x,tmax,Ts,y0,ybar,m0,coeffT,Tmax,ratio,alpha)
         tf = x(end); theta0 = x(1);
-        tmax = tf;
+        tmax = tf*1;
         lu = (length(x)-2)/4;
         csi = x(2:1+lu);
         qdir = reshape(x(2+lu:end-1),3,lu);
@@ -69,7 +70,11 @@ end
         end
         Q = diag([1 1 1 1 1 0]'./ybar.^2);
         % R = diag([1 1 1]/umax^2)*0.1;
-
+        for k = 1:length(csi)
+            if csi(k) < 0
+                csi(k) = 0;
+            end
+        end
         for k = 1:length(t)
             ku = ceil(k/ratio);
             u = Tmax/m*csi(ku)*qdir(:,ku)/norm(qdir(:,ku));
@@ -79,11 +84,12 @@ end
         dm = m0 - m;
 
         r = ((y(1,:)./(1+sqrt(y(2,:).^2+y(3,:).^2).*cos(y(6,:)-atan2(y(3,:),y(2,:)))))');
-        f = alpha*tf/1e5 + (1-alpha)*dm/m0; f = f*1e6;
-%         g = [Q(1:5,1:5)*(y(1:5,indtf)-ybar(1:5)).^2;
-%             Q(1:5,1:5)*(y(1:5,end)-ybar(1:5)).^2];
-        g = Q(1:5,1:5)*(y(1:5,end)-ybar(1:5)).^2;
-        h = [min(r)-6378.1; m-1100];
+        f = alpha*tf/1e5 + (1-alpha)*dm/m0*100; f = f;
+        g = [Q(1:5,1:5)*(y(1:5,indtf)-ybar(1:5)).^2;
+            Q(1:5,1:5)*(y(1:5,end)-ybar(1:5)).^2];
+%         g = Q(1:5,1:5)*(y(1:5,end)-ybar(1:5)).^2;
+        h = [min(r)-6380; m-1100; 1-vecnorm(qdir)'];
+        F = [sqrt(alpha*tf/1e5); sqrt((1-alpha)*dm*100/m0)];
 
     end
 %     function f = funf(x,Ts,y0,ybar,m0,coeffT,Tmax,ratio,alpha)

@@ -59,7 +59,7 @@ tau = zeros(q,1); sigma = zeros(p,1);
 pkstar = ones(size(x0));
 
 %% Define options for QP and LP solvers
-optQP = optimoptions("quadprog","Display","none",'Algorithm','interior-point-convex','MaxIterations',1e4,...
+optQP = optimoptions("quadprog","Display","none",'Algorithm','active-set','MaxIterations',1e4,...
     'OptimalityTolerance',1e-8);
 optlin = optimoptions("linprog","Display","none");
 
@@ -71,12 +71,16 @@ while true
 
     %% Compute all gradients (for BFGS only at the first iteration)
     if ~strcmp(options.method,'BFGS') || niter == 1
-        [~,fxk(niter),gxk(:,niter),hxk(:,niter),gradfxk,gradgxk,gradhxk,~,~] = fun(xk(:,niter),true);
+        [~,fxk(niter),gxk(:,niter),hxk(:,niter),gradfxk,gradgxk,gradhxk,~,~,~,gradFxk] = fun(xk(:,niter),true);
         gradlxk = gradfxk-gradgxk*lam(:,niter)-gradhxk*mu(:,niter);
     end
 
     %% Check terminating conditions
     feasibility = max(norm(gxk(:,niter),'inf'),-min(hxk(:,niter)));
+    if feasibility <= options.tolconstr && (strcmp(options.method,'Steepest') || strcmp(options.method,'BFGS'))
+        options.method = "BFGS";
+%         options.method = "Gauss-Newton";
+    end
     if niter >= 1000
         niterStr = "|\t\t%d   ";
     else
@@ -142,11 +146,19 @@ while true
     AQP = gradhxk'; bQP = hxk(:,niter);
     Alineq = [zeros(length(bQPeq),q) AQPeq; -eye(q) AQP];
     pk0 = linprog([ones(q,1);zeros(length(x0),1)], [-eye(q) zeros(q,length(x0))], zeros(q,1), -Alineq, [bQPeq; bQP], [], [], optlin);
-    s = pk0(1:q); pk0 = pk0(q+1:end);
-    if any(s<-1e-6)
-        error("Unfeasible");
+    try
+        s = pk0(1:q); pk0 = pk0(q+1:end);
+        if any(s<-1e-6)
+            error("Unfeasible");
+        end
+        [pkstar, ~, ~, ~, lb]  = quadprog(Hk, gradfxk, -AQP, bQP, -AQPeq, bQPeq, [], [], pk0, optQP);
+    catch ME
+        optQP = optimoptions("quadprog","Display","none",'Algorithm','interior-point-convex','MaxIterations',1e4,...
+            'OptimalityTolerance',1e-8);
+        [pkstar, ~, ~, ~, lb]  = quadprog(Hk, gradfxk, -AQP, bQP, -AQPeq, bQPeq, [], [], [], optQP);
+        optQP = optimoptions("quadprog","Display","none",'Algorithm','active-set','MaxIterations',1e4,...
+            'OptimalityTolerance',1e-8);
     end
-    [pkstar, ~, ~, ~, lb]  = quadprog(Hk, gradfxk, -AQP, bQP, -AQPeq, bQPeq, [], [], pk0, optQP);
     lambdakstar = -lb.eqlin; mukstar = lb.ineqlin;
     dlambdak = lambdakstar - lam(:,niter);
     dmuk = mukstar - mu(:,niter);
@@ -168,13 +180,13 @@ while true
 
     %% Compute updated cost function and constraints
     if ~strcmp(options.method, 'BFGS')
-        [~,fxk(niter+1),gxk(:,niter+1),hxk(:,niter+1),~,~,~,~,~] = fun(xk(:,niter+1),false);
+        [~,fxk(niter+1),gxk(:,niter+1),hxk(:,niter+1),~,~,~,~,~,~,~] = fun(xk(:,niter+1),false);
     
 
     %% For BFGS only, update Hk matrix
     else
         gradlxkup = gradfxk-gradgxk*lam(:,niter+1)-gradhxk*mu(:,niter+1);
-        [~,fxk(niter+1),gxk(:,niter+1),hxk(:,niter+1),gradfxk,gradgxk,gradhxk,~,~] = fun(xk(:,niter+1),true);
+        [~,fxk(niter+1),gxk(:,niter+1),hxk(:,niter+1),gradfxk,gradgxk,gradhxk,~,~,~,~] = fun(xk(:,niter+1),true);
         gradlxk = gradfxk-gradgxk*lam(:,niter+1)-gradhxk*mu(:,niter+1);
         
         y = gradlxk-gradlxkup;
