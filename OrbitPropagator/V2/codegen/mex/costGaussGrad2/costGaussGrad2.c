@@ -29,6 +29,7 @@
 #include "mygradcalc.h"
 #include "rt_nonfinite.h"
 #include "sqrt.h"
+#include "vecnorm.h"
 #include "mwmathutil.h"
 #include <string.h>
 
@@ -689,8 +690,8 @@ static emlrtBCInfo p_emlrtBCI =
 
 static emlrtRTEInfo r_emlrtRTEI =
     {
-        38,               /* lineNo */
-        5,                /* colNo */
+        20,               /* lineNo */
+        1,                /* colNo */
         "costGaussGrad2", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
@@ -698,7 +699,7 @@ static emlrtRTEInfo r_emlrtRTEI =
 
 static emlrtRTEInfo s_emlrtRTEI =
     {
-        23,               /* lineNo */
+        38,               /* lineNo */
         5,                /* colNo */
         "costGaussGrad2", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
@@ -707,8 +708,8 @@ static emlrtRTEInfo s_emlrtRTEI =
 
 static emlrtRTEInfo t_emlrtRTEI =
     {
-        38,               /* lineNo */
-        13,               /* colNo */
+        23,               /* lineNo */
+        5,                /* colNo */
         "costGaussGrad2", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
@@ -717,13 +718,22 @@ static emlrtRTEInfo t_emlrtRTEI =
 static emlrtRTEInfo u_emlrtRTEI =
     {
         38,               /* lineNo */
-        21,               /* colNo */
+        13,               /* colNo */
         "costGaussGrad2", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
 };
 
 static emlrtRTEInfo v_emlrtRTEI =
+    {
+        38,               /* lineNo */
+        21,               /* colNo */
+        "costGaussGrad2", /* fName */
+        "P:\\Projects\\CNOEC\\CNOEC_"
+        "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
+};
+
+static emlrtRTEInfo w_emlrtRTEI =
     {
         24,               /* lineNo */
         11,               /* colNo */
@@ -732,7 +742,7 @@ static emlrtRTEInfo v_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
 };
 
-static emlrtRTEInfo w_emlrtRTEI =
+static emlrtRTEInfo x_emlrtRTEI =
     {
         42,               /* lineNo */
         9,                /* colNo */
@@ -741,7 +751,7 @@ static emlrtRTEInfo w_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
 };
 
-static emlrtRTEInfo x_emlrtRTEI =
+static emlrtRTEInfo y_emlrtRTEI =
     {
         47,               /* lineNo */
         9,                /* colNo */
@@ -750,18 +760,9 @@ static emlrtRTEInfo x_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
 };
 
-static emlrtRTEInfo y_emlrtRTEI =
-    {
-        40,               /* lineNo */
-        15,               /* colNo */
-        "costGaussGrad2", /* fName */
-        "P:\\Projects\\CNOEC\\CNOEC_"
-        "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
-};
-
 static emlrtRTEInfo ab_emlrtRTEI =
     {
-        45,               /* lineNo */
+        40,               /* lineNo */
         15,               /* colNo */
         "costGaussGrad2", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
@@ -770,8 +771,8 @@ static emlrtRTEInfo ab_emlrtRTEI =
 
 static emlrtRTEInfo bb_emlrtRTEI =
     {
-        40,               /* lineNo */
-        9,                /* colNo */
+        45,               /* lineNo */
+        15,               /* colNo */
         "costGaussGrad2", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
@@ -779,7 +780,7 @@ static emlrtRTEInfo bb_emlrtRTEI =
 
 static emlrtRTEInfo cb_emlrtRTEI =
     {
-        45,               /* lineNo */
+        40,               /* lineNo */
         9,                /* colNo */
         "costGaussGrad2", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
@@ -788,8 +789,8 @@ static emlrtRTEInfo cb_emlrtRTEI =
 
 static emlrtRTEInfo db_emlrtRTEI =
     {
-        24,               /* lineNo */
-        15,               /* colNo */
+        45,               /* lineNo */
+        9,                /* colNo */
         "costGaussGrad2", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
@@ -798,7 +799,7 @@ static emlrtRTEInfo db_emlrtRTEI =
 static emlrtRTEInfo eb_emlrtRTEI =
     {
         24,               /* lineNo */
-        5,                /* colNo */
+        15,               /* colNo */
         "costGaussGrad2", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
@@ -806,8 +807,8 @@ static emlrtRTEInfo eb_emlrtRTEI =
 
 static emlrtRTEInfo fb_emlrtRTEI =
     {
-        25,               /* lineNo */
-        11,               /* colNo */
+        24,               /* lineNo */
+        5,                /* colNo */
         "costGaussGrad2", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
@@ -816,7 +817,7 @@ static emlrtRTEInfo fb_emlrtRTEI =
 static emlrtRTEInfo gb_emlrtRTEI =
     {
         25,               /* lineNo */
-        15,               /* colNo */
+        11,               /* colNo */
         "costGaussGrad2", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
@@ -825,13 +826,22 @@ static emlrtRTEInfo gb_emlrtRTEI =
 static emlrtRTEInfo hb_emlrtRTEI =
     {
         25,               /* lineNo */
-        5,                /* colNo */
+        15,               /* colNo */
         "costGaussGrad2", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
 };
 
 static emlrtRTEInfo ib_emlrtRTEI =
+    {
+        25,               /* lineNo */
+        5,                /* colNo */
+        "costGaussGrad2", /* fName */
+        "P:\\Projects\\CNOEC\\CNOEC_"
+        "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
+};
+
+static emlrtRTEInfo jb_emlrtRTEI =
     {
         30,               /* lineNo */
         9,                /* colNo */
@@ -840,7 +850,7 @@ static emlrtRTEInfo ib_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
 };
 
-static emlrtRTEInfo jb_emlrtRTEI =
+static emlrtRTEInfo kb_emlrtRTEI =
     {
         35,               /* lineNo */
         9,                /* colNo */
@@ -849,18 +859,9 @@ static emlrtRTEInfo jb_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
 };
 
-static emlrtRTEInfo kb_emlrtRTEI =
-    {
-        28,               /* lineNo */
-        15,               /* colNo */
-        "costGaussGrad2", /* fName */
-        "P:\\Projects\\CNOEC\\CNOEC_"
-        "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
-};
-
 static emlrtRTEInfo lb_emlrtRTEI =
     {
-        33,               /* lineNo */
+        28,               /* lineNo */
         15,               /* colNo */
         "costGaussGrad2", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
@@ -869,8 +870,8 @@ static emlrtRTEInfo lb_emlrtRTEI =
 
 static emlrtRTEInfo mb_emlrtRTEI =
     {
-        28,               /* lineNo */
-        9,                /* colNo */
+        33,               /* lineNo */
+        15,               /* colNo */
         "costGaussGrad2", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
@@ -878,7 +879,7 @@ static emlrtRTEInfo mb_emlrtRTEI =
 
 static emlrtRTEInfo nb_emlrtRTEI =
     {
-        33,               /* lineNo */
+        28,               /* lineNo */
         9,                /* colNo */
         "costGaussGrad2", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
@@ -887,6 +888,15 @@ static emlrtRTEInfo nb_emlrtRTEI =
 
 static emlrtRTEInfo ob_emlrtRTEI =
     {
+        33,               /* lineNo */
+        9,                /* colNo */
+        "costGaussGrad2", /* fName */
+        "P:\\Projects\\CNOEC\\CNOEC_"
+        "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
+};
+
+static emlrtRTEInfo pb_emlrtRTEI =
+    {
         22,               /* lineNo */
         5,                /* colNo */
         "costGaussGrad2", /* fName */
@@ -894,7 +904,7 @@ static emlrtRTEInfo ob_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
 };
 
-static emlrtRTEInfo pb_emlrtRTEI =
+static emlrtRTEInfo qb_emlrtRTEI =
     {
         1,                /* lineNo */
         45,               /* colNo */
@@ -903,18 +913,9 @@ static emlrtRTEInfo pb_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
 };
 
-static emlrtRTEInfo qb_emlrtRTEI =
-    {
-        56,               /* lineNo */
-        9,                /* colNo */
-        "costGaussGrad2", /* fName */
-        "P:\\Projects\\CNOEC\\CNOEC_"
-        "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
-};
-
 static emlrtRTEInfo rb_emlrtRTEI =
     {
-        57,               /* lineNo */
+        56,               /* lineNo */
         9,                /* colNo */
         "costGaussGrad2", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
@@ -923,6 +924,15 @@ static emlrtRTEInfo rb_emlrtRTEI =
 
 static emlrtRTEInfo sb_emlrtRTEI =
     {
+        57,               /* lineNo */
+        9,                /* colNo */
+        "costGaussGrad2", /* fName */
+        "P:\\Projects\\CNOEC\\CNOEC_"
+        "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
+};
+
+static emlrtRTEInfo tb_emlrtRTEI =
+    {
         58,               /* lineNo */
         22,               /* colNo */
         "costGaussGrad2", /* fName */
@@ -930,7 +940,7 @@ static emlrtRTEInfo sb_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
 };
 
-static emlrtRTEInfo tb_emlrtRTEI =
+static emlrtRTEInfo ub_emlrtRTEI =
     {
         62,               /* lineNo */
         9,                /* colNo */
@@ -939,7 +949,7 @@ static emlrtRTEInfo tb_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
 };
 
-static emlrtRTEInfo ub_emlrtRTEI =
+static emlrtRTEInfo vb_emlrtRTEI =
     {
         81,               /* lineNo */
         31,               /* colNo */
@@ -948,7 +958,7 @@ static emlrtRTEInfo ub_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
 };
 
-static emlrtRTEInfo vb_emlrtRTEI =
+static emlrtRTEInfo wb_emlrtRTEI =
     {
         56,               /* lineNo */
         24,               /* colNo */
@@ -957,7 +967,7 @@ static emlrtRTEInfo vb_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
 };
 
-static emlrtRTEInfo wb_emlrtRTEI =
+static emlrtRTEInfo xb_emlrtRTEI =
     {
         81,               /* lineNo */
         41,               /* colNo */
@@ -966,7 +976,7 @@ static emlrtRTEInfo wb_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
 };
 
-static emlrtRTEInfo xb_emlrtRTEI =
+static emlrtRTEInfo yb_emlrtRTEI =
     {
         81,               /* lineNo */
         70,               /* colNo */
@@ -975,7 +985,7 @@ static emlrtRTEInfo xb_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
 };
 
-static emlrtRTEInfo yb_emlrtRTEI =
+static emlrtRTEInfo ac_emlrtRTEI =
     {
         81,               /* lineNo */
         77,               /* colNo */
@@ -984,7 +994,7 @@ static emlrtRTEInfo yb_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
 };
 
-static emlrtRTEInfo ac_emlrtRTEI =
+static emlrtRTEInfo bc_emlrtRTEI =
     {
         81,               /* lineNo */
         26,               /* colNo */
@@ -993,7 +1003,7 @@ static emlrtRTEInfo ac_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
 };
 
-static emlrtRTEInfo bc_emlrtRTEI =
+static emlrtRTEInfo cc_emlrtRTEI =
     {
         81,               /* lineNo */
         53,               /* colNo */
@@ -1002,19 +1012,10 @@ static emlrtRTEInfo bc_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
 };
 
-static emlrtRTEInfo cc_emlrtRTEI =
-    {
-        81,               /* lineNo */
-        24,               /* colNo */
-        "costGaussGrad2", /* fName */
-        "P:\\Projects\\CNOEC\\CNOEC_"
-        "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
-};
-
 static emlrtRTEInfo dc_emlrtRTEI =
     {
         81,               /* lineNo */
-        15,               /* colNo */
+        24,               /* colNo */
         "costGaussGrad2", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
@@ -1023,13 +1024,31 @@ static emlrtRTEInfo dc_emlrtRTEI =
 static emlrtRTEInfo ec_emlrtRTEI =
     {
         81,               /* lineNo */
-        9,                /* colNo */
+        15,               /* colNo */
         "costGaussGrad2", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
 };
 
 static emlrtRTEInfo fc_emlrtRTEI =
+    {
+        81,               /* lineNo */
+        9,                /* colNo */
+        "costGaussGrad2", /* fName */
+        "P:\\Projects\\CNOEC\\CNOEC_"
+        "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
+};
+
+static emlrtRTEInfo gc_emlrtRTEI =
+    {
+        85,               /* lineNo */
+        9,                /* colNo */
+        "costGaussGrad2", /* fName */
+        "P:\\Projects\\CNOEC\\CNOEC_"
+        "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
+};
+
+static emlrtRTEInfo hc_emlrtRTEI =
     {
         51,               /* lineNo */
         24,               /* colNo */
@@ -1038,7 +1057,7 @@ static emlrtRTEInfo fc_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pName */
 };
 
-static emlrtRTEInfo tc_emlrtRTEI =
+static emlrtRTEInfo bd_emlrtRTEI =
     {
         81,               /* lineNo */
         57,               /* colNo */
@@ -1086,7 +1105,7 @@ static void b_binary_expand_op(const emlrtStack *sp, emxArray_real_T *in1,
   } else {
     in1->size[0] = in3->size[1];
   }
-  emxEnsureCapacity_real_T(sp, in1, stride_0_0, &ec_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, in1, stride_0_0, &fc_emlrtRTEI);
   in1_data = in1->data;
   stride_0_0 = (i != 1);
   stride_1_0 = (in3->size[1] != 1);
@@ -1123,7 +1142,7 @@ static void binary_expand_op(const emlrtStack *sp, emxArray_real_T *in1,
     in1->size[0] = in3->size[0];
   }
   in1->size[1] = in3->size[1];
-  emxEnsureCapacity_real_T(sp, in1, i, &lb_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, in1, i, &mb_emlrtRTEI);
   in1_data = in1->data;
   stride_0_0 = (in2_idx_0 != 1);
   stride_1_0 = (in3->size[0] != 1);
@@ -1155,7 +1174,7 @@ static void c_binary_expand_op(const emlrtStack *sp, emxArray_real_T *in1,
   in2_data = in2->data;
   in1_data = in1->data;
   emlrtHeapReferenceStackEnterFcnR2012b((emlrtCTX)sp);
-  emxInit_real_T(sp, &b_in1, 2, &cc_emlrtRTEI);
+  emxInit_real_T(sp, &b_in1, 2, &dc_emlrtRTEI);
   i = b_in1->size[0] * b_in1->size[1];
   b_in1->size[0] = 1;
   if (in2->size[1] == 1) {
@@ -1163,7 +1182,7 @@ static void c_binary_expand_op(const emlrtStack *sp, emxArray_real_T *in1,
   } else {
     b_in1->size[1] = in2->size[1];
   }
-  emxEnsureCapacity_real_T(sp, b_in1, i, &cc_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, b_in1, i, &dc_emlrtRTEI);
   b_in1_data = b_in1->data;
   stride_0_1 = (in1->size[1] != 1);
   stride_1_1 = (in2->size[1] != 1);
@@ -1178,7 +1197,7 @@ static void c_binary_expand_op(const emlrtStack *sp, emxArray_real_T *in1,
   i = in1->size[0] * in1->size[1];
   in1->size[0] = 1;
   in1->size[1] = b_in1->size[1];
-  emxEnsureCapacity_real_T(sp, in1, i, &cc_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, in1, i, &dc_emlrtRTEI);
   in1_data = in1->data;
   loop_ub = b_in1->size[1];
   for (i = 0; i < loop_ub; i++) {
@@ -1202,7 +1221,7 @@ static void d_binary_expand_op(const emlrtStack *sp, emxArray_real_T *in1,
   in2_data = in2->data;
   in1_data = in1->data;
   emlrtHeapReferenceStackEnterFcnR2012b((emlrtCTX)sp);
-  emxInit_real_T(sp, &b_in2, 2, &tc_emlrtRTEI);
+  emxInit_real_T(sp, &b_in2, 2, &bd_emlrtRTEI);
   i = in2->size[1];
   stride_0_1 = b_in2->size[0] * b_in2->size[1];
   b_in2->size[0] = 1;
@@ -1211,7 +1230,7 @@ static void d_binary_expand_op(const emlrtStack *sp, emxArray_real_T *in1,
   } else {
     b_in2->size[1] = in1->size[1];
   }
-  emxEnsureCapacity_real_T(sp, b_in2, stride_0_1, &tc_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, b_in2, stride_0_1, &bd_emlrtRTEI);
   b_in2_data = b_in2->data;
   stride_0_1 = (i != 1);
   stride_1_1 = (in1->size[1] != 1);
@@ -1227,7 +1246,7 @@ static void d_binary_expand_op(const emlrtStack *sp, emxArray_real_T *in1,
   i = in1->size[0] * in1->size[1];
   in1->size[0] = 1;
   in1->size[1] = b_in2->size[1];
-  emxEnsureCapacity_real_T(sp, in1, i, &tc_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, in1, i, &bd_emlrtRTEI);
   in1_data = in1->data;
   loop_ub = b_in2->size[1];
   for (i = 0; i < loop_ub; i++) {
@@ -1251,7 +1270,7 @@ static void plus(const emlrtStack *sp, emxArray_real_T *in1,
   in2_data = in2->data;
   in1_data = in1->data;
   emlrtHeapReferenceStackEnterFcnR2012b((emlrtCTX)sp);
-  emxInit_real_T(sp, &b_in1, 2, &ub_emlrtRTEI);
+  emxInit_real_T(sp, &b_in1, 2, &vb_emlrtRTEI);
   i = b_in1->size[0] * b_in1->size[1];
   b_in1->size[0] = 1;
   if (in2->size[1] == 1) {
@@ -1259,7 +1278,7 @@ static void plus(const emlrtStack *sp, emxArray_real_T *in1,
   } else {
     b_in1->size[1] = in2->size[1];
   }
-  emxEnsureCapacity_real_T(sp, b_in1, i, &ub_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, b_in1, i, &vb_emlrtRTEI);
   b_in1_data = b_in1->data;
   stride_0_1 = (in1->size[1] != 1);
   stride_1_1 = (in2->size[1] != 1);
@@ -1274,7 +1293,7 @@ static void plus(const emlrtStack *sp, emxArray_real_T *in1,
   i = in1->size[0] * in1->size[1];
   in1->size[0] = 1;
   in1->size[1] = b_in1->size[1];
-  emxEnsureCapacity_real_T(sp, in1, i, &ub_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, in1, i, &vb_emlrtRTEI);
   in1_data = in1->data;
   loop_ub = b_in1->size[1];
   for (i = 0; i < loop_ub; i++) {
@@ -1290,10 +1309,10 @@ void costGaussGrad2(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
                     real_T alpha, boolean_T computeGrad,
                     const emxArray_real_T *A, const emxArray_real_T *b,
                     const emxArray_real_T *C, const emxArray_real_T *d,
-                    real_T J_data[], int32_T J_size[1], real_T *f,
-                    emxArray_real_T *gx, emxArray_real_T *hx,
-                    emxArray_real_T *Jf, emxArray_real_T *Jg,
-                    emxArray_real_T *Jh, real_T *p, real_T *q)
+                    emxArray_real_T *J, real_T *f, emxArray_real_T *gx,
+                    emxArray_real_T *hx, emxArray_real_T *Jf,
+                    emxArray_real_T *Jg, emxArray_real_T *Jh, real_T *p,
+                    real_T *q)
 {
   emlrtStack b_st;
   emlrtStack c_st;
@@ -1301,23 +1320,25 @@ void costGaussGrad2(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
   emxArray_real_T *Jac;
   emxArray_real_T *b_Jac;
   emxArray_real_T *b_varargin_1;
+  emxArray_real_T *h;
   emxArray_real_T *r;
   emxArray_real_T *varargin_1;
   real_T g_data[10];
-  real_T h[2];
   const real_T *A_data;
   const real_T *C_data;
   const real_T *b_data;
   const real_T *d_data;
+  real_T *J_data;
   real_T *Jac_data;
-  real_T *Jf_data;
   real_T *b_Jac_data;
+  real_T *h_data;
   real_T *varargin_1_data;
   int32_T g_size;
   int32_T i;
   int32_T i1;
   int32_T i2;
-  int32_T input_sizes_idx_1;
+  int32_T input_sizes_idx_0;
+  int32_T loop_ub;
   (void)alpha;
   st.prev = sp;
   st.tls = sp->tls;
@@ -1330,9 +1351,11 @@ void costGaussGrad2(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
   b_data = b->data;
   A_data = A->data;
   emlrtHeapReferenceStackEnterFcnR2012b((emlrtCTX)sp);
+  emxInit_real_T(sp, &h, 1, &qb_emlrtRTEI);
   st.site = &h_emlrtRSI;
   fun(&st, x, tmax, Ts, b_y0, ybar, m0, coeffT, Tmax, ratio, g_data, &g_size,
       h);
+  h_data = h->data;
   /*  lx = length(x); */
   /*  lf = 1; lg = size(A,1) + length(g); lh = size(C,1) + length(h); */
   if ((A->size[0] != 0) && (A->size[1] != 0)) {
@@ -1341,82 +1364,86 @@ void costGaussGrad2(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
     *p = g_size;
   }
   if ((C->size[0] != 0) && (C->size[1] != 0)) {
-    *q = (real_T)C->size[0] + 2.0;
+    *q = (uint32_T)C->size[0] + h->size[0];
   } else {
-    *q = 2.0;
+    *q = h->size[0];
   }
-  J_size[0] = g_size + 3;
+  i = J->size[0];
+  J->size[0] = (g_size + h->size[0]) + 1;
+  emxEnsureCapacity_real_T(sp, J, i, &r_emlrtRTEI);
+  J_data = J->data;
   J_data[0] = 0.0;
-  if (g_size - 1 >= 0) {
-    memcpy(&J_data[1], &g_data[0], g_size * sizeof(real_T));
+  for (i = 0; i < g_size; i++) {
+    J_data[i + 1] = g_data[i];
   }
-  J_data[g_size + 1] = h[0];
-  J_data[g_size + 2] = h[1];
-  emxInit_real_T(sp, &r, 1, &pb_emlrtRTEI);
-  emxInit_real_T(sp, &varargin_1, 2, &y_emlrtRTEI);
+  loop_ub = h->size[0];
+  for (i = 0; i < loop_ub; i++) {
+    J_data[(i + g_size) + 1] = h_data[i];
+  }
+  emxInit_real_T(sp, &r, 1, &qb_emlrtRTEI);
+  emxInit_real_T(sp, &varargin_1, 2, &ab_emlrtRTEI);
   if (computeGrad) {
-    int32_T b_loop_ub;
     int32_T c_Jac;
-    int32_T loop_ub;
+    int32_T input_sizes_idx_1;
     int32_T loop_ub_tmp;
-    int8_T sizes_idx_1;
+    int32_T sizes_idx_1;
     boolean_T empty_non_axis_sizes;
-    emxInit_real_T(sp, &Jac, 2, &ob_emlrtRTEI);
+    emxInit_real_T(sp, &Jac, 2, &pb_emlrtRTEI);
     st.site = &g_emlrtRSI;
-    mygradcalc(&st, tmax, Ts, b_y0, ybar, m0, coeffT, Tmax, ratio, x, J_data,
-               J_size[0], Jac);
+    mygradcalc(&st, tmax, Ts, b_y0, ybar, m0, coeffT, Tmax, ratio, x, J, Jac);
     Jac_data = Jac->data;
     loop_ub = Jac->size[0];
     i = Jf->size[0];
     Jf->size[0] = Jac->size[0];
-    emxEnsureCapacity_real_T(sp, Jf, i, &s_emlrtRTEI);
-    Jf_data = Jf->data;
+    emxEnsureCapacity_real_T(sp, Jf, i, &t_emlrtRTEI);
+    J_data = Jf->data;
     for (i = 0; i < loop_ub; i++) {
-      Jf_data[i] = Jac_data[i];
+      J_data[i] = Jac_data[i];
     }
     if (g_size + 1 > Jac->size[1]) {
       emlrtDynamicBoundsCheckR2012b(g_size + 1, 1, Jac->size[1], &b_emlrtBCI,
                                     (emlrtCTX)sp);
     }
-    emxInit_real_T(sp, &b_varargin_1, 2, &v_emlrtRTEI);
+    emxInit_real_T(sp, &b_varargin_1, 2, &w_emlrtRTEI);
     st.site = &f_emlrtRSI;
     i = b_varargin_1->size[0] * b_varargin_1->size[1];
     b_varargin_1->size[0] = A->size[1];
     b_varargin_1->size[1] = A->size[0];
-    emxEnsureCapacity_real_T(&st, b_varargin_1, i, &v_emlrtRTEI);
+    emxEnsureCapacity_real_T(&st, b_varargin_1, i, &w_emlrtRTEI);
     varargin_1_data = b_varargin_1->data;
     loop_ub = A->size[0];
     for (i = 0; i < loop_ub; i++) {
-      b_loop_ub = A->size[1];
-      for (i1 = 0; i1 < b_loop_ub; i1++) {
+      input_sizes_idx_1 = A->size[1];
+      for (i1 = 0; i1 < input_sizes_idx_1; i1++) {
         varargin_1_data[i1 + b_varargin_1->size[0] * i] =
             A_data[i + A->size[0] * i1];
       }
     }
     b_st.site = &bc_emlrtRSI;
     if ((b_varargin_1->size[0] != 0) && (b_varargin_1->size[1] != 0)) {
-      b_loop_ub = b_varargin_1->size[0];
+      input_sizes_idx_0 = b_varargin_1->size[0];
     } else if ((Jac->size[0] != 0) && (g_size != 0)) {
-      b_loop_ub = Jac->size[0];
+      input_sizes_idx_0 = Jac->size[0];
     } else {
-      b_loop_ub = b_varargin_1->size[0];
+      input_sizes_idx_0 = b_varargin_1->size[0];
       if (Jac->size[0] > b_varargin_1->size[0]) {
-        b_loop_ub = Jac->size[0];
+        input_sizes_idx_0 = Jac->size[0];
       }
     }
     c_st.site = &cc_emlrtRSI;
-    if ((b_varargin_1->size[0] != b_loop_ub) &&
+    if ((b_varargin_1->size[0] != input_sizes_idx_0) &&
         ((b_varargin_1->size[0] != 0) && (b_varargin_1->size[1] != 0))) {
       emlrtErrorWithMessageIdR2018a(
           &c_st, &emlrtRTEI, "MATLAB:catenate:matrixDimensionMismatch",
           "MATLAB:catenate:matrixDimensionMismatch", 0);
     }
-    if ((Jac->size[0] != b_loop_ub) && ((Jac->size[0] != 0) && (g_size != 0))) {
+    if ((Jac->size[0] != input_sizes_idx_0) &&
+        ((Jac->size[0] != 0) && (g_size != 0))) {
       emlrtErrorWithMessageIdR2018a(
           &c_st, &emlrtRTEI, "MATLAB:catenate:matrixDimensionMismatch",
           "MATLAB:catenate:matrixDimensionMismatch", 0);
     }
-    empty_non_axis_sizes = (b_loop_ub == 0);
+    empty_non_axis_sizes = (input_sizes_idx_0 == 0);
     if (empty_non_axis_sizes ||
         ((b_varargin_1->size[0] != 0) && (b_varargin_1->size[1] != 0))) {
       input_sizes_idx_1 = b_varargin_1->size[1];
@@ -1424,16 +1451,16 @@ void costGaussGrad2(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
       input_sizes_idx_1 = 0;
     }
     if (empty_non_axis_sizes || ((Jac->size[0] != 0) && (g_size != 0))) {
-      sizes_idx_1 = (int8_T)g_size;
+      sizes_idx_1 = g_size;
     } else {
       sizes_idx_1 = 0;
     }
-    emxInit_real_T(&b_st, &b_Jac, 2, &db_emlrtRTEI);
+    emxInit_real_T(&b_st, &b_Jac, 2, &eb_emlrtRTEI);
     loop_ub = Jac->size[0];
     i = b_Jac->size[0] * b_Jac->size[1];
     b_Jac->size[0] = Jac->size[0];
     b_Jac->size[1] = g_size;
-    emxEnsureCapacity_real_T(&b_st, b_Jac, i, &db_emlrtRTEI);
+    emxEnsureCapacity_real_T(&b_st, b_Jac, i, &eb_emlrtRTEI);
     b_Jac_data = b_Jac->data;
     for (i = 0; i < g_size; i++) {
       for (i1 = 0; i1 < loop_ub; i1++) {
@@ -1442,20 +1469,20 @@ void costGaussGrad2(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
       }
     }
     i = Jg->size[0] * Jg->size[1];
-    Jg->size[0] = b_loop_ub;
+    Jg->size[0] = input_sizes_idx_0;
     Jg->size[1] = input_sizes_idx_1 + sizes_idx_1;
-    emxEnsureCapacity_real_T(&b_st, Jg, i, &eb_emlrtRTEI);
-    Jf_data = Jg->data;
+    emxEnsureCapacity_real_T(&b_st, Jg, i, &fb_emlrtRTEI);
+    J_data = Jg->data;
     for (i = 0; i < input_sizes_idx_1; i++) {
-      for (i1 = 0; i1 < b_loop_ub; i1++) {
-        Jf_data[i1 + Jg->size[0] * i] = varargin_1_data[i1 + b_loop_ub * i];
+      for (i1 = 0; i1 < input_sizes_idx_0; i1++) {
+        J_data[i1 + Jg->size[0] * i] =
+            varargin_1_data[i1 + input_sizes_idx_0 * i];
       }
     }
-    loop_ub = sizes_idx_1;
-    for (i = 0; i < loop_ub; i++) {
-      for (i1 = 0; i1 < b_loop_ub; i1++) {
-        Jf_data[i1 + Jg->size[0] * (i + input_sizes_idx_1)] =
-            b_Jac_data[i1 + b_loop_ub * i];
+    for (i = 0; i < sizes_idx_1; i++) {
+      for (i1 = 0; i1 < input_sizes_idx_0; i1++) {
+        J_data[i1 + Jg->size[0] * (i + input_sizes_idx_1)] =
+            b_Jac_data[i1 + input_sizes_idx_0 * i];
       }
     }
     emxFree_real_T(&b_st, &b_Jac);
@@ -1474,41 +1501,42 @@ void costGaussGrad2(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
     i2 = b_varargin_1->size[0] * b_varargin_1->size[1];
     b_varargin_1->size[0] = C->size[1];
     b_varargin_1->size[1] = C->size[0];
-    emxEnsureCapacity_real_T(&st, b_varargin_1, i2, &fb_emlrtRTEI);
+    emxEnsureCapacity_real_T(&st, b_varargin_1, i2, &gb_emlrtRTEI);
     varargin_1_data = b_varargin_1->data;
     loop_ub = C->size[0];
     for (i2 = 0; i2 < loop_ub; i2++) {
-      b_loop_ub = C->size[1];
-      for (input_sizes_idx_1 = 0; input_sizes_idx_1 < b_loop_ub;
-           input_sizes_idx_1++) {
-        varargin_1_data[input_sizes_idx_1 + b_varargin_1->size[0] * i2] =
-            C_data[i2 + C->size[0] * input_sizes_idx_1];
+      input_sizes_idx_1 = C->size[1];
+      for (input_sizes_idx_0 = 0; input_sizes_idx_0 < input_sizes_idx_1;
+           input_sizes_idx_0++) {
+        varargin_1_data[input_sizes_idx_0 + b_varargin_1->size[0] * i2] =
+            C_data[i2 + C->size[0] * input_sizes_idx_0];
       }
     }
     b_st.site = &bc_emlrtRSI;
     if ((b_varargin_1->size[0] != 0) && (b_varargin_1->size[1] != 0)) {
-      b_loop_ub = b_varargin_1->size[0];
+      input_sizes_idx_0 = b_varargin_1->size[0];
     } else if ((Jac->size[0] != 0) && (i1 - i != 0)) {
-      b_loop_ub = Jac->size[0];
+      input_sizes_idx_0 = Jac->size[0];
     } else {
-      b_loop_ub = b_varargin_1->size[0];
+      input_sizes_idx_0 = b_varargin_1->size[0];
       if (Jac->size[0] > b_varargin_1->size[0]) {
-        b_loop_ub = Jac->size[0];
+        input_sizes_idx_0 = Jac->size[0];
       }
     }
     c_st.site = &cc_emlrtRSI;
-    if ((b_varargin_1->size[0] != b_loop_ub) &&
+    if ((b_varargin_1->size[0] != input_sizes_idx_0) &&
         ((b_varargin_1->size[0] != 0) && (b_varargin_1->size[1] != 0))) {
       emlrtErrorWithMessageIdR2018a(
           &c_st, &emlrtRTEI, "MATLAB:catenate:matrixDimensionMismatch",
           "MATLAB:catenate:matrixDimensionMismatch", 0);
     }
-    if ((Jac->size[0] != b_loop_ub) && ((Jac->size[0] != 0) && (i1 - i != 0))) {
+    if ((Jac->size[0] != input_sizes_idx_0) &&
+        ((Jac->size[0] != 0) && (i1 - i != 0))) {
       emlrtErrorWithMessageIdR2018a(
           &c_st, &emlrtRTEI, "MATLAB:catenate:matrixDimensionMismatch",
           "MATLAB:catenate:matrixDimensionMismatch", 0);
     }
-    empty_non_axis_sizes = (b_loop_ub == 0);
+    empty_non_axis_sizes = (input_sizes_idx_0 == 0);
     if (empty_non_axis_sizes ||
         ((b_varargin_1->size[0] != 0) && (b_varargin_1->size[1] != 0))) {
       input_sizes_idx_1 = b_varargin_1->size[1];
@@ -1516,7 +1544,7 @@ void costGaussGrad2(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
       input_sizes_idx_1 = 0;
     }
     if (empty_non_axis_sizes || ((Jac->size[0] != 0) && (i1 - i != 0))) {
-      sizes_idx_1 = (int8_T)(i1 - i);
+      sizes_idx_1 = i1 - i;
     } else {
       sizes_idx_1 = 0;
     }
@@ -1532,34 +1560,34 @@ void costGaussGrad2(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
     i = Jac->size[0] * Jac->size[1];
     Jac->size[0] = c_Jac + 1;
     Jac->size[1] = loop_ub_tmp;
-    emxEnsureCapacity_real_T(&b_st, Jac, i, &gb_emlrtRTEI);
+    emxEnsureCapacity_real_T(&b_st, Jac, i, &hb_emlrtRTEI);
     Jac_data = Jac->data;
     i = Jh->size[0] * Jh->size[1];
-    Jh->size[0] = b_loop_ub;
+    Jh->size[0] = input_sizes_idx_0;
     Jh->size[1] = input_sizes_idx_1 + sizes_idx_1;
-    emxEnsureCapacity_real_T(&b_st, Jh, i, &hb_emlrtRTEI);
-    Jf_data = Jh->data;
+    emxEnsureCapacity_real_T(&b_st, Jh, i, &ib_emlrtRTEI);
+    J_data = Jh->data;
     for (i = 0; i < input_sizes_idx_1; i++) {
-      for (i1 = 0; i1 < b_loop_ub; i1++) {
-        Jf_data[i1 + Jh->size[0] * i] = varargin_1_data[i1 + b_loop_ub * i];
+      for (i1 = 0; i1 < input_sizes_idx_0; i1++) {
+        J_data[i1 + Jh->size[0] * i] =
+            varargin_1_data[i1 + input_sizes_idx_0 * i];
       }
     }
     emxFree_real_T(&b_st, &b_varargin_1);
-    loop_ub = sizes_idx_1;
-    for (i = 0; i < loop_ub; i++) {
-      for (i1 = 0; i1 < b_loop_ub; i1++) {
-        Jf_data[i1 + Jh->size[0] * (i + input_sizes_idx_1)] =
-            Jac_data[i1 + b_loop_ub * i];
+    for (i = 0; i < sizes_idx_1; i++) {
+      for (i1 = 0; i1 < input_sizes_idx_0; i1++) {
+        J_data[i1 + Jh->size[0] * (i + input_sizes_idx_1)] =
+            Jac_data[i1 + input_sizes_idx_0 * i];
       }
     }
     emxFree_real_T(&b_st, &Jac);
     if ((A->size[0] != 0) && (A->size[1] != 0)) {
       st.site = &d_emlrtRSI;
-      b_st.site = &rc_emlrtRSI;
+      b_st.site = &sc_emlrtRSI;
       dynamic_size_checks(&b_st, A, x, A->size[1], x->size[0]);
       b_st.site = &xb_emlrtRSI;
       b_mtimes(&b_st, A, x, r);
-      Jf_data = r->data;
+      J_data = r->data;
       if ((r->size[0] != b->size[0]) &&
           ((r->size[0] != 1) && (b->size[0] != 1))) {
         emlrtDimSizeImpxCheckR2021b(r->size[0], b->size[0], &d_emlrtECI,
@@ -1570,13 +1598,13 @@ void costGaussGrad2(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
         i = varargin_1->size[0] * varargin_1->size[1];
         varargin_1->size[0] = r->size[0];
         varargin_1->size[1] = b->size[1];
-        emxEnsureCapacity_real_T(&st, varargin_1, i, &kb_emlrtRTEI);
+        emxEnsureCapacity_real_T(&st, varargin_1, i, &lb_emlrtRTEI);
         varargin_1_data = varargin_1->data;
         loop_ub = b->size[1];
         for (i = 0; i < loop_ub; i++) {
-          b_loop_ub = r->size[0];
-          for (i1 = 0; i1 < b_loop_ub; i1++) {
-            varargin_1_data[i1] = Jf_data[i1] - b_data[i1];
+          input_sizes_idx_1 = r->size[0];
+          for (i1 = 0; i1 < input_sizes_idx_1; i1++) {
+            varargin_1_data[i1] = J_data[i1] - b_data[i1];
           }
         }
       } else {
@@ -1586,9 +1614,9 @@ void costGaussGrad2(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
       }
       b_st.site = &bc_emlrtRSI;
       if ((varargin_1->size[0] != 0) && (varargin_1->size[1] != 0)) {
-        b_loop_ub = varargin_1->size[0];
+        input_sizes_idx_0 = varargin_1->size[0];
       } else {
-        b_loop_ub = 0;
+        input_sizes_idx_0 = 0;
       }
       i = gx->size[0] * gx->size[1];
       if ((varargin_1->size[0] != 0) && (varargin_1->size[1] != 0)) {
@@ -1598,31 +1626,31 @@ void costGaussGrad2(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
       }
       gx->size[0] = loop_ub + g_size;
       gx->size[1] = 1;
-      emxEnsureCapacity_real_T(&b_st, gx, i, &mb_emlrtRTEI);
-      Jf_data = gx->data;
-      for (i = 0; i < b_loop_ub; i++) {
-        Jf_data[i] = varargin_1_data[i];
+      emxEnsureCapacity_real_T(&b_st, gx, i, &nb_emlrtRTEI);
+      J_data = gx->data;
+      for (i = 0; i < input_sizes_idx_0; i++) {
+        J_data[i] = varargin_1_data[i];
       }
       for (i = 0; i < g_size; i++) {
-        Jf_data[i + b_loop_ub] = g_data[i];
+        J_data[i + input_sizes_idx_0] = g_data[i];
       }
     } else {
       i = gx->size[0] * gx->size[1];
       gx->size[0] = g_size;
       gx->size[1] = 1;
-      emxEnsureCapacity_real_T(sp, gx, i, &ib_emlrtRTEI);
-      Jf_data = gx->data;
+      emxEnsureCapacity_real_T(sp, gx, i, &jb_emlrtRTEI);
+      J_data = gx->data;
       for (i = 0; i < g_size; i++) {
-        Jf_data[i] = g_data[i];
+        J_data[i] = g_data[i];
       }
     }
     if ((C->size[0] != 0) && (C->size[1] != 0)) {
       st.site = &c_emlrtRSI;
-      b_st.site = &rc_emlrtRSI;
+      b_st.site = &sc_emlrtRSI;
       dynamic_size_checks(&b_st, C, x, C->size[1], x->size[0]);
       b_st.site = &xb_emlrtRSI;
       b_mtimes(&b_st, C, x, r);
-      Jf_data = r->data;
+      J_data = r->data;
       if ((r->size[0] != d->size[0]) &&
           ((r->size[0] != 1) && (d->size[0] != 1))) {
         emlrtDimSizeImpxCheckR2021b(r->size[0], d->size[0], &c_emlrtECI,
@@ -1633,13 +1661,13 @@ void costGaussGrad2(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
         i = varargin_1->size[0] * varargin_1->size[1];
         varargin_1->size[0] = r->size[0];
         varargin_1->size[1] = d->size[1];
-        emxEnsureCapacity_real_T(&st, varargin_1, i, &lb_emlrtRTEI);
+        emxEnsureCapacity_real_T(&st, varargin_1, i, &mb_emlrtRTEI);
         varargin_1_data = varargin_1->data;
         loop_ub = d->size[1];
         for (i = 0; i < loop_ub; i++) {
-          b_loop_ub = r->size[0];
-          for (i1 = 0; i1 < b_loop_ub; i1++) {
-            varargin_1_data[i1] = Jf_data[i1] - d_data[i1];
+          input_sizes_idx_1 = r->size[0];
+          for (i1 = 0; i1 < input_sizes_idx_1; i1++) {
+            varargin_1_data[i1] = J_data[i1] - d_data[i1];
           }
         }
       } else {
@@ -1649,54 +1677,64 @@ void costGaussGrad2(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
       }
       b_st.site = &bc_emlrtRSI;
       if ((varargin_1->size[0] != 0) && (varargin_1->size[1] != 0)) {
-        b_loop_ub = varargin_1->size[0];
+        input_sizes_idx_0 = varargin_1->size[0];
       } else {
-        b_loop_ub = 0;
+        input_sizes_idx_0 = 0;
       }
-      i = hx->size[0];
-      hx->size[0] = b_loop_ub + 2;
-      emxEnsureCapacity_real_T(&b_st, hx, i, &nb_emlrtRTEI);
-      Jf_data = hx->data;
-      for (i = 0; i < b_loop_ub; i++) {
-        Jf_data[i] = varargin_1_data[i];
+      input_sizes_idx_1 = h->size[0];
+      i = hx->size[0] * hx->size[1];
+      if ((varargin_1->size[0] != 0) && (varargin_1->size[1] != 0)) {
+        loop_ub = varargin_1->size[0];
+      } else {
+        loop_ub = 0;
       }
-      Jf_data[b_loop_ub] = h[0];
-      Jf_data[b_loop_ub + 1] = h[1];
+      hx->size[0] = loop_ub + h->size[0];
+      hx->size[1] = 1;
+      emxEnsureCapacity_real_T(&b_st, hx, i, &ob_emlrtRTEI);
+      J_data = hx->data;
+      for (i = 0; i < input_sizes_idx_0; i++) {
+        J_data[i] = varargin_1_data[i];
+      }
+      for (i = 0; i < input_sizes_idx_1; i++) {
+        J_data[i + input_sizes_idx_0] = h_data[i];
+      }
     } else {
-      i = hx->size[0];
-      hx->size[0] = 2;
-      emxEnsureCapacity_real_T(sp, hx, i, &jb_emlrtRTEI);
-      Jf_data = hx->data;
-      Jf_data[0] = h[0];
-      Jf_data[1] = h[1];
+      i = hx->size[0] * hx->size[1];
+      hx->size[0] = h->size[0];
+      hx->size[1] = 1;
+      emxEnsureCapacity_real_T(sp, hx, i, &kb_emlrtRTEI);
+      J_data = hx->data;
+      loop_ub = h->size[0];
+      for (i = 0; i < loop_ub; i++) {
+        J_data[i] = h_data[i];
+      }
     }
   } else {
-    int32_T b_loop_ub;
-    int32_T loop_ub;
+    int32_T input_sizes_idx_1;
     i = Jf->size[0];
     Jf->size[0] = 1;
-    emxEnsureCapacity_real_T(sp, Jf, i, &r_emlrtRTEI);
-    Jf_data = Jf->data;
-    Jf_data[0] = 0.0;
+    emxEnsureCapacity_real_T(sp, Jf, i, &s_emlrtRTEI);
+    J_data = Jf->data;
+    J_data[0] = 0.0;
     i = Jg->size[0] * Jg->size[1];
     Jg->size[0] = 1;
     Jg->size[1] = 1;
-    emxEnsureCapacity_real_T(sp, Jg, i, &t_emlrtRTEI);
-    Jf_data = Jg->data;
-    Jf_data[0] = 0.0;
+    emxEnsureCapacity_real_T(sp, Jg, i, &u_emlrtRTEI);
+    J_data = Jg->data;
+    J_data[0] = 0.0;
     i = Jh->size[0] * Jh->size[1];
     Jh->size[0] = 1;
     Jh->size[1] = 1;
-    emxEnsureCapacity_real_T(sp, Jh, i, &u_emlrtRTEI);
-    Jf_data = Jh->data;
-    Jf_data[0] = 0.0;
+    emxEnsureCapacity_real_T(sp, Jh, i, &v_emlrtRTEI);
+    J_data = Jh->data;
+    J_data[0] = 0.0;
     if ((A->size[0] != 0) && (A->size[1] != 0)) {
       st.site = &b_emlrtRSI;
-      b_st.site = &rc_emlrtRSI;
+      b_st.site = &sc_emlrtRSI;
       dynamic_size_checks(&b_st, A, x, A->size[1], x->size[0]);
       b_st.site = &xb_emlrtRSI;
       b_mtimes(&b_st, A, x, r);
-      Jf_data = r->data;
+      J_data = r->data;
       if ((r->size[0] != b->size[0]) &&
           ((r->size[0] != 1) && (b->size[0] != 1))) {
         emlrtDimSizeImpxCheckR2021b(r->size[0], b->size[0], &b_emlrtECI,
@@ -1707,13 +1745,13 @@ void costGaussGrad2(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
         i = varargin_1->size[0] * varargin_1->size[1];
         varargin_1->size[0] = r->size[0];
         varargin_1->size[1] = b->size[1];
-        emxEnsureCapacity_real_T(&st, varargin_1, i, &y_emlrtRTEI);
+        emxEnsureCapacity_real_T(&st, varargin_1, i, &ab_emlrtRTEI);
         varargin_1_data = varargin_1->data;
         loop_ub = b->size[1];
         for (i = 0; i < loop_ub; i++) {
-          b_loop_ub = r->size[0];
-          for (i1 = 0; i1 < b_loop_ub; i1++) {
-            varargin_1_data[i1] = Jf_data[i1] - b_data[i1];
+          input_sizes_idx_1 = r->size[0];
+          for (i1 = 0; i1 < input_sizes_idx_1; i1++) {
+            varargin_1_data[i1] = J_data[i1] - b_data[i1];
           }
         }
       } else {
@@ -1723,9 +1761,9 @@ void costGaussGrad2(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
       }
       b_st.site = &bc_emlrtRSI;
       if ((varargin_1->size[0] != 0) && (varargin_1->size[1] != 0)) {
-        b_loop_ub = varargin_1->size[0];
+        input_sizes_idx_0 = varargin_1->size[0];
       } else {
-        b_loop_ub = 0;
+        input_sizes_idx_0 = 0;
       }
       i = gx->size[0] * gx->size[1];
       if ((varargin_1->size[0] != 0) && (varargin_1->size[1] != 0)) {
@@ -1735,31 +1773,31 @@ void costGaussGrad2(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
       }
       gx->size[0] = loop_ub + g_size;
       gx->size[1] = 1;
-      emxEnsureCapacity_real_T(&b_st, gx, i, &bb_emlrtRTEI);
-      Jf_data = gx->data;
-      for (i = 0; i < b_loop_ub; i++) {
-        Jf_data[i] = varargin_1_data[i];
+      emxEnsureCapacity_real_T(&b_st, gx, i, &cb_emlrtRTEI);
+      J_data = gx->data;
+      for (i = 0; i < input_sizes_idx_0; i++) {
+        J_data[i] = varargin_1_data[i];
       }
       for (i = 0; i < g_size; i++) {
-        Jf_data[i + b_loop_ub] = g_data[i];
+        J_data[i + input_sizes_idx_0] = g_data[i];
       }
     } else {
       i = gx->size[0] * gx->size[1];
       gx->size[0] = g_size;
       gx->size[1] = 1;
-      emxEnsureCapacity_real_T(sp, gx, i, &w_emlrtRTEI);
-      Jf_data = gx->data;
+      emxEnsureCapacity_real_T(sp, gx, i, &x_emlrtRTEI);
+      J_data = gx->data;
       for (i = 0; i < g_size; i++) {
-        Jf_data[i] = g_data[i];
+        J_data[i] = g_data[i];
       }
     }
     if ((C->size[0] != 0) && (C->size[1] != 0)) {
       st.site = &emlrtRSI;
-      b_st.site = &rc_emlrtRSI;
+      b_st.site = &sc_emlrtRSI;
       dynamic_size_checks(&b_st, C, x, C->size[1], x->size[0]);
       b_st.site = &xb_emlrtRSI;
       b_mtimes(&b_st, C, x, r);
-      Jf_data = r->data;
+      J_data = r->data;
       if ((r->size[0] != d->size[0]) &&
           ((r->size[0] != 1) && (d->size[0] != 1))) {
         emlrtDimSizeImpxCheckR2021b(r->size[0], d->size[0], &emlrtECI,
@@ -1770,13 +1808,13 @@ void costGaussGrad2(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
         i = varargin_1->size[0] * varargin_1->size[1];
         varargin_1->size[0] = r->size[0];
         varargin_1->size[1] = d->size[1];
-        emxEnsureCapacity_real_T(&st, varargin_1, i, &ab_emlrtRTEI);
+        emxEnsureCapacity_real_T(&st, varargin_1, i, &bb_emlrtRTEI);
         varargin_1_data = varargin_1->data;
         loop_ub = d->size[1];
         for (i = 0; i < loop_ub; i++) {
-          b_loop_ub = r->size[0];
-          for (i1 = 0; i1 < b_loop_ub; i1++) {
-            varargin_1_data[i1] = Jf_data[i1] - d_data[i1];
+          input_sizes_idx_1 = r->size[0];
+          for (i1 = 0; i1 < input_sizes_idx_1; i1++) {
+            varargin_1_data[i1] = J_data[i1] - d_data[i1];
           }
         }
       } else {
@@ -1786,30 +1824,42 @@ void costGaussGrad2(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
       }
       b_st.site = &bc_emlrtRSI;
       if ((varargin_1->size[0] != 0) && (varargin_1->size[1] != 0)) {
-        b_loop_ub = varargin_1->size[0];
+        input_sizes_idx_0 = varargin_1->size[0];
       } else {
-        b_loop_ub = 0;
+        input_sizes_idx_0 = 0;
       }
-      i = hx->size[0];
-      hx->size[0] = b_loop_ub + 2;
-      emxEnsureCapacity_real_T(&b_st, hx, i, &cb_emlrtRTEI);
-      Jf_data = hx->data;
-      for (i = 0; i < b_loop_ub; i++) {
-        Jf_data[i] = varargin_1_data[i];
+      input_sizes_idx_1 = h->size[0];
+      i = hx->size[0] * hx->size[1];
+      if ((varargin_1->size[0] != 0) && (varargin_1->size[1] != 0)) {
+        loop_ub = varargin_1->size[0];
+      } else {
+        loop_ub = 0;
       }
-      Jf_data[b_loop_ub] = h[0];
-      Jf_data[b_loop_ub + 1] = h[1];
+      hx->size[0] = loop_ub + h->size[0];
+      hx->size[1] = 1;
+      emxEnsureCapacity_real_T(&b_st, hx, i, &db_emlrtRTEI);
+      J_data = hx->data;
+      for (i = 0; i < input_sizes_idx_0; i++) {
+        J_data[i] = varargin_1_data[i];
+      }
+      for (i = 0; i < input_sizes_idx_1; i++) {
+        J_data[i + input_sizes_idx_0] = h_data[i];
+      }
     } else {
-      i = hx->size[0];
-      hx->size[0] = 2;
-      emxEnsureCapacity_real_T(sp, hx, i, &x_emlrtRTEI);
-      Jf_data = hx->data;
-      Jf_data[0] = h[0];
-      Jf_data[1] = h[1];
+      i = hx->size[0] * hx->size[1];
+      hx->size[0] = h->size[0];
+      hx->size[1] = 1;
+      emxEnsureCapacity_real_T(sp, hx, i, &y_emlrtRTEI);
+      J_data = hx->data;
+      loop_ub = h->size[0];
+      for (i = 0; i < loop_ub; i++) {
+        J_data[i] = h_data[i];
+      }
     }
   }
   emxFree_real_T(sp, &varargin_1);
   emxFree_real_T(sp, &r);
+  emxFree_real_T(sp, &h);
   /*      function f = funf(x,Ts,y0,ybar,m0,coeffT,Tmax,ratio,alpha) */
   /*          [f,~,~] = fun(x,Ts,y0,ybar,m0,coeffT,Tmax,ratio,alpha); */
   /*      end */
@@ -1828,7 +1878,7 @@ void e_binary_expand_op(const emlrtStack *sp, emlrtRSInfo in1,
                         real_T in4, real_T in5, const real_T in6[6],
                         const real_T in7[6], real_T in8, real_T in9,
                         real_T in10, real_T in11, real_T in12_data[],
-                        int32_T *in12_size, real_T in13[2])
+                        int32_T *in12_size, emxArray_real_T *in13)
 {
   emlrtStack st;
   emxArray_real_T *b_in2;
@@ -1844,14 +1894,14 @@ void e_binary_expand_op(const emlrtStack *sp, emlrtRSInfo in1,
   in3_data = in3->data;
   in2_data = in2->data;
   emlrtHeapReferenceStackEnterFcnR2012b((emlrtCTX)sp);
-  emxInit_real_T(sp, &b_in2, 1, &nc_emlrtRTEI);
+  emxInit_real_T(sp, &b_in2, 1, &rc_emlrtRTEI);
   i = b_in2->size[0];
   if (in3->size[0] == 1) {
     b_in2->size[0] = in2->size[0];
   } else {
     b_in2->size[0] = in3->size[0];
   }
-  emxEnsureCapacity_real_T(sp, b_in2, i, &nc_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, b_in2, i, &rc_emlrtRTEI);
   b_in2_data = b_in2->data;
   stride_0_0 = (in2->size[0] != 1);
   stride_1_0 = (in3->size[0] != 1);
@@ -1873,7 +1923,7 @@ void e_binary_expand_op(const emlrtStack *sp, emlrtRSInfo in1,
 void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
          const real_T b_y0[6], const real_T ybar[6], real_T m0, real_T coeffT,
          real_T Tmax, real_T ratio, real_T g_data[], int32_T *g_size,
-         real_T h[2])
+         emxArray_real_T *h)
 {
   static const int8_T iv[6] = {1, 1, 1, 1, 1, 0};
   emlrtStack b_st;
@@ -1886,6 +1936,7 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
   emlrtStack i_st;
   emlrtStack st;
   emxArray_boolean_T *b_t;
+  emxArray_real_T c_x;
   emxArray_real_T *b_r;
   emxArray_real_T *b_x;
   emxArray_real_T *b_y;
@@ -1911,8 +1962,10 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
   real_T *t_data;
   real_T *y_data;
   int32_T ii_size[2];
+  int32_T iv1[2];
   int32_T tmp_size[2];
   int32_T a_tmp;
+  int32_T b_loop_ub;
   int32_T i;
   int32_T i1;
   int32_T i2;
@@ -1992,8 +2045,8 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
     i3 = x->size[0] - 1;
   }
   ii_size[0] = 1;
-  a_tmp = i3 - i2;
-  ii_size[1] = a_tmp;
+  loop_ub = i3 - i2;
+  ii_size[1] = loop_ub;
   st.site = &j_emlrtRSI;
   indexShapeCheck(&st, x->size[0], ii_size);
   st.site = &j_emlrtRSI;
@@ -2004,11 +2057,11 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
         &c_st, &h_emlrtRTEI, "Coder:MATLAB:NonIntegerInput",
         "Coder:MATLAB:NonIntegerInput", 4, 12, MIN_int32_T, 12, MAX_int32_T);
   }
-  maxdimlen = a_tmp;
-  if (a_tmp < 1) {
+  maxdimlen = loop_ub;
+  if (loop_ub < 1) {
     maxdimlen = 1;
   }
-  maxdimlen = muIntScalarMax_sint32(a_tmp, maxdimlen);
+  maxdimlen = muIntScalarMax_sint32(loop_ub, maxdimlen);
   if (maxdimlen < 3) {
     emlrtErrorWithMessageIdR2018a(&st, &f_emlrtRTEI,
                                   "Coder:toolbox:reshape_emptyReshapeLimit",
@@ -2025,28 +2078,28 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
                                   "MATLAB:checkDimCommon:nonnegativeSize", 0);
   }
   idx = 3 * (int32_T)lu;
-  if (idx != a_tmp) {
+  if (idx != loop_ub) {
     emlrtErrorWithMessageIdR2018a(
         &st, &d_emlrtRTEI, "Coder:MATLAB:getReshapeDims_notSameNumel",
         "Coder:MATLAB:getReshapeDims_notSameNumel", 0);
   }
-  emxInit_real_T(&st, &qdir, 2, &qb_emlrtRTEI);
+  emxInit_real_T(&st, &qdir, 2, &rb_emlrtRTEI);
   i4 = qdir->size[0] * qdir->size[1];
   qdir->size[0] = 3;
   qdir->size[1] = (int32_T)lu;
-  emxEnsureCapacity_real_T(sp, qdir, i4, &qb_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, qdir, i4, &rb_emlrtRTEI);
   qdir_data = qdir->data;
   for (i4 = 0; i4 < idx; i4++) {
     qdir_data[i4] = x_data[i2 + i4];
   }
   st.site = &k_emlrtRSI;
-  emxInit_real_T(&st, &t, 2, &rb_emlrtRTEI);
+  emxInit_real_T(&st, &t, 2, &sb_emlrtRTEI);
   t_data = t->data;
   if (muDoubleScalarIsNaN(Ts) || muDoubleScalarIsNaN(tmax)) {
     i4 = t->size[0] * t->size[1];
     t->size[0] = 1;
     t->size[1] = 1;
-    emxEnsureCapacity_real_T(&st, t, i4, &rb_emlrtRTEI);
+    emxEnsureCapacity_real_T(&st, t, i4, &sb_emlrtRTEI);
     t_data = t->data;
     t_data[0] = rtNaN;
   } else if ((Ts == 0.0) || ((tmax > 0.0) && (Ts < 0.0)) ||
@@ -2057,14 +2110,14 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
     i4 = t->size[0] * t->size[1];
     t->size[0] = 1;
     t->size[1] = 1;
-    emxEnsureCapacity_real_T(&st, t, i4, &rb_emlrtRTEI);
+    emxEnsureCapacity_real_T(&st, t, i4, &sb_emlrtRTEI);
     t_data = t->data;
     t_data[0] = rtNaN;
   } else if (muDoubleScalarIsInf(Ts)) {
     i4 = t->size[0] * t->size[1];
     t->size[0] = 1;
     t->size[1] = 1;
-    emxEnsureCapacity_real_T(&st, t, i4, &rb_emlrtRTEI);
+    emxEnsureCapacity_real_T(&st, t, i4, &sb_emlrtRTEI);
     t_data = t->data;
     t_data[0] = 0.0;
   } else if (muDoubleScalarFloor(Ts) == Ts) {
@@ -2072,7 +2125,7 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
     t->size[0] = 1;
     idx = (int32_T)(tmax / Ts);
     t->size[1] = idx + 1;
-    emxEnsureCapacity_real_T(&st, t, i4, &rb_emlrtRTEI);
+    emxEnsureCapacity_real_T(&st, t, i4, &sb_emlrtRTEI);
     t_data = t->data;
     for (i4 = 0; i4 <= idx; i4++) {
       t_data[i4] = Ts * (real_T)i4;
@@ -2082,19 +2135,19 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
     eml_float_colon(&b_st, Ts, tmax, t);
     t_data = t->data;
   }
-  emxInit_boolean_T(&st, &b_t, &sb_emlrtRTEI);
+  emxInit_boolean_T(&st, &b_t, &tb_emlrtRTEI);
   /*  Time vector */
   st.site = &l_emlrtRSI;
   i4 = b_t->size[0] * b_t->size[1];
   b_t->size[0] = 1;
   b_t->size[1] = t->size[1];
-  emxEnsureCapacity_boolean_T(&st, b_t, i4, &sb_emlrtRTEI);
+  emxEnsureCapacity_boolean_T(&st, b_t, i4, &tb_emlrtRTEI);
   b_t_data = b_t->data;
   idx = t->size[1];
   for (i4 = 0; i4 < idx; i4++) {
     b_t_data[i4] = (t_data[i4] > x_data[x->size[0] - 1]);
   }
-  emxInit_real_T(&st, &y, 2, &tb_emlrtRTEI);
+  emxInit_real_T(&st, &y, 2, &ub_emlrtRTEI);
   b_st.site = &ab_emlrtRSI;
   eml_find(&b_st, b_t, (int32_T *)&maxdimlen, ii_size);
   st.site = &m_emlrtRSI;
@@ -2121,7 +2174,7 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
   ku = muDoubleScalarTan(x0[2] / 2.0);
   i4 = y->size[0] * y->size[1];
   y->size[0] = 6;
-  emxEnsureCapacity_real_T(sp, y, i4, &tb_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, y, i4, &ub_emlrtRTEI);
   emxFree_boolean_T(sp, &b_t);
   if ((real_T)t->size[1] + 1.0 != t->size[1] + 1) {
     emlrtIntegerCheckR2012b((real_T)t->size[1] + 1.0, &c_emlrtDCI,
@@ -2129,7 +2182,7 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
   }
   i4 = y->size[0] * y->size[1];
   y->size[1] = t->size[1] + 1;
-  emxEnsureCapacity_real_T(sp, y, i4, &tb_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, y, i4, &ub_emlrtRTEI);
   y_data = y->data;
   if ((real_T)t->size[1] + 1.0 != t->size[1] + 1) {
     emlrtIntegerCheckR2012b((real_T)t->size[1] + 1.0, &d_emlrtDCI,
@@ -2150,17 +2203,17 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
   /*  Set initial conditions */
   m = m0;
   for (k = 0; k < 6; k++) {
-    y_tmp = ybar[k];
-    x0[k] = (real_T)iv[k] / (y_tmp * y_tmp);
+    ku = ybar[k];
+    x0[k] = (real_T)iv[k] / (ku * ku);
   }
   diag(x0, Q);
   /*  R = diag([1 1 1]/umax^2)*0.1; */
   i4 = t->size[1];
   if (t->size[1] - 1 >= 0) {
     i5 = i3;
-    loop_ub = a_tmp;
+    b_loop_ub = loop_ub;
   }
-  emxInit_real_T(sp, &b_x, 1, &vb_emlrtRTEI);
+  emxInit_real_T(sp, &b_x, 1, &wb_emlrtRTEI);
   for (k = 0; k < i4; k++) {
     real_T a[3];
     real_T c_y;
@@ -2185,9 +2238,9 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
       real_T absxk;
       i3 = b_x->size[0];
       b_x->size[0] = i5 - i2;
-      emxEnsureCapacity_real_T(sp, b_x, i3, &vb_emlrtRTEI);
+      emxEnsureCapacity_real_T(sp, b_x, i3, &wb_emlrtRTEI);
       r_data = b_x->data;
-      for (i3 = 0; i3 < loop_ub; i3++) {
+      for (i3 = 0; i3 < b_loop_ub; i3++) {
         r_data[i3] = x_data[i2 + i3];
       }
       absxk = muDoubleScalarAbs(r_data[idx + 3 * ((int32_T)ku - 1)]);
@@ -2240,16 +2293,15 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
       emlrtBreakCheckR2012b((emlrtCTX)sp);
     }
   }
-  emxFree_real_T(sp, &b_x);
   emxFree_real_T(sp, &qdir);
-  emxInit_real_T(sp, &b_y, 2, &cc_emlrtRTEI);
+  emxInit_real_T(sp, &b_y, 2, &dc_emlrtRTEI);
   st.site = &p_emlrtRSI;
   b_st.site = &hb_emlrtRSI;
   idx = y->size[1];
   i = b_y->size[0] * b_y->size[1];
   b_y->size[0] = 1;
   b_y->size[1] = y->size[1];
-  emxEnsureCapacity_real_T(&b_st, b_y, i, &ub_emlrtRTEI);
+  emxEnsureCapacity_real_T(&b_st, b_y, i, &vb_emlrtRTEI);
   qdir_data = b_y->data;
   for (i = 0; i < idx; i++) {
     ku = y_data[6 * i + 1];
@@ -2261,7 +2313,7 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
   i = t->size[0] * t->size[1];
   t->size[0] = 1;
   t->size[1] = y->size[1];
-  emxEnsureCapacity_real_T(&b_st, t, i, &wb_emlrtRTEI);
+  emxEnsureCapacity_real_T(&b_st, t, i, &xb_emlrtRTEI);
   t_data = t->data;
   for (i = 0; i < idx; i++) {
     ku = y_data[6 * i + 2];
@@ -2272,27 +2324,27 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
     emlrtDimSizeImpxCheckR2021b(b_y->size[1], t->size[1], &g_emlrtECI,
                                 (emlrtCTX)sp);
   }
-  emxInit_real_T(sp, &d_y, 2, &xb_emlrtRTEI);
+  emxInit_real_T(sp, &d_y, 2, &yb_emlrtRTEI);
   idx = y->size[1];
   i = d_y->size[0] * d_y->size[1];
   d_y->size[0] = 1;
   d_y->size[1] = y->size[1];
-  emxEnsureCapacity_real_T(sp, d_y, i, &xb_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, d_y, i, &yb_emlrtRTEI);
   r_data = d_y->data;
   for (i = 0; i < idx; i++) {
     r_data[i] = y_data[6 * i + 2];
   }
-  emxInit_real_T(sp, &e_y, 2, &yb_emlrtRTEI);
+  emxInit_real_T(sp, &e_y, 2, &ac_emlrtRTEI);
   idx = y->size[1];
   i = e_y->size[0] * e_y->size[1];
   e_y->size[0] = 1;
   e_y->size[1] = y->size[1];
-  emxEnsureCapacity_real_T(sp, e_y, i, &yb_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, e_y, i, &ac_emlrtRTEI);
   qdir_data = e_y->data;
   for (i = 0; i < idx; i++) {
     qdir_data[i] = y_data[6 * i + 1];
   }
-  emxInit_real_T(sp, &r, 2, &fc_emlrtRTEI);
+  emxInit_real_T(sp, &r, 2, &hc_emlrtRTEI);
   st.site = &p_emlrtRSI;
   b_atan2(&st, d_y, e_y, r);
   emxFree_real_T(sp, &e_y);
@@ -2304,7 +2356,7 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
     idx = b_y->size[1] - 1;
     i = b_y->size[0] * b_y->size[1];
     b_y->size[0] = 1;
-    emxEnsureCapacity_real_T(sp, b_y, i, &ac_emlrtRTEI);
+    emxEnsureCapacity_real_T(sp, b_y, i, &bc_emlrtRTEI);
     qdir_data = b_y->data;
     for (i = 0; i <= idx; i++) {
       qdir_data[i] += t_data[i];
@@ -2312,7 +2364,6 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
   } else {
     plus(sp, b_y, t);
   }
-  emxFree_real_T(sp, &t);
   st.site = &p_emlrtRSI;
   b_sqrt(&st, b_y);
   if (y->size[1] == r->size[1]) {
@@ -2320,7 +2371,7 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
     i = r->size[0] * r->size[1];
     r->size[0] = 1;
     r->size[1] = y->size[1];
-    emxEnsureCapacity_real_T(sp, r, i, &bc_emlrtRTEI);
+    emxEnsureCapacity_real_T(sp, r, i, &cc_emlrtRTEI);
     r_data = r->data;
     for (i = 0; i < idx; i++) {
       r_data[i] = y_data[6 * i + 5] - r_data[i];
@@ -2341,7 +2392,7 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
     idx = b_y->size[1] - 1;
     i = b_y->size[0] * b_y->size[1];
     b_y->size[0] = 1;
-    emxEnsureCapacity_real_T(&st, b_y, i, &cc_emlrtRTEI);
+    emxEnsureCapacity_real_T(&st, b_y, i, &dc_emlrtRTEI);
     qdir_data = b_y->data;
     for (i = 0; i <= idx; i++) {
       qdir_data[i] = qdir_data[i] * r_data[i] + 1.0;
@@ -2357,7 +2408,7 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
   i = d_y->size[0] * d_y->size[1];
   d_y->size[0] = 1;
   d_y->size[1] = y->size[1];
-  emxEnsureCapacity_real_T(&b_st, d_y, i, &dc_emlrtRTEI);
+  emxEnsureCapacity_real_T(&b_st, d_y, i, &ec_emlrtRTEI);
   r_data = d_y->data;
   for (i = 0; i < idx; i++) {
     r_data[i] = y_data[6 * i];
@@ -2365,12 +2416,12 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
   c_st.site = &wb_emlrtRSI;
   assertCompatibleDims(&c_st, d_y, b_y);
   emxFree_real_T(sp, &d_y);
-  emxInit_real_T(sp, &b_r, 1, &ec_emlrtRTEI);
+  emxInit_real_T(sp, &b_r, 1, &fc_emlrtRTEI);
   if (y->size[1] == b_y->size[1]) {
     idx = y->size[1];
     i = b_r->size[0];
     b_r->size[0] = y->size[1];
-    emxEnsureCapacity_real_T(sp, b_r, i, &ec_emlrtRTEI);
+    emxEnsureCapacity_real_T(sp, b_r, i, &fc_emlrtRTEI);
     r_data = b_r->data;
     for (i = 0; i < idx; i++) {
       r_data[i] = y_data[6 * i] / qdir_data[i];
@@ -2411,8 +2462,8 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
                                   (emlrtCTX)sp);
   }
   for (k = 0; k < 5; k++) {
-    y_tmp = y_data[k + 6 * (y->size[1] - 1)] - ybar[k];
-    b[k] = y_tmp * y_tmp;
+    ku = y_data[k + 6 * (y->size[1] - 1)] - ybar[k];
+    b[k] = ku * ku;
   }
   emxFree_real_T(sp, &y);
   st.site = &q_emlrtRSI;
@@ -2426,11 +2477,11 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
     maxdimlen = 0;
   }
   for (i = 0; i < 5; i++) {
-    y_tmp = 0.0;
+    ku = 0.0;
     for (i1 = 0; i1 < 5; i1++) {
-      y_tmp += Q[i + 6 * i1] * b[i1];
+      ku += Q[i + 6 * i1] * b[i1];
     }
-    tmp_data[i] = y_tmp;
+    tmp_data[i] = ku;
   }
   *g_size = input_sizes_idx_0 + 5;
   idx = input_sizes_idx_0;
@@ -2454,12 +2505,12 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
   maxdimlen = b_r->size[0];
   if (b_r->size[0] <= 2) {
     if (b_r->size[0] == 1) {
-      ku = r_data[0];
+      y_tmp = r_data[0];
     } else if ((r_data[0] > r_data[1]) || (muDoubleScalarIsNaN(r_data[0]) &&
                                            (!muDoubleScalarIsNaN(r_data[1])))) {
-      ku = r_data[1];
+      y_tmp = r_data[1];
     } else {
-      ku = r_data[0];
+      y_tmp = r_data[0];
     }
   } else {
     g_st.site = &jc_emlrtRSI;
@@ -2485,10 +2536,10 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
       }
     }
     if (idx == 0) {
-      ku = r_data[0];
+      y_tmp = r_data[0];
     } else {
       g_st.site = &ic_emlrtRSI;
-      ku = r_data[idx - 1];
+      y_tmp = r_data[idx - 1];
       a_tmp = idx + 1;
       h_st.site = &lc_emlrtRSI;
       if ((idx + 1 <= b_r->size[0]) && (b_r->size[0] > 2147483646)) {
@@ -2496,16 +2547,41 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
         check_forloop_overflow_error(&i_st);
       }
       for (k = a_tmp; k <= maxdimlen; k++) {
-        y_tmp = r_data[k - 1];
-        if (ku > y_tmp) {
-          ku = y_tmp;
+        ku = r_data[k - 1];
+        if (y_tmp > ku) {
+          y_tmp = ku;
         }
       }
     }
   }
   emxFree_real_T(&f_st, &b_r);
-  h[0] = ku - 6378.1;
-  h[1] = m - 1100.0;
+  i = b_x->size[0];
+  b_x->size[0] = loop_ub;
+  emxEnsureCapacity_real_T(sp, b_x, i, &wb_emlrtRTEI);
+  r_data = b_x->data;
+  for (i = 0; i < loop_ub; i++) {
+    r_data[i] = x_data[i2 + i];
+  }
+  c_x = *b_x;
+  iv1[0] = 3;
+  iv1[1] = (int32_T)lu;
+  c_x.size = &iv1[0];
+  c_x.numDimensions = 2;
+  st.site = &r_emlrtRSI;
+  vecnorm(&st, &c_x, t);
+  t_data = t->data;
+  i = h->size[0];
+  h->size[0] = t->size[1] + 2;
+  emxEnsureCapacity_real_T(sp, h, i, &gc_emlrtRTEI);
+  r_data = h->data;
+  r_data[0] = y_tmp - 6380.0;
+  r_data[1] = m - 1100.0;
+  loop_ub = t->size[1];
+  emxFree_real_T(sp, &b_x);
+  for (i = 0; i < loop_ub; i++) {
+    r_data[i + 2] = 1.0 - t_data[i];
+  }
+  emxFree_real_T(sp, &t);
   emlrtHeapReferenceStackLeaveFcnR2012b((emlrtCTX)sp);
 }
 

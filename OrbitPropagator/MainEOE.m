@@ -6,9 +6,9 @@ clc
 % Forward Euler: x(k+1) = x(k) + Ts*xdot(k)
 Ts = 100; % Discrete time step
 
-tmax = 5e4; % Maximum time
-ratio = 5; % Per quanto tempo mantiene l'input
-umax = 1e-3; % Maximum input value
+tmax = 1e4; % Maximum time
+ratio = 1; % Per quanto tempo mantiene l'input
+umax = 1; % Maximum input value
 
 t = 0:Ts:tmax; % Time vector
 y = zeros(6,length(t)); % State vector initialization
@@ -28,7 +28,7 @@ end
 
 % orb_in = struct('a', 1e4, 'e', 0.2, 'i', pi/4, 'OM', pi/2, 'om', pi/2, 'theta', 0);
 % orb_end = struct('a', 1.5e4, 'e', 0.25, 'i', pi/3, 'OM', pi/3, 'om', pi/4, 'theta', 0);
-orb_in = struct('a', 8000, 'e', 0.2, 'i', pi/4, 'OM', pi/2, 'om', pi/2, 'theta', 0);
+orb_in = struct('a', 10000, 'e', 0.2, 'i', pi/4, 'OM', pi/2, 'om', pi/2, 'theta', 0);
 orb_end = struct('a', 36000, 'e', 0.7, 'i', pi/3, 'OM', pi/3, 'om', pi/4, 'theta', 0);
 
 
@@ -69,7 +69,7 @@ gaussFun = @(u) costGauss_mex(tmax,Ts,y0,reshape(u(2:end),3,(length(t)-1)/ratio+
 opt.method = "Gauss-Newton";
 opt.method = "BFGS";
 opt.method = "Steepest";
-opt.gradmethod = "FD";
+opt.gradmethod = "CD";
 
 uoptlin = mySQP(gaussFun,u,[],[], -[eye(length(u)); -eye(length(u))],-[[2*pi;umax+0*u(2:end)];[0;umax+0*u(2:end)]],0,1+0*((length(t)-1)/ratio+1),opt);
 

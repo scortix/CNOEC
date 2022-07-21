@@ -52,7 +52,7 @@ emlrtRSInfo nb_emlrtRSI = {
     "internal\\applyScalarFunctionInPlace.m" /* pathName */
 };
 
-emlrtRSInfo rc_emlrtRSI =
+emlrtRSInfo sc_emlrtRSI =
     {
         69,                  /* lineNo */
         "eml_mtimes_helper", /* fcnName */
@@ -85,7 +85,7 @@ emlrtRTEInfo o_emlrtRTEI =
 };
 
 emlrtRTEInfo
-    nc_emlrtRTEI =
+    rc_emlrtRTEI =
         {
             30,           /* lineNo */
             30,           /* colNo */

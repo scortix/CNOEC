@@ -49,6 +49,7 @@ build $builddir\diag.obj : cc $root\diag.c
 build $builddir\atan2.obj : cc $root\atan2.c
 build $builddir\assertCompatibleDims.obj : cc $root\assertCompatibleDims.c
 build $builddir\mtimes.obj : cc $root\mtimes.c
+build $builddir\vecnorm.obj : cc $root\vecnorm.c
 build $builddir\mygradcalc.obj : cc $root\mygradcalc.c
 build $builddir\eye.obj : cc $root\eye.c
 build $builddir\eml_mtimes_helper.obj : cc $root\eml_mtimes_helper.c
@@ -63,4 +64,4 @@ build $builddir\_coder_costGaussGrad2_info.obj : cc $root\interface\_coder_costG
 build $builddir\c_mexapi_version.obj : cc $matlabdir\extern\version\c_mexapi_version.c
 
 # Link
-build $root\costGaussGrad2_mex.mexw64 : link $builddir\costGaussGrad2_data.obj $builddir\rt_nonfinite.obj $builddir\costGaussGrad2_initialize.obj $builddir\costGaussGrad2_terminate.obj $builddir\costGaussGrad2.obj $builddir\indexShapeCheck.obj $builddir\colon.obj $builddir\find.obj $builddir\EOE2COE.obj $builddir\diag.obj $builddir\atan2.obj $builddir\assertCompatibleDims.obj $builddir\mtimes.obj $builddir\mygradcalc.obj $builddir\eye.obj $builddir\eml_mtimes_helper.obj $builddir\_coder_costGaussGrad2_api.obj $builddir\_coder_costGaussGrad2_mex.obj $builddir\EOEDerivatives.obj $builddir\eml_int_forloop_overflow_check.obj $builddir\sqrt.obj $builddir\cos.obj $builddir\costGaussGrad2_emxutil.obj $builddir\_coder_costGaussGrad2_info.obj $builddir\c_mexapi_version.obj 
+build $root\costGaussGrad2_mex.mexw64 : link $builddir\costGaussGrad2_data.obj $builddir\rt_nonfinite.obj $builddir\costGaussGrad2_initialize.obj $builddir\costGaussGrad2_terminate.obj $builddir\costGaussGrad2.obj $builddir\indexShapeCheck.obj $builddir\colon.obj $builddir\find.obj $builddir\EOE2COE.obj $builddir\diag.obj $builddir\atan2.obj $builddir\assertCompatibleDims.obj $builddir\mtimes.obj $builddir\vecnorm.obj $builddir\mygradcalc.obj $builddir\eye.obj $builddir\eml_mtimes_helper.obj $builddir\_coder_costGaussGrad2_api.obj $builddir\_coder_costGaussGrad2_mex.obj $builddir\EOEDerivatives.obj $builddir\eml_int_forloop_overflow_check.obj $builddir\sqrt.obj $builddir\cos.obj $builddir\costGaussGrad2_emxutil.obj $builddir\_coder_costGaussGrad2_info.obj $builddir\c_mexapi_version.obj 

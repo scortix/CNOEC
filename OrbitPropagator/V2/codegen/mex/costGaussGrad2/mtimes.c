@@ -34,7 +34,7 @@ static emlrtRSInfo ac_emlrtRSI =
         "blas\\mtimes.m" /* pathName */
 };
 
-static emlrtRTEInfo ic_emlrtRTEI =
+static emlrtRTEInfo kc_emlrtRTEI =
     {
         218,      /* lineNo */
         20,       /* colNo */
@@ -43,7 +43,7 @@ static emlrtRTEInfo ic_emlrtRTEI =
         "blas\\mtimes.m" /* pName */
 };
 
-static emlrtRTEInfo rc_emlrtRTEI =
+static emlrtRTEInfo yc_emlrtRTEI =
     {
         140,      /* lineNo */
         5,        /* colNo */
@@ -82,7 +82,7 @@ void b_mtimes(const emlrtStack *sp, const emxArray_real_T *A,
     int32_T loop_ub;
     i = C->size[0];
     C->size[0] = A->size[0];
-    emxEnsureCapacity_real_T(sp, C, i, &rc_emlrtRTEI);
+    emxEnsureCapacity_real_T(sp, C, i, &yc_emlrtRTEI);
     C_data = C->data;
     loop_ub = A->size[0];
     for (i = 0; i < loop_ub; i++) {
@@ -103,7 +103,7 @@ void b_mtimes(const emlrtStack *sp, const emxArray_real_T *A,
     ldc_t = (ptrdiff_t)A->size[0];
     i = C->size[0];
     C->size[0] = A->size[0];
-    emxEnsureCapacity_real_T(&b_st, C, i, &ic_emlrtRTEI);
+    emxEnsureCapacity_real_T(&b_st, C, i, &kc_emlrtRTEI);
     C_data = C->data;
     dgemm(&TRANSA1, &TRANSB1, &m_t, &n_t, &k_t, &alpha1, &A_data[0], &lda_t,
           &B_data[0], &ldb_t, &beta1, &C_data[0], &ldc_t);

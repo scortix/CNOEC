@@ -71,7 +71,11 @@ while true
 
     %% Compute all gradients (for BFGS only at the first iteration)
     if ~strcmp(options.method,'BFGS') || niter == 1
-        [~,fxk(niter),gxk(:,niter),hxk(:,niter),gradfxk,gradgxk,gradhxk,~,~,~,gradFxk] = fun(xk(:,niter),true);
+        if strcmp(options.method,'Gauss-Newton')
+            [~,fxk(niter),gxk(:,niter),hxk(:,niter),gradfxk,gradgxk,gradhxk,~,~,~,gradFxk] = fun(xk(:,niter),true);
+        else
+            [~,fxk(niter),gxk(:,niter),hxk(:,niter),gradfxk,gradgxk,gradhxk] = fun(xk(:,niter),true);
+        end
         gradlxk = gradfxk-gradgxk*lam(:,niter)-gradhxk*mu(:,niter);
     end
 
@@ -180,13 +184,13 @@ while true
 
     %% Compute updated cost function and constraints
     if ~strcmp(options.method, 'BFGS')
-        [~,fxk(niter+1),gxk(:,niter+1),hxk(:,niter+1),~,~,~,~,~,~,~] = fun(xk(:,niter+1),false);
+        [~,fxk(niter+1),gxk(:,niter+1),hxk(:,niter+1)] = fun(xk(:,niter+1),false);
     
 
     %% For BFGS only, update Hk matrix
     else
         gradlxkup = gradfxk-gradgxk*lam(:,niter+1)-gradhxk*mu(:,niter+1);
-        [~,fxk(niter+1),gxk(:,niter+1),hxk(:,niter+1),gradfxk,gradgxk,gradhxk,~,~,~,~] = fun(xk(:,niter+1),true);
+        [~,fxk(niter+1),gxk(:,niter+1),hxk(:,niter+1),gradfxk,gradgxk,gradhxk] = fun(xk(:,niter+1),true);
         gradlxk = gradfxk-gradgxk*lam(:,niter+1)-gradhxk*mu(:,niter+1);
         
         y = gradlxk-gradlxkup;
@@ -242,6 +246,12 @@ fxstar = fxk(niter);
 
 function res = T_st(x,sigma,tau,fun)
     [~,f,g,h,~,~,~,~,~] = fun(x,false);
+    if isempty(g)
+        g = 0; sigma = 0;
+    end
+    if isempty(h)
+        h = 0; tau = 0;
+    end
     res = f + sigma'*abs(g) - tau'*(h.*(h<0));
 end
 end

@@ -27,7 +27,6 @@ void mygradcalc(const emlrtStack *sp, real_T fun_workspace_tmax,
                 const real_T fun_workspace_ybar[6], real_T fun_workspace_m0,
                 real_T fun_workspace_coeffT, real_T fun_workspace_Tmax,
                 real_T fun_workspace_ratio, const emxArray_real_T *x,
-                const real_T fx_data[], int32_T fx_size,
-                emxArray_real_T *gradfx);
+                const emxArray_real_T *fx, emxArray_real_T *gradfx);
 
 /* End of code generation (mygradcalc.h) */

@@ -46,14 +46,13 @@ build $builddir\colon.obj : cc $root\colon.c
 build $builddir\find.obj : cc $root\find.c
 build $builddir\EOE2COE.obj : cc $root\EOE2COE.c
 build $builddir\diag.obj : cc $root\diag.c
-build $builddir\norm.obj : cc $root\norm.c
 build $builddir\atan2.obj : cc $root\atan2.c
 build $builddir\assertCompatibleDims.obj : cc $root\assertCompatibleDims.c
-build $builddir\mtimes.obj : cc $root\mtimes.c
 build $builddir\vecnorm.obj : cc $root\vecnorm.c
 build $builddir\mygradcalc.obj : cc $root\mygradcalc.c
 build $builddir\eye.obj : cc $root\eye.c
 build $builddir\eml_mtimes_helper.obj : cc $root\eml_mtimes_helper.c
+build $builddir\mtimes.obj : cc $root\mtimes.c
 build $builddir\_coder_costGaussGrad_api.obj : cc $root\interface\_coder_costGaussGrad_api.c
 build $builddir\_coder_costGaussGrad_mex.obj : cc $root\interface\_coder_costGaussGrad_mex.c
 build $builddir\EOEDerivatives.obj : cc $root\EOEDerivatives.c
@@ -65,4 +64,4 @@ build $builddir\_coder_costGaussGrad_info.obj : cc $root\interface\_coder_costGa
 build $builddir\c_mexapi_version.obj : cc $matlabdir\extern\version\c_mexapi_version.c
 
 # Link
-build $root\costGaussGrad_mex.mexw64 : link $builddir\costGaussGrad_data.obj $builddir\rt_nonfinite.obj $builddir\costGaussGrad_initialize.obj $builddir\costGaussGrad_terminate.obj $builddir\costGaussGrad.obj $builddir\indexShapeCheck.obj $builddir\colon.obj $builddir\find.obj $builddir\EOE2COE.obj $builddir\diag.obj $builddir\norm.obj $builddir\atan2.obj $builddir\assertCompatibleDims.obj $builddir\mtimes.obj $builddir\vecnorm.obj $builddir\mygradcalc.obj $builddir\eye.obj $builddir\eml_mtimes_helper.obj $builddir\_coder_costGaussGrad_api.obj $builddir\_coder_costGaussGrad_mex.obj $builddir\EOEDerivatives.obj $builddir\eml_int_forloop_overflow_check.obj $builddir\sqrt.obj $builddir\cos.obj $builddir\costGaussGrad_emxutil.obj $builddir\_coder_costGaussGrad_info.obj $builddir\c_mexapi_version.obj 
+build $root\costGaussGrad_mex.mexw64 : link $builddir\costGaussGrad_data.obj $builddir\rt_nonfinite.obj $builddir\costGaussGrad_initialize.obj $builddir\costGaussGrad_terminate.obj $builddir\costGaussGrad.obj $builddir\indexShapeCheck.obj $builddir\colon.obj $builddir\find.obj $builddir\EOE2COE.obj $builddir\diag.obj $builddir\atan2.obj $builddir\assertCompatibleDims.obj $builddir\vecnorm.obj $builddir\mygradcalc.obj $builddir\eye.obj $builddir\eml_mtimes_helper.obj $builddir\mtimes.obj $builddir\_coder_costGaussGrad_api.obj $builddir\_coder_costGaussGrad_mex.obj $builddir\EOEDerivatives.obj $builddir\eml_int_forloop_overflow_check.obj $builddir\sqrt.obj $builddir\cos.obj $builddir\costGaussGrad_emxutil.obj $builddir\_coder_costGaussGrad_info.obj $builddir\c_mexapi_version.obj 

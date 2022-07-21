@@ -18,7 +18,7 @@
 #include "mwmathutil.h"
 
 /* Variable Definitions */
-static emlrtRSInfo vb_emlrtRSI = {
+static emlrtRSInfo ub_emlrtRSI = {
     11,                                                           /* lineNo */
     "cos",                                                        /* fcnName */
     "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\elfun\\cos.m" /* pathName */
@@ -40,11 +40,11 @@ void b_cos(const emlrtStack *sp, emxArray_real_T *x)
   c_st.prev = &b_st;
   c_st.tls = b_st.tls;
   x_data = x->data;
-  st.site = &vb_emlrtRSI;
+  st.site = &ub_emlrtRSI;
   nx = x->size[1];
-  b_st.site = &ob_emlrtRSI;
+  b_st.site = &nb_emlrtRSI;
   if (x->size[1] > 2147483646) {
-    c_st.site = &ab_emlrtRSI;
+    c_st.site = &y_emlrtRSI;
     check_forloop_overflow_error(&c_st);
   }
   for (k = 0; k < nx; k++) {

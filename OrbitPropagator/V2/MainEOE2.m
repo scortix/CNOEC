@@ -6,7 +6,7 @@ clc
 % Forward Euler: x(k+1) = x(k) + Ts*xdot(k)
 Ts = 100; % Discrete time step
 tmax = 5e4; % Maximum time
-ratio = 10; % Per quanto tempo mantiene l'input
+ratio = 1; % Per quanto tempo mantiene l'input
 Tmax = 1;
 Isp = 1800;
 g0 = 9.81;
@@ -16,7 +16,7 @@ y = zeros(6,length(t)); % State vector initialization
 lu = (length(t)-1)/ratio+1;
 u = ones(3,lu)/sqrt(3); % Input vector initialization 
 tf = 6e4; % Initial guess for final time
-u = [180/180*pi;0.01*ones(lu,1);reshape(u,numel(u),1);tf]; % Initial guess vector
+% u = [180/180*pi;0.01*ones(lu,1);reshape(u,numel(u),1);tf]; % Initial guess vector
 alpha = 1; % 1 for optimal time
 
 useInit = false;
@@ -33,6 +33,15 @@ orb_end = struct('a', 36000, 'e', 0.7, 'i', pi/3, 'OM', pi/3, 'om', pi/4, 'theta
 y0 = COE2EOE(orb_in); % Initial condition conversion to EOE state
 y(:,1) = y0; % Set first state vector equal to initial condition
 ybar = COE2EOE(orb_end); % Desired state vector
+
+
+
+
+
+costODE(tmax,Ts,y0,ybar,0,m0,Tmax/g0/Isp,Tmax,ones(lu,1),u,ratio,1)
+
+return
+
 
 %% Initial guess computation
 myoptimset;
@@ -55,26 +64,26 @@ d = [0;
     -tmax];
 % uoptlinInit = mySQP(gaussFun,u,[],[],C,d,5,1+0*(lu),opt);
 
-% fun = @(x,computeGrad) costGaussGrad2_mex(x,tmax,Ts,y0,ybar,m0,Tmax/g0/Isp,Tmax,ratio,0,computeGrad,[],[],C,d);
-% uoptlinInit = mySQPGrad(fun,u,opt);
-uoptlinInit = u;
+fun = @(x,computeGrad) costGaussGrad2_mex(x,tmax,Ts,y0,ybar,m0,Tmax/g0/Isp,Tmax,ratio,0,computeGrad,[],[],C,d);
+uoptlinInit = mySQPGrad(fun,u,opt);
+% uoptlinInit = u;
 
 %% Optimization routine
 
 % gaussFun = @(u) costGauss(u(end),Ts,y0,ybar,u(1),m0,Tmax/g0/Isp,Tmax,u(2:1+lu),reshape(u(2+lu:end-1),3,lu),ratio,alpha);
 myoptimset;
-% opt.method = "Gauss-Newton";
+opt.method = "Gauss-Newton";
 % opt.method = "Steepest";
-opt.method = "BFGS";
+% opt.method = "BFGS";
 opt.nitermax = 500;
-opt.tolconstr = 1e-3;
+opt.tolconstr = 5e-6;
 % uoptlin2 = mySQP(gaussFun,uoptlin,[],[],C,d,5,1+0*(lu),opt);
 alpha = [0; 0.33; 0.66; 0.999];
 alphaCell = cell(length(alpha),4);
 uoptlinInit(end) = 5e4;
 for k = 4:length(alpha)
     alpha(k) = 1;
-    fun = @(x,computeGrad) costGaussGrad_mex(x,tmax,Ts,y0,ybar,m0,Tmax/g0/Isp,Tmax,ratio,alpha(k),computeGrad,[],[],C,d);
+    fun = @(x,computeGrad) costGaussGrad(x,tmax,Ts,y0,ybar,m0,Tmax/g0/Isp,Tmax,ratio,alpha(k),computeGrad,[],[],C,d);
     [uoptlin,cost,~,~,useq] = mySQPGrad(fun,uoptlinInit,opt);
     tf = uoptlin(end);
     dm = (cost/1e4-tf*alpha(k)/1e5)/(1-alpha(k))*m0;

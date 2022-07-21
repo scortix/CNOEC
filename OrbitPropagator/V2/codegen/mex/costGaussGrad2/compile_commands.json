@@ -79,6 +79,12 @@
   },
   {
     "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGaussGrad2",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DHAVE_LAPACK_CONFIG_H -DLAPACK_COMPLEX_STRUCTURE -DMW_HAVE_LAPACK_DECLS -DMODEL=costGaussGrad2_mex   vecnorm.c /Fobuild\\win64\\vecnorm.obj",
+    "file": "vecnorm.c",
+    "output": "build/win64/vecnorm.obj"
+  },
+  {
+    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGaussGrad2",
     "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DHAVE_LAPACK_CONFIG_H -DLAPACK_COMPLEX_STRUCTURE -DMW_HAVE_LAPACK_DECLS -DMODEL=costGaussGrad2_mex   mygradcalc.c /Fobuild\\win64\\mygradcalc.obj",
     "file": "mygradcalc.c",
     "output": "build/win64/mygradcalc.obj"

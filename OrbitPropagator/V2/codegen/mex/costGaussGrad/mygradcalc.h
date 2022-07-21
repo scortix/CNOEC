@@ -22,8 +22,8 @@
 #include <string.h>
 
 /* Function Declarations */
-void mygradcalc(const emlrtStack *sp, real_T fun_workspace_Ts,
-                const real_T fun_workspace_y0[6],
+void mygradcalc(const emlrtStack *sp, real_T fun_workspace_tmax,
+                real_T fun_workspace_Ts, const real_T fun_workspace_y0[6],
                 const real_T fun_workspace_ybar[6], real_T fun_workspace_m0,
                 real_T fun_workspace_coeffT, real_T fun_workspace_Tmax,
                 real_T fun_workspace_ratio, real_T fun_workspace_alpha,

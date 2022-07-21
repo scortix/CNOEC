@@ -80,9 +80,9 @@ end
 
         r = ((y(1,:)./(1+sqrt(y(2,:).^2+y(3,:).^2).*cos(y(6,:)-atan2(y(3,:),y(2,:)))))');
         f = 0;
-        g = [Q(1:5,1:5)*(y(1:5,indtf)-ybar(1:5)).^2;
-            Q(1:5,1:5)*(y(1:5,end)-ybar(1:5)).^2];
-        h = [min(r)-6378.1; m-1100];
+%         g = [Q(1:5,1:5)*(y(1:5,indtf)-ybar(1:5)).^2;
+        g = Q(1:5,1:5)*(y(1:5,end)-ybar(1:5)).^2;
+        h = [min(r)-6380; m-1100; 1-vecnorm(qdir)'];
 
     end
 %     function f = funf(x,Ts,y0,ybar,m0,coeffT,Tmax,ratio,alpha)

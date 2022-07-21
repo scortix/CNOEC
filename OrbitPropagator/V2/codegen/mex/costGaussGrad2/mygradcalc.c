@@ -21,11 +21,10 @@
 #include "mwmathutil.h"
 #include <math.h>
 #include <stddef.h>
-#include <string.h>
 
 /* Variable Definitions */
 static emlrtRSInfo
-    mc_emlrtRSI =
+    nc_emlrtRSI =
         {
             10,           /* lineNo */
             "mygradcalc", /* fcnName */
@@ -34,7 +33,7 @@ static emlrtRSInfo
 };
 
 static emlrtRSInfo
-    nc_emlrtRSI =
+    oc_emlrtRSI =
         {
             5,            /* lineNo */
             "mygradcalc", /* fcnName */
@@ -43,7 +42,7 @@ static emlrtRSInfo
 };
 
 static emlrtRSInfo
-    sc_emlrtRSI =
+    tc_emlrtRSI =
         {
             20,           /* lineNo */
             "mygradcalc", /* fcnName */
@@ -52,7 +51,7 @@ static emlrtRSInfo
 };
 
 static emlrtRSInfo
-    tc_emlrtRSI =
+    uc_emlrtRSI =
         {
             28,           /* lineNo */
             "mygradcalc", /* fcnName */
@@ -61,7 +60,7 @@ static emlrtRSInfo
 };
 
 static emlrtRSInfo
-    uc_emlrtRSI =
+    vc_emlrtRSI =
         {
             30,           /* lineNo */
             "mygradcalc", /* fcnName */
@@ -69,13 +68,13 @@ static emlrtRSInfo
             "Project\\OrbitPropagator\\V2\\mygradcalc.m" /* pathName */
 };
 
-static emlrtRSInfo vc_emlrtRSI = {
+static emlrtRSInfo wc_emlrtRSI = {
     56,                                                           /* lineNo */
     "eps",                                                        /* fcnName */
     "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\elmat\\eps.m" /* pathName */
 };
 
-static emlrtRSInfo wc_emlrtRSI = {
+static emlrtRSInfo xc_emlrtRSI = {
     63,                               /* lineNo */
     "function_handle/parenReference", /* fcnName */
     "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+internal\\function_handle."
@@ -83,7 +82,7 @@ static emlrtRSInfo wc_emlrtRSI = {
 };
 
 static emlrtRSInfo
-    xc_emlrtRSI =
+    yc_emlrtRSI =
         {
             8,                        /* lineNo */
             "@(x)(fun(x)\'*pf(:,i))", /* fcnName */
@@ -91,7 +90,7 @@ static emlrtRSInfo
             "Project\\OrbitPropagator\\V2\\mygradcalc.m" /* pathName */
 };
 
-static emlrtRSInfo yc_emlrtRSI =
+static emlrtRSInfo ad_emlrtRSI =
     {
         22, /* lineNo */
         "@(x)costGaussGrad2(x,tmax,Ts,y0,ybar,m0,coeffT,Tmax,ratio,alpha,false,"
@@ -193,7 +192,7 @@ static emlrtBCInfo
 };
 
 static emlrtRTEInfo
-    jc_emlrtRTEI =
+    mc_emlrtRTEI =
         {
             6,            /* lineNo */
             5,            /* colNo */
@@ -203,7 +202,7 @@ static emlrtRTEInfo
 };
 
 static emlrtRTEInfo
-    kc_emlrtRTEI =
+    nc_emlrtRTEI =
         {
             16,           /* lineNo */
             5,            /* colNo */
@@ -213,7 +212,17 @@ static emlrtRTEInfo
 };
 
 static emlrtRTEInfo
-    lc_emlrtRTEI =
+    oc_emlrtRTEI =
+        {
+            10,           /* lineNo */
+            44,           /* colNo */
+            "mygradcalc", /* fName */
+            "P:\\Projects\\CNOEC\\CNOEC_"
+            "Project\\OrbitPropagator\\V2\\mygradcalc.m" /* pName */
+};
+
+static emlrtRTEInfo
+    pc_emlrtRTEI =
         {
             10,           /* lineNo */
             22,           /* colNo */
@@ -223,7 +232,7 @@ static emlrtRTEInfo
 };
 
 static emlrtRTEInfo
-    mc_emlrtRTEI =
+    qc_emlrtRTEI =
         {
             30,           /* lineNo */
             32,           /* colNo */
@@ -233,7 +242,37 @@ static emlrtRTEInfo
 };
 
 static emlrtRTEInfo
-    oc_emlrtRTEI =
+    sc_emlrtRTEI =
+        {
+            8,            /* lineNo */
+            19,           /* colNo */
+            "mygradcalc", /* fName */
+            "P:\\Projects\\CNOEC\\CNOEC_"
+            "Project\\OrbitPropagator\\V2\\mygradcalc.m" /* pName */
+};
+
+static emlrtRTEInfo
+    tc_emlrtRTEI =
+        {
+            8,            /* lineNo */
+            27,           /* colNo */
+            "mygradcalc", /* fName */
+            "P:\\Projects\\CNOEC\\CNOEC_"
+            "Project\\OrbitPropagator\\V2\\mygradcalc.m" /* pName */
+};
+
+static emlrtRTEInfo
+    uc_emlrtRTEI =
+        {
+            5,            /* lineNo */
+            5,            /* colNo */
+            "mygradcalc", /* fName */
+            "P:\\Projects\\CNOEC\\CNOEC_"
+            "Project\\OrbitPropagator\\V2\\mygradcalc.m" /* pName */
+};
+
+static emlrtRTEInfo
+    vc_emlrtRTEI =
         {
             1,            /* lineNo */
             11,           /* colNo */
@@ -243,7 +282,7 @@ static emlrtRTEInfo
 };
 
 static emlrtRTEInfo
-    pc_emlrtRTEI =
+    wc_emlrtRTEI =
         {
             1,            /* lineNo */
             57,           /* colNo */
@@ -258,8 +297,7 @@ void mygradcalc(const emlrtStack *sp, real_T fun_workspace_tmax,
                 const real_T fun_workspace_ybar[6], real_T fun_workspace_m0,
                 real_T fun_workspace_coeffT, real_T fun_workspace_Tmax,
                 real_T fun_workspace_ratio, const emxArray_real_T *x,
-                const real_T fx_data[], int32_T fx_size,
-                emxArray_real_T *gradfx)
+                const emxArray_real_T *fx, emxArray_real_T *gradfx)
 {
   ptrdiff_t b_incx_t;
   ptrdiff_t b_incy_t;
@@ -275,30 +313,31 @@ void mygradcalc(const emlrtStack *sp, real_T fun_workspace_tmax,
   emlrtStack g_st;
   emlrtStack st;
   emxArray_real_T *J;
+  emxArray_real_T *b;
   emxArray_real_T *b_gradfx;
   emxArray_real_T *b_x;
   emxArray_real_T *p;
-  real_T pf_data[169];
-  real_T b_data[13];
-  real_T tmp_data[13];
+  emxArray_real_T *pf;
   real_T g_data[10];
-  real_T h[2];
+  const real_T *fx_data;
   const real_T *x_data;
   real_T *J_data;
+  real_T *b_data;
   real_T *b_x_data;
   real_T *gradfx_data;
   real_T *p_data;
+  real_T *pf_data;
   int32_T iv[2];
   int32_T iv1[2];
   int32_T b_i;
+  int32_T b_loop_ub;
   int32_T c_i;
   int32_T exponent;
   int32_T g_size;
   int32_T i;
   int32_T i1;
+  int32_T i2;
   int32_T loop_ub;
-  int32_T pf_size_idx_0;
-  int32_T pf_size_idx_1;
   st.prev = sp;
   st.tls = sp->tls;
   b_st.prev = &st;
@@ -313,74 +352,71 @@ void mygradcalc(const emlrtStack *sp, real_T fun_workspace_tmax,
   f_st.tls = e_st.tls;
   g_st.prev = &f_st;
   g_st.tls = f_st.tls;
+  fx_data = fx->data;
   x_data = x->data;
   emlrtHeapReferenceStackEnterFcnR2012b((emlrtCTX)sp);
-  emxInit_real_T(sp, &p, 2, &pc_emlrtRTEI);
-  st.site = &nc_emlrtRSI;
-  eye(&st, fx_size, p);
-  p_data = p->data;
-  pf_size_idx_0 = p->size[0];
-  pf_size_idx_1 = p->size[1];
-  loop_ub = p->size[0] * p->size[1];
-  for (i = 0; i < loop_ub; i++) {
-    pf_data[i] = p_data[i];
-  }
-  emxInit_real_T(sp, &J, 2, &jc_emlrtRTEI);
+  emxInit_real_T(sp, &pf, 2, &uc_emlrtRTEI);
+  emxInit_real_T(sp, &J, 2, &mc_emlrtRTEI);
+  st.site = &oc_emlrtRSI;
+  eye(&st, fx->size[0], pf);
+  pf_data = pf->data;
   i = J->size[0] * J->size[1];
-  J->size[0] = fx_size;
+  J->size[0] = fx->size[0];
   J->size[1] = x->size[0];
-  emxEnsureCapacity_real_T(sp, J, i, &jc_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, J, i, &mc_emlrtRTEI);
   J_data = J->data;
-  loop_ub = fx_size * x->size[0];
+  loop_ub = fx->size[0] * x->size[0];
   for (i = 0; i < loop_ub; i++) {
     J_data[i] = 0.0;
   }
-  n_t = (ptrdiff_t)fx_size;
+  i = fx->size[0];
+  loop_ub = pf->size[0];
+  n_t = (ptrdiff_t)fx->size[0];
   incx_t = (ptrdiff_t)1;
   incy_t = (ptrdiff_t)1;
   iv[0] = 1;
   iv1[0] = 1;
-  emxInit_real_T(sp, &b_gradfx, 1, &oc_emlrtRTEI);
-  emxInit_real_T(sp, &b_x, 1, &nc_emlrtRTEI);
-  for (b_i = 0; b_i < fx_size; b_i++) {
-    real_T fx;
-    st.site = &mc_emlrtRSI;
-    if (b_i + 1 > pf_size_idx_1) {
-      emlrtDynamicBoundsCheckR2012b(b_i + 1, 1, pf_size_idx_1, &s_emlrtBCI,
-                                    &st);
+  emxInit_real_T(sp, &b_gradfx, 1, &vc_emlrtRTEI);
+  emxInit_real_T(sp, &b, 1, &oc_emlrtRTEI);
+  emxInit_real_T(sp, &p, 2, &wc_emlrtRTEI);
+  emxInit_real_T(sp, &b_x, 1, &rc_emlrtRTEI);
+  for (b_i = 0; b_i < i; b_i++) {
+    real_T b_fx;
+    st.site = &nc_emlrtRSI;
+    if (b_i + 1 > pf->size[1]) {
+      emlrtDynamicBoundsCheckR2012b(b_i + 1, 1, pf->size[1], &s_emlrtBCI, &st);
     }
-    for (i = 0; i < pf_size_idx_0; i++) {
-      b_data[i] = pf_data[i + pf_size_idx_0 * b_i];
+    i1 = b->size[0];
+    b->size[0] = loop_ub;
+    emxEnsureCapacity_real_T(&st, b, i1, &oc_emlrtRTEI);
+    b_data = b->data;
+    for (i1 = 0; i1 < loop_ub; i1++) {
+      b_data[i1] = pf_data[i1 + pf->size[0] * b_i];
     }
-    b_st.site = &rc_emlrtRSI;
-    if (fx_size != pf_size_idx_0) {
+    b_st.site = &sc_emlrtRSI;
+    if (fx->size[0] != pf->size[0]) {
       emlrtErrorWithMessageIdR2018a(&b_st, &o_emlrtRTEI, "MATLAB:innerdim",
                                     "MATLAB:innerdim", 0);
     }
-    fx = ddot(&n_t, &fx_data[0], &incx_t, &b_data[0], &incy_t);
-    st.site = &mc_emlrtRSI;
-    i = x->size[0];
-    b_st.site = &sc_emlrtRSI;
+    b_fx = ddot(&n_t, &fx_data[0], &incx_t, &b_data[0], &incy_t);
+    st.site = &nc_emlrtRSI;
+    i1 = x->size[0];
+    b_st.site = &tc_emlrtRSI;
     eye(&b_st, x->size[0], p);
     p_data = p->data;
-    i1 = b_gradfx->size[0];
+    i2 = b_gradfx->size[0];
     b_gradfx->size[0] = x->size[0];
-    emxEnsureCapacity_real_T(&st, b_gradfx, i1, &lc_emlrtRTEI);
+    emxEnsureCapacity_real_T(&st, b_gradfx, i2, &pc_emlrtRTEI);
     gradfx_data = b_gradfx->data;
-    if (i - 1 >= 0) {
-      for (i1 = 0; i1 < pf_size_idx_0; i1++) {
-        b_data[i1] = pf_data[i1 + pf_size_idx_0 * b_i];
-      }
-    }
-    for (c_i = 0; c_i < i; c_i++) {
+    for (c_i = 0; c_i < i1; c_i++) {
       real_T absx;
       real_T varargout_1;
       if (c_i + 1 > p->size[1]) {
         emlrtDynamicBoundsCheckR2012b(c_i + 1, 1, p->size[1], &r_emlrtBCI, &st);
       }
-      b_st.site = &tc_emlrtRSI;
-      c_st.site = &vc_emlrtRSI;
-      absx = muDoubleScalarAbs(fx);
+      b_st.site = &uc_emlrtRSI;
+      c_st.site = &wc_emlrtRSI;
+      absx = muDoubleScalarAbs(b_fx);
       if ((!muDoubleScalarIsInf(absx)) && (!muDoubleScalarIsNaN(absx))) {
         if (absx <= 2.2250738585072014E-308) {
           absx = 4.94065645841247E-324;
@@ -391,54 +427,62 @@ void mygradcalc(const emlrtStack *sp, real_T fun_workspace_tmax,
       } else {
         absx = rtNaN;
       }
-      b_st.site = &tc_emlrtRSI;
+      b_st.site = &uc_emlrtRSI;
       absx = muDoubleScalarSqrt(absx);
-      loop_ub = p->size[0];
-      i1 = b_x->size[0];
+      b_loop_ub = p->size[0];
+      i2 = b_x->size[0];
       b_x->size[0] = p->size[0];
-      emxEnsureCapacity_real_T(&st, b_x, i1, &mc_emlrtRTEI);
+      emxEnsureCapacity_real_T(&st, b_x, i2, &qc_emlrtRTEI);
       b_x_data = b_x->data;
-      for (i1 = 0; i1 < loop_ub; i1++) {
-        b_x_data[i1] = absx * p_data[i1 + p->size[0] * c_i];
+      for (i2 = 0; i2 < b_loop_ub; i2++) {
+        b_x_data[i2] = absx * p_data[i2 + p->size[0] * c_i];
       }
-      loop_ub = x->size[0];
+      b_loop_ub = x->size[0];
       if ((x->size[0] != b_x->size[0]) &&
           ((x->size[0] != 1) && (b_x->size[0] != 1))) {
         emlrtDimSizeImpxCheckR2021b(x->size[0], b_x->size[0], &h_emlrtECI, &st);
       }
-      b_st.site = &uc_emlrtRSI;
-      c_st.site = &wc_emlrtRSI;
-      d_st.site = &xc_emlrtRSI;
-      e_st.site = &wc_emlrtRSI;
-      f_st.site = &yc_emlrtRSI;
+      b_st.site = &vc_emlrtRSI;
+      c_st.site = &xc_emlrtRSI;
+      d_st.site = &yc_emlrtRSI;
+      e_st.site = &xc_emlrtRSI;
+      f_st.site = &ad_emlrtRSI;
       if (x->size[0] == b_x->size[0]) {
-        i1 = b_x->size[0];
+        i2 = b_x->size[0];
         b_x->size[0] = x->size[0];
-        emxEnsureCapacity_real_T(&f_st, b_x, i1, &nc_emlrtRTEI);
+        emxEnsureCapacity_real_T(&f_st, b_x, i2, &rc_emlrtRTEI);
         b_x_data = b_x->data;
-        for (i1 = 0; i1 < loop_ub; i1++) {
-          b_x_data[i1] += x_data[i1];
+        for (i2 = 0; i2 < b_loop_ub; i2++) {
+          b_x_data[i2] += x_data[i2];
         }
         g_st.site = &h_emlrtRSI;
         fun(&g_st, b_x, fun_workspace_tmax, fun_workspace_Ts, fun_workspace_y0,
             fun_workspace_ybar, fun_workspace_m0, fun_workspace_coeffT,
-            fun_workspace_Tmax, fun_workspace_ratio, g_data, &g_size, h);
+            fun_workspace_Tmax, fun_workspace_ratio, g_data, &g_size, b);
+        b_data = b->data;
       } else {
         g_st.site = &h_emlrtRSI;
         e_binary_expand_op(&g_st, h_emlrtRSI, x, b_x, fun_workspace_tmax,
                            fun_workspace_Ts, fun_workspace_y0,
                            fun_workspace_ybar, fun_workspace_m0,
                            fun_workspace_coeffT, fun_workspace_Tmax,
-                           fun_workspace_ratio, g_data, &g_size, h);
+                           fun_workspace_ratio, g_data, &g_size, b);
+        b_data = b->data;
       }
       /*  lx = length(x); */
       /*  lf = 1; lg = size(A,1) + length(g); lh = size(C,1) + length(h); */
-      tmp_data[0] = 0.0;
-      if (g_size - 1 >= 0) {
-        memcpy(&tmp_data[1], &g_data[0], g_size * sizeof(real_T));
+      i2 = b_x->size[0];
+      b_x->size[0] = (g_size + b->size[0]) + 1;
+      emxEnsureCapacity_real_T(&f_st, b_x, i2, &sc_emlrtRTEI);
+      b_x_data = b_x->data;
+      b_x_data[0] = 0.0;
+      for (i2 = 0; i2 < g_size; i2++) {
+        b_x_data[i2 + 1] = g_data[i2];
       }
-      tmp_data[g_size + 1] = h[0];
-      tmp_data[g_size + 2] = h[1];
+      b_loop_ub = b->size[0];
+      for (i2 = 0; i2 < b_loop_ub; i2++) {
+        b_x_data[(i2 + g_size) + 1] = b_data[i2];
+      }
       /*      function f = funf(x,Ts,y0,ybar,m0,coeffT,Tmax,ratio,alpha) */
       /*          [f,~,~] = fun(x,Ts,y0,ybar,m0,coeffT,Tmax,ratio,alpha); */
       /*      end */
@@ -448,26 +492,34 @@ void mygradcalc(const emlrtStack *sp, real_T fun_workspace_tmax,
       /*      function f = funh(x,Ts,y0,ybar,m0,coeffT,Tmax,ratio,alpha) */
       /*          [f,~,~] = fun(x,Ts,y0,ybar,m0,coeffT,Tmax,ratio,alpha); */
       /*      end */
-      d_st.site = &xc_emlrtRSI;
-      if (b_i + 1 > pf_size_idx_1) {
-        emlrtDynamicBoundsCheckR2012b(b_i + 1, 1, pf_size_idx_1, &q_emlrtBCI,
+      d_st.site = &yc_emlrtRSI;
+      if (b_i + 1 > pf->size[1]) {
+        emlrtDynamicBoundsCheckR2012b(b_i + 1, 1, pf->size[1], &q_emlrtBCI,
                                       &d_st);
       }
-      e_st.site = &rc_emlrtRSI;
-      if (g_size + 3 != pf_size_idx_0) {
+      b_loop_ub = pf->size[0];
+      i2 = b->size[0];
+      b->size[0] = pf->size[0];
+      emxEnsureCapacity_real_T(&d_st, b, i2, &tc_emlrtRTEI);
+      b_data = b->data;
+      for (i2 = 0; i2 < b_loop_ub; i2++) {
+        b_data[i2] = pf_data[i2 + pf->size[0] * b_i];
+      }
+      e_st.site = &sc_emlrtRSI;
+      if (b_x->size[0] != pf->size[0]) {
         emlrtErrorWithMessageIdR2018a(&e_st, &o_emlrtRTEI, "MATLAB:innerdim",
                                       "MATLAB:innerdim", 0);
       }
-      b_n_t = (ptrdiff_t)(g_size + 3);
+      b_n_t = (ptrdiff_t)b_x->size[0];
       b_incx_t = (ptrdiff_t)1;
       b_incy_t = (ptrdiff_t)1;
       varargout_1 =
-          ddot(&b_n_t, &tmp_data[0], &b_incx_t, &b_data[0], &b_incy_t);
+          ddot(&b_n_t, &b_x_data[0], &b_incx_t, &b_data[0], &b_incy_t);
       if (c_i + 1 > b_gradfx->size[0]) {
         emlrtDynamicBoundsCheckR2012b(c_i + 1, 1, b_gradfx->size[0],
                                       &u_emlrtBCI, &st);
       }
-      gradfx_data[c_i] = (varargout_1 - fx) / absx;
+      gradfx_data[c_i] = (varargout_1 - b_fx) / absx;
       if (*emlrtBreakCheckR2012bFlagVar != 0) {
         emlrtBreakCheckR2012b(&st);
       }
@@ -477,12 +529,12 @@ void mygradcalc(const emlrtStack *sp, real_T fun_workspace_tmax,
                                     (emlrtCTX)sp);
     }
     iv[1] = J->size[1];
-    loop_ub = b_gradfx->size[0];
+    b_loop_ub = b_gradfx->size[0];
     iv1[1] = b_gradfx->size[0];
     emlrtSubAssignSizeCheckR2012b(&iv[0], 2, &iv1[0], 2, &i_emlrtECI,
                                   (emlrtCTX)sp);
-    for (i = 0; i < loop_ub; i++) {
-      J_data[b_i + J->size[0] * i] = gradfx_data[i];
+    for (i1 = 0; i1 < b_loop_ub; i1++) {
+      J_data[b_i + J->size[0] * i1] = gradfx_data[i1];
     }
     if (*emlrtBreakCheckR2012bFlagVar != 0) {
       emlrtBreakCheckR2012b((emlrtCTX)sp);
@@ -490,16 +542,18 @@ void mygradcalc(const emlrtStack *sp, real_T fun_workspace_tmax,
   }
   emxFree_real_T(sp, &b_x);
   emxFree_real_T(sp, &p);
+  emxFree_real_T(sp, &b);
   emxFree_real_T(sp, &b_gradfx);
+  emxFree_real_T(sp, &pf);
   i = gradfx->size[0] * gradfx->size[1];
   gradfx->size[0] = J->size[1];
   gradfx->size[1] = J->size[0];
-  emxEnsureCapacity_real_T(sp, gradfx, i, &kc_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, gradfx, i, &nc_emlrtRTEI);
   gradfx_data = gradfx->data;
   loop_ub = J->size[0];
   for (i = 0; i < loop_ub; i++) {
-    g_size = J->size[1];
-    for (i1 = 0; i1 < g_size; i1++) {
+    b_loop_ub = J->size[1];
+    for (i1 = 0; i1 < b_loop_ub; i1++) {
       gradfx_data[i1 + gradfx->size[0] * i] = J_data[i + J->size[0] * i1];
     }
   }

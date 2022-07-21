@@ -17,7 +17,7 @@
 #include "mwmathutil.h"
 
 /* Variable Definitions */
-static emlrtRSInfo x_emlrtRSI = {
+static emlrtRSInfo w_emlrtRSI = {
     319,                                                          /* lineNo */
     "eml_float_colon",                                            /* fcnName */
     "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" /* pathName */
@@ -72,7 +72,7 @@ void eml_float_colon(const emlrtStack *sp, real_T d, real_T b,
   } else {
     n = 0;
   }
-  st.site = &x_emlrtRSI;
+  st.site = &w_emlrtRSI;
   if (ndbl > 2.147483647E+9) {
     emlrtErrorWithMessageIdR2018a(&st, &i_emlrtRTEI, "Coder:MATLAB:pmaxsize",
                                   "Coder:MATLAB:pmaxsize", 0);

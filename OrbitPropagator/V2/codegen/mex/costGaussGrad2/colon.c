@@ -30,7 +30,7 @@ static emlrtRTEInfo i_emlrtRTEI = {
     "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" /* pName */
 };
 
-static emlrtRTEInfo gc_emlrtRTEI = {
+static emlrtRTEInfo ic_emlrtRTEI = {
     320,                                                          /* lineNo */
     20,                                                           /* colNo */
     "colon",                                                      /* fName */
@@ -80,7 +80,7 @@ void eml_float_colon(const emlrtStack *sp, real_T d, real_T b,
   nm1d2 = y->size[0] * y->size[1];
   y->size[0] = 1;
   y->size[1] = n;
-  emxEnsureCapacity_real_T(sp, y, nm1d2, &gc_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, y, nm1d2, &ic_emlrtRTEI);
   y_data = y->data;
   if (n > 0) {
     y_data[0] = 0.0;

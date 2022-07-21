@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.coder" plugin-version="R2021a">
-  <configuration build-checksum="3380723837" file="P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\costGaussGrad.prj" location="P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2" name="costGaussGrad" target="target.unifiedcoder" target-name="MATLAB Coder">
+  <configuration build-checksum="3524629142" file="P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\costGaussGrad.prj" location="P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2" name="costGaussGrad" target="target.unifiedcoder" target-name="MATLAB Coder">
     <profile key="profile.mex">
       <param.BuiltInstrumentedMex>false</param.BuiltInstrumentedMex>
       <param.RanInstrumentedMex>false</param.RanInstrumentedMex>
@@ -563,7 +563,7 @@
     <param.WorkflowStep>generateCode</param.WorkflowStep>
     <param.TestSnippets>
       <item>costGaussGrad(u,1e5,Ts,y0,ybar,m0,Tmax/g0/Isp,Tmax,ratio,1,true,C,d,C,d);</item>
-      <item>costGaussGrad(u,Ts,y0,ybar,m0,Tmax/g0/Isp,Tmax,ratio,alpha,true,C,d,C,d);</item>
+      <item>costGaussGrad(uoptlinInit,tmax,Ts,y0,ybar,m0,Tmax/g0/Isp,Tmax,ratio,0.5,true,C,d,C,d)</item>
     </param.TestSnippets>
     <param.ExternalFcnMajority>column</param.ExternalFcnMajority>
     <param.UseGlobals>option.UseGlobals.No</param.UseGlobals>
@@ -582,7 +582,7 @@
     <param.AutoInferUnboundedSizeThreshold>2048</param.AutoInferUnboundedSizeThreshold>
     <param.EnableFixedPointStep>false</param.EnableFixedPointStep>
     <param.EnableScreener>true</param.EnableScreener>
-    <param.AnnotationChecksum>1596008011</param.AnnotationChecksum>
+    <param.AnnotationChecksum>658366893</param.AnnotationChecksum>
     <var.LegacyTarget />
     <var.MirrorOnOpen>false</var.MirrorOnOpen>
     <param.FixedPointEnabled>false</param.FixedPointEnabled>
@@ -592,12 +592,12 @@
     <param.hdlParamStorage />
     <var.gc.lastOutputRoot>codegen\mex\costGaussGrad</var.gc.lastOutputRoot>
     <var.gc.lastOutputType>MEX_FILE</var.gc.lastOutputType>
-    <var.gc.preBuildChecksum>3380723837</var.gc.preBuildChecksum>
+    <var.gc.preBuildChecksum>3524629142</var.gc.preBuildChecksum>
     <var.cfi.lastOutputRoot>codegen\mex\costGaussGrad</var.cfi.lastOutputRoot>
     <var.cfi.preBuildChecksum>3419073692</var.cfi.preBuildChecksum>
     <var.lastCfiTestSnippet>costGaussGrad(u,1e5,Ts,y0,ybar,m0,Tmax/g0/Isp,Tmax,ratio,1,true,C,d,C,d);</var.lastCfiTestSnippet>
     <var.outdatedOnRestore>false</var.outdatedOnRestore>
-    <var.lastUserSourceChecksum>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;checksum&gt;&lt;includedFiles&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\COE2EOE.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\costGaussGrad.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\EOE2COE.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\EOEDerivatives.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\mygradcalc.m&lt;/file&gt;&lt;/includedFiles&gt;&lt;value&gt;1668597151&lt;/value&gt;&lt;/checksum&gt;</var.lastUserSourceChecksum>
+    <var.lastUserSourceChecksum>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;checksum&gt;&lt;includedFiles&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\COE2EOE.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\costGaussGrad.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\EOE2COE.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\EOEDerivatives.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\mygradcalc.m&lt;/file&gt;&lt;/includedFiles&gt;&lt;value&gt;2737201908&lt;/value&gt;&lt;/checksum&gt;</var.lastUserSourceChecksum>
     <var.sourceSetState>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;sourceModel&gt;&lt;primarySourceFiles&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\COE2EOE.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\costGaussGrad.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\EOE2COE.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\EOEDerivatives.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2\mygradcalc.m&lt;/file&gt;&lt;/primarySourceFiles&gt;&lt;fixedPointSourceFiles/&gt;&lt;fixedPointSourceRegistered&gt;false&lt;/fixedPointSourceRegistered&gt;&lt;fixedPointSourceSelected&gt;false&lt;/fixedPointSourceSelected&gt;&lt;/sourceModel&gt;</var.sourceSetState>
     <param.forceMexBuild>false</param.forceMexBuild>
     <param.NoDefaultJIT>false</param.NoDefaultJIT>
@@ -846,7 +846,7 @@
     </unset>
     <fileset.entrypoints>
       <file custom-data-expanded="false" value="${PROJECT_ROOT}\costGaussGrad.m">
-        <Marker>1658234749136</Marker>
+        <Marker>1658399249635</Marker>
       </file>
     </fileset.entrypoints>
     <fileset.testbench />
@@ -855,19 +855,19 @@
         <Inputs fileName="costGaussGrad.m" functionName="costGaussGrad">
           <Input Name="x" typeId="0" />
           <Input Name="tmax" typeId="1" />
-          <Input Name="Ts" typeId="2" />
-          <Input Name="y0" typeId="3" />
-          <Input Name="ybar" typeId="3" />
-          <Input Name="m0" typeId="2" />
-          <Input Name="coeffT" typeId="2" />
-          <Input Name="Tmax" typeId="2" />
-          <Input Name="ratio" typeId="2" />
-          <Input Name="alpha" typeId="2" />
-          <Input Name="computeGrad" typeId="4" />
-          <Input Name="A" typeId="5" />
-          <Input Name="b" typeId="6" />
-          <Input Name="C" typeId="5" />
-          <Input Name="d" typeId="6" />
+          <Input Name="Ts" typeId="1" />
+          <Input Name="y0" typeId="2" />
+          <Input Name="ybar" typeId="2" />
+          <Input Name="m0" typeId="1" />
+          <Input Name="coeffT" typeId="1" />
+          <Input Name="Tmax" typeId="1" />
+          <Input Name="ratio" typeId="1" />
+          <Input Name="alpha" typeId="1" />
+          <Input Name="computeGrad" typeId="3" />
+          <Input Name="A" typeId="4" />
+          <Input Name="b" typeId="5" />
+          <Input Name="C" typeId="4" />
+          <Input Name="d" typeId="5" />
           <idpTable>
             <type typeId="0">
               <Class>double</Class>
@@ -883,20 +883,11 @@
               <Size>1 x 1</Size>
               <Value />
               <InitialValue />
-              <UserDefined>true</UserDefined>
-              <Complex>false</Complex>
-              <Sparse>false</Sparse>
-            </type>
-            <type typeId="2">
-              <Class>double</Class>
-              <Size>1 x 1</Size>
-              <Value />
-              <InitialValue />
               <UserDefined>false</UserDefined>
               <Complex>false</Complex>
               <Sparse>false</Sparse>
             </type>
-            <type typeId="3">
+            <type typeId="2">
               <Class>double</Class>
               <Size>6 x 1</Size>
               <Value />
@@ -905,7 +896,7 @@
               <Complex>false</Complex>
               <Sparse>false</Sparse>
             </type>
-            <type typeId="4">
+            <type typeId="3">
               <Class>logical</Class>
               <Size>1 x 1</Size>
               <Value />
@@ -913,7 +904,7 @@
               <UserDefined>false</UserDefined>
               <Sparse>false</Sparse>
             </type>
-            <type typeId="5">
+            <type typeId="4">
               <Class>double</Class>
               <Size>:inf x :inf</Size>
               <Value />
@@ -922,7 +913,7 @@
               <Complex>false</Complex>
               <Sparse>false</Sparse>
             </type>
-            <type typeId="6">
+            <type typeId="5">
               <Class>double</Class>
               <Size>:inf x :1</Size>
               <Value />

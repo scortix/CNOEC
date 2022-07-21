@@ -412,7 +412,7 @@ void costGaussGrad_api(const mxArray *const prhs[15], int32_T nlhs,
   emxInit_real_T(&st, &C, 2, &dd_emlrtRTEI);
   emxInit_real_T(&st, &d, 2, &dd_emlrtRTEI);
   emxInit_real_T(&st, &J, 1, &dd_emlrtRTEI);
-  emxInit_real_T(&st, &gx, 2, &dd_emlrtRTEI);
+  emxInit_real_T(&st, &gx, 1, &dd_emlrtRTEI);
   emxInit_real_T(&st, &hx, 2, &dd_emlrtRTEI);
   emxInit_real_T(&st, &Jf, 1, &dd_emlrtRTEI);
   emxInit_real_T(&st, &Jg, 2, &dd_emlrtRTEI);
@@ -457,7 +457,7 @@ void costGaussGrad_api(const mxArray *const prhs[15], int32_T nlhs,
   }
   if (nlhs > 2) {
     gx->canFreeData = false;
-    plhs[2] = c_emlrt_marshallOut(gx);
+    plhs[2] = b_emlrt_marshallOut(gx);
   }
   emxFree_real_T(&st, &gx);
   if (nlhs > 3) {

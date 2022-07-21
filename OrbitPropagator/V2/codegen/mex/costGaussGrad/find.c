@@ -17,14 +17,14 @@
 #include "rt_nonfinite.h"
 
 /* Variable Definitions */
-static emlrtRSInfo cb_emlrtRSI = {
+static emlrtRSInfo bb_emlrtRSI = {
     144,                                                           /* lineNo */
     "eml_find",                                                    /* fcnName */
     "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\elmat\\find.m" /* pathName
                                                                     */
 };
 
-static emlrtRSInfo db_emlrtRSI = {
+static emlrtRSInfo cb_emlrtRSI = {
     382,                                                           /* lineNo */
     "find_first_indices",                                          /* fcnName */
     "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\elmat\\find.m" /* pathName
@@ -70,13 +70,13 @@ void eml_find(const emlrtStack *sp, const emxArray_boolean_T *x,
                                   "Coder:builtins:AssertionFailed",
                                   "Coder:builtins:AssertionFailed", 0);
   }
-  st.site = &cb_emlrtRSI;
+  st.site = &bb_emlrtRSI;
   idx = 0;
   i_size[0] = 1;
   i_size[1] = k;
-  b_st.site = &db_emlrtRSI;
+  b_st.site = &cb_emlrtRSI;
   if (x->size[1] > 2147483646) {
-    c_st.site = &ab_emlrtRSI;
+    c_st.site = &y_emlrtRSI;
     check_forloop_overflow_error(&c_st);
   }
   ii = 0;

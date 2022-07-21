@@ -61,12 +61,6 @@
   },
   {
     "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGaussGrad",
-    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DHAVE_LAPACK_CONFIG_H -DLAPACK_COMPLEX_STRUCTURE -DMW_HAVE_LAPACK_DECLS -DMODEL=costGaussGrad_mex   norm.c /Fobuild\\win64\\norm.obj",
-    "file": "norm.c",
-    "output": "build/win64/norm.obj"
-  },
-  {
-    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGaussGrad",
     "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DHAVE_LAPACK_CONFIG_H -DLAPACK_COMPLEX_STRUCTURE -DMW_HAVE_LAPACK_DECLS -DMODEL=costGaussGrad_mex   atan2.c /Fobuild\\win64\\atan2.obj",
     "file": "atan2.c",
     "output": "build/win64/atan2.obj"
@@ -76,12 +70,6 @@
     "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DHAVE_LAPACK_CONFIG_H -DLAPACK_COMPLEX_STRUCTURE -DMW_HAVE_LAPACK_DECLS -DMODEL=costGaussGrad_mex   assertCompatibleDims.c /Fobuild\\win64\\assertCompatibleDims.obj",
     "file": "assertCompatibleDims.c",
     "output": "build/win64/assertCompatibleDims.obj"
-  },
-  {
-    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGaussGrad",
-    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DHAVE_LAPACK_CONFIG_H -DLAPACK_COMPLEX_STRUCTURE -DMW_HAVE_LAPACK_DECLS -DMODEL=costGaussGrad_mex   mtimes.c /Fobuild\\win64\\mtimes.obj",
-    "file": "mtimes.c",
-    "output": "build/win64/mtimes.obj"
   },
   {
     "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGaussGrad",
@@ -106,6 +94,12 @@
     "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DHAVE_LAPACK_CONFIG_H -DLAPACK_COMPLEX_STRUCTURE -DMW_HAVE_LAPACK_DECLS -DMODEL=costGaussGrad_mex   eml_mtimes_helper.c /Fobuild\\win64\\eml_mtimes_helper.obj",
     "file": "eml_mtimes_helper.c",
     "output": "build/win64/eml_mtimes_helper.obj"
+  },
+  {
+    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGaussGrad",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DHAVE_LAPACK_CONFIG_H -DLAPACK_COMPLEX_STRUCTURE -DMW_HAVE_LAPACK_DECLS -DMODEL=costGaussGrad_mex   mtimes.c /Fobuild\\win64\\mtimes.obj",
+    "file": "mtimes.c",
+    "output": "build/win64/mtimes.obj"
   },
   {
     "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGaussGrad",

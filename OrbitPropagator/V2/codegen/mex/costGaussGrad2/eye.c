@@ -19,26 +19,26 @@
 #include "mwmathutil.h"
 
 /* Variable Definitions */
-static emlrtRSInfo oc_emlrtRSI = {
+static emlrtRSInfo pc_emlrtRSI = {
     50,                                                           /* lineNo */
     "eye",                                                        /* fcnName */
     "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\elmat\\eye.m" /* pathName */
 };
 
-static emlrtRSInfo pc_emlrtRSI = {
+static emlrtRSInfo qc_emlrtRSI = {
     96,                                                           /* lineNo */
     "eye",                                                        /* fcnName */
     "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\elmat\\eye.m" /* pathName */
 };
 
-static emlrtRSInfo qc_emlrtRSI = {
+static emlrtRSInfo rc_emlrtRSI = {
     21,                           /* lineNo */
     "checkAndSaturateExpandSize", /* fcnName */
     "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
     "internal\\checkAndSaturateExpandSize.m" /* pathName */
 };
 
-static emlrtRTEInfo qc_emlrtRTEI = {
+static emlrtRTEInfo xc_emlrtRTEI = {
     94,                                                           /* lineNo */
     5,                                                            /* colNo */
     "eye",                                                        /* fName */
@@ -56,10 +56,10 @@ void eye(const emlrtStack *sp, real_T varargin_1, emxArray_real_T *b_I)
   int32_T m_tmp_tmp;
   st.prev = sp;
   st.tls = sp->tls;
-  st.site = &oc_emlrtRSI;
+  st.site = &pc_emlrtRSI;
   b_st.prev = &st;
   b_st.tls = st.tls;
-  b_st.site = &qc_emlrtRSI;
+  b_st.site = &rc_emlrtRSI;
   if ((varargin_1 != muDoubleScalarFloor(varargin_1)) ||
       muDoubleScalarIsInf(varargin_1)) {
     emlrtErrorWithMessageIdR2018a(
@@ -70,14 +70,14 @@ void eye(const emlrtStack *sp, real_T varargin_1, emxArray_real_T *b_I)
   i = b_I->size[0] * b_I->size[1];
   b_I->size[0] = (int32_T)varargin_1;
   b_I->size[1] = (int32_T)varargin_1;
-  emxEnsureCapacity_real_T(sp, b_I, i, &qc_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, b_I, i, &xc_emlrtRTEI);
   I_data = b_I->data;
   loop_ub = (int32_T)varargin_1 * (int32_T)varargin_1;
   for (i = 0; i < loop_ub; i++) {
     I_data[i] = 0.0;
   }
   if ((int32_T)varargin_1 > 0) {
-    st.site = &pc_emlrtRSI;
+    st.site = &qc_emlrtRSI;
     if ((int32_T)varargin_1 > 2147483646) {
       b_st.site = &y_emlrtRSI;
       check_forloop_overflow_error(&b_st);

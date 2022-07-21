@@ -71,7 +71,7 @@ static emlrtRTEInfo m_emlrtRTEI =
         "internal\\scalexpCheck.m" /* pName */
 };
 
-static emlrtRTEInfo hc_emlrtRTEI = {
+static emlrtRTEInfo jc_emlrtRTEI = {
     129,                         /* lineNo */
     6,                           /* colNo */
     "applyBinaryScalarFunction", /* fName */
@@ -128,7 +128,7 @@ void b_atan2(const emlrtStack *sp, const emxArray_real_T *y,
   z_size_idx_1 = r->size[0] * r->size[1];
   r->size[0] = 1;
   r->size[1] = muIntScalarMin_sint32(y->size[1], x->size[1]);
-  emxEnsureCapacity_real_T(&c_st, r, z_size_idx_1, &hc_emlrtRTEI);
+  emxEnsureCapacity_real_T(&c_st, r, z_size_idx_1, &jc_emlrtRTEI);
   r_data = r->data;
   d_st.site = &tb_emlrtRSI;
   if (csz_idx_1 > 2147483646) {
