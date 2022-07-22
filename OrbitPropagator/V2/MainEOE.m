@@ -4,11 +4,11 @@ clc
 
 %% Parameters Definition and Initialization
 % Forward Euler: x(k+1) = x(k) + Ts*xdot(k)
-Ts = 100; % Discrete time step
-tmax = 5e4; % Maximum time
-ratio = 10; % Per quanto tempo mantiene l'input
-Tmax = 1;
-Isp = 1800;
+Ts = 200; % Discrete time step
+tmax = 4e6; % Maximum time
+ratio = 1000; % Per quanto tempo mantiene l'input
+Tmax = 5;
+Isp = 5000;
 g0 = 9.81;
 m0 = 1500;
 t = 0:Ts:tmax; % Time vector
@@ -16,7 +16,7 @@ y = zeros(6,length(t)); % State vector initialization
 lu = (length(t)-1)/ratio+1;
 u = ones(3,lu)/sqrt(3); % Input vector initialization 
 tf = 6e4; % Initial guess for final time
-u = [180/180*pi;0.01*ones(lu,1);reshape(u,numel(u),1);tf]; % Initial guess vector
+u = [180/180*pi;0.1*ones(lu,1);reshape(u,numel(u),1);tf]; % Initial guess vector
 alpha = 1; % 1 for optimal time
 
 useInit = false;
@@ -27,8 +27,10 @@ end
 
 % orb_in = struct('a', 1e4, 'e', 0.2, 'i', pi/4, 'OM', pi/2, 'om', pi/2, 'theta', 0);
 % orb_end = struct('a', 1.5e4, 'e', 0.25, 'i', pi/3, 'OM', pi/3, 'om', pi/4, 'theta', 0);
-orb_in = struct('a', 12000, 'e', 0.2, 'i', pi/4, 'OM', pi/2, 'om', pi/2, 'theta', 0); % Initial orbit
-orb_end = struct('a', 36000, 'e', 0.7, 'i', pi/3, 'OM', pi/3, 'om', pi/4, 'theta', 0); % Final orbit
+% orb_in = struct('a', 12000, 'e', 0.2, 'i', pi/4, 'OM', pi/2, 'om', pi/2, 'theta', 0); % Initial orbit
+% orb_end = struct('a', 36000, 'e', 0.7, 'i', pi/3, 'OM', pi/3, 'om', pi/4, 'theta', 0); % Final orbit
+orb_in = struct('a', 2.4364e+04, 'e', 0.7306, 'i', 4.9742e-01, 'OM', 0, 'om', 0, 'theta', 0); % Initial orbit
+orb_end = struct('a', 42165, 'e', 0, 'i', 0, 'OM', 0, 'om', 0, 'theta', 0); % Final orbit
 
 y0 = COE2EOE(orb_in); % Initial condition conversion to EOE state
 y(:,1) = y0; % Set first state vector equal to initial condition
@@ -55,31 +57,32 @@ d = [0;
     -tmax];
 % uoptlinInit = mySQP(gaussFun,u,[],[],C,d,5,1+0*(lu),opt);
 
-% fun = @(x,computeGrad) costGaussGrad2_mex(x,tmax,Ts,y0,ybar,m0,Tmax/g0/Isp,Tmax,ratio,0,computeGrad,[],[],C,d);
-% uoptlinInit = mySQPGrad(fun,u,opt);
-uoptlinInit = u;
+fun = @(x,computeGrad) costGaussGrad2_mex(x,tmax,Ts,y0,ybar,m0,Tmax/g0/Isp,Tmax,ratio,0,computeGrad,[],[],C,d);
+uoptlinInit = mySQPGrad(fun,u,opt);
+% uoptlinInit = u;
 
 %% Optimization routine
-
-% gaussFun = @(u) costGauss(u(end),Ts,y0,ybar,u(1),m0,Tmax/g0/Isp,Tmax,u(2:1+lu),reshape(u(2+lu:end-1),3,lu),ratio,alpha);
-myoptimset;
+% % u = ones(3,lu)/sqrt(3);
+% % uoptlinInit = [180/180*pi;0.1*ones(lu,1);reshape(u,numel(u),1);tf];
+% % gaussFun = @(u) costGauss(u(end),Ts,y0,ybar,u(1),m0,Tmax/g0/Isp,Tmax,u(2:1+lu),reshape(u(2+lu:end-1),3,lu),ratio,alpha);
+% myoptimset;
 % opt.method = "Gauss-Newton";
 % opt.method = "Steepest";
-opt.method = "BFGS";
-opt.nitermax = 500;
-opt.tolconstr = 1e-3;
-% uoptlin2 = mySQP(gaussFun,uoptlin,[],[],C,d,5,1+0*(lu),opt);
-alpha = [0; 0.33; 0.66; 0.999];
-alphaCell = cell(length(alpha),4);
-uoptlinInit(end) = 5e4;
-for k = 4:length(alpha)
-    alpha(k) = 1;
-    fun = @(x,computeGrad) costGaussGrad_mex(x,tmax,Ts,y0,ybar,m0,Tmax/g0/Isp,Tmax,ratio,alpha(k),computeGrad,[],[],C,d);
-    [uoptlin,cost,~,~,useq] = mySQPGrad(fun,uoptlinInit,opt);
-    tf = uoptlin(end);
-    dm = (cost/1e4-tf*alpha(k)/1e5)/(1-alpha(k))*m0;
-    alphaCell(k,:) = {alpha(k),tf,dm,uoptlin};
-end
+% opt.method = "BFGS";
+% opt.nitermax = 34;
+% opt.tolconstr = 1e-3;
+% % uoptlin2 = mySQP(gaussFun,uoptlin,[],[],C,d,5,1+0*(lu),opt);
+% alpha = [0; 0.33; 0.66; 0.999];
+% alphaCell = cell(length(alpha),4);
+% % uoptlinInit(end) = 5e4;
+% for k = 4:length(alpha)
+%     alpha(k) = 1;
+%     fun = @(x,computeGrad) costGaussGrad_mex(x,tmax,Ts,y0,ybar,m0,Tmax/g0/Isp,Tmax,ratio,alpha(k),computeGrad,[],[],C,d);
+%     [uoptlin,cost,~,~,useq] = mySQPGrad(fun,uoptlinInit,opt);
+%     tf = uoptlin(end);
+%     dm = (cost/1e4-tf*alpha(k)/1e5)/(1-alpha(k))*m0;
+%     alphaCell(k,:) = {alpha(k),tf,dm,uoptlin};
+% end
 
 
 
@@ -103,14 +106,21 @@ for k = 1:length(csiopt)
     csisim(:,(k-1)*ratio+1:k*ratio) = repmat(csiopt(k),1,ratio);
     qsim(:,(k-1)*ratio+1:k*ratio) = repmat(qopt(:,k),1,ratio);
 end
-csisim(ind:end) = 0;
-m = zeros(length(t)+1,1);
+m = zeros(length(t),1);
 %% Plotting Results
 m(1) = m0;
-for k = 1:length(t)
-    u = Tmax/m(k)*csisim(k)*qsim(:,k)/norm(qsim(:,k));
+% for k = 1:length(t)
+%     u = Tmax/m(k)*csisim(k)*qsim(:,k)/norm(qsim(:,k));
+%     y(:,k+1) = y(:,k) + Ts*EOEDerivatives(t(k),y(:,k),u,398600);
+%     m(k+1) = m(k) - Ts*Tmax/g0/Isp*csisim(k);
+% end
+coeffT = Tmax/g0/Isp;
+for k = 1:length(t)-1
+    ku = ceil(k/ratio);
+    u = Tmax/m(k)*csiopt(ku)*qopt(:,ku)/norm(qopt(:,ku))/1e3;
     y(:,k+1) = y(:,k) + Ts*EOEDerivatives(t(k),y(:,k),u,398600);
-    m(k+1) = m(k) - Ts*Tmax/g0/Isp*csisim(k);
+    m(k+1) = m(k) - Ts*coeffT*csiopt(ku);
+%     tCost = tCost + (y(:,k+1)-ybar)'*Q*(y(:,k+1)-ybar)*exp(t(k)/5e3);
 end
 
 x = y;
@@ -123,7 +133,12 @@ end
 for k = 1:size(y,2)
     x(:,k) = EOE2COE(y(:,k)); % Conversion of EOE state vector to COE state vector
 end
+%%
 fig = Orb_Earth_plot(orb_in, orb_end, x, utot);
+fig2 = figure();
+plot(t,m);
+yyaxis right
+plot(t, csisim(1:length(t)))
 
 
 %%

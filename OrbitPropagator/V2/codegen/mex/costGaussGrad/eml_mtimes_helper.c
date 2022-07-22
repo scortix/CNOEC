@@ -11,12 +11,20 @@
 
 /* Include files */
 #include "eml_mtimes_helper.h"
-#include "costGaussGrad_data.h"
 #include "costGaussGrad_types.h"
 #include "rt_nonfinite.h"
 
 /* Variable Definitions */
-static emlrtRTEInfo p_emlrtRTEI =
+static emlrtRTEInfo m_emlrtRTEI =
+    {
+        138,                   /* lineNo */
+        23,                    /* colNo */
+        "dynamic_size_checks", /* fName */
+        "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\ops\\eml_mtimes_helper."
+        "m" /* pName */
+};
+
+static emlrtRTEInfo n_emlrtRTEI =
     {
         133,                   /* lineNo */
         23,                    /* colNo */
@@ -33,10 +41,10 @@ void dynamic_size_checks(const emlrtStack *sp, const emxArray_real_T *a,
   if (innerDimA != innerDimB) {
     if (((a->size[0] == 1) && (a->size[1] == 1)) || (b->size[0] == 1)) {
       emlrtErrorWithMessageIdR2018a(
-          sp, &p_emlrtRTEI, "Coder:toolbox:mtimes_noDynamicScalarExpansion",
+          sp, &n_emlrtRTEI, "Coder:toolbox:mtimes_noDynamicScalarExpansion",
           "Coder:toolbox:mtimes_noDynamicScalarExpansion", 0);
     } else {
-      emlrtErrorWithMessageIdR2018a(sp, &o_emlrtRTEI, "MATLAB:innerdim",
+      emlrtErrorWithMessageIdR2018a(sp, &m_emlrtRTEI, "MATLAB:innerdim",
                                     "MATLAB:innerdim", 0);
     }
   }

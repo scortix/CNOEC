@@ -31,14 +31,14 @@ static emlrtRSInfo cb_emlrtRSI = {
                                                                     */
 };
 
-static emlrtRTEInfo j_emlrtRTEI = {
+static emlrtRTEInfo i_emlrtRTEI = {
     81,                                                            /* lineNo */
     1,                                                             /* colNo */
     "eml_find",                                                    /* fName */
     "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\elmat\\find.m" /* pName */
 };
 
-static emlrtRTEInfo k_emlrtRTEI = {
+static emlrtRTEInfo j_emlrtRTEI = {
     392,                                                           /* lineNo */
     1,                                                             /* colNo */
     "find_first_indices",                                          /* fName */
@@ -66,7 +66,7 @@ void eml_find(const emlrtStack *sp, const emxArray_boolean_T *x,
   x_data = x->data;
   k = (x->size[1] >= 1);
   if (k > x->size[1]) {
-    emlrtErrorWithMessageIdR2018a(sp, &j_emlrtRTEI,
+    emlrtErrorWithMessageIdR2018a(sp, &i_emlrtRTEI,
                                   "Coder:builtins:AssertionFailed",
                                   "Coder:builtins:AssertionFailed", 0);
   }
@@ -91,7 +91,7 @@ void eml_find(const emlrtStack *sp, const emxArray_boolean_T *x,
     }
   }
   if (idx > k) {
-    emlrtErrorWithMessageIdR2018a(&st, &k_emlrtRTEI,
+    emlrtErrorWithMessageIdR2018a(&st, &j_emlrtRTEI,
                                   "Coder:builtins:AssertionFailed",
                                   "Coder:builtins:AssertionFailed", 0);
   }

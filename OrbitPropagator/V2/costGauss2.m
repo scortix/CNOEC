@@ -25,7 +25,7 @@ dyinv = abs(y0-ybar);
 for i = 1:length(dyinv)
     dyinv(i) = (dyinv(i) ~= 0)/(dyinv(i)+(dyinv(i)==0));
 end
-Q = diag([1 1 1 1 1 0]'./ybar.^2);
+Q = diag([1 1 1 1 1 0]'.*dyinv.^2);
 % R = diag([1 1 1]/umax^2)*0.1;
 
 %% Cost Function Calculation
@@ -36,6 +36,6 @@ for k = 1:length(t)
     m = m - Ts*coeffT*csi(ku);
 end
 
-r = min((y(1,:)./(1+sqrt(y(2,:).^2+y(3,:).^2).*cos(y(6,:)-atan2(y(3,:),y(2,:)))))');
+r = ((y(1,:)./(1+sqrt(y(2,:).^2+y(3,:).^2).*cos(y(6,:)-atan2(y(3,:),y(2,:)))))');
 J = [0;Q(1:5,1:5)*(y(1:5,end)-ybar(1:5)).^2;r-6378.1];
 end

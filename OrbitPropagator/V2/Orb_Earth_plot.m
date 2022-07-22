@@ -25,8 +25,8 @@ for k = 1:size(trsf,2)
     %Orbit_ge(trsf(1,k),trsf(2,k),trsf(3,k),trsf(4,k),trsf(5,k),trsf(6,k-1),trsf(6,k))
     [r(:,k), ~] = paraorb2rv(trsf(1,k),trsf(2,k),trsf(3,k),trsf(4,k),trsf(5,k),trsf(6,k),398600);
     if k >= 2
-        plot3(r(1,k-1:k),r(2,k-1:k),r(3,k-1:k),'Color',c(k-1,:), 'LineWidth', 2);
+        plot3(r(1,k-1:k),r(2,k-1:k),r(3,k-1:k),'Color',c(k-1,:), 'LineWidth', 1);
         %plot3(r(1,k-1)+[0 u(1,k-1)], r(2,k-1)+[0 u(2,k-1)], r(3,k-1)+[0 u(3,k-1)], '->' , 'Color','r')
-        quiver3(r(1,k-1), r(2,k-1), r(3,k-1), u(1,k-1), u(2,k-1), u(3,k-1), 5e6, 'Color', cArrow)
+%         quiver3(r(1,k-1), r(2,k-1), r(3,k-1), u(1,k-1), u(2,k-1), u(3,k-1), 5e6, 'Color', cArrow)
     end
 end

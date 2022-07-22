@@ -67,6 +67,9 @@ end
         dyinv = abs(y0-ybar);
         for i = 1:length(dyinv)
             dyinv(i) = (dyinv(i) ~= 0)/(dyinv(i)+(dyinv(i)==0));
+            if dyinv(i) == 0
+                dyinv(i) = 1/max(1,ybar(i));
+            end
         end
 %         Q = diag([1 1 1 1 1 0]'./ybar.^2);
         Q = diag([1 1 1 1 1 0]'.*dyinv.^2);
@@ -79,14 +82,14 @@ end
         tCost = 0;
         for k = 1:length(t)-1
             ku = ceil(k/ratio);
-            u = Tmax/m*csi(ku)*qdir(:,ku)/norm(qdir(:,ku));
+            u = Tmax/m*csi(ku)*qdir(:,ku)/norm(qdir(:,ku))/1e3;
             y(:,k+1) = y(:,k) + Ts*EOEDerivatives(t(k),y(:,k),u,398600);
             m = m - Ts*coeffT*csi(ku);
-            tCost = tCost + (y(:,k+1)-ybar)'*Q*(y(:,k+1)-ybar)*exp(t(k)/1e3);
+            tCost = tCost + (y(:,k+1)-ybar)'*Q*(y(:,k+1)-ybar)*(t(k)/1e5);
         end
         tCost = tCost/length(t);
         dm = m0 - m;
-        mCost = dm*1e2*exp(tmax/1e3);
+        mCost = dm;
 
 %         e = vecnorm((y(1:5,:)-ybar(1:5))./ybar(1:5)).^2;
 %         indtf = find(e <= 1e-5,1);
@@ -97,13 +100,13 @@ end
 %         end
 
         r = ((y(1,:)./(1+sqrt(y(2,:).^2+y(3,:).^2).*cos(y(6,:)-atan2(y(3,:),y(2,:)))))');
-        f = 1e2*(alpha*tCost+(1-alpha)*mCost);
+        f = 1e-2*(alpha*tCost+(1-alpha)*mCost);
 %         g = [Q(1:5,1:5)*(y(1:5,indtf)-ybar(1:5)).^2;
 %             Q(1:5,1:5)*(y(1:5,end)-ybar(1:5)).^2];
         g = abs(y(1:5,end)-ybar(1:5)).*dyinv(1:5);
 %         g = [];
-        h = [min(r)-6380; m-1100; 1-vecnorm(qdir)'];
-        F = [sqrt(alpha*tf/1e5); sqrt((1-alpha)*dm*100/m0)];
+        h = [r-6380; m-1100; 1-vecnorm(qdir)'];
+        F = 0.1*[sqrt(alpha*tCost); sqrt((1-alpha)*mCost)];
 
     end
 %     function f = funf(x,Ts,y0,ybar,m0,coeffT,Tmax,ratio,alpha)

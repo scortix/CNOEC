@@ -19,14 +19,14 @@
 #include "mwmathutil.h"
 
 /* Variable Definitions */
-static emlrtRSInfo mc_emlrtRSI = {
+static emlrtRSInfo gc_emlrtRSI = {
     51,        /* lineNo */
     "vecnorm", /* fcnName */
     "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\matfun\\vecnorm.m" /* pathName
                                                                         */
 };
 
-static emlrtRTEInfo lc_emlrtRTEI = {
+static emlrtRTEInfo kc_emlrtRTEI = {
     50,        /* lineNo */
     24,        /* colNo */
     "vecnorm", /* fName */
@@ -54,11 +54,11 @@ void vecnorm(const emlrtStack *sp, const emxArray_real_T *x, emxArray_real_T *y)
   ix0 = y->size[0] * y->size[1];
   y->size[0] = 1;
   y->size[1] = x->size[1];
-  emxEnsureCapacity_real_T(sp, y, ix0, &lc_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, y, ix0, &kc_emlrtRTEI);
   y_data = y->data;
-  st.site = &mc_emlrtRSI;
+  st.site = &gc_emlrtRSI;
   if (x->size[1] > 2147483646) {
-    b_st.site = &y_emlrtRSI;
+    b_st.site = &x_emlrtRSI;
     check_forloop_overflow_error(&b_st);
   }
   for (j = 0; j < ncols; j++) {

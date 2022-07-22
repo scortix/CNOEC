@@ -66,13 +66,16 @@ end
         dyinv = abs(y0-ybar);
         for i = 1:length(dyinv)
             dyinv(i) = (dyinv(i) ~= 0)/(dyinv(i)+(dyinv(i)==0));
+            if dyinv(i) == 0
+                dyinv(i) = 1/max(1,ybar(i));
+            end
         end
-        Q = diag([1 1 1 1 1 0]'./ybar.^2);
+        Q = diag([1 1 1 1 1 0]'.*dyinv.^2);
         % R = diag([1 1 1]/umax^2)*0.1;
 
         for k = 1:length(t)
             ku = ceil(k/ratio);
-            u = Tmax/m*csi(ku)*qdir(:,ku)/norm(qdir(:,ku));
+            u = Tmax/m*csi(ku)*qdir(:,ku)/norm(qdir(:,ku))/1e3;
             y(:,k+1) = y(:,k) + Ts*EOEDerivatives(t(k),y(:,k),u,398600);
             m = m - Ts*coeffT*csi(ku);
         end

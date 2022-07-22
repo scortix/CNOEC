@@ -38,34 +38,18 @@ emlrtRSInfo h_emlrtRSI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad2.m" /* pathName */
 };
 
-emlrtRSInfo y_emlrtRSI = {
+emlrtRSInfo x_emlrtRSI = {
     20,                               /* lineNo */
     "eml_int_forloop_overflow_check", /* fcnName */
     "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\eml\\eml_int_forloop_"
     "overflow_check.m" /* pathName */
 };
 
-emlrtRSInfo nb_emlrtRSI = {
+emlrtRSInfo mb_emlrtRSI = {
     33,                           /* lineNo */
     "applyScalarFunctionInPlace", /* fcnName */
     "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
     "internal\\applyScalarFunctionInPlace.m" /* pathName */
-};
-
-emlrtRSInfo sc_emlrtRSI =
-    {
-        69,                  /* lineNo */
-        "eml_mtimes_helper", /* fcnName */
-        "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\ops\\eml_mtimes_helper."
-        "m" /* pathName */
-};
-
-emlrtRTEInfo h_emlrtRTEI = {
-    58,                   /* lineNo */
-    23,                   /* colNo */
-    "assertValidSizeArg", /* fName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
-    "internal\\assertValidSizeArg.m" /* pName */
 };
 
 emlrtRTEInfo l_emlrtRTEI = {
@@ -75,20 +59,11 @@ emlrtRTEInfo l_emlrtRTEI = {
     "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\elfun\\sqrt.m" /* pName */
 };
 
-emlrtRTEInfo o_emlrtRTEI =
-    {
-        138,                   /* lineNo */
-        23,                    /* colNo */
-        "dynamic_size_checks", /* fName */
-        "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\ops\\eml_mtimes_helper."
-        "m" /* pName */
-};
-
 emlrtRTEInfo
-    rc_emlrtRTEI =
+    pc_emlrtRTEI =
         {
-            30,           /* lineNo */
-            30,           /* colNo */
+            15,           /* lineNo */
+            27,           /* colNo */
             "mygradcalc", /* fName */
             "P:\\Projects\\CNOEC\\CNOEC_"
             "Project\\OrbitPropagator\\V2\\mygradcalc.m" /* pName */

@@ -12,16 +12,12 @@
 /* Include files */
 #include "costGaussGrad.h"
 #include "EOE2COE.h"
-#include "EOEDerivatives.h"
-#include "assertCompatibleDims.h"
 #include "atan2.h"
 #include "colon.h"
 #include "cos.h"
 #include "costGaussGrad_data.h"
 #include "costGaussGrad_emxutil.h"
 #include "costGaussGrad_types.h"
-#include "diag.h"
-#include "eml_int_forloop_overflow_check.h"
 #include "eml_mtimes_helper.h"
 #include "find.h"
 #include "indexShapeCheck.h"
@@ -31,6 +27,7 @@
 #include "sqrt.h"
 #include "vecnorm.h"
 #include "mwmathutil.h"
+#include <string.h>
 
 /* Type Definitions */
 #ifndef struct_emxArray_int32_T_1x1
@@ -152,7 +149,7 @@ static emlrtRSInfo n_emlrtRSI =
 
 static emlrtRSInfo o_emlrtRSI =
     {
-        83,                  /* lineNo */
+        86,                  /* lineNo */
         "costGaussGrad/fun", /* fcnName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pathName */
@@ -160,7 +157,7 @@ static emlrtRSInfo o_emlrtRSI =
 
 static emlrtRSInfo p_emlrtRSI =
     {
-        99,                  /* lineNo */
+        102,                 /* lineNo */
         "costGaussGrad/fun", /* fcnName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pathName */
@@ -168,7 +165,7 @@ static emlrtRSInfo p_emlrtRSI =
 
 static emlrtRSInfo q_emlrtRSI =
     {
-        105,                 /* lineNo */
+        108,                 /* lineNo */
         "costGaussGrad/fun", /* fcnName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pathName */
@@ -176,7 +173,7 @@ static emlrtRSInfo q_emlrtRSI =
 
 static emlrtRSInfo r_emlrtRSI =
     {
-        106,                 /* lineNo */
+        109,                 /* lineNo */
         "costGaussGrad/fun", /* fcnName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pathName */
@@ -209,13 +206,6 @@ static emlrtRSInfo ab_emlrtRSI = {
                                                                     */
 };
 
-static emlrtRSInfo gb_emlrtRSI = {
-    44,       /* lineNo */
-    "mpower", /* fcnName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\matfun\\mpower.m" /* pathName
-                                                                       */
-};
-
 static emlrtRSInfo hb_emlrtRSI = {
     71,                                                           /* lineNo */
     "power",                                                      /* fcnName */
@@ -227,6 +217,30 @@ static emlrtRSInfo ib_emlrtRSI = {
     "COE2EOE", /* fcnName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\COE2EOE.m" /* pathName
                                                                           */
+};
+
+static emlrtRSInfo jb_emlrtRSI =
+    {
+        23,               /* lineNo */
+        "EOEDerivatives", /* fcnName */
+        "P:\\Projects\\CNOEC\\CNOEC_"
+        "Project\\OrbitPropagator\\V2\\EOEDerivatives.m" /* pathName */
+};
+
+static emlrtRSInfo kb_emlrtRSI =
+    {
+        25,               /* lineNo */
+        "EOEDerivatives", /* fcnName */
+        "P:\\Projects\\CNOEC\\CNOEC_"
+        "Project\\OrbitPropagator\\V2\\EOEDerivatives.m" /* pathName */
+};
+
+static emlrtRSInfo lb_emlrtRSI =
+    {
+        33,               /* lineNo */
+        "EOEDerivatives", /* fcnName */
+        "P:\\Projects\\CNOEC\\CNOEC_"
+        "Project\\OrbitPropagator\\V2\\EOEDerivatives.m" /* pathName */
 };
 
 static emlrtRSInfo vb_emlrtRSI =
@@ -244,88 +258,31 @@ static emlrtRSInfo wb_emlrtRSI = {
                                                                        */
 };
 
-static emlrtRSInfo xb_emlrtRSI = {
-    15,    /* lineNo */
-    "min", /* fcnName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\datafun\\min.m" /* pathName
-                                                                     */
-};
-
-static emlrtRSInfo yb_emlrtRSI = {
-    46,         /* lineNo */
-    "minOrMax", /* fcnName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+internal\\minOrMax.m" /* pathName
-                                                                            */
-};
-
-static emlrtRSInfo ac_emlrtRSI = {
-    92,        /* lineNo */
-    "minimum", /* fcnName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+internal\\minOrMax.m" /* pathName
-                                                                            */
-};
-
-static emlrtRSInfo bc_emlrtRSI =
-    {
-        209,             /* lineNo */
-        "unaryMinOrMax", /* fcnName */
-        "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
-        "internal\\unaryMinOrMax.m" /* pathName */
-};
-
-static emlrtRSInfo cc_emlrtRSI =
-    {
-        898,                    /* lineNo */
-        "minRealVectorOmitNaN", /* fcnName */
-        "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
-        "internal\\unaryMinOrMax.m" /* pathName */
-};
-
-static emlrtRSInfo dc_emlrtRSI = {
-    72,                      /* lineNo */
-    "vectorMinOrMaxInPlace", /* fcnName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
-    "internal\\vectorMinOrMaxInPlace.m" /* pathName */
-};
-
-static emlrtRSInfo ec_emlrtRSI = {
-    64,                      /* lineNo */
-    "vectorMinOrMaxInPlace", /* fcnName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
-    "internal\\vectorMinOrMaxInPlace.m" /* pathName */
-};
-
-static emlrtRSInfo fc_emlrtRSI = {
-    113,         /* lineNo */
-    "findFirst", /* fcnName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
-    "internal\\vectorMinOrMaxInPlace.m" /* pathName */
-};
-
 static emlrtRSInfo gc_emlrtRSI = {
-    130,                        /* lineNo */
-    "minOrMaxRealVectorKernel", /* fcnName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
-    "internal\\vectorMinOrMaxInPlace.m" /* pathName */
-};
-
-static emlrtRSInfo vc_emlrtRSI = {
     28,    /* lineNo */
     "cat", /* fcnName */
     "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+internal\\cat.m" /* pathName
                                                                        */
 };
 
-static emlrtRSInfo wc_emlrtRSI = {
+static emlrtRSInfo hc_emlrtRSI = {
     100,        /* lineNo */
     "cat_impl", /* fcnName */
     "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+internal\\cat.m" /* pathName
                                                                        */
 };
 
-static emlrtRSInfo xc_emlrtRSI =
+static emlrtRSInfo ic_emlrtRSI =
     {
         94,                  /* lineNo */
+        "eml_mtimes_helper", /* fcnName */
+        "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\ops\\eml_mtimes_helper."
+        "m" /* pathName */
+};
+
+static emlrtRSInfo jc_emlrtRSI =
+    {
+        69,                  /* lineNo */
         "eml_mtimes_helper", /* fcnName */
         "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\ops\\eml_mtimes_helper."
         "m" /* pathName */
@@ -418,115 +375,72 @@ static emlrtRTEInfo emlrtRTEI = {
                                                                        */
 };
 
-static emlrtRTEInfo b_emlrtRTEI =
-    {
-        135,             /* lineNo */
-        27,              /* colNo */
-        "unaryMinOrMax", /* fName */
-        "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
-        "internal\\unaryMinOrMax.m" /* pName */
-};
-
-static emlrtRTEInfo d_emlrtRTEI = {
-    59,                  /* lineNo */
-    23,                  /* colNo */
-    "reshapeSizeChecks", /* fName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
-    "internal\\reshapeSizeChecks.m" /* pName */
-};
-
-static emlrtRTEInfo e_emlrtRTEI = {
-    57,                  /* lineNo */
-    23,                  /* colNo */
-    "reshapeSizeChecks", /* fName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
-    "internal\\reshapeSizeChecks.m" /* pName */
-};
-
-static emlrtRTEInfo f_emlrtRTEI = {
-    52,                  /* lineNo */
-    13,                  /* colNo */
-    "reshapeSizeChecks", /* fName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
-    "internal\\reshapeSizeChecks.m" /* pName */
-};
-
 static emlrtBCInfo d_emlrtBCI =
     {
         -1,                  /* iFirst */
         -1,                  /* iLast */
-        103,                 /* lineNo */
-        23,                  /* colNo */
-        "y",                 /* aName */
+        53,                  /* lineNo */
+        16,                  /* colNo */
+        "x",                 /* aName */
         "costGaussGrad/fun", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m", /* pName */
         0                                                /* checkKind */
-};
-
-static emlrtECInfo e_emlrtECI =
-    {
-        2,                   /* nDims */
-        99,                  /* lineNo */
-        26,                  /* colNo */
-        "costGaussGrad/fun", /* fName */
-        "P:\\Projects\\CNOEC\\CNOEC_"
-        "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
-};
-
-static emlrtECInfo f_emlrtECI =
-    {
-        2,                   /* nDims */
-        99,                  /* lineNo */
-        57,                  /* colNo */
-        "costGaussGrad/fun", /* fName */
-        "P:\\Projects\\CNOEC\\CNOEC_"
-        "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
-};
-
-static emlrtECInfo g_emlrtECI =
-    {
-        2,                   /* nDims */
-        99,                  /* lineNo */
-        31,                  /* colNo */
-        "costGaussGrad/fun", /* fName */
-        "P:\\Projects\\CNOEC\\CNOEC_"
-        "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
 };
 
 static emlrtBCInfo e_emlrtBCI =
     {
         -1,                  /* iFirst */
         -1,                  /* iLast */
-        85,                  /* lineNo */
-        70,                  /* colNo */
-        "t",                 /* aName */
+        56,                  /* lineNo */
+        17,                  /* colNo */
+        "x",                 /* aName */
         "costGaussGrad/fun", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m", /* pName */
         0                                                /* checkKind */
+};
+
+static emlrtDCInfo emlrtDCI =
+    {
+        56,                  /* lineNo */
+        19,                  /* colNo */
+        "costGaussGrad/fun", /* fName */
+        "P:\\Projects\\CNOEC\\CNOEC_"
+        "Project\\OrbitPropagator\\V2\\costGaussGrad.m", /* pName */
+        1                                                /* checkKind */
 };
 
 static emlrtBCInfo f_emlrtBCI =
     {
         -1,                  /* iFirst */
         -1,                  /* iLast */
-        85,                  /* lineNo */
-        34,                  /* colNo */
-        "y",                 /* aName */
+        56,                  /* lineNo */
+        19,                  /* colNo */
+        "x",                 /* aName */
         "costGaussGrad/fun", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m", /* pName */
         0                                                /* checkKind */
 };
 
+static emlrtDCInfo b_emlrtDCI =
+    {
+        57,                  /* lineNo */
+        26,                  /* colNo */
+        "costGaussGrad/fun", /* fName */
+        "P:\\Projects\\CNOEC\\CNOEC_"
+        "Project\\OrbitPropagator\\V2\\costGaussGrad.m", /* pName */
+        1                                                /* checkKind */
+};
+
 static emlrtBCInfo g_emlrtBCI =
     {
         -1,                  /* iFirst */
         -1,                  /* iLast */
-        83,                  /* lineNo */
-        17,                  /* colNo */
-        "y",                 /* aName */
+        57,                  /* lineNo */
+        26,                  /* colNo */
+        "x",                 /* aName */
         "costGaussGrad/fun", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m", /* pName */
@@ -537,9 +451,9 @@ static emlrtBCInfo h_emlrtBCI =
     {
         -1,                  /* iFirst */
         -1,                  /* iLast */
-        83,                  /* lineNo */
-        60,                  /* colNo */
-        "y",                 /* aName */
+        57,                  /* lineNo */
+        31,                  /* colNo */
+        "x",                 /* aName */
         "costGaussGrad/fun", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m", /* pName */
@@ -550,9 +464,9 @@ static emlrtBCInfo i_emlrtBCI =
     {
         -1,                  /* iFirst */
         -1,                  /* iLast */
-        83,                  /* lineNo */
-        53,                  /* colNo */
-        "t",                 /* aName */
+        85,                  /* lineNo */
+        39,                  /* colNo */
+        "qdir",              /* aName */
         "costGaussGrad/fun", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m", /* pName */
@@ -563,9 +477,9 @@ static emlrtBCInfo j_emlrtBCI =
     {
         -1,                  /* iFirst */
         -1,                  /* iLast */
-        83,                  /* lineNo */
-        28,                  /* colNo */
-        "y",                 /* aName */
+        85,                  /* lineNo */
+        55,                  /* colNo */
+        "qdir",              /* aName */
         "costGaussGrad/fun", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m", /* pName */
@@ -589,9 +503,9 @@ static emlrtBCInfo l_emlrtBCI =
     {
         -1,                  /* iFirst */
         -1,                  /* iLast */
-        82,                  /* lineNo */
-        39,                  /* colNo */
-        "qdir",              /* aName */
+        86,                  /* lineNo */
+        28,                  /* colNo */
+        "y",                 /* aName */
         "costGaussGrad/fun", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m", /* pName */
@@ -602,9 +516,9 @@ static emlrtBCInfo m_emlrtBCI =
     {
         -1,                  /* iFirst */
         -1,                  /* iLast */
-        57,                  /* lineNo */
-        31,                  /* colNo */
-        "x",                 /* aName */
+        86,                  /* lineNo */
+        53,                  /* colNo */
+        "t",                 /* aName */
         "costGaussGrad/fun", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m", /* pName */
@@ -615,79 +529,121 @@ static emlrtBCInfo n_emlrtBCI =
     {
         -1,                  /* iFirst */
         -1,                  /* iLast */
-        57,                  /* lineNo */
-        26,                  /* colNo */
-        "x",                 /* aName */
+        86,                  /* lineNo */
+        60,                  /* colNo */
+        "y",                 /* aName */
         "costGaussGrad/fun", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m", /* pName */
         0                                                /* checkKind */
-};
-
-static emlrtDCInfo emlrtDCI =
-    {
-        57,                  /* lineNo */
-        26,                  /* colNo */
-        "costGaussGrad/fun", /* fName */
-        "P:\\Projects\\CNOEC\\CNOEC_"
-        "Project\\OrbitPropagator\\V2\\costGaussGrad.m", /* pName */
-        1                                                /* checkKind */
 };
 
 static emlrtBCInfo o_emlrtBCI =
     {
         -1,                  /* iFirst */
         -1,                  /* iLast */
-        56,                  /* lineNo */
-        19,                  /* colNo */
-        "x",                 /* aName */
+        86,                  /* lineNo */
+        17,                  /* colNo */
+        "y",                 /* aName */
         "costGaussGrad/fun", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m", /* pName */
         0                                                /* checkKind */
-};
-
-static emlrtDCInfo b_emlrtDCI =
-    {
-        56,                  /* lineNo */
-        19,                  /* colNo */
-        "costGaussGrad/fun", /* fName */
-        "P:\\Projects\\CNOEC\\CNOEC_"
-        "Project\\OrbitPropagator\\V2\\costGaussGrad.m", /* pName */
-        1                                                /* checkKind */
 };
 
 static emlrtBCInfo p_emlrtBCI =
     {
         -1,                  /* iFirst */
         -1,                  /* iLast */
-        56,                  /* lineNo */
-        17,                  /* colNo */
-        "x",                 /* aName */
+        88,                  /* lineNo */
+        34,                  /* colNo */
+        "y",                 /* aName */
         "costGaussGrad/fun", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m", /* pName */
         0                                                /* checkKind */
+};
+
+static emlrtECInfo e_emlrtECI =
+    {
+        2,                   /* nDims */
+        102,                 /* lineNo */
+        31,                  /* colNo */
+        "costGaussGrad/fun", /* fName */
+        "P:\\Projects\\CNOEC\\CNOEC_"
+        "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
+};
+
+static emlrtECInfo f_emlrtECI =
+    {
+        2,                   /* nDims */
+        102,                 /* lineNo */
+        57,                  /* colNo */
+        "costGaussGrad/fun", /* fName */
+        "P:\\Projects\\CNOEC\\CNOEC_"
+        "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
+};
+
+static emlrtECInfo g_emlrtECI =
+    {
+        2,                   /* nDims */
+        102,                 /* lineNo */
+        26,                  /* colNo */
+        "costGaussGrad/fun", /* fName */
+        "P:\\Projects\\CNOEC\\CNOEC_"
+        "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
 };
 
 static emlrtBCInfo q_emlrtBCI =
     {
         -1,                  /* iFirst */
         -1,                  /* iLast */
-        53,                  /* lineNo */
-        16,                  /* colNo */
-        "x",                 /* aName */
+        106,                 /* lineNo */
+        23,                  /* colNo */
+        "y",                 /* aName */
         "costGaussGrad/fun", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m", /* pName */
         0                                                /* checkKind */
 };
 
+static emlrtRTEInfo b_emlrtRTEI = {
+    52,                  /* lineNo */
+    13,                  /* colNo */
+    "reshapeSizeChecks", /* fName */
+    "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
+    "internal\\reshapeSizeChecks.m" /* pName */
+};
+
+static emlrtRTEInfo c_emlrtRTEI = {
+    57,                  /* lineNo */
+    23,                  /* colNo */
+    "reshapeSizeChecks", /* fName */
+    "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
+    "internal\\reshapeSizeChecks.m" /* pName */
+};
+
+static emlrtRTEInfo d_emlrtRTEI = {
+    59,                  /* lineNo */
+    23,                  /* colNo */
+    "reshapeSizeChecks", /* fName */
+    "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
+    "internal\\reshapeSizeChecks.m" /* pName */
+};
+
+static emlrtRTEInfo e_emlrtRTEI = {
+    13,                     /* lineNo */
+    27,                     /* colNo */
+    "assertCompatibleDims", /* fName */
+    "P:\\Matlab\\R2022a\\toolbox\\shared\\coder\\coder\\lib\\+coder\\+"
+    "internal\\assertCompatibleDims.m" /* pName */
+};
+
 static emlrtBCInfo r_emlrtBCI =
     {
         -1,                  /* iFirst */
         -1,                  /* iLast */
-        75,                  /* lineNo */
+        78,                  /* lineNo */
         20,                  /* colNo */
         "csi",               /* aName */
         "costGaussGrad/fun", /* fName */
@@ -700,7 +656,7 @@ static emlrtBCInfo s_emlrtBCI =
     {
         -1,                  /* iFirst */
         -1,                  /* iLast */
-        76,                  /* lineNo */
+        79,                  /* lineNo */
         21,                  /* colNo */
         "csi",               /* aName */
         "costGaussGrad/fun", /* fName */
@@ -713,7 +669,7 @@ static emlrtBCInfo t_emlrtBCI =
     {
         -1,                  /* iFirst */
         -1,                  /* iLast */
-        82,                  /* lineNo */
+        85,                  /* lineNo */
         28,                  /* colNo */
         "csi",               /* aName */
         "costGaussGrad/fun", /* fName */
@@ -724,7 +680,7 @@ static emlrtBCInfo t_emlrtBCI =
 
 static emlrtDCInfo c_emlrtDCI =
     {
-        82,                  /* lineNo */
+        85,                  /* lineNo */
         28,                  /* colNo */
         "costGaussGrad/fun", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
@@ -736,7 +692,7 @@ static emlrtBCInfo u_emlrtBCI =
     {
         -1,                  /* iFirst */
         -1,                  /* iLast */
-        84,                  /* lineNo */
+        87,                  /* lineNo */
         35,                  /* colNo */
         "csi",               /* aName */
         "costGaussGrad/fun", /* fName */
@@ -745,7 +701,28 @@ static emlrtBCInfo u_emlrtBCI =
         0                                                /* checkKind */
 };
 
-static emlrtRTEInfo r_emlrtRTEI =
+static emlrtBCInfo v_emlrtBCI =
+    {
+        -1,                  /* iFirst */
+        -1,                  /* iLast */
+        88,                  /* lineNo */
+        67,                  /* colNo */
+        "t",                 /* aName */
+        "costGaussGrad/fun", /* fName */
+        "P:\\Projects\\CNOEC\\CNOEC_"
+        "Project\\OrbitPropagator\\V2\\costGaussGrad.m", /* pName */
+        0                                                /* checkKind */
+};
+
+static emlrtRTEInfo g_emlrtRTEI = {
+    58,                   /* lineNo */
+    23,                   /* colNo */
+    "assertValidSizeArg", /* fName */
+    "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
+    "internal\\assertValidSizeArg.m" /* pName */
+};
+
+static emlrtRTEInfo p_emlrtRTEI =
     {
         20,              /* lineNo */
         1,               /* colNo */
@@ -754,7 +731,7 @@ static emlrtRTEInfo r_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
 };
 
-static emlrtRTEInfo s_emlrtRTEI =
+static emlrtRTEInfo q_emlrtRTEI =
     {
         39,              /* lineNo */
         5,               /* colNo */
@@ -763,7 +740,7 @@ static emlrtRTEInfo s_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
 };
 
-static emlrtRTEInfo t_emlrtRTEI =
+static emlrtRTEInfo r_emlrtRTEI =
     {
         23,              /* lineNo */
         5,               /* colNo */
@@ -772,7 +749,7 @@ static emlrtRTEInfo t_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
 };
 
-static emlrtRTEInfo u_emlrtRTEI =
+static emlrtRTEInfo s_emlrtRTEI =
     {
         39,              /* lineNo */
         13,              /* colNo */
@@ -781,7 +758,7 @@ static emlrtRTEInfo u_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
 };
 
-static emlrtRTEInfo v_emlrtRTEI =
+static emlrtRTEInfo t_emlrtRTEI =
     {
         39,              /* lineNo */
         21,              /* colNo */
@@ -790,7 +767,7 @@ static emlrtRTEInfo v_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
 };
 
-static emlrtRTEInfo w_emlrtRTEI =
+static emlrtRTEInfo u_emlrtRTEI =
     {
         24,              /* lineNo */
         11,              /* colNo */
@@ -799,7 +776,7 @@ static emlrtRTEInfo w_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
 };
 
-static emlrtRTEInfo x_emlrtRTEI =
+static emlrtRTEInfo v_emlrtRTEI =
     {
         39,              /* lineNo */
         29,              /* colNo */
@@ -808,7 +785,7 @@ static emlrtRTEInfo x_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
 };
 
-static emlrtRTEInfo y_emlrtRTEI =
+static emlrtRTEInfo w_emlrtRTEI =
     {
         43,              /* lineNo */
         9,               /* colNo */
@@ -817,7 +794,7 @@ static emlrtRTEInfo y_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
 };
 
-static emlrtRTEInfo ab_emlrtRTEI =
+static emlrtRTEInfo x_emlrtRTEI =
     {
         48,              /* lineNo */
         9,               /* colNo */
@@ -826,9 +803,27 @@ static emlrtRTEInfo ab_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
 };
 
-static emlrtRTEInfo bb_emlrtRTEI =
+static emlrtRTEInfo y_emlrtRTEI =
     {
         41,              /* lineNo */
+        15,              /* colNo */
+        "costGaussGrad", /* fName */
+        "P:\\Projects\\CNOEC\\CNOEC_"
+        "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
+};
+
+static emlrtRTEInfo ab_emlrtRTEI =
+    {
+        41,              /* lineNo */
+        9,               /* colNo */
+        "costGaussGrad", /* fName */
+        "P:\\Projects\\CNOEC\\CNOEC_"
+        "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
+};
+
+static emlrtRTEInfo bb_emlrtRTEI =
+    {
+        46,              /* lineNo */
         15,              /* colNo */
         "costGaussGrad", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
@@ -837,8 +832,8 @@ static emlrtRTEInfo bb_emlrtRTEI =
 
 static emlrtRTEInfo cb_emlrtRTEI =
     {
-        41,              /* lineNo */
-        9,               /* colNo */
+        24,              /* lineNo */
+        15,              /* colNo */
         "costGaussGrad", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
@@ -847,7 +842,7 @@ static emlrtRTEInfo cb_emlrtRTEI =
 static emlrtRTEInfo db_emlrtRTEI =
     {
         46,              /* lineNo */
-        15,              /* colNo */
+        9,               /* colNo */
         "costGaussGrad", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
@@ -856,31 +851,13 @@ static emlrtRTEInfo db_emlrtRTEI =
 static emlrtRTEInfo eb_emlrtRTEI =
     {
         24,              /* lineNo */
-        15,              /* colNo */
-        "costGaussGrad", /* fName */
-        "P:\\Projects\\CNOEC\\CNOEC_"
-        "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
-};
-
-static emlrtRTEInfo fb_emlrtRTEI =
-    {
-        46,              /* lineNo */
-        9,               /* colNo */
-        "costGaussGrad", /* fName */
-        "P:\\Projects\\CNOEC\\CNOEC_"
-        "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
-};
-
-static emlrtRTEInfo gb_emlrtRTEI =
-    {
-        24,              /* lineNo */
         5,               /* colNo */
         "costGaussGrad", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
 };
 
-static emlrtRTEInfo hb_emlrtRTEI =
+static emlrtRTEInfo fb_emlrtRTEI =
     {
         25,              /* lineNo */
         11,              /* colNo */
@@ -889,7 +866,7 @@ static emlrtRTEInfo hb_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
 };
 
-static emlrtRTEInfo ib_emlrtRTEI =
+static emlrtRTEInfo gb_emlrtRTEI =
     {
         25,              /* lineNo */
         15,              /* colNo */
@@ -898,7 +875,7 @@ static emlrtRTEInfo ib_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
 };
 
-static emlrtRTEInfo jb_emlrtRTEI =
+static emlrtRTEInfo hb_emlrtRTEI =
     {
         25,              /* lineNo */
         5,               /* colNo */
@@ -907,7 +884,7 @@ static emlrtRTEInfo jb_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
 };
 
-static emlrtRTEInfo kb_emlrtRTEI =
+static emlrtRTEInfo ib_emlrtRTEI =
     {
         26,              /* lineNo */
         5,               /* colNo */
@@ -916,7 +893,7 @@ static emlrtRTEInfo kb_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
 };
 
-static emlrtRTEInfo lb_emlrtRTEI =
+static emlrtRTEInfo jb_emlrtRTEI =
     {
         31,              /* lineNo */
         9,               /* colNo */
@@ -925,7 +902,7 @@ static emlrtRTEInfo lb_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
 };
 
-static emlrtRTEInfo mb_emlrtRTEI =
+static emlrtRTEInfo kb_emlrtRTEI =
     {
         36,              /* lineNo */
         9,               /* colNo */
@@ -934,9 +911,27 @@ static emlrtRTEInfo mb_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
 };
 
-static emlrtRTEInfo nb_emlrtRTEI =
+static emlrtRTEInfo lb_emlrtRTEI =
     {
         29,              /* lineNo */
+        15,              /* colNo */
+        "costGaussGrad", /* fName */
+        "P:\\Projects\\CNOEC\\CNOEC_"
+        "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
+};
+
+static emlrtRTEInfo mb_emlrtRTEI =
+    {
+        29,              /* lineNo */
+        9,               /* colNo */
+        "costGaussGrad", /* fName */
+        "P:\\Projects\\CNOEC\\CNOEC_"
+        "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
+};
+
+static emlrtRTEInfo nb_emlrtRTEI =
+    {
+        34,              /* lineNo */
         15,              /* colNo */
         "costGaussGrad", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
@@ -945,7 +940,7 @@ static emlrtRTEInfo nb_emlrtRTEI =
 
 static emlrtRTEInfo ob_emlrtRTEI =
     {
-        29,              /* lineNo */
+        34,              /* lineNo */
         9,               /* colNo */
         "costGaussGrad", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
@@ -954,24 +949,6 @@ static emlrtRTEInfo ob_emlrtRTEI =
 
 static emlrtRTEInfo pb_emlrtRTEI =
     {
-        34,              /* lineNo */
-        15,              /* colNo */
-        "costGaussGrad", /* fName */
-        "P:\\Projects\\CNOEC\\CNOEC_"
-        "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
-};
-
-static emlrtRTEInfo qb_emlrtRTEI =
-    {
-        34,              /* lineNo */
-        9,               /* colNo */
-        "costGaussGrad", /* fName */
-        "P:\\Projects\\CNOEC\\CNOEC_"
-        "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
-};
-
-static emlrtRTEInfo rb_emlrtRTEI =
-    {
         22,              /* lineNo */
         5,               /* colNo */
         "costGaussGrad", /* fName */
@@ -979,7 +956,7 @@ static emlrtRTEInfo rb_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
 };
 
-static emlrtRTEInfo sb_emlrtRTEI =
+static emlrtRTEInfo qb_emlrtRTEI =
     {
         1,               /* lineNo */
         52,              /* colNo */
@@ -988,7 +965,7 @@ static emlrtRTEInfo sb_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
 };
 
-static emlrtRTEInfo tb_emlrtRTEI =
+static emlrtRTEInfo rb_emlrtRTEI =
     {
         56,              /* lineNo */
         9,               /* colNo */
@@ -997,16 +974,7 @@ static emlrtRTEInfo tb_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
 };
 
-static emlrtRTEInfo ub_emlrtRTEI =
-    {
-        57,              /* lineNo */
-        9,               /* colNo */
-        "costGaussGrad", /* fName */
-        "P:\\Projects\\CNOEC\\CNOEC_"
-        "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
-};
-
-static emlrtRTEInfo vb_emlrtRTEI =
+static emlrtRTEInfo sb_emlrtRTEI =
     {
         58,              /* lineNo */
         9,               /* colNo */
@@ -1015,7 +983,7 @@ static emlrtRTEInfo vb_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
 };
 
-static emlrtRTEInfo wb_emlrtRTEI =
+static emlrtRTEInfo tb_emlrtRTEI =
     {
         59,              /* lineNo */
         22,              /* colNo */
@@ -1024,7 +992,7 @@ static emlrtRTEInfo wb_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
 };
 
-static emlrtRTEInfo xb_emlrtRTEI =
+static emlrtRTEInfo ub_emlrtRTEI =
     {
         63,              /* lineNo */
         9,               /* colNo */
@@ -1033,7 +1001,7 @@ static emlrtRTEInfo xb_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
 };
 
-static emlrtRTEInfo yb_emlrtRTEI =
+static emlrtRTEInfo vb_emlrtRTEI =
     {
         57,              /* lineNo */
         24,              /* colNo */
@@ -1042,10 +1010,37 @@ static emlrtRTEInfo yb_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
 };
 
+static emlrtRTEInfo wb_emlrtRTEI =
+    {
+        102,             /* lineNo */
+        31,              /* colNo */
+        "costGaussGrad", /* fName */
+        "P:\\Projects\\CNOEC\\CNOEC_"
+        "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
+};
+
+static emlrtRTEInfo xb_emlrtRTEI =
+    {
+        102,             /* lineNo */
+        41,              /* colNo */
+        "costGaussGrad", /* fName */
+        "P:\\Projects\\CNOEC\\CNOEC_"
+        "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
+};
+
+static emlrtRTEInfo yb_emlrtRTEI =
+    {
+        102,             /* lineNo */
+        70,              /* colNo */
+        "costGaussGrad", /* fName */
+        "P:\\Projects\\CNOEC\\CNOEC_"
+        "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
+};
+
 static emlrtRTEInfo ac_emlrtRTEI =
     {
-        99,              /* lineNo */
-        31,              /* colNo */
+        102,             /* lineNo */
+        77,              /* colNo */
         "costGaussGrad", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
@@ -1053,8 +1048,8 @@ static emlrtRTEInfo ac_emlrtRTEI =
 
 static emlrtRTEInfo bc_emlrtRTEI =
     {
-        99,              /* lineNo */
-        41,              /* colNo */
+        102,             /* lineNo */
+        26,              /* colNo */
         "costGaussGrad", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
@@ -1062,8 +1057,8 @@ static emlrtRTEInfo bc_emlrtRTEI =
 
 static emlrtRTEInfo cc_emlrtRTEI =
     {
-        99,              /* lineNo */
-        70,              /* colNo */
+        102,             /* lineNo */
+        53,              /* colNo */
         "costGaussGrad", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
@@ -1071,8 +1066,8 @@ static emlrtRTEInfo cc_emlrtRTEI =
 
 static emlrtRTEInfo dc_emlrtRTEI =
     {
-        99,              /* lineNo */
-        77,              /* colNo */
+        102,             /* lineNo */
+        24,              /* colNo */
         "costGaussGrad", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
@@ -1080,59 +1075,14 @@ static emlrtRTEInfo dc_emlrtRTEI =
 
 static emlrtRTEInfo ec_emlrtRTEI =
     {
-        99,              /* lineNo */
-        26,              /* colNo */
+        108,             /* lineNo */
+        9,               /* colNo */
         "costGaussGrad", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
 };
 
 static emlrtRTEInfo fc_emlrtRTEI =
-    {
-        99,              /* lineNo */
-        53,              /* colNo */
-        "costGaussGrad", /* fName */
-        "P:\\Projects\\CNOEC\\CNOEC_"
-        "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
-};
-
-static emlrtRTEInfo gc_emlrtRTEI =
-    {
-        99,              /* lineNo */
-        24,              /* colNo */
-        "costGaussGrad", /* fName */
-        "P:\\Projects\\CNOEC\\CNOEC_"
-        "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
-};
-
-static emlrtRTEInfo hc_emlrtRTEI =
-    {
-        99,              /* lineNo */
-        15,              /* colNo */
-        "costGaussGrad", /* fName */
-        "P:\\Projects\\CNOEC\\CNOEC_"
-        "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
-};
-
-static emlrtRTEInfo ic_emlrtRTEI =
-    {
-        99,              /* lineNo */
-        9,               /* colNo */
-        "costGaussGrad", /* fName */
-        "P:\\Projects\\CNOEC\\CNOEC_"
-        "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
-};
-
-static emlrtRTEInfo jc_emlrtRTEI =
-    {
-        105,             /* lineNo */
-        9,               /* colNo */
-        "costGaussGrad", /* fName */
-        "P:\\Projects\\CNOEC\\CNOEC_"
-        "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
-};
-
-static emlrtRTEInfo kc_emlrtRTEI =
     {
         52,              /* lineNo */
         26,              /* colNo */
@@ -1141,9 +1091,18 @@ static emlrtRTEInfo kc_emlrtRTEI =
         "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
 };
 
-static emlrtRTEInfo ed_emlrtRTEI =
+static emlrtRTEInfo uc_emlrtRTEI =
     {
-        99,              /* lineNo */
+        108,             /* lineNo */
+        14,              /* colNo */
+        "costGaussGrad", /* fName */
+        "P:\\Projects\\CNOEC\\CNOEC_"
+        "Project\\OrbitPropagator\\V2\\costGaussGrad.m" /* pName */
+};
+
+static emlrtRTEInfo vc_emlrtRTEI =
+    {
+        102,             /* lineNo */
         57,              /* colNo */
         "costGaussGrad", /* fName */
         "P:\\Projects\\CNOEC\\CNOEC_"
@@ -1153,7 +1112,8 @@ static emlrtRTEInfo ed_emlrtRTEI =
 /* Function Declarations */
 static void b_binary_expand_op(const emlrtStack *sp, emxArray_real_T *in1,
                                const emxArray_real_T *in2,
-                               const emxArray_real_T *in3);
+                               const emxArray_real_T *in3, real_T in4,
+                               const emxArray_real_T *in5);
 
 static void binary_expand_op(const emlrtStack *sp, emxArray_real_T *in1,
                              const emxArray_real_T *in2,
@@ -1171,26 +1131,33 @@ static void plus(const emlrtStack *sp, emxArray_real_T *in1,
 /* Function Definitions */
 static void b_binary_expand_op(const emlrtStack *sp, emxArray_real_T *in1,
                                const emxArray_real_T *in2,
-                               const emxArray_real_T *in3)
+                               const emxArray_real_T *in3, real_T in4,
+                               const emxArray_real_T *in5)
 {
+  emxArray_real_T *b_in2;
   const real_T *in2_data;
   const real_T *in3_data;
+  const real_T *in5_data;
+  real_T *b_in2_data;
   real_T *in1_data;
   int32_T i;
   int32_T loop_ub;
   int32_T stride_0_0;
   int32_T stride_1_0;
+  in5_data = in5->data;
   in3_data = in3->data;
   in2_data = in2->data;
+  emlrtHeapReferenceStackEnterFcnR2012b((emlrtCTX)sp);
+  emxInit_real_T(sp, &b_in2, 1, &uc_emlrtRTEI);
   i = in2->size[1];
-  stride_0_0 = in1->size[0];
+  stride_0_0 = b_in2->size[0];
   if (in3->size[1] == 1) {
-    in1->size[0] = i;
+    b_in2->size[0] = i;
   } else {
-    in1->size[0] = in3->size[1];
+    b_in2->size[0] = in3->size[1];
   }
-  emxEnsureCapacity_real_T(sp, in1, stride_0_0, &ic_emlrtRTEI);
-  in1_data = in1->data;
+  emxEnsureCapacity_real_T(sp, b_in2, stride_0_0, &uc_emlrtRTEI);
+  b_in2_data = b_in2->data;
   stride_0_0 = (i != 1);
   stride_1_0 = (in3->size[1] != 1);
   if (in3->size[1] == 1) {
@@ -1199,8 +1166,24 @@ static void b_binary_expand_op(const emlrtStack *sp, emxArray_real_T *in1,
     loop_ub = in3->size[1];
   }
   for (i = 0; i < loop_ub; i++) {
-    in1_data[i] = in2_data[6 * (i * stride_0_0)] / in3_data[i * stride_1_0];
+    b_in2_data[i] =
+        in2_data[6 * (i * stride_0_0)] / in3_data[i * stride_1_0] - 6380.0;
   }
+  i = in1->size[0];
+  in1->size[0] = (b_in2->size[0] + in5->size[1]) + 1;
+  emxEnsureCapacity_real_T(sp, in1, i, &ec_emlrtRTEI);
+  in1_data = in1->data;
+  loop_ub = b_in2->size[0];
+  for (i = 0; i < loop_ub; i++) {
+    in1_data[i] = b_in2_data[i];
+  }
+  in1_data[b_in2->size[0]] = in4 - 1100.0;
+  loop_ub = in5->size[1];
+  for (i = 0; i < loop_ub; i++) {
+    in1_data[(i + b_in2->size[0]) + 1] = 1.0 - in5_data[i];
+  }
+  emxFree_real_T(sp, &b_in2);
+  emlrtHeapReferenceStackLeaveFcnR2012b((emlrtCTX)sp);
 }
 
 static void binary_expand_op(const emlrtStack *sp, emxArray_real_T *in1,
@@ -1226,7 +1209,7 @@ static void binary_expand_op(const emlrtStack *sp, emxArray_real_T *in1,
     in1->size[0] = in3->size[0];
   }
   in1->size[1] = in3->size[1];
-  emxEnsureCapacity_real_T(sp, in1, i, &pb_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, in1, i, &nb_emlrtRTEI);
   in1_data = in1->data;
   stride_0_0 = (in2_idx_0 != 1);
   stride_1_0 = (in3->size[0] != 1);
@@ -1258,7 +1241,7 @@ static void c_binary_expand_op(const emlrtStack *sp, emxArray_real_T *in1,
   in2_data = in2->data;
   in1_data = in1->data;
   emlrtHeapReferenceStackEnterFcnR2012b((emlrtCTX)sp);
-  emxInit_real_T(sp, &b_in1, 2, &gc_emlrtRTEI);
+  emxInit_real_T(sp, &b_in1, 2, &dc_emlrtRTEI);
   i = b_in1->size[0] * b_in1->size[1];
   b_in1->size[0] = 1;
   if (in2->size[1] == 1) {
@@ -1266,7 +1249,7 @@ static void c_binary_expand_op(const emlrtStack *sp, emxArray_real_T *in1,
   } else {
     b_in1->size[1] = in2->size[1];
   }
-  emxEnsureCapacity_real_T(sp, b_in1, i, &gc_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, b_in1, i, &dc_emlrtRTEI);
   b_in1_data = b_in1->data;
   stride_0_1 = (in1->size[1] != 1);
   stride_1_1 = (in2->size[1] != 1);
@@ -1281,7 +1264,7 @@ static void c_binary_expand_op(const emlrtStack *sp, emxArray_real_T *in1,
   i = in1->size[0] * in1->size[1];
   in1->size[0] = 1;
   in1->size[1] = b_in1->size[1];
-  emxEnsureCapacity_real_T(sp, in1, i, &gc_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, in1, i, &dc_emlrtRTEI);
   in1_data = in1->data;
   loop_ub = b_in1->size[1];
   for (i = 0; i < loop_ub; i++) {
@@ -1305,7 +1288,7 @@ static void d_binary_expand_op(const emlrtStack *sp, emxArray_real_T *in1,
   in2_data = in2->data;
   in1_data = in1->data;
   emlrtHeapReferenceStackEnterFcnR2012b((emlrtCTX)sp);
-  emxInit_real_T(sp, &b_in2, 2, &ed_emlrtRTEI);
+  emxInit_real_T(sp, &b_in2, 2, &vc_emlrtRTEI);
   i = in2->size[1];
   stride_0_1 = b_in2->size[0] * b_in2->size[1];
   b_in2->size[0] = 1;
@@ -1314,7 +1297,7 @@ static void d_binary_expand_op(const emlrtStack *sp, emxArray_real_T *in1,
   } else {
     b_in2->size[1] = in1->size[1];
   }
-  emxEnsureCapacity_real_T(sp, b_in2, stride_0_1, &ed_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, b_in2, stride_0_1, &vc_emlrtRTEI);
   b_in2_data = b_in2->data;
   stride_0_1 = (i != 1);
   stride_1_1 = (in1->size[1] != 1);
@@ -1330,7 +1313,7 @@ static void d_binary_expand_op(const emlrtStack *sp, emxArray_real_T *in1,
   i = in1->size[0] * in1->size[1];
   in1->size[0] = 1;
   in1->size[1] = b_in2->size[1];
-  emxEnsureCapacity_real_T(sp, in1, i, &ed_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, in1, i, &vc_emlrtRTEI);
   in1_data = in1->data;
   loop_ub = b_in2->size[1];
   for (i = 0; i < loop_ub; i++) {
@@ -1354,7 +1337,7 @@ static void plus(const emlrtStack *sp, emxArray_real_T *in1,
   in2_data = in2->data;
   in1_data = in1->data;
   emlrtHeapReferenceStackEnterFcnR2012b((emlrtCTX)sp);
-  emxInit_real_T(sp, &b_in1, 2, &ac_emlrtRTEI);
+  emxInit_real_T(sp, &b_in1, 2, &wb_emlrtRTEI);
   i = b_in1->size[0] * b_in1->size[1];
   b_in1->size[0] = 1;
   if (in2->size[1] == 1) {
@@ -1362,7 +1345,7 @@ static void plus(const emlrtStack *sp, emxArray_real_T *in1,
   } else {
     b_in1->size[1] = in2->size[1];
   }
-  emxEnsureCapacity_real_T(sp, b_in1, i, &ac_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, b_in1, i, &wb_emlrtRTEI);
   b_in1_data = b_in1->data;
   stride_0_1 = (in1->size[1] != 1);
   stride_1_1 = (in2->size[1] != 1);
@@ -1377,7 +1360,7 @@ static void plus(const emlrtStack *sp, emxArray_real_T *in1,
   i = in1->size[0] * in1->size[1];
   in1->size[0] = 1;
   in1->size[1] = b_in1->size[1];
-  emxEnsureCapacity_real_T(sp, in1, i, &ac_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, in1, i, &wb_emlrtRTEI);
   in1_data = in1->data;
   loop_ub = b_in1->size[1];
   for (i = 0; i < loop_ub; i++) {
@@ -1435,7 +1418,7 @@ void costGaussGrad(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
   b_data = b->data;
   A_data = A->data;
   emlrtHeapReferenceStackEnterFcnR2012b((emlrtCTX)sp);
-  emxInit_real_T(sp, &h, 1, &sb_emlrtRTEI);
+  emxInit_real_T(sp, &h, 1, &qb_emlrtRTEI);
   for (i = 0; i < 6; i++) {
     c_y0[i] = b_y0[i];
   }
@@ -1456,7 +1439,7 @@ void costGaussGrad(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
   }
   i1 = J->size[0];
   J->size[0] = h->size[0] + 8;
-  emxEnsureCapacity_real_T(sp, J, i1, &r_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, J, i1, &p_emlrtRTEI);
   J_data = J->data;
   J_data[0] = *f;
   for (i1 = 0; i1 < 5; i1++) {
@@ -1468,14 +1451,14 @@ void costGaussGrad(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
   }
   J_data[h->size[0] + 6] = F[0];
   J_data[h->size[0] + 7] = F[1];
-  emxInit_real_T(sp, &r, 1, &sb_emlrtRTEI);
-  emxInit_real_T(sp, &varargin_1, 2, &bb_emlrtRTEI);
+  emxInit_real_T(sp, &r, 1, &qb_emlrtRTEI);
+  emxInit_real_T(sp, &varargin_1, 2, &y_emlrtRTEI);
   if (computeGrad) {
     int32_T b_loop_ub;
     int32_T input_sizes_idx_1;
     int32_T sizes_idx_1;
     boolean_T empty_non_axis_sizes;
-    emxInit_real_T(sp, &Jac, 2, &rb_emlrtRTEI);
+    emxInit_real_T(sp, &Jac, 2, &pb_emlrtRTEI);
     st.site = &g_emlrtRSI;
     mygradcalc(&st, tmax, Ts, b_y0, ybar, m0, coeffT, Tmax, ratio, alpha, x, J,
                Jac);
@@ -1483,17 +1466,17 @@ void costGaussGrad(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
     loop_ub = Jac->size[0];
     i1 = Jf->size[0];
     Jf->size[0] = Jac->size[0];
-    emxEnsureCapacity_real_T(sp, Jf, i1, &t_emlrtRTEI);
+    emxEnsureCapacity_real_T(sp, Jf, i1, &r_emlrtRTEI);
     J_data = Jf->data;
     for (i1 = 0; i1 < loop_ub; i1++) {
       J_data[i1] = Jac_data[i1];
     }
-    emxInit_real_T(sp, &b_varargin_1, 2, &w_emlrtRTEI);
+    emxInit_real_T(sp, &b_varargin_1, 2, &u_emlrtRTEI);
     st.site = &f_emlrtRSI;
     i1 = b_varargin_1->size[0] * b_varargin_1->size[1];
     b_varargin_1->size[0] = A->size[1];
     b_varargin_1->size[1] = A->size[0];
-    emxEnsureCapacity_real_T(&st, b_varargin_1, i1, &w_emlrtRTEI);
+    emxEnsureCapacity_real_T(&st, b_varargin_1, i1, &u_emlrtRTEI);
     varargin_1_data = b_varargin_1->data;
     loop_ub = A->size[0];
     for (i1 = 0; i1 < loop_ub; i1++) {
@@ -1503,7 +1486,7 @@ void costGaussGrad(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
             A_data[i1 + A->size[0] * i2];
       }
     }
-    b_st.site = &vc_emlrtRSI;
+    b_st.site = &gc_emlrtRSI;
     if ((b_varargin_1->size[0] != 0) && (b_varargin_1->size[1] != 0)) {
       input_sizes_idx_0 = b_varargin_1->size[0];
     } else if (Jac->size[0] != 0) {
@@ -1511,7 +1494,7 @@ void costGaussGrad(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
     } else {
       input_sizes_idx_0 = b_varargin_1->size[0];
     }
-    c_st.site = &wc_emlrtRSI;
+    c_st.site = &hc_emlrtRSI;
     if ((b_varargin_1->size[0] != input_sizes_idx_0) &&
         ((b_varargin_1->size[0] != 0) && (b_varargin_1->size[1] != 0))) {
       emlrtErrorWithMessageIdR2018a(
@@ -1535,12 +1518,12 @@ void costGaussGrad(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
     } else {
       sizes_idx_1 = 0;
     }
-    emxInit_real_T(&b_st, &b_Jac, 2, &eb_emlrtRTEI);
+    emxInit_real_T(&b_st, &b_Jac, 2, &cb_emlrtRTEI);
     loop_ub = Jac->size[0];
     i1 = b_Jac->size[0] * b_Jac->size[1];
     b_Jac->size[0] = Jac->size[0];
     b_Jac->size[1] = 5;
-    emxEnsureCapacity_real_T(&b_st, b_Jac, i1, &eb_emlrtRTEI);
+    emxEnsureCapacity_real_T(&b_st, b_Jac, i1, &cb_emlrtRTEI);
     b_Jac_data = b_Jac->data;
     for (i1 = 0; i1 < 5; i1++) {
       for (i2 = 0; i2 < loop_ub; i2++) {
@@ -1551,7 +1534,7 @@ void costGaussGrad(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
     i1 = Jg->size[0] * Jg->size[1];
     Jg->size[0] = input_sizes_idx_0;
     Jg->size[1] = input_sizes_idx_1 + sizes_idx_1;
-    emxEnsureCapacity_real_T(&b_st, Jg, i1, &gb_emlrtRTEI);
+    emxEnsureCapacity_real_T(&b_st, Jg, i1, &eb_emlrtRTEI);
     J_data = Jg->data;
     for (i1 = 0; i1 < input_sizes_idx_1; i1++) {
       for (i2 = 0; i2 < input_sizes_idx_0; i2++) {
@@ -1575,7 +1558,7 @@ void costGaussGrad(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
     i1 = b_varargin_1->size[0] * b_varargin_1->size[1];
     b_varargin_1->size[0] = C->size[1];
     b_varargin_1->size[1] = C->size[0];
-    emxEnsureCapacity_real_T(&st, b_varargin_1, i1, &hb_emlrtRTEI);
+    emxEnsureCapacity_real_T(&st, b_varargin_1, i1, &fb_emlrtRTEI);
     varargin_1_data = b_varargin_1->data;
     loop_ub = C->size[0];
     for (i1 = 0; i1 < loop_ub; i1++) {
@@ -1585,7 +1568,7 @@ void costGaussGrad(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
             C_data[i1 + C->size[0] * i2];
       }
     }
-    b_st.site = &vc_emlrtRSI;
+    b_st.site = &gc_emlrtRSI;
     if ((b_varargin_1->size[0] != 0) && (b_varargin_1->size[1] != 0)) {
       input_sizes_idx_0 = b_varargin_1->size[0];
     } else if ((Jac->size[0] != 0) && (h->size[0] != 0)) {
@@ -1596,7 +1579,7 @@ void costGaussGrad(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
         input_sizes_idx_0 = Jac->size[0];
       }
     }
-    c_st.site = &wc_emlrtRSI;
+    c_st.site = &hc_emlrtRSI;
     if ((b_varargin_1->size[0] != input_sizes_idx_0) &&
         ((b_varargin_1->size[0] != 0) && (b_varargin_1->size[1] != 0))) {
       emlrtErrorWithMessageIdR2018a(
@@ -1621,13 +1604,13 @@ void costGaussGrad(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
     } else {
       sizes_idx_1 = 0;
     }
-    emxInit_real_T(&b_st, &c_Jac, 2, &ib_emlrtRTEI);
+    emxInit_real_T(&b_st, &c_Jac, 2, &gb_emlrtRTEI);
     loop_ub = Jac->size[0];
     b_loop_ub = h->size[0];
     i1 = c_Jac->size[0] * c_Jac->size[1];
     c_Jac->size[0] = Jac->size[0];
     c_Jac->size[1] = h->size[0];
-    emxEnsureCapacity_real_T(&b_st, c_Jac, i1, &ib_emlrtRTEI);
+    emxEnsureCapacity_real_T(&b_st, c_Jac, i1, &gb_emlrtRTEI);
     b_Jac_data = c_Jac->data;
     for (i1 = 0; i1 < b_loop_ub; i1++) {
       for (i2 = 0; i2 < loop_ub; i2++) {
@@ -1638,7 +1621,7 @@ void costGaussGrad(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
     i1 = Jh->size[0] * Jh->size[1];
     Jh->size[0] = input_sizes_idx_0;
     Jh->size[1] = input_sizes_idx_1 + sizes_idx_1;
-    emxEnsureCapacity_real_T(&b_st, Jh, i1, &jb_emlrtRTEI);
+    emxEnsureCapacity_real_T(&b_st, Jh, i1, &hb_emlrtRTEI);
     J_data = Jh->data;
     for (i1 = 0; i1 < input_sizes_idx_1; i1++) {
       for (i2 = 0; i2 < input_sizes_idx_0; i2++) {
@@ -1675,7 +1658,7 @@ void costGaussGrad(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
     JF->size[0] = Jac->size[0];
     b_loop_ub = i2 - i1;
     JF->size[1] = b_loop_ub;
-    emxEnsureCapacity_real_T(sp, JF, input_sizes_idx_0, &kb_emlrtRTEI);
+    emxEnsureCapacity_real_T(sp, JF, input_sizes_idx_0, &ib_emlrtRTEI);
     J_data = JF->data;
     for (i2 = 0; i2 < b_loop_ub; i2++) {
       for (input_sizes_idx_0 = 0; input_sizes_idx_0 < loop_ub;
@@ -1687,9 +1670,9 @@ void costGaussGrad(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
     emxFree_real_T(sp, &Jac);
     if ((A->size[0] != 0) && (A->size[1] != 0)) {
       st.site = &d_emlrtRSI;
-      b_st.site = &nc_emlrtRSI;
+      b_st.site = &jc_emlrtRSI;
       dynamic_size_checks(&b_st, A, x, A->size[1], x->size[0]);
-      b_st.site = &xc_emlrtRSI;
+      b_st.site = &ic_emlrtRSI;
       mtimes(&b_st, A, x, r);
       J_data = r->data;
       if ((r->size[0] != b->size[0]) &&
@@ -1702,7 +1685,7 @@ void costGaussGrad(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
         i1 = varargin_1->size[0] * varargin_1->size[1];
         varargin_1->size[0] = r->size[0];
         varargin_1->size[1] = b->size[1];
-        emxEnsureCapacity_real_T(&st, varargin_1, i1, &nb_emlrtRTEI);
+        emxEnsureCapacity_real_T(&st, varargin_1, i1, &lb_emlrtRTEI);
         varargin_1_data = varargin_1->data;
         loop_ub = b->size[1];
         for (i1 = 0; i1 < loop_ub; i1++) {
@@ -1716,7 +1699,7 @@ void costGaussGrad(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
         binary_expand_op(&b_st, varargin_1, r, b);
         varargin_1_data = varargin_1->data;
       }
-      b_st.site = &vc_emlrtRSI;
+      b_st.site = &gc_emlrtRSI;
       if ((varargin_1->size[0] != 0) && (varargin_1->size[1] != 0)) {
         input_sizes_idx_0 = varargin_1->size[0];
       } else {
@@ -1724,7 +1707,7 @@ void costGaussGrad(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
       }
       i1 = gx->size[0];
       gx->size[0] = input_sizes_idx_0 + 5;
-      emxEnsureCapacity_real_T(&b_st, gx, i1, &ob_emlrtRTEI);
+      emxEnsureCapacity_real_T(&b_st, gx, i1, &mb_emlrtRTEI);
       J_data = gx->data;
       for (i1 = 0; i1 < input_sizes_idx_0; i1++) {
         J_data[i1] = varargin_1_data[i1];
@@ -1735,7 +1718,7 @@ void costGaussGrad(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
     } else {
       i1 = gx->size[0];
       gx->size[0] = 5;
-      emxEnsureCapacity_real_T(sp, gx, i1, &lb_emlrtRTEI);
+      emxEnsureCapacity_real_T(sp, gx, i1, &jb_emlrtRTEI);
       J_data = gx->data;
       for (i1 = 0; i1 < 5; i1++) {
         J_data[i1] = g[i1];
@@ -1743,9 +1726,9 @@ void costGaussGrad(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
     }
     if ((C->size[0] != 0) && (C->size[1] != 0)) {
       st.site = &c_emlrtRSI;
-      b_st.site = &nc_emlrtRSI;
+      b_st.site = &jc_emlrtRSI;
       dynamic_size_checks(&b_st, C, x, C->size[1], x->size[0]);
-      b_st.site = &xc_emlrtRSI;
+      b_st.site = &ic_emlrtRSI;
       mtimes(&b_st, C, x, r);
       J_data = r->data;
       if ((r->size[0] != d->size[0]) &&
@@ -1758,7 +1741,7 @@ void costGaussGrad(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
         i1 = varargin_1->size[0] * varargin_1->size[1];
         varargin_1->size[0] = r->size[0];
         varargin_1->size[1] = d->size[1];
-        emxEnsureCapacity_real_T(&st, varargin_1, i1, &pb_emlrtRTEI);
+        emxEnsureCapacity_real_T(&st, varargin_1, i1, &nb_emlrtRTEI);
         varargin_1_data = varargin_1->data;
         loop_ub = d->size[1];
         for (i1 = 0; i1 < loop_ub; i1++) {
@@ -1772,7 +1755,7 @@ void costGaussGrad(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
         binary_expand_op(&b_st, varargin_1, r, d);
         varargin_1_data = varargin_1->data;
       }
-      b_st.site = &vc_emlrtRSI;
+      b_st.site = &gc_emlrtRSI;
       if ((varargin_1->size[0] != 0) && (varargin_1->size[1] != 0)) {
         input_sizes_idx_0 = varargin_1->size[0];
       } else {
@@ -1787,7 +1770,7 @@ void costGaussGrad(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
       }
       hx->size[0] = loop_ub + h->size[0];
       hx->size[1] = 1;
-      emxEnsureCapacity_real_T(&b_st, hx, i1, &qb_emlrtRTEI);
+      emxEnsureCapacity_real_T(&b_st, hx, i1, &ob_emlrtRTEI);
       J_data = hx->data;
       for (i1 = 0; i1 < input_sizes_idx_0; i1++) {
         J_data[i1] = varargin_1_data[i1];
@@ -1799,7 +1782,7 @@ void costGaussGrad(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
       i1 = hx->size[0] * hx->size[1];
       hx->size[0] = h->size[0];
       hx->size[1] = 1;
-      emxEnsureCapacity_real_T(sp, hx, i1, &mb_emlrtRTEI);
+      emxEnsureCapacity_real_T(sp, hx, i1, &kb_emlrtRTEI);
       J_data = hx->data;
       loop_ub = h->size[0];
       for (i1 = 0; i1 < loop_ub; i1++) {
@@ -1810,32 +1793,32 @@ void costGaussGrad(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
     int32_T b_loop_ub;
     i1 = Jf->size[0];
     Jf->size[0] = 1;
-    emxEnsureCapacity_real_T(sp, Jf, i1, &s_emlrtRTEI);
+    emxEnsureCapacity_real_T(sp, Jf, i1, &q_emlrtRTEI);
     J_data = Jf->data;
     J_data[0] = 0.0;
     i1 = Jg->size[0] * Jg->size[1];
     Jg->size[0] = 1;
     Jg->size[1] = 1;
-    emxEnsureCapacity_real_T(sp, Jg, i1, &u_emlrtRTEI);
+    emxEnsureCapacity_real_T(sp, Jg, i1, &s_emlrtRTEI);
     J_data = Jg->data;
     J_data[0] = 0.0;
     i1 = Jh->size[0] * Jh->size[1];
     Jh->size[0] = 1;
     Jh->size[1] = 1;
-    emxEnsureCapacity_real_T(sp, Jh, i1, &v_emlrtRTEI);
+    emxEnsureCapacity_real_T(sp, Jh, i1, &t_emlrtRTEI);
     J_data = Jh->data;
     J_data[0] = 0.0;
     i1 = JF->size[0] * JF->size[1];
     JF->size[0] = 1;
     JF->size[1] = 1;
-    emxEnsureCapacity_real_T(sp, JF, i1, &x_emlrtRTEI);
+    emxEnsureCapacity_real_T(sp, JF, i1, &v_emlrtRTEI);
     J_data = JF->data;
     J_data[0] = 0.0;
     if ((A->size[0] != 0) && (A->size[1] != 0)) {
       st.site = &b_emlrtRSI;
-      b_st.site = &nc_emlrtRSI;
+      b_st.site = &jc_emlrtRSI;
       dynamic_size_checks(&b_st, A, x, A->size[1], x->size[0]);
-      b_st.site = &xc_emlrtRSI;
+      b_st.site = &ic_emlrtRSI;
       mtimes(&b_st, A, x, r);
       J_data = r->data;
       if ((r->size[0] != b->size[0]) &&
@@ -1848,7 +1831,7 @@ void costGaussGrad(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
         i1 = varargin_1->size[0] * varargin_1->size[1];
         varargin_1->size[0] = r->size[0];
         varargin_1->size[1] = b->size[1];
-        emxEnsureCapacity_real_T(&st, varargin_1, i1, &bb_emlrtRTEI);
+        emxEnsureCapacity_real_T(&st, varargin_1, i1, &y_emlrtRTEI);
         varargin_1_data = varargin_1->data;
         loop_ub = b->size[1];
         for (i1 = 0; i1 < loop_ub; i1++) {
@@ -1862,7 +1845,7 @@ void costGaussGrad(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
         binary_expand_op(&b_st, varargin_1, r, b);
         varargin_1_data = varargin_1->data;
       }
-      b_st.site = &vc_emlrtRSI;
+      b_st.site = &gc_emlrtRSI;
       if ((varargin_1->size[0] != 0) && (varargin_1->size[1] != 0)) {
         input_sizes_idx_0 = varargin_1->size[0];
       } else {
@@ -1870,7 +1853,7 @@ void costGaussGrad(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
       }
       i1 = gx->size[0];
       gx->size[0] = input_sizes_idx_0 + 5;
-      emxEnsureCapacity_real_T(&b_st, gx, i1, &cb_emlrtRTEI);
+      emxEnsureCapacity_real_T(&b_st, gx, i1, &ab_emlrtRTEI);
       J_data = gx->data;
       for (i1 = 0; i1 < input_sizes_idx_0; i1++) {
         J_data[i1] = varargin_1_data[i1];
@@ -1881,7 +1864,7 @@ void costGaussGrad(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
     } else {
       i1 = gx->size[0];
       gx->size[0] = 5;
-      emxEnsureCapacity_real_T(sp, gx, i1, &y_emlrtRTEI);
+      emxEnsureCapacity_real_T(sp, gx, i1, &w_emlrtRTEI);
       J_data = gx->data;
       for (i1 = 0; i1 < 5; i1++) {
         J_data[i1] = g[i1];
@@ -1890,9 +1873,9 @@ void costGaussGrad(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
     if ((C->size[0] != 0) && (C->size[1] != 0)) {
       int32_T input_sizes_idx_1;
       st.site = &emlrtRSI;
-      b_st.site = &nc_emlrtRSI;
+      b_st.site = &jc_emlrtRSI;
       dynamic_size_checks(&b_st, C, x, C->size[1], x->size[0]);
-      b_st.site = &xc_emlrtRSI;
+      b_st.site = &ic_emlrtRSI;
       mtimes(&b_st, C, x, r);
       J_data = r->data;
       if ((r->size[0] != d->size[0]) &&
@@ -1905,7 +1888,7 @@ void costGaussGrad(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
         i1 = varargin_1->size[0] * varargin_1->size[1];
         varargin_1->size[0] = r->size[0];
         varargin_1->size[1] = d->size[1];
-        emxEnsureCapacity_real_T(&st, varargin_1, i1, &db_emlrtRTEI);
+        emxEnsureCapacity_real_T(&st, varargin_1, i1, &bb_emlrtRTEI);
         varargin_1_data = varargin_1->data;
         loop_ub = d->size[1];
         for (i1 = 0; i1 < loop_ub; i1++) {
@@ -1919,7 +1902,7 @@ void costGaussGrad(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
         binary_expand_op(&b_st, varargin_1, r, d);
         varargin_1_data = varargin_1->data;
       }
-      b_st.site = &vc_emlrtRSI;
+      b_st.site = &gc_emlrtRSI;
       if ((varargin_1->size[0] != 0) && (varargin_1->size[1] != 0)) {
         input_sizes_idx_0 = varargin_1->size[0];
       } else {
@@ -1934,7 +1917,7 @@ void costGaussGrad(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
       }
       hx->size[0] = loop_ub + h->size[0];
       hx->size[1] = 1;
-      emxEnsureCapacity_real_T(&b_st, hx, i1, &fb_emlrtRTEI);
+      emxEnsureCapacity_real_T(&b_st, hx, i1, &db_emlrtRTEI);
       J_data = hx->data;
       for (i1 = 0; i1 < input_sizes_idx_0; i1++) {
         J_data[i1] = varargin_1_data[i1];
@@ -1946,7 +1929,7 @@ void costGaussGrad(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
       i1 = hx->size[0] * hx->size[1];
       hx->size[0] = h->size[0];
       hx->size[1] = 1;
-      emxEnsureCapacity_real_T(sp, hx, i1, &ab_emlrtRTEI);
+      emxEnsureCapacity_real_T(sp, hx, i1, &x_emlrtRTEI);
       J_data = hx->data;
       loop_ub = h->size[0];
       for (i1 = 0; i1 < loop_ub; i1++) {
@@ -1993,14 +1976,14 @@ real_T e_binary_expand_op(const emlrtStack *sp, emlrtRSInfo in1,
   in3_data = in3->data;
   in2_data = in2->data;
   emlrtHeapReferenceStackEnterFcnR2012b((emlrtCTX)sp);
-  emxInit_real_T(sp, &b_in2, 1, &tc_emlrtRTEI);
+  emxInit_real_T(sp, &b_in2, 1, &nc_emlrtRTEI);
   i = b_in2->size[0];
   if (in3->size[0] == 1) {
     b_in2->size[0] = in2->size[0];
   } else {
     b_in2->size[0] = in3->size[0];
   }
-  emxEnsureCapacity_real_T(sp, b_in2, i, &tc_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, b_in2, i, &nc_emlrtRTEI);
   b_in2_data = b_in2->data;
   stride_0_0 = (in2->size[0] != 1);
   stride_1_0 = (in3->size[0] != 1);
@@ -2031,22 +2014,15 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
   static const int8_T iv1[6] = {1, 1, 1, 1, 1, 0};
   emlrtStack b_st;
   emlrtStack c_st;
-  emlrtStack d_st;
-  emlrtStack e_st;
-  emlrtStack f_st;
-  emlrtStack g_st;
-  emlrtStack h_st;
-  emlrtStack i_st;
   emlrtStack st;
   emxArray_boolean_T *b_t;
-  emxArray_int32_T_1x1 bd_emlrtRSI;
+  emxArray_int32_T_1x1 mc_emlrtRSI;
   emxArray_real_T c_x;
   emxArray_real_T *b_x;
   emxArray_real_T *b_y;
+  emxArray_real_T *c_y;
   emxArray_real_T *csi;
   emxArray_real_T *d_y;
-  emxArray_real_T *e_y;
-  emxArray_real_T *qdir;
   emxArray_real_T *r;
   emxArray_real_T *t;
   emxArray_real_T *y;
@@ -2055,27 +2031,25 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
   real_T x0[6];
   const real_T *x_data;
   real_T absxk;
-  real_T h_tmp;
+  real_T d;
   real_T lu;
   real_T m;
   real_T scale;
   real_T tCost;
   real_T *b_x_data;
+  real_T *b_y_data;
   real_T *csi_data;
-  real_T *qdir_data;
   real_T *t_data;
   real_T *y_data;
   int32_T iv[2];
   int32_T iv2[2];
   int32_T b_loop_ub;
-  int32_T c_loop_ub;
   int32_T i;
   int32_T i1;
-  int32_T i2;
-  int32_T idx;
   int32_T k;
   int32_T loop_ub;
   int32_T maxdimlen;
+  int32_T w_tmp;
   boolean_T *b_t_data;
   st.prev = sp;
   st.tls = sp->tls;
@@ -2083,22 +2057,10 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
   b_st.tls = st.tls;
   c_st.prev = &b_st;
   c_st.tls = b_st.tls;
-  d_st.prev = &c_st;
-  d_st.tls = c_st.tls;
-  e_st.prev = &d_st;
-  e_st.tls = d_st.tls;
-  f_st.prev = &e_st;
-  f_st.tls = e_st.tls;
-  g_st.prev = &f_st;
-  g_st.tls = f_st.tls;
-  h_st.prev = &g_st;
-  h_st.tls = g_st.tls;
-  i_st.prev = &h_st;
-  i_st.tls = h_st.tls;
   x_data = x->data;
   emlrtHeapReferenceStackEnterFcnR2012b((emlrtCTX)sp);
   if (x->size[0] < 1) {
-    emlrtDynamicBoundsCheckR2012b(x->size[0], 1, x->size[0], &q_emlrtBCI,
+    emlrtDynamicBoundsCheckR2012b(x->size[0], 1, x->size[0], &d_emlrtBCI,
                                   (emlrtCTX)sp);
   }
   /*          tmax = min(tf*1.1,tmax); */
@@ -2108,20 +2070,20 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
     i1 = -1;
   } else {
     if (x->size[0] < 2) {
-      emlrtDynamicBoundsCheckR2012b(2, 1, x->size[0], &p_emlrtBCI,
+      emlrtDynamicBoundsCheckR2012b(2, 1, x->size[0], &e_emlrtBCI,
                                     (emlrtCTX)sp);
     }
     i = 1;
     if (lu + 1.0 != muDoubleScalarFloor(lu + 1.0)) {
-      emlrtIntegerCheckR2012b(lu + 1.0, &b_emlrtDCI, (emlrtCTX)sp);
+      emlrtIntegerCheckR2012b(lu + 1.0, &emlrtDCI, (emlrtCTX)sp);
     }
     if (((int32_T)(lu + 1.0) < 1) || ((int32_T)(lu + 1.0) > x->size[0])) {
       emlrtDynamicBoundsCheckR2012b((int32_T)(lu + 1.0), 1, x->size[0],
-                                    &o_emlrtBCI, (emlrtCTX)sp);
+                                    &f_emlrtBCI, (emlrtCTX)sp);
     }
     i1 = (int32_T)(lu + 1.0) - 1;
   }
-  emxInit_real_T(sp, &csi, 1, &tb_emlrtRTEI);
+  emxInit_real_T(sp, &csi, 1, &rb_emlrtRTEI);
   iv[0] = 1;
   loop_ub = i1 - i;
   iv[1] = loop_ub + 1;
@@ -2129,7 +2091,7 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
   indexShapeCheck(&st, x->size[0], iv);
   i1 = csi->size[0];
   csi->size[0] = loop_ub + 1;
-  emxEnsureCapacity_real_T(sp, csi, i1, &tb_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, csi, i1, &rb_emlrtRTEI);
   csi_data = csi->data;
   for (i1 = 0; i1 <= loop_ub; i1++) {
     csi_data[i1] = x_data[i + i1];
@@ -2139,15 +2101,15 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
     i1 = 0;
   } else {
     if (lu + 2.0 != muDoubleScalarFloor(lu + 2.0)) {
-      emlrtIntegerCheckR2012b(lu + 2.0, &emlrtDCI, (emlrtCTX)sp);
+      emlrtIntegerCheckR2012b(lu + 2.0, &b_emlrtDCI, (emlrtCTX)sp);
     }
     if ((int32_T)(lu + 2.0) > x->size[0]) {
       emlrtDynamicBoundsCheckR2012b((int32_T)(lu + 2.0), 1, x->size[0],
-                                    &n_emlrtBCI, (emlrtCTX)sp);
+                                    &g_emlrtBCI, (emlrtCTX)sp);
     }
     i = (int32_T)(lu + 2.0) - 1;
     if ((x->size[0] - 1 < 1) || (x->size[0] - 1 > x->size[0])) {
-      emlrtDynamicBoundsCheckR2012b(x->size[0] - 1, 1, x->size[0], &m_emlrtBCI,
+      emlrtDynamicBoundsCheckR2012b(x->size[0] - 1, 1, x->size[0], &h_emlrtBCI,
                                     (emlrtCTX)sp);
     }
     i1 = x->size[0] - 1;
@@ -2162,7 +2124,7 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
   c_st.site = &u_emlrtRSI;
   if (lu != muDoubleScalarFloor(lu)) {
     emlrtErrorWithMessageIdR2018a(
-        &c_st, &h_emlrtRTEI, "Coder:MATLAB:NonIntegerInput",
+        &c_st, &g_emlrtRTEI, "Coder:MATLAB:NonIntegerInput",
         "Coder:MATLAB:NonIntegerInput", 4, 12, MIN_int32_T, 12, MAX_int32_T);
   }
   maxdimlen = b_loop_ub;
@@ -2171,43 +2133,33 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
   }
   maxdimlen = muIntScalarMax_sint32(b_loop_ub, maxdimlen);
   if (maxdimlen < 3) {
-    emlrtErrorWithMessageIdR2018a(&st, &f_emlrtRTEI,
+    emlrtErrorWithMessageIdR2018a(&st, &b_emlrtRTEI,
                                   "Coder:toolbox:reshape_emptyReshapeLimit",
                                   "Coder:toolbox:reshape_emptyReshapeLimit", 0);
   }
   if ((int32_T)lu > maxdimlen) {
-    emlrtErrorWithMessageIdR2018a(&st, &f_emlrtRTEI,
+    emlrtErrorWithMessageIdR2018a(&st, &b_emlrtRTEI,
                                   "Coder:toolbox:reshape_emptyReshapeLimit",
                                   "Coder:toolbox:reshape_emptyReshapeLimit", 0);
   }
   if ((int32_T)lu < 0) {
-    emlrtErrorWithMessageIdR2018a(&st, &e_emlrtRTEI,
+    emlrtErrorWithMessageIdR2018a(&st, &c_emlrtRTEI,
                                   "MATLAB:checkDimCommon:nonnegativeSize",
                                   "MATLAB:checkDimCommon:nonnegativeSize", 0);
   }
-  idx = 3 * (int32_T)lu;
-  if (idx != b_loop_ub) {
+  if (3 * (int32_T)lu != b_loop_ub) {
     emlrtErrorWithMessageIdR2018a(
         &st, &d_emlrtRTEI, "Coder:MATLAB:getReshapeDims_notSameNumel",
         "Coder:MATLAB:getReshapeDims_notSameNumel", 0);
   }
-  emxInit_real_T(&st, &qdir, 2, &ub_emlrtRTEI);
-  maxdimlen = qdir->size[0] * qdir->size[1];
-  qdir->size[0] = 3;
-  qdir->size[1] = (int32_T)lu;
-  emxEnsureCapacity_real_T(sp, qdir, maxdimlen, &ub_emlrtRTEI);
-  qdir_data = qdir->data;
-  for (maxdimlen = 0; maxdimlen < idx; maxdimlen++) {
-    qdir_data[maxdimlen] = x_data[i + maxdimlen];
-  }
   st.site = &k_emlrtRSI;
-  emxInit_real_T(&st, &t, 2, &vb_emlrtRTEI);
+  emxInit_real_T(&st, &t, 2, &sb_emlrtRTEI);
   t_data = t->data;
   if (muDoubleScalarIsNaN(Ts) || muDoubleScalarIsNaN(tmax)) {
-    maxdimlen = t->size[0] * t->size[1];
+    i1 = t->size[0] * t->size[1];
     t->size[0] = 1;
     t->size[1] = 1;
-    emxEnsureCapacity_real_T(&st, t, maxdimlen, &vb_emlrtRTEI);
+    emxEnsureCapacity_real_T(&st, t, i1, &sb_emlrtRTEI);
     t_data = t->data;
     t_data[0] = rtNaN;
   } else if ((Ts == 0.0) || ((tmax > 0.0) && (Ts < 0.0)) ||
@@ -2215,49 +2167,49 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
     t->size[0] = 1;
     t->size[1] = 0;
   } else if (muDoubleScalarIsInf(tmax) && muDoubleScalarIsInf(Ts)) {
-    maxdimlen = t->size[0] * t->size[1];
+    i1 = t->size[0] * t->size[1];
     t->size[0] = 1;
     t->size[1] = 1;
-    emxEnsureCapacity_real_T(&st, t, maxdimlen, &vb_emlrtRTEI);
+    emxEnsureCapacity_real_T(&st, t, i1, &sb_emlrtRTEI);
     t_data = t->data;
     t_data[0] = rtNaN;
   } else if (muDoubleScalarIsInf(Ts)) {
-    maxdimlen = t->size[0] * t->size[1];
+    i1 = t->size[0] * t->size[1];
     t->size[0] = 1;
     t->size[1] = 1;
-    emxEnsureCapacity_real_T(&st, t, maxdimlen, &vb_emlrtRTEI);
+    emxEnsureCapacity_real_T(&st, t, i1, &sb_emlrtRTEI);
     t_data = t->data;
     t_data[0] = 0.0;
   } else if (muDoubleScalarFloor(Ts) == Ts) {
-    maxdimlen = t->size[0] * t->size[1];
+    i1 = t->size[0] * t->size[1];
     t->size[0] = 1;
-    idx = (int32_T)(tmax / Ts);
-    t->size[1] = idx + 1;
-    emxEnsureCapacity_real_T(&st, t, maxdimlen, &vb_emlrtRTEI);
+    maxdimlen = (int32_T)(tmax / Ts);
+    t->size[1] = maxdimlen + 1;
+    emxEnsureCapacity_real_T(&st, t, i1, &sb_emlrtRTEI);
     t_data = t->data;
-    for (maxdimlen = 0; maxdimlen <= idx; maxdimlen++) {
-      t_data[maxdimlen] = Ts * (real_T)maxdimlen;
+    for (i1 = 0; i1 <= maxdimlen; i1++) {
+      t_data[i1] = Ts * (real_T)i1;
     }
   } else {
     b_st.site = &v_emlrtRSI;
     eml_float_colon(&b_st, Ts, tmax, t);
     t_data = t->data;
   }
-  emxInit_boolean_T(&st, &b_t, &wb_emlrtRTEI);
+  emxInit_boolean_T(&st, &b_t, &tb_emlrtRTEI);
   /*  Time vector */
   st.site = &l_emlrtRSI;
-  maxdimlen = b_t->size[0] * b_t->size[1];
+  i1 = b_t->size[0] * b_t->size[1];
   b_t->size[0] = 1;
   b_t->size[1] = t->size[1];
-  emxEnsureCapacity_boolean_T(&st, b_t, maxdimlen, &wb_emlrtRTEI);
+  emxEnsureCapacity_boolean_T(&st, b_t, i1, &tb_emlrtRTEI);
   b_t_data = b_t->data;
-  idx = t->size[1];
-  for (maxdimlen = 0; maxdimlen < idx; maxdimlen++) {
-    b_t_data[maxdimlen] = (t_data[maxdimlen] > x_data[x->size[0] - 1]);
+  maxdimlen = t->size[1];
+  for (i1 = 0; i1 < maxdimlen; i1++) {
+    b_t_data[i1] = (t_data[i1] > x_data[x->size[0] - 1]);
   }
-  emxInit_real_T(&st, &y, 2, &xb_emlrtRTEI);
+  emxInit_real_T(&st, &y, 2, &ub_emlrtRTEI);
   b_st.site = &ab_emlrtRSI;
-  eml_find(&b_st, b_t, bd_emlrtRSI.data, bd_emlrtRSI.size);
+  eml_find(&b_st, b_t, mc_emlrtRSI.data, mc_emlrtRSI.size);
   st.site = &m_emlrtRSI;
   EOE2COE(&st, b_y0, x0);
   st.site = &n_emlrtRSI;
@@ -2277,25 +2229,23 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
   /*    The output vector is in the form EOE = [p f g h k L], where p is the  */
   /*    semilatus rectum and L is the true longitude */
   b_st.site = &ib_emlrtRSI;
-  c_st.site = &gb_emlrtRSI;
-  d_st.site = &hb_emlrtRSI;
-  h_tmp = muDoubleScalarTan(x0[2] / 2.0);
+  scale = muDoubleScalarTan(x0[2] / 2.0);
   b_y0[0] = x0[0] * (1.0 - x0[1] * x0[1]);
-  scale = x0[3] + x0[4];
-  b_y0[1] = x0[1] * muDoubleScalarCos(scale);
-  b_y0[2] = x0[1] * muDoubleScalarSin(scale);
-  b_y0[3] = muDoubleScalarCos(x0[3]) * h_tmp;
-  b_y0[4] = muDoubleScalarSin(x0[3]) * h_tmp;
-  b_y0[5] = scale + x_data[0];
-  maxdimlen = y->size[0] * y->size[1];
+  absxk = x0[3] + x0[4];
+  b_y0[1] = x0[1] * muDoubleScalarCos(absxk);
+  b_y0[2] = x0[1] * muDoubleScalarSin(absxk);
+  b_y0[3] = muDoubleScalarCos(x0[3]) * scale;
+  b_y0[4] = muDoubleScalarSin(x0[3]) * scale;
+  b_y0[5] = absxk + x_data[0];
+  i1 = y->size[0] * y->size[1];
   y->size[0] = 6;
   y->size[1] = t->size[1];
-  emxEnsureCapacity_real_T(sp, y, maxdimlen, &xb_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, y, i1, &ub_emlrtRTEI);
   y_data = y->data;
-  idx = 6 * t->size[1];
+  maxdimlen = 6 * t->size[1];
   emxFree_boolean_T(sp, &b_t);
-  for (maxdimlen = 0; maxdimlen < idx; maxdimlen++) {
-    y_data[maxdimlen] = 0.0;
+  for (i1 = 0; i1 < maxdimlen; i1++) {
+    y_data[i1] = 0.0;
   }
   /*  Initialization of vector state */
   if (t->size[1] < 1) {
@@ -2304,24 +2254,30 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
   /*  Set initial conditions */
   m = m0;
   for (k = 0; k < 6; k++) {
-    absxk = b_y0[k];
-    y_data[k] = absxk;
-    dyinv[k] = muDoubleScalarAbs(absxk - ybar[k]);
+    d = b_y0[k];
+    y_data[k] = d;
+    dyinv[k] = muDoubleScalarAbs(d - ybar[k]);
   }
-  for (idx = 0; idx < 6; idx++) {
-    absxk = dyinv[idx];
-    absxk = (real_T)(absxk != 0.0) / (absxk + (real_T)(absxk == 0.0));
-    dyinv[idx] = absxk;
+  for (maxdimlen = 0; maxdimlen < 6; maxdimlen++) {
+    d = dyinv[maxdimlen];
+    d = (real_T)(d != 0.0) / (d + (real_T)(d == 0.0));
+    dyinv[maxdimlen] = d;
+    if (d == 0.0) {
+      dyinv[maxdimlen] = 1.0 / muDoubleScalarMax(1.0, ybar[maxdimlen]);
+    }
     if (*emlrtBreakCheckR2012bFlagVar != 0) {
       emlrtBreakCheckR2012b((emlrtCTX)sp);
     }
   }
   /*          Q = diag([1 1 1 1 1 0]'./ybar.^2); */
   for (k = 0; k < 6; k++) {
-    absxk = dyinv[k];
-    x0[k] = (real_T)iv1[k] * (absxk * absxk);
+    d = dyinv[k];
+    x0[k] = (real_T)iv1[k] * (d * d);
   }
-  diag(x0, Q);
+  memset(&Q[0], 0, 36U * sizeof(real_T));
+  for (maxdimlen = 0; maxdimlen < 6; maxdimlen++) {
+    Q[maxdimlen + 6 * maxdimlen] = x0[maxdimlen];
+  }
   /*  R = diag([1 1 1]/umax^2)*0.1; */
   for (k = 0; k <= loop_ub; k++) {
     if (k + 1 > csi->size[0]) {
@@ -2340,16 +2296,19 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
     }
   }
   tCost = 0.0;
-  maxdimlen = t->size[1];
-  if (t->size[1] - 2 >= 0) {
-    i2 = i1;
-    c_loop_ub = b_loop_ub;
-  }
-  emxInit_real_T(sp, &b_x, 1, &yb_emlrtRTEI);
-  for (k = 0; k <= maxdimlen - 2; k++) {
-    real_T a[3];
-    real_T c_y;
+  i1 = t->size[1];
+  emxInit_real_T(sp, &b_x, 1, &vb_emlrtRTEI);
+  for (k = 0; k <= i1 - 2; k++) {
+    real_T a;
+    real_T b_w_tmp;
+    real_T c_t;
+    real_T c_w_tmp;
     real_T ku;
+    real_T p_mu05;
+    real_T u_idx_2;
+    real_T w;
+    int32_T b_x0_tmp;
+    int32_T x0_tmp;
     ku = muDoubleScalarCeil(((real_T)k + 1.0) / ratio);
     if (ku != (int32_T)ku) {
       emlrtIntegerCheckR2012b(ku, &c_emlrtDCI, (emlrtCTX)sp);
@@ -2358,60 +2317,146 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
       emlrtDynamicBoundsCheckR2012b((int32_T)ku, 1, csi->size[0], &t_emlrtBCI,
                                     (emlrtCTX)sp);
     }
-    h_tmp = Tmax / m * csi_data[(int32_T)ku - 1];
+    a = Tmax / m * csi_data[(int32_T)ku - 1];
     if (((int32_T)ku < 1) || ((int32_T)ku > (int32_T)lu)) {
-      emlrtDynamicBoundsCheckR2012b((int32_T)ku, 1, (int32_T)lu, &l_emlrtBCI,
+      emlrtDynamicBoundsCheckR2012b((int32_T)ku, 1, (int32_T)lu, &i_emlrtBCI,
                                     (emlrtCTX)sp);
     }
-    c_y = 0.0;
+    w_tmp = b_x->size[0];
+    b_x->size[0] = b_loop_ub;
+    emxEnsureCapacity_real_T(sp, b_x, w_tmp, &vb_emlrtRTEI);
+    b_x_data = b_x->data;
+    for (w_tmp = 0; w_tmp < b_loop_ub; w_tmp++) {
+      b_x_data[w_tmp] = x_data[i + w_tmp];
+    }
+    if (((int32_T)ku < 1) || ((int32_T)ku > (int32_T)lu)) {
+      emlrtDynamicBoundsCheckR2012b((int32_T)ku, 1, (int32_T)lu, &j_emlrtBCI,
+                                    (emlrtCTX)sp);
+    }
     scale = 3.3121686421112381E-170;
-    for (idx = 0; idx < 3; idx++) {
-      i1 = b_x->size[0];
-      b_x->size[0] = i2 - i;
-      emxEnsureCapacity_real_T(sp, b_x, i1, &yb_emlrtRTEI);
-      b_x_data = b_x->data;
-      for (i1 = 0; i1 < c_loop_ub; i1++) {
-        b_x_data[i1] = x_data[i + i1];
-      }
-      absxk = muDoubleScalarAbs(b_x_data[idx + 3 * ((int32_T)ku - 1)]);
-      if (absxk > scale) {
-        real_T c_t;
-        c_t = scale / absxk;
-        c_y = c_y * c_t * c_t + 1.0;
-        scale = absxk;
-      } else {
-        real_T c_t;
-        c_t = absxk / scale;
-        c_y += c_t * c_t;
-      }
+    maxdimlen = 3 * ((int32_T)ku - 1);
+    absxk = muDoubleScalarAbs(b_x_data[maxdimlen]);
+    if (absxk > 3.3121686421112381E-170) {
+      u_idx_2 = 1.0;
+      scale = absxk;
+    } else {
+      c_t = absxk / 3.3121686421112381E-170;
+      u_idx_2 = c_t * c_t;
     }
-    c_y = scale * muDoubleScalarSqrt(c_y);
+    absxk = muDoubleScalarAbs(b_x_data[maxdimlen + 1]);
+    if (absxk > scale) {
+      c_t = scale / absxk;
+      u_idx_2 = u_idx_2 * c_t * c_t + 1.0;
+      scale = absxk;
+    } else {
+      c_t = absxk / scale;
+      u_idx_2 += c_t * c_t;
+    }
+    absxk = muDoubleScalarAbs(b_x_data[maxdimlen + 2]);
+    if (absxk > scale) {
+      c_t = scale / absxk;
+      u_idx_2 = u_idx_2 * c_t * c_t + 1.0;
+      scale = absxk;
+    } else {
+      c_t = absxk / scale;
+      u_idx_2 += c_t * c_t;
+    }
+    u_idx_2 = scale * muDoubleScalarSqrt(u_idx_2);
+    w_tmp = b_x->size[0];
+    b_x->size[0] = b_loop_ub;
+    emxEnsureCapacity_real_T(sp, b_x, w_tmp, &vb_emlrtRTEI);
+    b_x_data = b_x->data;
+    for (w_tmp = 0; w_tmp < b_loop_ub; w_tmp++) {
+      b_x_data[w_tmp] = x_data[i + w_tmp];
+    }
+    absxk = a * b_x_data[maxdimlen] / u_idx_2 / 1000.0;
+    c_t = a * b_x_data[maxdimlen + 1] / u_idx_2 / 1000.0;
+    u_idx_2 = a * b_x_data[maxdimlen + 2] / u_idx_2 / 1000.0;
     if (k + 1 > t->size[1]) {
-      emlrtDynamicBoundsCheckR2012b(k + 1, 1, t->size[1], &i_emlrtBCI,
+      emlrtDynamicBoundsCheckR2012b(k + 1, 1, t->size[1], &m_emlrtBCI,
                                     (emlrtCTX)sp);
     }
-    if (k + 1 > y->size[1]) {
-      emlrtDynamicBoundsCheckR2012b(k + 1, 1, y->size[1], &h_emlrtBCI,
-                                    (emlrtCTX)sp);
-    }
-    idx = 3 * ((int32_T)ku - 1);
-    a[0] = h_tmp * qdir_data[idx] / c_y;
-    a[1] = h_tmp * qdir_data[idx + 1] / c_y;
-    a[2] = h_tmp * qdir_data[idx + 2] / c_y;
     st.site = &o_emlrtRSI;
-    EOEDerivatives(*(real_T(*)[6]) & y_data[6 * k], a, x0);
     if (k + 1 > y->size[1]) {
-      emlrtDynamicBoundsCheckR2012b(k + 1, 1, y->size[1], &j_emlrtBCI,
+      emlrtDynamicBoundsCheckR2012b(k + 1, 1, y->size[1], &n_emlrtBCI, &st);
+    }
+    /*  Equinoctial Orbital Elements */
+    scale = y_data[6 * k];
+    if (y_data[6 * k] < 0.0) {
+      scale = -y_data[6 * k];
+      /*      warning('p became negative. Switched to absolute value for
+       * calculations'); */
+    }
+    /*  Accelerations */
+    /*  Definition of useful values */
+    maxdimlen = 6 * k + 5;
+    b_w_tmp = muDoubleScalarSin(y_data[maxdimlen]);
+    c_w_tmp = muDoubleScalarCos(y_data[maxdimlen]);
+    loop_ub = 6 * k + 1;
+    w_tmp = 6 * k + 2;
+    w = (y_data[loop_ub] * c_w_tmp + 1.0) + y_data[w_tmp] * b_w_tmp;
+    /*  r = p/w; */
+    b_st.site = &jb_emlrtRSI;
+    b_st.site = &jb_emlrtRSI;
+    /*  alpha2 = h^2-k^2; */
+    p_mu05 = scale / 398600.0;
+    b_st.site = &kb_emlrtRSI;
+    if (p_mu05 < 0.0) {
+      emlrtErrorWithMessageIdR2018a(
+          &b_st, &k_emlrtRTEI, "Coder:toolbox:ElFunDomainError",
+          "Coder:toolbox:ElFunDomainError", 3, 4, 4, "sqrt");
+    }
+    p_mu05 = muDoubleScalarSqrt(p_mu05);
+    /*  State Derivative Calculation */
+    b_st.site = &lb_emlrtRSI;
+    a = w / scale;
+    d = 398600.0 * scale;
+    b_st.site = &lb_emlrtRSI;
+    if (d < 0.0) {
+      emlrtErrorWithMessageIdR2018a(
+          &b_st, &k_emlrtRTEI, "Coder:toolbox:ElFunDomainError",
+          "Coder:toolbox:ElFunDomainError", 3, 4, 4, "sqrt");
+    }
+    d = muDoubleScalarSqrt(d);
+    if (k + 1 > y->size[1]) {
+      emlrtDynamicBoundsCheckR2012b(k + 1, 1, y->size[1], &l_emlrtBCI,
                                     (emlrtCTX)sp);
     }
+    x0[0] = Ts * (2.0 * scale / w * p_mu05 * c_t);
+    x0_tmp = 6 * k + 3;
+    b_x0_tmp = 6 * k + 4;
+    x0[1] = Ts *
+            (p_mu05 * ((absxk * b_w_tmp +
+                        ((w + 1.0) * c_w_tmp + y_data[loop_ub]) * c_t / w) -
+                       (y_data[x0_tmp] * b_w_tmp - y_data[b_x0_tmp] * c_w_tmp) *
+                           y_data[w_tmp] * u_idx_2 / w));
+    x0[2] =
+        Ts *
+        (p_mu05 *
+         ((-absxk * c_w_tmp + ((w + 1.0) * b_w_tmp + y_data[w_tmp]) * c_t / w) +
+          (y_data[x0_tmp] * muDoubleScalarSin(y_data[maxdimlen]) -
+           y_data[b_x0_tmp] * muDoubleScalarCos(y_data[maxdimlen])) *
+              y_data[w_tmp] * u_idx_2 / w));
+    scale = p_mu05 *
+            ((y_data[x0_tmp] * y_data[x0_tmp] + 1.0) +
+             y_data[b_x0_tmp] * y_data[b_x0_tmp]) *
+            u_idx_2 / 2.0 / w;
+    x0[3] = Ts * (scale * c_w_tmp);
+    x0[4] = Ts * (scale * b_w_tmp);
+    x0[5] =
+        Ts * (d * (a * a) +
+              p_mu05 / w *
+                  (y_data[x0_tmp] * muDoubleScalarSin(y_data[maxdimlen]) -
+                   y_data[b_x0_tmp] * muDoubleScalarCos(y_data[maxdimlen])) *
+                  u_idx_2);
     if (k + 2 > y->size[1]) {
-      emlrtDynamicBoundsCheckR2012b(k + 2, 1, y->size[1], &g_emlrtBCI,
+      emlrtDynamicBoundsCheckR2012b(k + 2, 1, y->size[1], &o_emlrtBCI,
                                     (emlrtCTX)sp);
     }
-    for (i1 = 0; i1 < 6; i1++) {
-      absxk = y_data[i1 + 6 * k] + Ts * x0[i1];
-      x0[i1] = absxk;
-      y_data[i1 + 6 * (k + 1)] = absxk;
+    for (w_tmp = 0; w_tmp < 6; w_tmp++) {
+      d = y_data[w_tmp + 6 * k] + x0[w_tmp];
+      x0[w_tmp] = d;
+      y_data[w_tmp + 6 * (k + 1)] = d;
     }
     if (((int32_T)ku < 1) || ((int32_T)ku > csi->size[0])) {
       emlrtDynamicBoundsCheckR2012b((int32_T)ku, 1, csi->size[0], &u_emlrtBCI,
@@ -2419,33 +2464,32 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
     }
     m -= Ts * coeffT * csi_data[(int32_T)ku - 1];
     if (k + 2 > y->size[1]) {
-      emlrtDynamicBoundsCheckR2012b(k + 2, 1, y->size[1], &f_emlrtBCI,
+      emlrtDynamicBoundsCheckR2012b(k + 2, 1, y->size[1], &p_emlrtBCI,
                                     (emlrtCTX)sp);
+    }
+    for (w_tmp = 0; w_tmp < 6; w_tmp++) {
+      x0[w_tmp] = y_data[w_tmp + 6 * (k + 1)] - ybar[w_tmp];
+    }
+    u_idx_2 = 0.0;
+    for (w_tmp = 0; w_tmp < 6; w_tmp++) {
+      d = 0.0;
+      for (maxdimlen = 0; maxdimlen < 6; maxdimlen++) {
+        d += x0[maxdimlen] * Q[maxdimlen + 6 * w_tmp];
+      }
+      u_idx_2 += d * (y_data[w_tmp + 6 * (k + 1)] - ybar[w_tmp]);
     }
     if (k + 1 > t->size[1]) {
-      emlrtDynamicBoundsCheckR2012b(k + 1, 1, t->size[1], &e_emlrtBCI,
+      emlrtDynamicBoundsCheckR2012b(k + 1, 1, t->size[1], &v_emlrtBCI,
                                     (emlrtCTX)sp);
     }
-    for (i1 = 0; i1 < 6; i1++) {
-      x0[i1] = y_data[i1 + 6 * (k + 1)] - ybar[i1];
-    }
-    c_y = 0.0;
-    for (i1 = 0; i1 < 6; i1++) {
-      absxk = 0.0;
-      for (idx = 0; idx < 6; idx++) {
-        absxk += x0[idx] * Q[idx + 6 * i1];
-      }
-      c_y += absxk * (y_data[i1 + 6 * (k + 1)] - ybar[i1]);
-    }
-    tCost += c_y * muDoubleScalarExp(t_data[k] / 1000.0);
+    tCost += u_idx_2 * (t_data[k] / 100000.0);
     if (*emlrtBreakCheckR2012bFlagVar != 0) {
       emlrtBreakCheckR2012b((emlrtCTX)sp);
     }
   }
-  emxFree_real_T(sp, &qdir);
-  emxInit_real_T(sp, &b_y, 2, &gc_emlrtRTEI);
+  emxFree_real_T(sp, &csi);
+  emxInit_real_T(sp, &b_y, 2, &dc_emlrtRTEI);
   tCost /= (real_T)t->size[1];
-  scale = m0 - m;
   /*          e = vecnorm((y(1:5,:)-ybar(1:5))./ybar(1:5)).^2; */
   /*          indtf = find(e <= 1e-5,1); */
   /*          if ~isempty(indtf) */
@@ -2459,11 +2503,11 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
   i1 = b_y->size[0] * b_y->size[1];
   b_y->size[0] = 1;
   b_y->size[1] = y->size[1];
-  emxEnsureCapacity_real_T(&b_st, b_y, i1, &ac_emlrtRTEI);
-  b_x_data = b_y->data;
+  emxEnsureCapacity_real_T(&b_st, b_y, i1, &wb_emlrtRTEI);
+  b_y_data = b_y->data;
   for (i1 = 0; i1 < loop_ub; i1++) {
-    h_tmp = y_data[6 * i1 + 1];
-    b_x_data[i1] = h_tmp * h_tmp;
+    scale = y_data[6 * i1 + 1];
+    b_y_data[i1] = scale * scale;
   }
   st.site = &p_emlrtRSI;
   b_st.site = &hb_emlrtRSI;
@@ -2471,41 +2515,42 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
   i1 = t->size[0] * t->size[1];
   t->size[0] = 1;
   t->size[1] = y->size[1];
-  emxEnsureCapacity_real_T(&b_st, t, i1, &bc_emlrtRTEI);
+  emxEnsureCapacity_real_T(&b_st, t, i1, &xb_emlrtRTEI);
   t_data = t->data;
   for (i1 = 0; i1 < loop_ub; i1++) {
-    h_tmp = y_data[6 * i1 + 2];
-    t_data[i1] = h_tmp * h_tmp;
+    scale = y_data[6 * i1 + 2];
+    t_data[i1] = scale * scale;
   }
   if ((b_y->size[1] != t->size[1]) &&
       ((b_y->size[1] != 1) && (t->size[1] != 1))) {
-    emlrtDimSizeImpxCheckR2021b(b_y->size[1], t->size[1], &g_emlrtECI,
+    emlrtDimSizeImpxCheckR2021b(b_y->size[1], t->size[1], &e_emlrtECI,
                                 (emlrtCTX)sp);
   }
-  emxInit_real_T(sp, &d_y, 2, &cc_emlrtRTEI);
+  emxInit_real_T(sp, &c_y, 2, &yb_emlrtRTEI);
+  loop_ub = y->size[1];
+  i1 = c_y->size[0] * c_y->size[1];
+  c_y->size[0] = 1;
+  c_y->size[1] = y->size[1];
+  emxEnsureCapacity_real_T(sp, c_y, i1, &yb_emlrtRTEI);
+  b_y_data = c_y->data;
+  for (i1 = 0; i1 < loop_ub; i1++) {
+    b_y_data[i1] = y_data[6 * i1 + 2];
+  }
+  emxInit_real_T(sp, &d_y, 2, &ac_emlrtRTEI);
   loop_ub = y->size[1];
   i1 = d_y->size[0] * d_y->size[1];
   d_y->size[0] = 1;
   d_y->size[1] = y->size[1];
-  emxEnsureCapacity_real_T(sp, d_y, i1, &cc_emlrtRTEI);
-  qdir_data = d_y->data;
+  emxEnsureCapacity_real_T(sp, d_y, i1, &ac_emlrtRTEI);
+  b_y_data = d_y->data;
   for (i1 = 0; i1 < loop_ub; i1++) {
-    qdir_data[i1] = y_data[6 * i1 + 2];
+    b_y_data[i1] = y_data[6 * i1 + 1];
   }
-  emxInit_real_T(sp, &e_y, 2, &dc_emlrtRTEI);
-  loop_ub = y->size[1];
-  i1 = e_y->size[0] * e_y->size[1];
-  e_y->size[0] = 1;
-  e_y->size[1] = y->size[1];
-  emxEnsureCapacity_real_T(sp, e_y, i1, &dc_emlrtRTEI);
-  b_x_data = e_y->data;
-  for (i1 = 0; i1 < loop_ub; i1++) {
-    b_x_data[i1] = y_data[6 * i1 + 1];
-  }
-  emxInit_real_T(sp, &r, 2, &kc_emlrtRTEI);
+  emxInit_real_T(sp, &r, 2, &fc_emlrtRTEI);
   st.site = &p_emlrtRSI;
-  b_atan2(&st, d_y, e_y, r);
-  emxFree_real_T(sp, &e_y);
+  b_atan2(&st, c_y, d_y, r);
+  emxFree_real_T(sp, &d_y);
+  emxFree_real_T(sp, &c_y);
   if ((y->size[1] != r->size[1]) && ((y->size[1] != 1) && (r->size[1] != 1))) {
     emlrtDimSizeImpxCheckR2021b(y->size[1], r->size[1], &f_emlrtECI,
                                 (emlrtCTX)sp);
@@ -2514,10 +2559,10 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
     loop_ub = b_y->size[1] - 1;
     i1 = b_y->size[0] * b_y->size[1];
     b_y->size[0] = 1;
-    emxEnsureCapacity_real_T(sp, b_y, i1, &ec_emlrtRTEI);
-    b_x_data = b_y->data;
+    emxEnsureCapacity_real_T(sp, b_y, i1, &bc_emlrtRTEI);
+    b_y_data = b_y->data;
     for (i1 = 0; i1 <= loop_ub; i1++) {
-      b_x_data[i1] += t_data[i1];
+      b_y_data[i1] += t_data[i1];
     }
   } else {
     plus(sp, b_y, t);
@@ -2529,20 +2574,20 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
     i1 = r->size[0] * r->size[1];
     r->size[0] = 1;
     r->size[1] = y->size[1];
-    emxEnsureCapacity_real_T(sp, r, i1, &fc_emlrtRTEI);
-    qdir_data = r->data;
+    emxEnsureCapacity_real_T(sp, r, i1, &cc_emlrtRTEI);
+    csi_data = r->data;
     for (i1 = 0; i1 < loop_ub; i1++) {
-      qdir_data[i1] = y_data[6 * i1 + 5] - qdir_data[i1];
+      csi_data[i1] = y_data[6 * i1 + 5] - csi_data[i1];
     }
   } else {
     d_binary_expand_op(sp, r, y);
   }
   st.site = &p_emlrtRSI;
   b_cos(&st, r);
-  qdir_data = r->data;
+  csi_data = r->data;
   if ((b_y->size[1] != r->size[1]) &&
       ((b_y->size[1] != 1) && (r->size[1] != 1))) {
-    emlrtDimSizeImpxCheckR2021b(b_y->size[1], r->size[1], &e_emlrtECI,
+    emlrtDimSizeImpxCheckR2021b(b_y->size[1], r->size[1], &g_emlrtECI,
                                 (emlrtCTX)sp);
   }
   st.site = &p_emlrtRSI;
@@ -2550,125 +2595,41 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
     loop_ub = b_y->size[1] - 1;
     i1 = b_y->size[0] * b_y->size[1];
     b_y->size[0] = 1;
-    emxEnsureCapacity_real_T(&st, b_y, i1, &gc_emlrtRTEI);
-    b_x_data = b_y->data;
+    emxEnsureCapacity_real_T(&st, b_y, i1, &dc_emlrtRTEI);
+    b_y_data = b_y->data;
     for (i1 = 0; i1 <= loop_ub; i1++) {
-      b_x_data[i1] = b_x_data[i1] * qdir_data[i1] + 1.0;
+      b_y_data[i1] = b_y_data[i1] * csi_data[i1] + 1.0;
     }
   } else {
     b_st.site = &p_emlrtRSI;
     c_binary_expand_op(&b_st, b_y, r);
-    b_x_data = b_y->data;
+    b_y_data = b_y->data;
   }
   emxFree_real_T(&st, &r);
   b_st.site = &vb_emlrtRSI;
-  loop_ub = y->size[1];
-  i1 = d_y->size[0] * d_y->size[1];
-  d_y->size[0] = 1;
-  d_y->size[1] = y->size[1];
-  emxEnsureCapacity_real_T(&b_st, d_y, i1, &hc_emlrtRTEI);
-  qdir_data = d_y->data;
-  for (i1 = 0; i1 < loop_ub; i1++) {
-    qdir_data[i1] = y_data[6 * i1];
-  }
   c_st.site = &wb_emlrtRSI;
-  assertCompatibleDims(&c_st, d_y, b_y);
-  emxFree_real_T(sp, &d_y);
-  if (y->size[1] == b_y->size[1]) {
-    loop_ub = y->size[1];
-    i1 = csi->size[0];
-    csi->size[0] = y->size[1];
-    emxEnsureCapacity_real_T(sp, csi, i1, &ic_emlrtRTEI);
-    csi_data = csi->data;
-    for (i1 = 0; i1 < loop_ub; i1++) {
-      csi_data[i1] = y_data[6 * i1] / b_x_data[i1];
-    }
-  } else {
-    st.site = &p_emlrtRSI;
-    b_binary_expand_op(&st, csi, y, b_y);
-    csi_data = csi->data;
+  if ((y->size[1] != 1) && (b_y->size[1] != 1) &&
+      (y->size[1] != b_y->size[1])) {
+    emlrtErrorWithMessageIdR2018a(&c_st, &e_emlrtRTEI,
+                                  "MATLAB:sizeDimensionsMustMatch",
+                                  "MATLAB:sizeDimensionsMustMatch", 0);
   }
-  emxFree_real_T(sp, &b_y);
+  scale = alpha * tCost;
+  absxk = (1.0 - alpha) * (m0 - m);
   /*          g = [Q(1:5,1:5)*(y(1:5,indtf)-ybar(1:5)).^2; */
   /*              Q(1:5,1:5)*(y(1:5,end)-ybar(1:5)).^2]; */
   if (y->size[1] < 1) {
-    emlrtDynamicBoundsCheckR2012b(y->size[1], 1, y->size[1], &d_emlrtBCI,
+    emlrtDynamicBoundsCheckR2012b(y->size[1], 1, y->size[1], &q_emlrtBCI,
                                   (emlrtCTX)sp);
   }
   for (k = 0; k < 5; k++) {
     g[k] = muDoubleScalarAbs(y_data[k + 6 * (y->size[1] - 1)] - ybar[k]) *
            dyinv[k];
   }
-  emxFree_real_T(sp, &y);
   /*          g = []; */
-  st.site = &q_emlrtRSI;
-  b_st.site = &xb_emlrtRSI;
-  c_st.site = &yb_emlrtRSI;
-  d_st.site = &ac_emlrtRSI;
-  if (csi->size[0] < 1) {
-    emlrtErrorWithMessageIdR2018a(&d_st, &b_emlrtRTEI,
-                                  "Coder:toolbox:eml_min_or_max_varDimZero",
-                                  "Coder:toolbox:eml_min_or_max_varDimZero", 0);
-  }
-  e_st.site = &bc_emlrtRSI;
-  f_st.site = &cc_emlrtRSI;
-  maxdimlen = csi->size[0];
-  if (csi->size[0] <= 2) {
-    if (csi->size[0] == 1) {
-      h_tmp = csi_data[0];
-    } else if ((csi_data[0] > csi_data[1]) ||
-               (muDoubleScalarIsNaN(csi_data[0]) &&
-                (!muDoubleScalarIsNaN(csi_data[1])))) {
-      h_tmp = csi_data[1];
-    } else {
-      h_tmp = csi_data[0];
-    }
-  } else {
-    g_st.site = &ec_emlrtRSI;
-    if (!muDoubleScalarIsNaN(csi_data[0])) {
-      idx = 1;
-    } else {
-      boolean_T exitg1;
-      idx = 0;
-      h_st.site = &fc_emlrtRSI;
-      if (csi->size[0] > 2147483646) {
-        i_st.site = &y_emlrtRSI;
-        check_forloop_overflow_error(&i_st);
-      }
-      k = 2;
-      exitg1 = false;
-      while ((!exitg1) && (k <= maxdimlen)) {
-        if (!muDoubleScalarIsNaN(csi_data[k - 1])) {
-          idx = k;
-          exitg1 = true;
-        } else {
-          k++;
-        }
-      }
-    }
-    if (idx == 0) {
-      h_tmp = csi_data[0];
-    } else {
-      g_st.site = &dc_emlrtRSI;
-      h_tmp = csi_data[idx - 1];
-      loop_ub = idx + 1;
-      h_st.site = &gc_emlrtRSI;
-      if ((idx + 1 <= csi->size[0]) && (csi->size[0] > 2147483646)) {
-        i_st.site = &y_emlrtRSI;
-        check_forloop_overflow_error(&i_st);
-      }
-      for (k = loop_ub; k <= maxdimlen; k++) {
-        absxk = csi_data[k - 1];
-        if (h_tmp > absxk) {
-          h_tmp = absxk;
-        }
-      }
-    }
-  }
-  emxFree_real_T(&f_st, &csi);
   i1 = b_x->size[0];
   b_x->size[0] = b_loop_ub;
-  emxEnsureCapacity_real_T(sp, b_x, i1, &yb_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, b_x, i1, &vb_emlrtRTEI);
   b_x_data = b_x->data;
   for (i1 = 0; i1 < b_loop_ub; i1++) {
     b_x_data[i1] = x_data[i + i1];
@@ -2681,39 +2642,43 @@ void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
   st.site = &q_emlrtRSI;
   vecnorm(&st, &c_x, t);
   t_data = t->data;
-  i = h->size[0];
-  h->size[0] = t->size[1] + 2;
-  emxEnsureCapacity_real_T(sp, h, i, &jc_emlrtRTEI);
-  qdir_data = h->data;
-  qdir_data[0] = h_tmp - 6380.0;
-  qdir_data[1] = m - 1100.0;
-  loop_ub = t->size[1];
   emxFree_real_T(sp, &b_x);
-  for (i = 0; i < loop_ub; i++) {
-    qdir_data[i + 2] = 1.0 - t_data[i];
+  if (y->size[1] == b_y->size[1]) {
+    loop_ub = y->size[1];
+    i = h->size[0];
+    h->size[0] = (y->size[1] + t->size[1]) + 1;
+    emxEnsureCapacity_real_T(sp, h, i, &ec_emlrtRTEI);
+    csi_data = h->data;
+    for (i = 0; i < loop_ub; i++) {
+      csi_data[i] = y_data[6 * i] / b_y_data[i] - 6380.0;
+    }
+    csi_data[y->size[1]] = m - 1100.0;
+    b_loop_ub = t->size[1];
+    for (i = 0; i < b_loop_ub; i++) {
+      csi_data[(i + loop_ub) + 1] = 1.0 - t_data[i];
+    }
+  } else {
+    st.site = &q_emlrtRSI;
+    b_binary_expand_op(&st, h, y, b_y, m, t);
   }
+  emxFree_real_T(sp, &b_y);
+  emxFree_real_T(sp, &y);
   emxFree_real_T(sp, &t);
-  absxk = alpha * x_data[x->size[0] - 1] / 100000.0;
+  st.site = &r_emlrtRSI;
+  if (scale < 0.0) {
+    emlrtErrorWithMessageIdR2018a(
+        &st, &k_emlrtRTEI, "Coder:toolbox:ElFunDomainError",
+        "Coder:toolbox:ElFunDomainError", 3, 4, 4, "sqrt");
+  }
   st.site = &r_emlrtRSI;
   if (absxk < 0.0) {
     emlrtErrorWithMessageIdR2018a(
-        &st, &l_emlrtRTEI, "Coder:toolbox:ElFunDomainError",
+        &st, &k_emlrtRTEI, "Coder:toolbox:ElFunDomainError",
         "Coder:toolbox:ElFunDomainError", 3, 4, 4, "sqrt");
   }
-  absxk = muDoubleScalarSqrt(absxk);
-  h_tmp = (1.0 - alpha) * scale * 100.0 / m0;
-  st.site = &r_emlrtRSI;
-  if (h_tmp < 0.0) {
-    emlrtErrorWithMessageIdR2018a(
-        &st, &l_emlrtRTEI, "Coder:toolbox:ElFunDomainError",
-        "Coder:toolbox:ElFunDomainError", 3, 4, 4, "sqrt");
-  }
-  h_tmp = muDoubleScalarSqrt(h_tmp);
-  F[0] = absxk;
-  F[1] = h_tmp;
-  *f = 100.0 *
-       (alpha * tCost +
-        (1.0 - alpha) * (scale * 100.0 * muDoubleScalarExp(tmax / 1000.0)));
+  F[0] = 0.1 * muDoubleScalarSqrt(scale);
+  F[1] = 0.1 * muDoubleScalarSqrt(absxk);
+  *f = 0.01 * (scale + absxk);
   emlrtHeapReferenceStackLeaveFcnR2012b((emlrtCTX)sp);
 }
 

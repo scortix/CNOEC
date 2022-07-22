@@ -18,7 +18,7 @@
 #include "mwmathutil.h"
 
 /* Variable Definitions */
-static emlrtRSInfo mb_emlrtRSI = {
+static emlrtRSInfo lb_emlrtRSI = {
     16,                                                            /* lineNo */
     "sqrt",                                                        /* fcnName */
     "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\elfun\\sqrt.m" /* pathName
@@ -54,11 +54,11 @@ void b_sqrt(const emlrtStack *sp, emxArray_real_T *x)
         sp, &l_emlrtRTEI, "Coder:toolbox:ElFunDomainError",
         "Coder:toolbox:ElFunDomainError", 3, 4, 4, "sqrt");
   }
-  st.site = &mb_emlrtRSI;
+  st.site = &lb_emlrtRSI;
   nx = x->size[1];
-  b_st.site = &nb_emlrtRSI;
+  b_st.site = &mb_emlrtRSI;
   if (x->size[1] > 2147483646) {
-    c_st.site = &y_emlrtRSI;
+    c_st.site = &x_emlrtRSI;
     check_forloop_overflow_error(&c_st);
   }
   for (k = 0; k < nx; k++) {

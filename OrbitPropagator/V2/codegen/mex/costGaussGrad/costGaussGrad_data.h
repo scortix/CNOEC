@@ -27,10 +27,7 @@ extern emlrtContext emlrtContextGlobal;
 extern emlrtRSInfo h_emlrtRSI;
 extern emlrtRSInfo y_emlrtRSI;
 extern emlrtRSInfo nb_emlrtRSI;
-extern emlrtRSInfo nc_emlrtRSI;
-extern emlrtRTEInfo h_emlrtRTEI;
-extern emlrtRTEInfo l_emlrtRTEI;
-extern emlrtRTEInfo o_emlrtRTEI;
-extern emlrtRTEInfo tc_emlrtRTEI;
+extern emlrtRTEInfo k_emlrtRTEI;
+extern emlrtRTEInfo nc_emlrtRTEI;
 
 /* End of code generation (costGaussGrad_data.h) */

@@ -11,11 +11,19 @@
 
 /* Include files */
 #include "eml_mtimes_helper.h"
-#include "costGaussGrad2_data.h"
 #include "costGaussGrad2_types.h"
 #include "rt_nonfinite.h"
 
 /* Variable Definitions */
+static emlrtRTEInfo o_emlrtRTEI =
+    {
+        138,                   /* lineNo */
+        23,                    /* colNo */
+        "dynamic_size_checks", /* fName */
+        "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\ops\\eml_mtimes_helper."
+        "m" /* pName */
+};
+
 static emlrtRTEInfo p_emlrtRTEI =
     {
         133,                   /* lineNo */

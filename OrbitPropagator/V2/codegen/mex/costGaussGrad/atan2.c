@@ -62,7 +62,7 @@ static emlrtRSInfo tb_emlrtRSI = {
     "internal\\applyBinaryScalarFunction.m" /* pathName */
 };
 
-static emlrtRTEInfo m_emlrtRTEI =
+static emlrtRTEInfo l_emlrtRTEI =
     {
         14,             /* lineNo */
         15,             /* colNo */
@@ -71,7 +71,7 @@ static emlrtRTEInfo m_emlrtRTEI =
         "internal\\scalexpCheck.m" /* pName */
 };
 
-static emlrtRTEInfo mc_emlrtRTEI = {
+static emlrtRTEInfo hc_emlrtRTEI = {
     129,                         /* lineNo */
     6,                           /* colNo */
     "applyBinaryScalarFunction", /* fName */
@@ -120,14 +120,14 @@ void b_atan2(const emlrtStack *sp, const emxArray_real_T *y,
     p = false;
   }
   if (!p) {
-    emlrtErrorWithMessageIdR2018a(&d_st, &m_emlrtRTEI, "MATLAB:dimagree",
+    emlrtErrorWithMessageIdR2018a(&d_st, &l_emlrtRTEI, "MATLAB:dimagree",
                                   "MATLAB:dimagree", 0);
   }
   c_st.site = &rb_emlrtRSI;
   nx = r->size[0] * r->size[1];
   r->size[0] = 1;
   r->size[1] = muIntScalarMin_sint32(y->size[1], x->size[1]);
-  emxEnsureCapacity_real_T(&c_st, r, nx, &mc_emlrtRTEI);
+  emxEnsureCapacity_real_T(&c_st, r, nx, &hc_emlrtRTEI);
   r_data = r->data;
   nx = muIntScalarMin_sint32(y->size[1], x->size[1]);
   d_st.site = &tb_emlrtRSI;

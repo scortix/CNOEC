@@ -25,12 +25,9 @@ extern emlrtCTX emlrtRootTLSGlobal;
 extern const volatile char_T *emlrtBreakCheckR2012bFlagVar;
 extern emlrtContext emlrtContextGlobal;
 extern emlrtRSInfo h_emlrtRSI;
-extern emlrtRSInfo y_emlrtRSI;
-extern emlrtRSInfo nb_emlrtRSI;
-extern emlrtRSInfo sc_emlrtRSI;
-extern emlrtRTEInfo h_emlrtRTEI;
+extern emlrtRSInfo x_emlrtRSI;
+extern emlrtRSInfo mb_emlrtRSI;
 extern emlrtRTEInfo l_emlrtRTEI;
-extern emlrtRTEInfo o_emlrtRTEI;
-extern emlrtRTEInfo rc_emlrtRTEI;
+extern emlrtRTEInfo pc_emlrtRTEI;
 
 /* End of code generation (costGaussGrad2_data.h) */

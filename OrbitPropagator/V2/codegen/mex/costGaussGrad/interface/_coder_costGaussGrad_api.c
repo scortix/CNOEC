@@ -18,7 +18,7 @@
 #include "rt_nonfinite.h"
 
 /* Variable Definitions */
-static emlrtRTEInfo dd_emlrtRTEI = {
+static emlrtRTEInfo tc_emlrtRTEI = {
     1,                          /* lineNo */
     1,                          /* colNo */
     "_coder_costGaussGrad_api", /* fName */
@@ -30,7 +30,7 @@ static void b_emlrt_marshallIn(const emlrtStack *sp, const mxArray *u,
                                const emlrtMsgIdentifier *parentId,
                                emxArray_real_T *y);
 
-static const mxArray *b_emlrt_marshallOut(const emxArray_real_T *u);
+static const mxArray *b_emlrt_marshallOut(const real_T u);
 
 static real_T c_emlrt_marshallIn(const emlrtStack *sp, const mxArray *tmax,
                                  const char_T *identifier);
@@ -48,7 +48,7 @@ static real_T (*e_emlrt_marshallIn(const emlrtStack *sp, const mxArray *b_y0,
 static void emlrt_marshallIn(const emlrtStack *sp, const mxArray *x,
                              const char_T *identifier, emxArray_real_T *y);
 
-static const mxArray *emlrt_marshallOut(const real_T u);
+static const mxArray *emlrt_marshallOut(const emxArray_real_T *u);
 
 static real_T (*f_emlrt_marshallIn(const emlrtStack *sp, const mxArray *u,
                                    const emlrtMsgIdentifier *parentId))[6];
@@ -104,17 +104,12 @@ static void b_emlrt_marshallIn(const emlrtStack *sp, const mxArray *u,
   emlrtDestroyArray(&u);
 }
 
-static const mxArray *b_emlrt_marshallOut(const emxArray_real_T *u)
+static const mxArray *b_emlrt_marshallOut(const real_T u)
 {
-  static const int32_T i = 0;
   const mxArray *m;
   const mxArray *y;
-  const real_T *u_data;
-  u_data = u->data;
   y = NULL;
-  m = emlrtCreateNumericArray(1, (const void *)&i, mxDOUBLE_CLASS, mxREAL);
-  emlrtMxSetData((mxArray *)m, (void *)&u_data[0]);
-  emlrtSetDimensions((mxArray *)m, &u->size[0], 1);
+  m = emlrtCreateDoubleScalar(u);
   emlrtAssign(&y, m);
   return y;
 }
@@ -194,12 +189,17 @@ static void emlrt_marshallIn(const emlrtStack *sp, const mxArray *x,
   emlrtDestroyArray(&x);
 }
 
-static const mxArray *emlrt_marshallOut(const real_T u)
+static const mxArray *emlrt_marshallOut(const emxArray_real_T *u)
 {
+  static const int32_T i = 0;
   const mxArray *m;
   const mxArray *y;
+  const real_T *u_data;
+  u_data = u->data;
   y = NULL;
-  m = emlrtCreateDoubleScalar(u);
+  m = emlrtCreateNumericArray(1, (const void *)&i, mxDOUBLE_CLASS, mxREAL);
+  emlrtMxSetData((mxArray *)m, (void *)&u_data[0]);
+  emlrtSetDimensions((mxArray *)m, &u->size[0], 1);
   emlrtAssign(&y, m);
   return y;
 }
@@ -406,18 +406,18 @@ void costGaussGrad_api(const mxArray *const prhs[15], int32_T nlhs,
   st.tls = emlrtRootTLSGlobal;
   F = (real_T(*)[2])mxMalloc(sizeof(real_T[2]));
   emlrtHeapReferenceStackEnterFcnR2012b(&st);
-  emxInit_real_T(&st, &x, 1, &dd_emlrtRTEI);
-  emxInit_real_T(&st, &A, 2, &dd_emlrtRTEI);
-  emxInit_real_T(&st, &b, 2, &dd_emlrtRTEI);
-  emxInit_real_T(&st, &C, 2, &dd_emlrtRTEI);
-  emxInit_real_T(&st, &d, 2, &dd_emlrtRTEI);
-  emxInit_real_T(&st, &J, 1, &dd_emlrtRTEI);
-  emxInit_real_T(&st, &gx, 1, &dd_emlrtRTEI);
-  emxInit_real_T(&st, &hx, 2, &dd_emlrtRTEI);
-  emxInit_real_T(&st, &Jf, 1, &dd_emlrtRTEI);
-  emxInit_real_T(&st, &Jg, 2, &dd_emlrtRTEI);
-  emxInit_real_T(&st, &Jh, 2, &dd_emlrtRTEI);
-  emxInit_real_T(&st, &JF, 2, &dd_emlrtRTEI);
+  emxInit_real_T(&st, &x, 1, &tc_emlrtRTEI);
+  emxInit_real_T(&st, &A, 2, &tc_emlrtRTEI);
+  emxInit_real_T(&st, &b, 2, &tc_emlrtRTEI);
+  emxInit_real_T(&st, &C, 2, &tc_emlrtRTEI);
+  emxInit_real_T(&st, &d, 2, &tc_emlrtRTEI);
+  emxInit_real_T(&st, &J, 1, &tc_emlrtRTEI);
+  emxInit_real_T(&st, &gx, 1, &tc_emlrtRTEI);
+  emxInit_real_T(&st, &hx, 2, &tc_emlrtRTEI);
+  emxInit_real_T(&st, &Jf, 1, &tc_emlrtRTEI);
+  emxInit_real_T(&st, &Jg, 2, &tc_emlrtRTEI);
+  emxInit_real_T(&st, &Jh, 2, &tc_emlrtRTEI);
+  emxInit_real_T(&st, &JF, 2, &tc_emlrtRTEI);
   /* Marshall function inputs */
   x->canFreeData = false;
   emlrt_marshallIn(&st, emlrtAlias(prhs[0]), "x", x);
@@ -445,7 +445,7 @@ void costGaussGrad_api(const mxArray *const prhs[15], int32_T nlhs,
                 JF);
   /* Marshall function outputs */
   J->canFreeData = false;
-  plhs[0] = b_emlrt_marshallOut(J);
+  plhs[0] = emlrt_marshallOut(J);
   emxFree_real_T(&st, &J);
   emxFree_real_T(&st, &d);
   emxFree_real_T(&st, &C);
@@ -453,11 +453,11 @@ void costGaussGrad_api(const mxArray *const prhs[15], int32_T nlhs,
   emxFree_real_T(&st, &A);
   emxFree_real_T(&st, &x);
   if (nlhs > 1) {
-    plhs[1] = emlrt_marshallOut(f);
+    plhs[1] = b_emlrt_marshallOut(f);
   }
   if (nlhs > 2) {
     gx->canFreeData = false;
-    plhs[2] = b_emlrt_marshallOut(gx);
+    plhs[2] = emlrt_marshallOut(gx);
   }
   emxFree_real_T(&st, &gx);
   if (nlhs > 3) {
@@ -467,7 +467,7 @@ void costGaussGrad_api(const mxArray *const prhs[15], int32_T nlhs,
   emxFree_real_T(&st, &hx);
   if (nlhs > 4) {
     Jf->canFreeData = false;
-    plhs[4] = b_emlrt_marshallOut(Jf);
+    plhs[4] = emlrt_marshallOut(Jf);
   }
   emxFree_real_T(&st, &Jf);
   if (nlhs > 5) {
@@ -481,10 +481,10 @@ void costGaussGrad_api(const mxArray *const prhs[15], int32_T nlhs,
   }
   emxFree_real_T(&st, &Jh);
   if (nlhs > 7) {
-    plhs[7] = emlrt_marshallOut(p);
+    plhs[7] = b_emlrt_marshallOut(p);
   }
   if (nlhs > 8) {
-    plhs[8] = emlrt_marshallOut(q);
+    plhs[8] = b_emlrt_marshallOut(q);
   }
   if (nlhs > 9) {
     plhs[9] = d_emlrt_marshallOut(*F);

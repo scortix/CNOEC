@@ -14,7 +14,7 @@
 #include "rt_nonfinite.h"
 
 /* Variable Definitions */
-static emlrtRSInfo s_emlrtRSI = {
+static emlrtRSInfo r_emlrtRSI = {
     42,                /* lineNo */
     "indexShapeCheck", /* fcnName */
     "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+internal\\indexShapeCheck."
@@ -42,7 +42,7 @@ void indexShapeCheck(const emlrtStack *sp, int32_T matrixSize,
   } else {
     c = false;
   }
-  st.site = &s_emlrtRSI;
+  st.site = &r_emlrtRSI;
   if (c) {
     emlrtErrorWithMessageIdR2018a(&st, &g_emlrtRTEI,
                                   "Coder:FE:PotentialVectorVector",

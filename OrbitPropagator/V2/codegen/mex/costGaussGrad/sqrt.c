@@ -51,7 +51,7 @@ void b_sqrt(const emlrtStack *sp, emxArray_real_T *x)
   }
   if (p) {
     emlrtErrorWithMessageIdR2018a(
-        sp, &l_emlrtRTEI, "Coder:toolbox:ElFunDomainError",
+        sp, &k_emlrtRTEI, "Coder:toolbox:ElFunDomainError",
         "Coder:toolbox:ElFunDomainError", 3, 4, 4, "sqrt");
   }
   st.site = &mb_emlrtRSI;

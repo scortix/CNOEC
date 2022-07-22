@@ -59,8 +59,8 @@ tau = zeros(q,1); sigma = zeros(p,1);
 pkstar = ones(size(x0));
 
 %% Define options for QP and LP solvers
-optQP = optimoptions("quadprog","Display","none",'Algorithm','active-set','MaxIterations',1e4,...
-    'OptimalityTolerance',1e-8);
+optQP = optimoptions("quadprog","Display","none",'Algorithm','active-set','MaxIterations',1e3,...
+    'OptimalityTolerance',1e-6);
 optlin = optimoptions("linprog","Display","none");
 
 %% Initialize niter to 1
@@ -81,10 +81,11 @@ while true
 
     %% Check terminating conditions
     feasibility = max(norm(gxk(:,niter),'inf'),-min(hxk(:,niter)));
-    if feasibility <= options.tolconstr && (strcmp(options.method,'Steepest') || strcmp(options.method,'BFGS'))
-        options.method = "BFGS";
+%     if (feasibility <= options.tolconstr || niter>300) && (strcmp(options.method,'Steepest'))
+%         options.method = "BFGS";
 %         options.method = "Gauss-Newton";
-    end
+%         [~,fxk(niter),gxk(:,niter),hxk(:,niter),gradfxk,gradgxk,gradhxk,~,~,~,gradFxk] = fun(xk(:,niter),true);
+%     end
     if niter >= 1000
         niterStr = "|\t\t%d   ";
     else
