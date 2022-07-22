@@ -57,8 +57,8 @@ void mexFunction(int32_T nlhs, mxArray *plhs[], int32_T nrhs,
 
 emlrtCTX mexFunctionCreateRootTLS(void)
 {
-  emlrtCreateRootTLSR2022a(&emlrtRootTLSGlobal, &emlrtContextGlobal, NULL, 1,
-                           NULL, (const char_T *)"windows-1252", true);
+  emlrtCreateRootTLSR2021a(&emlrtRootTLSGlobal, &emlrtContextGlobal, NULL, 1,
+                           NULL);
   return emlrtRootTLSGlobal;
 }
 
