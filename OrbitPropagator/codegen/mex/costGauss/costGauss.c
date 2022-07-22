@@ -23,6 +23,7 @@
 #include "diag.h"
 #include "eml_int_forloop_overflow_check.h"
 #include "mtimes.h"
+#include "power.h"
 #include "rt_nonfinite.h"
 #include "sqrt.h"
 #include "mwmathutil.h"
@@ -32,322 +33,334 @@
 static emlrtRSInfo emlrtRSI = {
     15,          /* lineNo */
     "costGauss", /* fcnName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m" /* pathName
-                                                                        */
+    "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/costGauss.m" /* pathName
+                                                                            */
 };
 
 static emlrtRSInfo b_emlrtRSI = {
     16,          /* lineNo */
     "costGauss", /* fcnName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m" /* pathName
-                                                                        */
+    "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/costGauss.m" /* pathName
+                                                                            */
 };
 
 static emlrtRSInfo c_emlrtRSI = {
     18,          /* lineNo */
     "costGauss", /* fcnName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m" /* pathName
-                                                                        */
+    "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/costGauss.m" /* pathName
+                                                                            */
 };
 
 static emlrtRSInfo d_emlrtRSI = {
     30,          /* lineNo */
     "costGauss", /* fcnName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m" /* pathName
-                                                                        */
+    "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/costGauss.m" /* pathName
+                                                                            */
 };
 
 static emlrtRSInfo e_emlrtRSI = {
     35,          /* lineNo */
     "costGauss", /* fcnName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m" /* pathName
-                                                                        */
+    "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/costGauss.m" /* pathName
+                                                                            */
 };
 
 static emlrtRSInfo f_emlrtRSI = {
     38,          /* lineNo */
     "costGauss", /* fcnName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m" /* pathName
-                                                                        */
+    "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/costGauss.m" /* pathName
+                                                                            */
 };
 
 static emlrtRSInfo g_emlrtRSI = {
     41,          /* lineNo */
     "costGauss", /* fcnName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m" /* pathName
-                                                                        */
+    "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/costGauss.m" /* pathName
+                                                                            */
 };
 
 static emlrtRSInfo h_emlrtRSI = {
     42,          /* lineNo */
     "costGauss", /* fcnName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m" /* pathName
-                                                                        */
+    "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/costGauss.m" /* pathName
+                                                                            */
 };
 
 static emlrtRSInfo i_emlrtRSI = {
     44,          /* lineNo */
     "costGauss", /* fcnName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m" /* pathName
-                                                                        */
+    "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/costGauss.m" /* pathName
+                                                                            */
 };
 
 static emlrtRSInfo j_emlrtRSI = {
     45,          /* lineNo */
     "costGauss", /* fcnName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m" /* pathName
-                                                                        */
+    "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/costGauss.m" /* pathName
+                                                                            */
 };
 
 static emlrtRSInfo k_emlrtRSI = {
-    125,                                                          /* lineNo */
-    "colon",                                                      /* fcnName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" /* pathName */
-};
-
-static emlrtRSInfo r_emlrtRSI = {
-    44,       /* lineNo */
-    "mpower", /* fcnName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\matfun\\mpower.m" /* pathName
-                                                                       */
-};
-
-static emlrtRSInfo s_emlrtRSI = {
-    71,                                                           /* lineNo */
-    "power",                                                      /* fcnName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\ops\\power.m" /* pathName */
+    117,     /* lineNo */
+    "colon", /* fcnName */
+    "/Applications/MATLAB_R2021b.app/toolbox/eml/lib/matlab/ops/colon.m" /* pathName
+                                                                          */
 };
 
 static emlrtRSInfo
-    u_emlrtRSI =
+    r_emlrtRSI =
         {
-            23,               /* lineNo */
-            "EOEDerivatives", /* fcnName */
-            "P:\\Projects\\CNOEC\\CNOEC_"
-            "Project\\OrbitPropagator\\EOEDerivatives.m" /* pathName */
+            44,       /* lineNo */
+            "mpower", /* fcnName */
+            "/Applications/MATLAB_R2021b.app/toolbox/eml/lib/matlab/matfun/"
+            "mpower.m" /* pathName */
 };
 
-static emlrtRSInfo
-    v_emlrtRSI =
-        {
-            25,               /* lineNo */
-            "EOEDerivatives", /* fcnName */
-            "P:\\Projects\\CNOEC\\CNOEC_"
-            "Project\\OrbitPropagator\\EOEDerivatives.m" /* pathName */
-};
-
-static emlrtRSInfo
-    w_emlrtRSI =
-        {
-            33,               /* lineNo */
-            "EOEDerivatives", /* fcnName */
-            "P:\\Projects\\CNOEC\\CNOEC_"
-            "Project\\OrbitPropagator\\EOEDerivatives.m" /* pathName */
-};
-
-static emlrtRSInfo hb_emlrtRSI =
+static emlrtRSInfo u_emlrtRSI =
     {
-        34,               /* lineNo */
-        "rdivide_helper", /* fcnName */
-        "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+internal\\rdivide_"
-        "helper.m" /* pathName */
+        23,               /* lineNo */
+        "EOEDerivatives", /* fcnName */
+        "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/"
+        "EOEDerivatives.m" /* pathName */
+};
+
+static emlrtRSInfo v_emlrtRSI =
+    {
+        25,               /* lineNo */
+        "EOEDerivatives", /* fcnName */
+        "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/"
+        "EOEDerivatives.m" /* pathName */
+};
+
+static emlrtRSInfo w_emlrtRSI =
+    {
+        33,               /* lineNo */
+        "EOEDerivatives", /* fcnName */
+        "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/"
+        "EOEDerivatives.m" /* pathName */
+};
+
+static emlrtRSInfo eb_emlrtRSI = {
+    34,               /* lineNo */
+    "rdivide_helper", /* fcnName */
+    "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/"
+    "rdivide_helper.m" /* pathName */
+};
+
+static emlrtRSInfo
+    fb_emlrtRSI =
+        {
+            51,    /* lineNo */
+            "div", /* fcnName */
+            "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/"
+            "div.m" /* pathName */
+};
+
+static emlrtRSInfo gb_emlrtRSI = {
+    15,    /* lineNo */
+    "min", /* fcnName */
+    "/Applications/MATLAB_R2021b.app/toolbox/eml/lib/matlab/datafun/min.m" /* pathName
+                                                                            */
+};
+
+static emlrtRSInfo hb_emlrtRSI = {
+    46,         /* lineNo */
+    "minOrMax", /* fcnName */
+    "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/"
+    "minOrMax.m" /* pathName */
 };
 
 static emlrtRSInfo ib_emlrtRSI = {
-    51,    /* lineNo */
-    "div", /* fcnName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+internal\\div.m" /* pathName
-                                                                       */
+    92,        /* lineNo */
+    "minimum", /* fcnName */
+    "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/"
+    "minOrMax.m" /* pathName */
 };
 
 static emlrtRSInfo jb_emlrtRSI = {
-    15,    /* lineNo */
-    "min", /* fcnName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\datafun\\min.m" /* pathName
-                                                                     */
+    204,             /* lineNo */
+    "unaryMinOrMax", /* fcnName */
+    "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/"
+    "unaryMinOrMax.m" /* pathName */
 };
 
 static emlrtRSInfo kb_emlrtRSI = {
-    46,         /* lineNo */
-    "minOrMax", /* fcnName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+internal\\minOrMax.m" /* pathName
-                                                                            */
+    893,                    /* lineNo */
+    "minRealVectorOmitNaN", /* fcnName */
+    "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/"
+    "unaryMinOrMax.m" /* pathName */
 };
 
 static emlrtRSInfo lb_emlrtRSI = {
-    92,        /* lineNo */
-    "minimum", /* fcnName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+internal\\minOrMax.m" /* pathName
-                                                                            */
+    62,                      /* lineNo */
+    "vectorMinOrMaxInPlace", /* fcnName */
+    "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/"
+    "vectorMinOrMaxInPlace.m" /* pathName */
 };
 
-static emlrtRSInfo mb_emlrtRSI =
-    {
-        209,             /* lineNo */
-        "unaryMinOrMax", /* fcnName */
-        "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
-        "internal\\unaryMinOrMax.m" /* pathName */
+static emlrtRSInfo mb_emlrtRSI = {
+    54,                      /* lineNo */
+    "vectorMinOrMaxInPlace", /* fcnName */
+    "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/"
+    "vectorMinOrMaxInPlace.m" /* pathName */
 };
 
-static emlrtRSInfo nb_emlrtRSI =
-    {
-        898,                    /* lineNo */
-        "minRealVectorOmitNaN", /* fcnName */
-        "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
-        "internal\\unaryMinOrMax.m" /* pathName */
+static emlrtRSInfo nb_emlrtRSI = {
+    103,         /* lineNo */
+    "findFirst", /* fcnName */
+    "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/"
+    "vectorMinOrMaxInPlace.m" /* pathName */
 };
 
 static emlrtRSInfo ob_emlrtRSI = {
-    72,                      /* lineNo */
-    "vectorMinOrMaxInPlace", /* fcnName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
-    "internal\\vectorMinOrMaxInPlace.m" /* pathName */
+    120,                        /* lineNo */
+    "minOrMaxRealVectorKernel", /* fcnName */
+    "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/"
+    "vectorMinOrMaxInPlace.m" /* pathName */
 };
 
 static emlrtRSInfo pb_emlrtRSI = {
-    64,                      /* lineNo */
-    "vectorMinOrMaxInPlace", /* fcnName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
-    "internal\\vectorMinOrMaxInPlace.m" /* pathName */
+    69,                  /* lineNo */
+    "eml_mtimes_helper", /* fcnName */
+    "/Applications/MATLAB_R2021b.app/toolbox/eml/lib/matlab/ops/"
+    "eml_mtimes_helper.m" /* pathName */
 };
 
-static emlrtRSInfo qb_emlrtRSI = {
-    113,         /* lineNo */
-    "findFirst", /* fcnName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
-    "internal\\vectorMinOrMaxInPlace.m" /* pathName */
+static emlrtBCInfo
+    emlrtBCI =
+        {
+            -1,          /* iFirst */
+            -1,          /* iLast */
+            35,          /* lineNo */
+            20,          /* colNo */
+            "y",         /* aName */
+            "costGauss", /* fName */
+            "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/"
+            "costGauss.m", /* pName */
+            0              /* checkKind */
 };
 
-static emlrtRSInfo rb_emlrtRSI = {
-    130,                        /* lineNo */
-    "minOrMaxRealVectorKernel", /* fcnName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
-    "internal\\vectorMinOrMaxInPlace.m" /* pathName */
+static emlrtBCInfo
+    b_emlrtBCI =
+        {
+            -1,          /* iFirst */
+            -1,          /* iLast */
+            35,          /* lineNo */
+            45,          /* colNo */
+            "t",         /* aName */
+            "costGauss", /* fName */
+            "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/"
+            "costGauss.m", /* pName */
+            0              /* checkKind */
 };
 
-static emlrtRSInfo sb_emlrtRSI =
-    {
-        69,                  /* lineNo */
-        "eml_mtimes_helper", /* fcnName */
-        "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\ops\\eml_mtimes_helper."
-        "m" /* pathName */
+static emlrtBCInfo
+    c_emlrtBCI =
+        {
+            -1,          /* iFirst */
+            -1,          /* iLast */
+            35,          /* lineNo */
+            52,          /* colNo */
+            "y",         /* aName */
+            "costGauss", /* fName */
+            "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/"
+            "costGauss.m", /* pName */
+            0              /* checkKind */
 };
 
-static emlrtBCInfo emlrtBCI = {
-    -1,          /* iFirst */
-    -1,          /* iLast */
-    35,          /* lineNo */
-    20,          /* colNo */
-    "y",         /* aName */
-    "costGauss", /* fName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m", /* pName
-                                                                         */
-    0 /* checkKind */
+static emlrtDCInfo
+    emlrtDCI =
+        {
+            35,          /* lineNo */
+            59,          /* colNo */
+            "costGauss", /* fName */
+            "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/"
+            "costGauss.m", /* pName */
+            1              /* checkKind */
 };
 
-static emlrtBCInfo b_emlrtBCI = {
-    -1,          /* iFirst */
-    -1,          /* iLast */
-    35,          /* lineNo */
-    45,          /* colNo */
-    "t",         /* aName */
-    "costGauss", /* fName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m", /* pName
-                                                                         */
-    0 /* checkKind */
+static emlrtBCInfo
+    d_emlrtBCI =
+        {
+            -1,          /* iFirst */
+            -1,          /* iLast */
+            35,          /* lineNo */
+            59,          /* colNo */
+            "u",         /* aName */
+            "costGauss", /* fName */
+            "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/"
+            "costGauss.m", /* pName */
+            0              /* checkKind */
 };
 
-static emlrtBCInfo c_emlrtBCI = {
-    -1,          /* iFirst */
-    -1,          /* iLast */
-    35,          /* lineNo */
-    52,          /* colNo */
-    "y",         /* aName */
-    "costGauss", /* fName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m", /* pName
-                                                                         */
-    0 /* checkKind */
+static emlrtBCInfo
+    e_emlrtBCI =
+        {
+            -1,          /* iFirst */
+            -1,          /* iLast */
+            35,          /* lineNo */
+            9,           /* colNo */
+            "y",         /* aName */
+            "costGauss", /* fName */
+            "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/"
+            "costGauss.m", /* pName */
+            0              /* checkKind */
 };
 
-static emlrtDCInfo emlrtDCI = {
-    35,          /* lineNo */
-    59,          /* colNo */
-    "costGauss", /* fName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m", /* pName
-                                                                         */
-    1 /* checkKind */
+static emlrtBCInfo
+    f_emlrtBCI =
+        {
+            -1,          /* iFirst */
+            -1,          /* iLast */
+            38,          /* lineNo */
+            39,          /* colNo */
+            "u",         /* aName */
+            "costGauss", /* fName */
+            "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/"
+            "costGauss.m", /* pName */
+            0              /* checkKind */
 };
 
-static emlrtBCInfo d_emlrtBCI = {
-    -1,          /* iFirst */
-    -1,          /* iLast */
-    35,          /* lineNo */
-    59,          /* colNo */
-    "u",         /* aName */
-    "costGauss", /* fName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m", /* pName
-                                                                         */
-    0 /* checkKind */
+static emlrtBCInfo
+    g_emlrtBCI =
+        {
+            -1,          /* iFirst */
+            -1,          /* iLast */
+            38,          /* lineNo */
+            57,          /* colNo */
+            "y",         /* aName */
+            "costGauss", /* fName */
+            "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/"
+            "costGauss.m", /* pName */
+            0              /* checkKind */
 };
 
-static emlrtBCInfo e_emlrtBCI = {
-    -1,          /* iFirst */
-    -1,          /* iLast */
-    35,          /* lineNo */
-    9,           /* colNo */
-    "y",         /* aName */
-    "costGauss", /* fName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m", /* pName
-                                                                         */
-    0 /* checkKind */
+static emlrtBCInfo
+    h_emlrtBCI =
+        {
+            -1,          /* iFirst */
+            -1,          /* iLast */
+            38,          /* lineNo */
+            7,           /* colNo */
+            "F",         /* aName */
+            "costGauss", /* fName */
+            "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/"
+            "costGauss.m", /* pName */
+            0              /* checkKind */
 };
 
-static emlrtBCInfo f_emlrtBCI = {
-    -1,          /* iFirst */
-    -1,          /* iLast */
-    38,          /* lineNo */
-    39,          /* colNo */
-    "u",         /* aName */
-    "costGauss", /* fName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m", /* pName
-                                                                         */
-    0 /* checkKind */
-};
-
-static emlrtBCInfo g_emlrtBCI = {
-    -1,          /* iFirst */
-    -1,          /* iLast */
-    38,          /* lineNo */
-    57,          /* colNo */
-    "y",         /* aName */
-    "costGauss", /* fName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m", /* pName
-                                                                         */
-    0 /* checkKind */
-};
-
-static emlrtBCInfo h_emlrtBCI = {
-    -1,          /* iFirst */
-    -1,          /* iLast */
-    38,          /* lineNo */
-    7,           /* colNo */
-    "F",         /* aName */
-    "costGauss", /* fName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m", /* pName
-                                                                         */
-    0 /* checkKind */
-};
-
-static emlrtBCInfo i_emlrtBCI = {
-    -1,          /* iFirst */
-    -1,          /* iLast */
-    38,          /* lineNo */
-    18,          /* colNo */
-    "F",         /* aName */
-    "costGauss", /* fName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m", /* pName
-                                                                         */
-    0 /* checkKind */
+static emlrtBCInfo
+    i_emlrtBCI =
+        {
+            -1,          /* iFirst */
+            -1,          /* iLast */
+            38,          /* lineNo */
+            18,          /* colNo */
+            "F",         /* aName */
+            "costGauss", /* fName */
+            "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/"
+            "costGauss.m", /* pName */
+            0              /* checkKind */
 };
 
 static emlrtECInfo emlrtECI = {
@@ -355,20 +368,22 @@ static emlrtECInfo emlrtECI = {
     38,          /* lineNo */
     5,           /* colNo */
     "costGauss", /* fName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m" /* pName
-                                                                        */
+    "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/costGauss.m" /* pName
+                                                                            */
 };
 
-static emlrtBCInfo j_emlrtBCI = {
-    -1,          /* iFirst */
-    -1,          /* iLast */
-    42,          /* lineNo */
-    42,          /* colNo */
-    "y",         /* aName */
-    "costGauss", /* fName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m", /* pName
-                                                                         */
-    0 /* checkKind */
+static emlrtBCInfo
+    j_emlrtBCI =
+        {
+            -1,          /* iFirst */
+            -1,          /* iLast */
+            42,          /* lineNo */
+            42,          /* colNo */
+            "y",         /* aName */
+            "costGauss", /* fName */
+            "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/"
+            "costGauss.m", /* pName */
+            0              /* checkKind */
 };
 
 static emlrtECInfo b_emlrtECI = {
@@ -376,8 +391,8 @@ static emlrtECInfo b_emlrtECI = {
     44,          /* lineNo */
     26,          /* colNo */
     "costGauss", /* fName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m" /* pName
-                                                                        */
+    "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/costGauss.m" /* pName
+                                                                            */
 };
 
 static emlrtECInfo c_emlrtECI = {
@@ -385,8 +400,8 @@ static emlrtECInfo c_emlrtECI = {
     44,          /* lineNo */
     52,          /* colNo */
     "costGauss", /* fName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m" /* pName
-                                                                        */
+    "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/costGauss.m" /* pName
+                                                                            */
 };
 
 static emlrtECInfo d_emlrtECI = {
@@ -394,20 +409,22 @@ static emlrtECInfo d_emlrtECI = {
     44,          /* lineNo */
     21,          /* colNo */
     "costGauss", /* fName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m" /* pName
-                                                                        */
+    "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/costGauss.m" /* pName
+                                                                            */
 };
 
-static emlrtBCInfo k_emlrtBCI = {
-    -1,          /* iFirst */
-    -1,          /* iLast */
-    42,          /* lineNo */
-    3,           /* colNo */
-    "F",         /* aName */
-    "costGauss", /* fName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m", /* pName
-                                                                         */
-    0 /* checkKind */
+static emlrtBCInfo
+    k_emlrtBCI =
+        {
+            -1,          /* iFirst */
+            -1,          /* iLast */
+            42,          /* lineNo */
+            3,           /* colNo */
+            "F",         /* aName */
+            "costGauss", /* fName */
+            "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/"
+            "costGauss.m", /* pName */
+            0              /* checkKind */
 };
 
 static emlrtECInfo e_emlrtECI = {
@@ -415,354 +432,360 @@ static emlrtECInfo e_emlrtECI = {
     42,          /* lineNo */
     1,           /* colNo */
     "costGauss", /* fName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m" /* pName
-                                                                        */
+    "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/costGauss.m" /* pName
+                                                                            */
 };
 
-static emlrtRTEInfo b_emlrtRTEI =
-    {
-        135,             /* lineNo */
-        27,              /* colNo */
-        "unaryMinOrMax", /* fName */
-        "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
-        "internal\\unaryMinOrMax.m" /* pName */
+static emlrtRTEInfo b_emlrtRTEI = {
+    130,             /* lineNo */
+    27,              /* colNo */
+    "unaryMinOrMax", /* fName */
+    "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/"
+    "unaryMinOrMax.m" /* pName */
 };
 
-static emlrtDCInfo b_emlrtDCI = {
-    20,          /* lineNo */
-    13,          /* colNo */
-    "costGauss", /* fName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m", /* pName
-                                                                         */
-    1 /* checkKind */
+static emlrtDCInfo
+    b_emlrtDCI =
+        {
+            20,          /* lineNo */
+            13,          /* colNo */
+            "costGauss", /* fName */
+            "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/"
+            "costGauss.m", /* pName */
+            1              /* checkKind */
 };
 
-static emlrtDCInfo c_emlrtDCI = {
-    20,          /* lineNo */
-    1,           /* colNo */
-    "costGauss", /* fName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m", /* pName
-                                                                         */
-    1 /* checkKind */
+static emlrtDCInfo
+    c_emlrtDCI =
+        {
+            20,          /* lineNo */
+            1,           /* colNo */
+            "costGauss", /* fName */
+            "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/"
+            "costGauss.m", /* pName */
+            1              /* checkKind */
 };
 
-static emlrtDCInfo d_emlrtDCI = {
-    31,          /* lineNo */
-    1,           /* colNo */
-    "costGauss", /* fName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m", /* pName
-                                                                         */
-    1 /* checkKind */
+static emlrtDCInfo
+    d_emlrtDCI =
+        {
+            31,          /* lineNo */
+            1,           /* colNo */
+            "costGauss", /* fName */
+            "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/"
+            "costGauss.m", /* pName */
+            1              /* checkKind */
 };
 
 static emlrtRTEInfo h_emlrtRTEI = {
     20,          /* lineNo */
     1,           /* colNo */
     "costGauss", /* fName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m" /* pName
-                                                                        */
+    "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/costGauss.m" /* pName
+                                                                            */
 };
 
 static emlrtRTEInfo i_emlrtRTEI = {
     31,          /* lineNo */
     1,           /* colNo */
     "costGauss", /* fName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m" /* pName
-                                                                        */
+    "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/costGauss.m" /* pName
+                                                                            */
 };
 
 static emlrtRTEInfo j_emlrtRTEI = {
     44,          /* lineNo */
     26,          /* colNo */
     "costGauss", /* fName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m" /* pName
-                                                                        */
+    "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/costGauss.m" /* pName
+                                                                            */
 };
 
 static emlrtRTEInfo k_emlrtRTEI = {
     44,          /* lineNo */
     36,          /* colNo */
     "costGauss", /* fName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m" /* pName
-                                                                        */
+    "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/costGauss.m" /* pName
+                                                                            */
 };
 
 static emlrtRTEInfo l_emlrtRTEI = {
     44,          /* lineNo */
     65,          /* colNo */
     "costGauss", /* fName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m" /* pName
-                                                                        */
+    "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/costGauss.m" /* pName
+                                                                            */
 };
 
 static emlrtRTEInfo m_emlrtRTEI = {
     44,          /* lineNo */
     72,          /* colNo */
     "costGauss", /* fName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m" /* pName
-                                                                        */
+    "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/costGauss.m" /* pName
+                                                                            */
 };
 
 static emlrtRTEInfo n_emlrtRTEI = {
     44,          /* lineNo */
     21,          /* colNo */
     "costGauss", /* fName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m" /* pName
-                                                                        */
+    "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/costGauss.m" /* pName
+                                                                            */
 };
 
 static emlrtRTEInfo o_emlrtRTEI = {
     44,          /* lineNo */
     48,          /* colNo */
     "costGauss", /* fName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m" /* pName
-                                                                        */
+    "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/costGauss.m" /* pName
+                                                                            */
 };
 
 static emlrtRTEInfo p_emlrtRTEI = {
     44,          /* lineNo */
     19,          /* colNo */
     "costGauss", /* fName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m" /* pName
-                                                                        */
+    "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/costGauss.m" /* pName
+                                                                            */
 };
 
 static emlrtRTEInfo q_emlrtRTEI = {
     44,          /* lineNo */
     10,          /* colNo */
     "costGauss", /* fName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m" /* pName
-                                                                        */
+    "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/costGauss.m" /* pName
+                                                                            */
 };
 
 static emlrtRTEInfo r_emlrtRTEI = {
     44,          /* lineNo */
     9,           /* colNo */
     "costGauss", /* fName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m" /* pName
-                                                                        */
+    "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/costGauss.m" /* pName
+                                                                            */
 };
 
 static emlrtRTEInfo s_emlrtRTEI = {
     45,          /* lineNo */
     1,           /* colNo */
     "costGauss", /* fName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m" /* pName
-                                                                        */
+    "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/costGauss.m" /* pName
+                                                                            */
 };
 
 static emlrtRTEInfo t_emlrtRTEI = {
     1,           /* lineNo */
     14,          /* colNo */
     "costGauss", /* fName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m" /* pName
-                                                                        */
+    "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/costGauss.m" /* pName
+                                                                            */
 };
 
 static emlrtRTEInfo u_emlrtRTEI = {
-    125,                                                          /* lineNo */
-    9,                                                            /* colNo */
-    "colon",                                                      /* fName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" /* pName */
+    117,     /* lineNo */
+    9,       /* colNo */
+    "colon", /* fName */
+    "/Applications/MATLAB_R2021b.app/toolbox/eml/lib/matlab/ops/colon.m" /* pName
+                                                                          */
 };
 
-static emlrtRTEInfo y_emlrtRTEI = {
+static emlrtRTEInfo bb_emlrtRTEI = {
     44,          /* lineNo */
     52,          /* colNo */
     "costGauss", /* fName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\costGauss.m" /* pName
-                                                                        */
+    "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/costGauss.m" /* pName
+                                                                            */
 };
 
 /* Function Declarations */
-static void b_binary_expand_op(const emlrtStack *sp, emxArray_real_T *in1,
-                               const emxArray_real_T *in2);
+static void b_binary_expand_op(const emlrtStack *sp, emxArray_real_T *y,
+                               const emxArray_real_T *r1);
 
-static void binary_expand_op(const emlrtStack *sp, emxArray_real_T *in1,
-                             const emxArray_real_T *in2,
-                             const emxArray_real_T *in3);
+static void binary_expand_op(const emlrtStack *sp, emxArray_real_T *varargin_1,
+                             const emxArray_real_T *y,
+                             const emxArray_real_T *b_y);
 
-static void c_binary_expand_op(const emlrtStack *sp, emxArray_real_T *in1,
-                               const emxArray_real_T *in2);
+static void c_binary_expand_op(const emlrtStack *sp, emxArray_real_T *r1,
+                               const emxArray_real_T *y);
 
-static void plus(const emlrtStack *sp, emxArray_real_T *in1,
-                 const emxArray_real_T *in2);
+static void plus(const emlrtStack *sp, emxArray_real_T *y,
+                 const emxArray_real_T *r1);
 
 /* Function Definitions */
-static void b_binary_expand_op(const emlrtStack *sp, emxArray_real_T *in1,
-                               const emxArray_real_T *in2)
+static void b_binary_expand_op(const emlrtStack *sp, emxArray_real_T *y,
+                               const emxArray_real_T *r1)
 {
-  emxArray_real_T *b_in1;
-  const real_T *in2_data;
-  real_T *b_in1_data;
-  real_T *in1_data;
+  emxArray_real_T *b_y;
+  const real_T *r;
+  real_T *b_y_data;
+  real_T *y_data;
   int32_T i;
   int32_T loop_ub;
   int32_T stride_0_1;
   int32_T stride_1_1;
-  in2_data = in2->data;
-  in1_data = in1->data;
+  r = r1->data;
+  y_data = y->data;
   emlrtHeapReferenceStackEnterFcnR2012b((emlrtCTX)sp);
-  emxInit_real_T(sp, &b_in1, 2, &p_emlrtRTEI);
-  i = b_in1->size[0] * b_in1->size[1];
-  b_in1->size[0] = 1;
-  if (in2->size[1] == 1) {
-    b_in1->size[1] = in1->size[1];
+  emxInit_real_T(sp, &b_y, 2, &p_emlrtRTEI);
+  i = b_y->size[0] * b_y->size[1];
+  b_y->size[0] = 1;
+  if (r1->size[1] == 1) {
+    b_y->size[1] = y->size[1];
   } else {
-    b_in1->size[1] = in2->size[1];
+    b_y->size[1] = r1->size[1];
   }
-  emxEnsureCapacity_real_T(sp, b_in1, i, &p_emlrtRTEI);
-  b_in1_data = b_in1->data;
-  stride_0_1 = (in1->size[1] != 1);
-  stride_1_1 = (in2->size[1] != 1);
-  if (in2->size[1] == 1) {
-    loop_ub = in1->size[1];
+  emxEnsureCapacity_real_T(sp, b_y, i, &p_emlrtRTEI);
+  b_y_data = b_y->data;
+  stride_0_1 = (y->size[1] != 1);
+  stride_1_1 = (r1->size[1] != 1);
+  if (r1->size[1] == 1) {
+    loop_ub = y->size[1];
   } else {
-    loop_ub = in2->size[1];
+    loop_ub = r1->size[1];
   }
   for (i = 0; i < loop_ub; i++) {
-    b_in1_data[i] = in1_data[i * stride_0_1] * in2_data[i * stride_1_1] + 1.0;
+    b_y_data[i] = y_data[i * stride_0_1] * r[i * stride_1_1] + 1.0;
   }
-  i = in1->size[0] * in1->size[1];
-  in1->size[0] = 1;
-  in1->size[1] = b_in1->size[1];
-  emxEnsureCapacity_real_T(sp, in1, i, &p_emlrtRTEI);
-  in1_data = in1->data;
-  loop_ub = b_in1->size[1];
+  i = y->size[0] * y->size[1];
+  y->size[0] = 1;
+  y->size[1] = b_y->size[1];
+  emxEnsureCapacity_real_T(sp, y, i, &p_emlrtRTEI);
+  y_data = y->data;
+  loop_ub = b_y->size[1];
   for (i = 0; i < loop_ub; i++) {
-    in1_data[i] = b_in1_data[i];
+    y_data[i] = b_y_data[i];
   }
-  emxFree_real_T(sp, &b_in1);
+  emxFree_real_T(sp, &b_y);
   emlrtHeapReferenceStackLeaveFcnR2012b((emlrtCTX)sp);
 }
 
-static void binary_expand_op(const emlrtStack *sp, emxArray_real_T *in1,
-                             const emxArray_real_T *in2,
-                             const emxArray_real_T *in3)
+static void binary_expand_op(const emlrtStack *sp, emxArray_real_T *varargin_1,
+                             const emxArray_real_T *y,
+                             const emxArray_real_T *b_y)
 {
-  const real_T *in2_data;
-  const real_T *in3_data;
-  real_T *in1_data;
+  const real_T *b_y_data;
+  const real_T *y_data;
+  real_T *varargin_1_data;
   int32_T i;
   int32_T loop_ub;
   int32_T stride_0_0;
   int32_T stride_1_0;
-  in3_data = in3->data;
-  in2_data = in2->data;
-  i = in2->size[1];
-  stride_0_0 = in1->size[0];
-  if (in3->size[1] == 1) {
-    in1->size[0] = i;
+  y_data = b_y->data;
+  b_y_data = y->data;
+  i = y->size[1];
+  stride_0_0 = varargin_1->size[0];
+  if (b_y->size[1] == 1) {
+    varargin_1->size[0] = i;
   } else {
-    in1->size[0] = in3->size[1];
+    varargin_1->size[0] = b_y->size[1];
   }
-  emxEnsureCapacity_real_T(sp, in1, stride_0_0, &r_emlrtRTEI);
-  in1_data = in1->data;
+  emxEnsureCapacity_real_T(sp, varargin_1, stride_0_0, &r_emlrtRTEI);
+  varargin_1_data = varargin_1->data;
   stride_0_0 = (i != 1);
-  stride_1_0 = (in3->size[1] != 1);
-  if (in3->size[1] == 1) {
+  stride_1_0 = (b_y->size[1] != 1);
+  if (b_y->size[1] == 1) {
     loop_ub = i;
   } else {
-    loop_ub = in3->size[1];
+    loop_ub = b_y->size[1];
   }
   for (i = 0; i < loop_ub; i++) {
-    in1_data[i] = in2_data[6 * (i * stride_0_0)] / in3_data[i * stride_1_0];
+    varargin_1_data[i] =
+        b_y_data[6 * (i * stride_0_0)] / y_data[i * stride_1_0];
   }
 }
 
-static void c_binary_expand_op(const emlrtStack *sp, emxArray_real_T *in1,
-                               const emxArray_real_T *in2)
+static void c_binary_expand_op(const emlrtStack *sp, emxArray_real_T *r1,
+                               const emxArray_real_T *y)
 {
-  emxArray_real_T *b_in2;
-  const real_T *in2_data;
-  real_T *b_in2_data;
-  real_T *in1_data;
+  emxArray_real_T *b_y;
+  const real_T *y_data;
+  real_T *b_y_data;
+  real_T *r;
   int32_T i;
   int32_T loop_ub;
   int32_T stride_0_1;
   int32_T stride_1_1;
-  in2_data = in2->data;
-  in1_data = in1->data;
+  y_data = y->data;
+  r = r1->data;
   emlrtHeapReferenceStackEnterFcnR2012b((emlrtCTX)sp);
-  emxInit_real_T(sp, &b_in2, 2, &y_emlrtRTEI);
-  i = in2->size[1];
-  stride_0_1 = b_in2->size[0] * b_in2->size[1];
-  b_in2->size[0] = 1;
-  if (in1->size[1] == 1) {
-    b_in2->size[1] = i;
+  emxInit_real_T(sp, &b_y, 2, &bb_emlrtRTEI);
+  i = y->size[1];
+  stride_0_1 = b_y->size[0] * b_y->size[1];
+  b_y->size[0] = 1;
+  if (r1->size[1] == 1) {
+    b_y->size[1] = i;
   } else {
-    b_in2->size[1] = in1->size[1];
+    b_y->size[1] = r1->size[1];
   }
-  emxEnsureCapacity_real_T(sp, b_in2, stride_0_1, &y_emlrtRTEI);
-  b_in2_data = b_in2->data;
+  emxEnsureCapacity_real_T(sp, b_y, stride_0_1, &bb_emlrtRTEI);
+  b_y_data = b_y->data;
   stride_0_1 = (i != 1);
-  stride_1_1 = (in1->size[1] != 1);
-  if (in1->size[1] == 1) {
+  stride_1_1 = (r1->size[1] != 1);
+  if (r1->size[1] == 1) {
     loop_ub = i;
   } else {
-    loop_ub = in1->size[1];
+    loop_ub = r1->size[1];
   }
   for (i = 0; i < loop_ub; i++) {
-    b_in2_data[i] =
-        in2_data[6 * (i * stride_0_1) + 5] - in1_data[i * stride_1_1];
+    b_y_data[i] = y_data[6 * (i * stride_0_1) + 5] - r[i * stride_1_1];
   }
-  i = in1->size[0] * in1->size[1];
-  in1->size[0] = 1;
-  in1->size[1] = b_in2->size[1];
-  emxEnsureCapacity_real_T(sp, in1, i, &y_emlrtRTEI);
-  in1_data = in1->data;
-  loop_ub = b_in2->size[1];
+  i = r1->size[0] * r1->size[1];
+  r1->size[0] = 1;
+  r1->size[1] = b_y->size[1];
+  emxEnsureCapacity_real_T(sp, r1, i, &bb_emlrtRTEI);
+  r = r1->data;
+  loop_ub = b_y->size[1];
   for (i = 0; i < loop_ub; i++) {
-    in1_data[i] = b_in2_data[i];
+    r[i] = b_y_data[i];
   }
-  emxFree_real_T(sp, &b_in2);
+  emxFree_real_T(sp, &b_y);
   emlrtHeapReferenceStackLeaveFcnR2012b((emlrtCTX)sp);
 }
 
-static void plus(const emlrtStack *sp, emxArray_real_T *in1,
-                 const emxArray_real_T *in2)
+static void plus(const emlrtStack *sp, emxArray_real_T *y,
+                 const emxArray_real_T *r1)
 {
-  emxArray_real_T *b_in1;
-  const real_T *in2_data;
-  real_T *b_in1_data;
-  real_T *in1_data;
+  emxArray_real_T *b_y;
+  const real_T *r;
+  real_T *b_y_data;
+  real_T *y_data;
   int32_T i;
   int32_T loop_ub;
   int32_T stride_0_1;
   int32_T stride_1_1;
-  in2_data = in2->data;
-  in1_data = in1->data;
+  r = r1->data;
+  y_data = y->data;
   emlrtHeapReferenceStackEnterFcnR2012b((emlrtCTX)sp);
-  emxInit_real_T(sp, &b_in1, 2, &j_emlrtRTEI);
-  i = b_in1->size[0] * b_in1->size[1];
-  b_in1->size[0] = 1;
-  if (in2->size[1] == 1) {
-    b_in1->size[1] = in1->size[1];
+  emxInit_real_T(sp, &b_y, 2, &j_emlrtRTEI);
+  i = b_y->size[0] * b_y->size[1];
+  b_y->size[0] = 1;
+  if (r1->size[1] == 1) {
+    b_y->size[1] = y->size[1];
   } else {
-    b_in1->size[1] = in2->size[1];
+    b_y->size[1] = r1->size[1];
   }
-  emxEnsureCapacity_real_T(sp, b_in1, i, &j_emlrtRTEI);
-  b_in1_data = b_in1->data;
-  stride_0_1 = (in1->size[1] != 1);
-  stride_1_1 = (in2->size[1] != 1);
-  if (in2->size[1] == 1) {
-    loop_ub = in1->size[1];
+  emxEnsureCapacity_real_T(sp, b_y, i, &j_emlrtRTEI);
+  b_y_data = b_y->data;
+  stride_0_1 = (y->size[1] != 1);
+  stride_1_1 = (r1->size[1] != 1);
+  if (r1->size[1] == 1) {
+    loop_ub = y->size[1];
   } else {
-    loop_ub = in2->size[1];
+    loop_ub = r1->size[1];
   }
   for (i = 0; i < loop_ub; i++) {
-    b_in1_data[i] = in1_data[i * stride_0_1] + in2_data[i * stride_1_1];
+    b_y_data[i] = y_data[i * stride_0_1] + r[i * stride_1_1];
   }
-  i = in1->size[0] * in1->size[1];
-  in1->size[0] = 1;
-  in1->size[1] = b_in1->size[1];
-  emxEnsureCapacity_real_T(sp, in1, i, &j_emlrtRTEI);
-  in1_data = in1->data;
-  loop_ub = b_in1->size[1];
+  i = y->size[0] * y->size[1];
+  y->size[0] = 1;
+  y->size[1] = b_y->size[1];
+  emxEnsureCapacity_real_T(sp, y, i, &j_emlrtRTEI);
+  y_data = y->data;
+  loop_ub = b_y->size[1];
   for (i = 0; i < loop_ub; i++) {
-    in1_data[i] = b_in1_data[i];
+    y_data[i] = b_y_data[i];
   }
-  emxFree_real_T(sp, &b_in1);
+  emxFree_real_T(sp, &b_y);
   emlrtHeapReferenceStackLeaveFcnR2012b((emlrtCTX)sp);
 }
 
@@ -785,7 +808,7 @@ void costGauss(const emlrtStack *sp, real_T tmax, real_T Ts, real_T b_y0[6],
   emxArray_real_T *c_y;
   emxArray_real_T *d_y;
   emxArray_real_T *r;
-  emxArray_real_T *r1;
+  emxArray_real_T *r2;
   emxArray_real_T *varargin_1;
   emxArray_real_T *y;
   real_T Q[36];
@@ -796,19 +819,31 @@ void costGauss(const emlrtStack *sp, real_T tmax, real_T Ts, real_T b_y0[6],
   real_T x0[6];
   real_T a[3];
   const real_T *u_data;
+  real_T b_a;
+  real_T b_w_tmp;
+  real_T b_x0_tmp;
+  real_T c_w_tmp;
+  real_T c_x0_tmp;
   real_T d;
+  real_T ku;
   real_T p;
+  real_T p_mu05;
+  real_T w;
+  real_T x0_tmp;
   real_T *F_data;
   real_T *J_data;
   real_T *b_y_data;
-  real_T *c_y_data;
+  real_T *r1;
   real_T *y_data;
   int32_T b_u;
+  int32_T d_x0_tmp;
+  int32_T e_x0_tmp;
   int32_T idx;
   int32_T k;
   int32_T last;
   int32_T t_size_idx_1;
   int32_T w_tmp;
+  boolean_T exitg1;
   st.prev = sp;
   st.tls = sp->tls;
   b_st.prev = &st;
@@ -845,15 +880,16 @@ void costGauss(const emlrtStack *sp, real_T tmax, real_T Ts, real_T b_y0[6],
   emxInit_real_T(&st, &r, 2, &u_emlrtRTEI);
   if (muDoubleScalarIsNaN(Ts) || muDoubleScalarIsNaN(tmax)) {
     t_size_idx_1 = 1;
-  } else if ((Ts == 0.0) || ((tmax > 0.0) && (Ts < 0.0)) ||
+  } else if ((Ts == 0.0) || ((0.0 < tmax) && (Ts < 0.0)) ||
              ((tmax < 0.0) && (Ts > 0.0))) {
     t_size_idx_1 = 0;
-  } else if (muDoubleScalarIsInf(tmax) && muDoubleScalarIsInf(Ts)) {
+  } else if (muDoubleScalarIsInf(tmax) &&
+             (muDoubleScalarIsInf(Ts) || (0.0 == tmax))) {
     t_size_idx_1 = 1;
   } else if (muDoubleScalarIsInf(Ts)) {
     t_size_idx_1 = 1;
   } else if (muDoubleScalarFloor(Ts) == Ts) {
-    t_size_idx_1 = (int32_T)(tmax / Ts) + 1;
+    t_size_idx_1 = (int32_T)muDoubleScalarFloor(tmax / Ts) + 1;
   } else {
     b_st.site = &k_emlrtRSI;
     eml_float_colon(&b_st, Ts, tmax, r);
@@ -923,10 +959,8 @@ void costGauss(const emlrtStack *sp, real_T tmax, real_T Ts, real_T b_y0[6],
   emxInit_real_T(sp, &F, 1, &i_emlrtRTEI);
   if (u->size[1] == 0) {
     b_u = 0;
-  } else if (u->size[1] < 3) {
-    b_u = 3;
   } else {
-    b_u = u->size[1];
+    b_u = muIntScalarMax_sint32(3, u->size[1]);
   }
   d = 9.0 * (real_T)b_u + 6.0;
   if (d != (int32_T)d) {
@@ -945,17 +979,6 @@ void costGauss(const emlrtStack *sp, real_T tmax, real_T Ts, real_T b_y0[6],
   }
   /*  Cost Function Calculation */
   for (k = 0; k < t_size_idx_1; k++) {
-    real_T b_a;
-    real_T b_w_tmp;
-    real_T b_x0_tmp;
-    real_T c_w_tmp;
-    real_T c_x0_tmp;
-    real_T ku;
-    real_T p_mu05;
-    real_T w;
-    real_T x0_tmp;
-    int32_T d_x0_tmp;
-    int32_T e_x0_tmp;
     ku = muDoubleScalarCeil(((real_T)k + 1.0) / ratio);
     if ((k + 1 < 1) || (k + 1 > t_size_idx_1)) {
       emlrtDynamicBoundsCheckR2012b(k + 1, 1, t_size_idx_1, &b_emlrtBCI,
@@ -1145,21 +1168,20 @@ void costGauss(const emlrtStack *sp, real_T tmax, real_T Ts, real_T b_y0[6],
   }
   if (u->size[1] == 0) {
     b_u = 0;
-  } else if (u->size[1] < 3) {
-    b_u = 3;
   } else {
-    b_u = u->size[1];
+    b_u = muIntScalarMax_sint32(3, u->size[1]);
   }
   d = 9.0 * (real_T)b_u + 1.0;
   if (d > F->size[0]) {
     w_tmp = -1;
     last = -1;
   } else {
-    if ((int32_T)d > F->size[0]) {
+    w_tmp = (int32_T)d;
+    if (w_tmp > F->size[0]) {
       emlrtDynamicBoundsCheckR2012b((int32_T)d, 1, F->size[0], &k_emlrtBCI,
                                     (emlrtCTX)sp);
     }
-    w_tmp = (int32_T)d - 2;
+    w_tmp -= 2;
     last = F->size[0] - 1;
   }
   last -= w_tmp;
@@ -1185,46 +1207,45 @@ void costGauss(const emlrtStack *sp, real_T tmax, real_T Ts, real_T b_y0[6],
   for (last = 0; last < 6; last++) {
     F_data[(w_tmp + last) + 1] = x0[last] * 10.0;
   }
-  emxInit_real_T(sp, &b_y, 2, &p_emlrtRTEI);
+  emxInit_real_T(sp, &b_y, 2, &j_emlrtRTEI);
   /*  J = J/size(u,2) + 1e3*length(t)/10*(y(:,end)-ybar)'*Q*(y(:,end)-ybar); */
-  st.site = &i_emlrtRSI;
-  b_st.site = &s_emlrtRSI;
   last = y->size[1];
   w_tmp = b_y->size[0] * b_y->size[1];
   b_y->size[0] = 1;
   b_y->size[1] = y->size[1];
-  emxEnsureCapacity_real_T(&b_st, b_y, w_tmp, &j_emlrtRTEI);
-  b_y_data = b_y->data;
+  emxEnsureCapacity_real_T(sp, b_y, w_tmp, &j_emlrtRTEI);
+  J_data = b_y->data;
   for (w_tmp = 0; w_tmp < last; w_tmp++) {
-    p = y_data[6 * w_tmp + 1];
-    b_y_data[w_tmp] = p * p;
+    J_data[w_tmp] = y_data[6 * w_tmp + 1];
+  }
+  emxInit_real_T(sp, &c_y, 2, &p_emlrtRTEI);
+  st.site = &i_emlrtRSI;
+  power(&st, b_y, c_y);
+  last = y->size[1];
+  w_tmp = b_y->size[0] * b_y->size[1];
+  b_y->size[0] = 1;
+  b_y->size[1] = y->size[1];
+  emxEnsureCapacity_real_T(sp, b_y, w_tmp, &k_emlrtRTEI);
+  J_data = b_y->data;
+  for (w_tmp = 0; w_tmp < last; w_tmp++) {
+    J_data[w_tmp] = y_data[6 * w_tmp + 2];
   }
   st.site = &i_emlrtRSI;
-  b_st.site = &s_emlrtRSI;
-  last = y->size[1];
-  w_tmp = r->size[0] * r->size[1];
-  r->size[0] = 1;
-  r->size[1] = y->size[1];
-  emxEnsureCapacity_real_T(&b_st, r, w_tmp, &k_emlrtRTEI);
-  J_data = r->data;
-  for (w_tmp = 0; w_tmp < last; w_tmp++) {
-    p = y_data[6 * w_tmp + 2];
-    J_data[w_tmp] = p * p;
-  }
-  if ((b_y->size[1] != r->size[1]) &&
-      ((b_y->size[1] != 1) && (r->size[1] != 1))) {
-    emlrtDimSizeImpxCheckR2021b(b_y->size[1], r->size[1], &b_emlrtECI,
+  power(&st, b_y, r);
+  r1 = r->data;
+  if ((c_y->size[1] != r->size[1]) &&
+      ((c_y->size[1] != 1) && (r->size[1] != 1))) {
+    emlrtDimSizeImpxCheckR2021b(c_y->size[1], r->size[1], &b_emlrtECI,
                                 (emlrtCTX)sp);
   }
-  emxInit_real_T(sp, &c_y, 2, &l_emlrtRTEI);
   last = y->size[1];
-  w_tmp = c_y->size[0] * c_y->size[1];
-  c_y->size[0] = 1;
-  c_y->size[1] = y->size[1];
-  emxEnsureCapacity_real_T(sp, c_y, w_tmp, &l_emlrtRTEI);
-  c_y_data = c_y->data;
+  w_tmp = b_y->size[0] * b_y->size[1];
+  b_y->size[0] = 1;
+  b_y->size[1] = y->size[1];
+  emxEnsureCapacity_real_T(sp, b_y, w_tmp, &l_emlrtRTEI);
+  J_data = b_y->data;
   for (w_tmp = 0; w_tmp < last; w_tmp++) {
-    c_y_data[w_tmp] = y_data[6 * w_tmp + 2];
+    J_data[w_tmp] = y_data[6 * w_tmp + 2];
   }
   emxInit_real_T(sp, &d_y, 2, &m_emlrtRTEI);
   last = y->size[1];
@@ -1232,87 +1253,87 @@ void costGauss(const emlrtStack *sp, real_T tmax, real_T Ts, real_T b_y0[6],
   d_y->size[0] = 1;
   d_y->size[1] = y->size[1];
   emxEnsureCapacity_real_T(sp, d_y, w_tmp, &m_emlrtRTEI);
-  b_y_data = d_y->data;
+  J_data = d_y->data;
   for (w_tmp = 0; w_tmp < last; w_tmp++) {
-    b_y_data[w_tmp] = y_data[6 * w_tmp + 1];
+    J_data[w_tmp] = y_data[6 * w_tmp + 1];
   }
-  emxInit_real_T(sp, &r1, 2, &t_emlrtRTEI);
+  emxInit_real_T(sp, &r2, 2, &t_emlrtRTEI);
   st.site = &i_emlrtRSI;
-  b_atan2(&st, c_y, d_y, r1);
+  b_atan2(&st, b_y, d_y, r2);
   emxFree_real_T(sp, &d_y);
-  if ((y->size[1] != r1->size[1]) &&
-      ((y->size[1] != 1) && (r1->size[1] != 1))) {
-    emlrtDimSizeImpxCheckR2021b(y->size[1], r1->size[1], &c_emlrtECI,
+  if ((y->size[1] != r2->size[1]) &&
+      ((y->size[1] != 1) && (r2->size[1] != 1))) {
+    emlrtDimSizeImpxCheckR2021b(y->size[1], r2->size[1], &c_emlrtECI,
                                 (emlrtCTX)sp);
   }
-  if (b_y->size[1] == r->size[1]) {
-    last = b_y->size[1] - 1;
-    w_tmp = b_y->size[0] * b_y->size[1];
-    b_y->size[0] = 1;
-    emxEnsureCapacity_real_T(sp, b_y, w_tmp, &n_emlrtRTEI);
-    b_y_data = b_y->data;
+  if (c_y->size[1] == r->size[1]) {
+    last = c_y->size[1] - 1;
+    w_tmp = c_y->size[0] * c_y->size[1];
+    c_y->size[0] = 1;
+    emxEnsureCapacity_real_T(sp, c_y, w_tmp, &n_emlrtRTEI);
+    b_y_data = c_y->data;
     for (w_tmp = 0; w_tmp <= last; w_tmp++) {
-      b_y_data[w_tmp] += J_data[w_tmp];
+      b_y_data[w_tmp] += r1[w_tmp];
     }
   } else {
-    plus(sp, b_y, r);
+    plus(sp, c_y, r);
   }
   emxFree_real_T(sp, &r);
   st.site = &i_emlrtRSI;
-  d_sqrt(&st, b_y);
-  if (y->size[1] == r1->size[1]) {
+  d_sqrt(&st, c_y);
+  if (y->size[1] == r2->size[1]) {
     last = y->size[1];
-    w_tmp = r1->size[0] * r1->size[1];
-    r1->size[0] = 1;
-    r1->size[1] = y->size[1];
-    emxEnsureCapacity_real_T(sp, r1, w_tmp, &o_emlrtRTEI);
-    J_data = r1->data;
+    w_tmp = r2->size[0] * r2->size[1];
+    r2->size[0] = 1;
+    r2->size[1] = y->size[1];
+    emxEnsureCapacity_real_T(sp, r2, w_tmp, &o_emlrtRTEI);
+    r1 = r2->data;
     for (w_tmp = 0; w_tmp < last; w_tmp++) {
-      J_data[w_tmp] = y_data[6 * w_tmp + 5] - J_data[w_tmp];
+      r1[w_tmp] = y_data[6 * w_tmp + 5] - r1[w_tmp];
     }
   } else {
-    c_binary_expand_op(sp, r1, y);
+    c_binary_expand_op(sp, r2, y);
   }
   st.site = &i_emlrtRSI;
-  b_cos(&st, r1);
-  J_data = r1->data;
-  if ((b_y->size[1] != r1->size[1]) &&
-      ((b_y->size[1] != 1) && (r1->size[1] != 1))) {
-    emlrtDimSizeImpxCheckR2021b(b_y->size[1], r1->size[1], &d_emlrtECI,
+  b_cos(&st, r2);
+  r1 = r2->data;
+  if ((c_y->size[1] != r2->size[1]) &&
+      ((c_y->size[1] != 1) && (r2->size[1] != 1))) {
+    emlrtDimSizeImpxCheckR2021b(c_y->size[1], r2->size[1], &d_emlrtECI,
                                 (emlrtCTX)sp);
   }
   st.site = &i_emlrtRSI;
-  if (b_y->size[1] == r1->size[1]) {
-    last = b_y->size[1] - 1;
-    w_tmp = b_y->size[0] * b_y->size[1];
-    b_y->size[0] = 1;
-    emxEnsureCapacity_real_T(&st, b_y, w_tmp, &p_emlrtRTEI);
-    b_y_data = b_y->data;
+  if (c_y->size[1] == r2->size[1]) {
+    last = c_y->size[1] - 1;
+    w_tmp = c_y->size[0] * c_y->size[1];
+    c_y->size[0] = 1;
+    emxEnsureCapacity_real_T(&st, c_y, w_tmp, &p_emlrtRTEI);
+    b_y_data = c_y->data;
     for (w_tmp = 0; w_tmp <= last; w_tmp++) {
-      b_y_data[w_tmp] = b_y_data[w_tmp] * J_data[w_tmp] + 1.0;
+      b_y_data[w_tmp] = b_y_data[w_tmp] * r1[w_tmp] + 1.0;
     }
   } else {
     b_st.site = &i_emlrtRSI;
-    b_binary_expand_op(&b_st, b_y, r1);
-    b_y_data = b_y->data;
+    b_binary_expand_op(&b_st, c_y, r2);
+    b_y_data = c_y->data;
   }
-  emxFree_real_T(&st, &r1);
-  b_st.site = &hb_emlrtRSI;
+  emxFree_real_T(&st, &r2);
+  b_st.site = &eb_emlrtRSI;
   last = y->size[1];
-  w_tmp = c_y->size[0] * c_y->size[1];
-  c_y->size[0] = 1;
-  c_y->size[1] = y->size[1];
-  emxEnsureCapacity_real_T(&b_st, c_y, w_tmp, &q_emlrtRTEI);
-  c_y_data = c_y->data;
+  w_tmp = b_y->size[0] * b_y->size[1];
+  b_y->size[0] = 1;
+  b_y->size[1] = y->size[1];
+  emxEnsureCapacity_real_T(&b_st, b_y, w_tmp, &q_emlrtRTEI);
+  J_data = b_y->data;
   for (w_tmp = 0; w_tmp < last; w_tmp++) {
-    c_y_data[w_tmp] = y_data[6 * w_tmp];
+    J_data[w_tmp] = y_data[6 * w_tmp];
   }
-  c_st.site = &ib_emlrtRSI;
-  assertCompatibleDims(&c_st, c_y, b_y);
+  c_st.site = &fb_emlrtRSI;
+  assertCompatibleDims(&c_st, b_y, c_y);
   st.site = &i_emlrtRSI;
-  emxFree_real_T(&st, &c_y);
+  emxFree_real_T(&st, &b_y);
   emxInit_real_T(&st, &varargin_1, 1, &r_emlrtRTEI);
-  if (y->size[1] == b_y->size[1]) {
+  if (y->size[1] == c_y->size[1]) {
     last = y->size[1];
     w_tmp = varargin_1->size[0];
     varargin_1->size[0] = y->size[1];
@@ -1323,21 +1344,21 @@ void costGauss(const emlrtStack *sp, real_T tmax, real_T Ts, real_T b_y0[6],
     }
   } else {
     b_st.site = &i_emlrtRSI;
-    binary_expand_op(&b_st, varargin_1, y, b_y);
+    binary_expand_op(&b_st, varargin_1, y, c_y);
     J_data = varargin_1->data;
   }
-  emxFree_real_T(&st, &b_y);
+  emxFree_real_T(&st, &c_y);
   emxFree_real_T(&st, &y);
-  b_st.site = &jb_emlrtRSI;
-  c_st.site = &kb_emlrtRSI;
-  d_st.site = &lb_emlrtRSI;
+  b_st.site = &gb_emlrtRSI;
+  c_st.site = &hb_emlrtRSI;
+  d_st.site = &ib_emlrtRSI;
   if (varargin_1->size[0] < 1) {
     emlrtErrorWithMessageIdR2018a(&d_st, &b_emlrtRTEI,
                                   "Coder:toolbox:eml_min_or_max_varDimZero",
                                   "Coder:toolbox:eml_min_or_max_varDimZero", 0);
   }
-  e_st.site = &mb_emlrtRSI;
-  f_st.site = &nb_emlrtRSI;
+  e_st.site = &jb_emlrtRSI;
+  f_st.site = &kb_emlrtRSI;
   last = varargin_1->size[0];
   if (varargin_1->size[0] <= 2) {
     if (varargin_1->size[0] == 1) {
@@ -1349,13 +1370,12 @@ void costGauss(const emlrtStack *sp, real_T tmax, real_T Ts, real_T b_y0[6],
       p = J_data[0];
     }
   } else {
-    g_st.site = &pb_emlrtRSI;
+    g_st.site = &mb_emlrtRSI;
     if (!muDoubleScalarIsNaN(J_data[0])) {
       idx = 1;
     } else {
-      boolean_T exitg1;
       idx = 0;
-      h_st.site = &qb_emlrtRSI;
+      h_st.site = &nb_emlrtRSI;
       if (varargin_1->size[0] > 2147483646) {
         i_st.site = &n_emlrtRSI;
         check_forloop_overflow_error(&i_st);
@@ -1374,10 +1394,10 @@ void costGauss(const emlrtStack *sp, real_T tmax, real_T Ts, real_T b_y0[6],
     if (idx == 0) {
       p = J_data[0];
     } else {
-      g_st.site = &ob_emlrtRSI;
+      g_st.site = &lb_emlrtRSI;
       p = J_data[idx - 1];
       w_tmp = idx + 1;
-      h_st.site = &rb_emlrtRSI;
+      h_st.site = &ob_emlrtRSI;
       if ((idx + 1 <= varargin_1->size[0]) &&
           (varargin_1->size[0] > 2147483646)) {
         i_st.site = &n_emlrtRSI;
@@ -1393,7 +1413,7 @@ void costGauss(const emlrtStack *sp, real_T tmax, real_T Ts, real_T b_y0[6],
   }
   emxFree_real_T(&f_st, &varargin_1);
   st.site = &j_emlrtRSI;
-  b_st.site = &sb_emlrtRSI;
+  b_st.site = &pb_emlrtRSI;
   w_tmp = J->size[0];
   J->size[0] = F->size[0] + 2;
   emxEnsureCapacity_real_T(sp, J, w_tmp, &s_emlrtRTEI);

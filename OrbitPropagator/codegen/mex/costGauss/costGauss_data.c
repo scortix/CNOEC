@@ -21,7 +21,7 @@ const volatile char_T *emlrtBreakCheckR2012bFlagVar = NULL;
 emlrtContext emlrtContextGlobal = {
     true,                                                 /* bFirstTime */
     false,                                                /* bInitialized */
-    131626U,                                              /* fVersionInfo */
+    131611U,                                              /* fVersionInfo */
     NULL,                                                 /* fErrorFunction */
     "costGauss",                                          /* fFunctionName */
     NULL,                                                 /* fRTCallStack */
@@ -31,24 +31,32 @@ emlrtContext emlrtContextGlobal = {
 };
 
 emlrtRSInfo n_emlrtRSI = {
-    20,                               /* lineNo */
+    21,                               /* lineNo */
     "eml_int_forloop_overflow_check", /* fcnName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\eml\\eml_int_forloop_"
-    "overflow_check.m" /* pathName */
+    "/Applications/MATLAB_R2021b.app/toolbox/eml/lib/matlab/eml/"
+    "eml_int_forloop_overflow_check.m" /* pathName */
+};
+
+emlrtRSInfo s_emlrtRSI = {
+    71,      /* lineNo */
+    "power", /* fcnName */
+    "/Applications/MATLAB_R2021b.app/toolbox/eml/lib/matlab/ops/power.m" /* pathName
+                                                                          */
 };
 
 emlrtRSInfo y_emlrtRSI = {
     33,                           /* lineNo */
     "applyScalarFunctionInPlace", /* fcnName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
-    "internal\\applyScalarFunctionInPlace.m" /* pathName */
+    "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/"
+    "applyScalarFunctionInPlace.m" /* pathName */
 };
 
 emlrtRTEInfo d_emlrtRTEI = {
-    13,                                                            /* lineNo */
-    9,                                                             /* colNo */
-    "sqrt",                                                        /* fName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\elfun\\sqrt.m" /* pName */
+    13,     /* lineNo */
+    9,      /* colNo */
+    "sqrt", /* fName */
+    "/Applications/MATLAB_R2021b.app/toolbox/eml/lib/matlab/elfun/sqrt.m" /* pName
+                                                                           */
 };
 
 /* End of code generation (costGauss_data.c) */

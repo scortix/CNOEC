@@ -19,15 +19,15 @@
 static emlrtRSInfo p_emlrtRSI = {
     25,        /* lineNo */
     "EOE2COE", /* fcnName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\EOE2COE.m" /* pathName
-                                                                      */
+    "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/EOE2COE.m" /* pathName
+                                                                          */
 };
 
 static emlrtRSInfo q_emlrtRSI = {
     26,        /* lineNo */
     "EOE2COE", /* fcnName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\EOE2COE.m" /* pathName
-                                                                      */
+    "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/EOE2COE.m" /* pathName
+                                                                          */
 };
 
 /* Function Definitions */
