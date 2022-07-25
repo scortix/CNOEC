@@ -1,0 +1,92 @@
+[
+  {
+    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\\codegen\\mex\\cost2",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=cost2_mex /openmp /wd4101  cost2_data.c /Fobuild\\win64\\cost2_data.obj",
+    "file": "cost2_data.c",
+    "output": "build/win64/cost2_data.obj"
+  },
+  {
+    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\\codegen\\mex\\cost2",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=cost2_mex /openmp /wd4101  rt_nonfinite.c /Fobuild\\win64\\rt_nonfinite.obj",
+    "file": "rt_nonfinite.c",
+    "output": "build/win64/rt_nonfinite.obj"
+  },
+  {
+    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\\codegen\\mex\\cost2",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=cost2_mex /openmp /wd4101  cost2_initialize.c /Fobuild\\win64\\cost2_initialize.obj",
+    "file": "cost2_initialize.c",
+    "output": "build/win64/cost2_initialize.obj"
+  },
+  {
+    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\\codegen\\mex\\cost2",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=cost2_mex /openmp /wd4101  cost2_terminate.c /Fobuild\\win64\\cost2_terminate.obj",
+    "file": "cost2_terminate.c",
+    "output": "build/win64/cost2_terminate.obj"
+  },
+  {
+    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\\codegen\\mex\\cost2",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=cost2_mex /openmp /wd4101  cost2.c /Fobuild\\win64\\cost2.obj",
+    "file": "cost2.c",
+    "output": "build/win64/cost2.obj"
+  },
+  {
+    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\\codegen\\mex\\cost2",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=cost2_mex /openmp /wd4101  indexShapeCheck.c /Fobuild\\win64\\indexShapeCheck.obj",
+    "file": "indexShapeCheck.c",
+    "output": "build/win64/indexShapeCheck.obj"
+  },
+  {
+    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\\codegen\\mex\\cost2",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=cost2_mex /openmp /wd4101  colon.c /Fobuild\\win64\\colon.obj",
+    "file": "colon.c",
+    "output": "build/win64/colon.obj"
+  },
+  {
+    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\\codegen\\mex\\cost2",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=cost2_mex /openmp /wd4101  interp1.c /Fobuild\\win64\\interp1.obj",
+    "file": "interp1.c",
+    "output": "build/win64/interp1.obj"
+  },
+  {
+    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\\codegen\\mex\\cost2",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=cost2_mex /openmp /wd4101  EOE2COE.c /Fobuild\\win64\\EOE2COE.obj",
+    "file": "EOE2COE.c",
+    "output": "build/win64/EOE2COE.obj"
+  },
+  {
+    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\\codegen\\mex\\cost2",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=cost2_mex /openmp /wd4101  interface\\_coder_cost2_api.c /Fobuild\\win64\\_coder_cost2_api.obj",
+    "file": "interface/_coder_cost2_api.c",
+    "output": "build/win64/_coder_cost2_api.obj"
+  },
+  {
+    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\\codegen\\mex\\cost2",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=cost2_mex /openmp /wd4101  interface\\_coder_cost2_mex.c /Fobuild\\win64\\_coder_cost2_mex.obj",
+    "file": "interface/_coder_cost2_mex.c",
+    "output": "build/win64/_coder_cost2_mex.obj"
+  },
+  {
+    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\\codegen\\mex\\cost2",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=cost2_mex /openmp /wd4101  eml_int_forloop_overflow_check.c /Fobuild\\win64\\eml_int_forloop_overflow_check.obj",
+    "file": "eml_int_forloop_overflow_check.c",
+    "output": "build/win64/eml_int_forloop_overflow_check.obj"
+  },
+  {
+    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\\codegen\\mex\\cost2",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=cost2_mex /openmp /wd4101  cost2_emxutil.c /Fobuild\\win64\\cost2_emxutil.obj",
+    "file": "cost2_emxutil.c",
+    "output": "build/win64/cost2_emxutil.obj"
+  },
+  {
+    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\\codegen\\mex\\cost2",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=cost2_mex /openmp /wd4101  interface\\_coder_cost2_info.c /Fobuild\\win64\\_coder_cost2_info.obj",
+    "file": "interface/_coder_cost2_info.c",
+    "output": "build/win64/_coder_cost2_info.obj"
+  },
+  {
+    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\\codegen\\mex\\cost2",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=cost2_mex /openmp /wd4101  P:\\Matlab\\R2022a\\extern\\version\\c_mexapi_version.c /Fobuild\\win64\\c_mexapi_version.obj",
+    "file": "P:/Matlab/R2022a/extern/version/c_mexapi_version.c",
+    "output": "build/win64/c_mexapi_version.obj"
+  }
+]

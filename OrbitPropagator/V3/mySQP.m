@@ -1,4 +1,4 @@
-function [xstar, fxstar, niter, exitflag, xsequence] = mySQPGrad(fun, x0, options)
+function [xstar, fxstar, niter, exitflag, xsequence] = mySQP(fun, x0, A, b, C, d, p, q, options)
 
 % MYSQP Attempts to solve the problem:
 %                   min f(x)  
@@ -44,23 +44,59 @@ function [xstar, fxstar, niter, exitflag, xsequence] = mySQPGrad(fun, x0, option
 fprintf('|  Iteration   |      Fx       | ||grad(Fx)||  |  ||grad(Lx)|| |  Feasibility  |  Step Length  |  F-Variation  |\r')
 fprintf('|--------------|---------------|---------------|---------------|---------------|---------------|---------------|\r')
 
-%% Preallocate memory for computed variables
-[~,~,~,~,~,~,~,p,q] = fun(x0,false);
+fx0 = fun(x0);
 
+%% Define functions f, g, h and, possibly, F
+
+if length(fx0) > 1+p+q
+    F = @(x) [zeros(1+p+q,length(fx0)-1-p-q); eye(length(fx0)-1-p-q)]'*fun(x);
+end
+
+f = @(x) fun(x)'*[1; zeros(length(fx0)-1,1)];
+g = @(x) [zeros(1,p); eye(p); zeros(length(fx0)-1-p,p)]'*fun(x);
+h = @(x) [zeros(1+p,q); eye(q); zeros(length(fx0)-1-p-q,q)]'*fun(x);
+gs = @(x) g(x);
+hs = @(x) h(x);
+
+%% Update the constraints using linear constraints
+if ~isempty(A)
+    if length(b) ~= size(A,1) || size(A,2) ~= length(x0)
+        error("A and/or b are not correct\n");
+    end
+    p = p+size(A,1);
+    g = @(x) [A*x-b; g(x)];
+end
+
+if ~isempty(C)
+    if length(d) ~= size(C,1) || size(C,2) ~= length(x0)
+        error("C and/or d are not correct\n");
+    end
+    q = q+size(C,1);
+    
+    h = @(x) [C*x-d; h(x)];
+end
+
+%% Preallocate memory for computed variables
 dx = zeros(options.nitermax+1, 1); dx(1) = 1;
 df = zeros(options.nitermax+1, 1); df(1) = 1;
 mu = zeros(options.nitermax+1, q)'; mu(:,1) = zeros(q,1);
 lam = zeros(options.nitermax+1, p)'; lam(:,1) = zeros(p,1);
 xk = zeros(options.nitermax+1, length(x0))'; xk(:,1) = x0;
 fxk = zeros(options.nitermax+1, 1);
-gxk = zeros(options.nitermax+1, p)';
-hxk = zeros(options.nitermax+1, q)'; 
+if strcmp(options.method, 'Gauss-Newton')
+    Fxk = F(x0);
+    fxk(1) = Fxk'*Fxk;
+else
+    fxk(1) = f(x0);
+end
+gxk = zeros(options.nitermax+1, p)'; gxk(:,1) = g(x0);
+hxk = zeros(options.nitermax+1, q)'; hxk(:,1) = h(x0);
 tau = zeros(q,1); sigma = zeros(p,1);
 pkstar = ones(size(x0));
 
 %% Define options for QP and LP solvers
 optQP = optimoptions("quadprog","Display","none",'Algorithm','active-set','MaxIterations',1e3,...
-    'OptimalityTolerance',1e-6);
+    'OptimalityTolerance',1e-8);
 optlin = optimoptions("linprog","Display","none");
 
 %% Initialize niter to 1
@@ -71,28 +107,19 @@ while true
 
     %% Compute all gradients (for BFGS only at the first iteration)
     if ~strcmp(options.method,'BFGS') || niter == 1
-        if strcmp(options.method,'Gauss-Newton')
-            [~,fxk(niter),gxk(:,niter),hxk(:,niter),gradfxk,gradgxk,gradhxk,~,~,~,gradFxk] = fun(xk(:,niter),true);
+        if strcmp(options.method, 'Gauss-Newton')
+            gradFxk = mygradcalc(F,xk(:,niter), F(xk(:,niter)), options.gradmethod);
+            gradfxk = 2*Fxk'*gradFxk';
         else
-            [~,fxk(niter),gxk(:,niter),hxk(:,niter),gradfxk,gradgxk,gradhxk] = fun(xk(:,niter),true);
+            gradfxk = mygradcalc(f,xk(:,niter), fxk(niter), options.gradmethod);
         end
+        gradgxk = [A', mygradcalc(gs,xk(:,niter), gxk(size(A,1)+1:end,niter), options.gradmethod)];
+        gradhxk = [C', mygradcalc(hs,xk(:,niter), hxk(size(C,1)+1:end,niter), options.gradmethod)];
         gradlxk = gradfxk-gradgxk*lam(:,niter)-gradhxk*mu(:,niter);
     end
 
     %% Check terminating conditions
     feasibility = max(norm(gxk(:,niter),'inf'),-min(hxk(:,niter)));
-%     if niter==5 
-%         if strcmp(options.method,'Steepest')
-%             options.method = "Gauss-Newton";
-%         else
-%             options.method = "Steepest";
-%         end
-%     end
-%     if (feasibility <= options.tolconstr || niter>300) && (strcmp(options.method,'Steepest'))
-%         options.method = "BFGS";
-%         options.method = "Gauss-Newton";
-%         [~,fxk(niter),gxk(:,niter),hxk(:,niter),gradfxk,gradgxk,gradhxk,~,~,~,gradFxk] = fun(xk(:,niter),true);
-%     end
     if niter >= 1000
         niterStr = "|\t\t%d   ";
     else
@@ -158,19 +185,11 @@ while true
     AQP = gradhxk'; bQP = hxk(:,niter);
     Alineq = [zeros(length(bQPeq),q) AQPeq; -eye(q) AQP];
     pk0 = linprog([ones(q,1);zeros(length(x0),1)], [-eye(q) zeros(q,length(x0))], zeros(q,1), -Alineq, [bQPeq; bQP], [], [], optlin);
-    try
-        s = pk0(1:q); pk0 = pk0(q+1:end);
-        if any(s<-1e-6)
-            error("Unfeasible");
-        end
-        [pkstar, ~, ~, ~, lb]  = quadprog(Hk, gradfxk, -AQP, bQP, -AQPeq, bQPeq, [], [], pk0, optQP);
-    catch ME
-        optQP = optimoptions("quadprog","Display","none",'Algorithm','interior-point-convex','MaxIterations',1e4,...
-            'OptimalityTolerance',1e-8);
-        [pkstar, ~, ~, ~, lb]  = quadprog(Hk, gradfxk, -AQP, bQP, -AQPeq, bQPeq, [], [], [], optQP);
-        optQP = optimoptions("quadprog","Display","none",'Algorithm','active-set','MaxIterations',1e4,...
-            'OptimalityTolerance',1e-8);
+    s = pk0(1:q); pk0 = pk0(q+1:end);
+    if any(s<-1e-6)
+        error("Unfeasible");
     end
+    [pkstar, ~, ~, ~, lb]  = quadprog(Hk, gradfxk, -AQP, bQP, -AQPeq, bQPeq, [], [], pk0, optQP);
     lambdakstar = -lb.eqlin; mukstar = lb.ineqlin;
     dlambdak = lambdakstar - lam(:,niter);
     dmuk = mukstar - mu(:,niter);
@@ -182,7 +201,7 @@ while true
     end
     
     %% Backtracking line-search and update state and Lagrange multipliers
-    T = @(x) T_st(x,sigma,tau,fun);
+    T = @(x) f(x) + sigma'*abs(g(x)) - tau'*(h(x).*(h(x)<0));
     Txk = fxk(niter) + sigma'*abs(gxk(:,niter)) - tau'*(hxk(:,niter).*(hxk(:,niter)<0));
     DTpk = gradfxk'*pkstar - sigma'*abs(gxk(:,niter)) - (tau.*(hxk(:,niter)<0))'*gradhxk'*pkstar;
     tk = mymeritlinesearch(T, Txk, DTpk, xk(:,niter), pkstar, options.lstkmax, options.lsbeta, options.lsc, options.lsnitermax);
@@ -191,32 +210,20 @@ while true
     mu(:,niter+1) = mu(:,niter) + tk*dmuk;
 
     %% Compute updated cost function and constraints
-    if ~strcmp(options.method, 'BFGS')
-        [~,fxk(niter+1),gxk(:,niter+1),hxk(:,niter+1)] = fun(xk(:,niter+1),false);
-    
+    fxk(niter+1) = f(xk(:,niter+1));
+    gxk(:,niter+1) = g(xk(:,niter+1));
+    hxk(:,niter+1) = h(xk(:,niter+1));
 
     %% For BFGS only, update Hk matrix
-    else
+    if strcmp(options.method, 'BFGS')
         gradlxkup = gradfxk-gradgxk*lam(:,niter+1)-gradhxk*mu(:,niter+1);
-%         gradgxkold = gradgxk; gradhxkold = gradhxk;
-        [~,fxk(niter+1),gxk(:,niter+1),hxk(:,niter+1),gradfxk,gradgxk,gradhxk] = fun(xk(:,niter+1),true);
+        gradfxk = mygradcalc(f,xk(:,niter+1), fxk(niter+1), options.gradmethod);
+        gradgxk = [A', mygradcalc(gs,xk(:,niter+1), gxk(size(A,1)+1:end,niter+1), options.gradmethod)];
+        gradhxk = [C', mygradcalc(hs,xk(:,niter+1), hxk(size(C,1)+1:end,niter+1), options.gradmethod)];
         gradlxk = gradfxk-gradgxk*lam(:,niter+1)-gradhxk*mu(:,niter+1);
         
         y = gradlxk-gradlxkup;
         s = xk(:,niter+1)-xk(:,niter);
-
-        %%
-%         if s'*y >= 0.2*s'*Hk*s
-%             theta = 1;
-%         else
-%             theta = 0.8*(s'*Hk*s)/(s'*Hk*s-s'y);
-%         end
-%         rk = theta*y+(1-theta)*Hk*s
-
-
-
-        %%
-
         if y'*s <= options.gamma*s'*Hk*s
             y = y + (options.gamma*s'*Hk*s-s'*y)/(s'*Hk*s-s'*y)*(Hk*s-y);
 %             if all(~isnan(ynew))
@@ -275,18 +282,6 @@ end
 xstar = xk(:,niter); 
 xsequence = xk(:,1:niter); 
 fxstar = fxk(niter);
-
-function res = T_st(x,sigma,tau,fun)
-    [~,f,g,h,~,~,~,~,~] = fun(x,false);
-    if isempty(g)
-        g = 0; sigma = 0;
-    end
-    if isempty(h)
-        h = 0; tau = 0;
-    end
-    res = f + sigma'*abs(g) - tau'*(h.*(h<0));
-end
-end
 
 
 
