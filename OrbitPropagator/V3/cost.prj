@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.coder" plugin-version="R2021a">
-  <configuration build-checksum="2570568556" file="P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V3\cost.prj" location="P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V3" name="cost" target="target.unifiedcoder" target-name="MATLAB Coder">
+  <configuration build-checksum="2297406562" file="/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V3/cost.prj" location="/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V3" name="cost" target="target.unifiedcoder" target-name="MATLAB Coder">
     <profile key="profile.mex">
       <param.BuiltInstrumentedMex>false</param.BuiltInstrumentedMex>
       <param.RanInstrumentedMex>false</param.RanInstrumentedMex>
@@ -18,7 +18,6 @@
       <param.SaturateOnIntegerOverflow>true</param.SaturateOnIntegerOverflow>
       <param.EnableAutoParallelization>false</param.EnableAutoParallelization>
       <param.NumberOfCpuThreads>0</param.NumberOfCpuThreads>
-      <param.OptimizeReductions>false</param.OptimizeReductions>
       <param.GlobalDataSyncMethod>option.GlobalDataSyncMethod.SyncAlways</param.GlobalDataSyncMethod>
       <param.EnableVariableSizing>true</param.EnableVariableSizing>
       <param.DynamicMemoryAllocation>option.DynamicMemoryAllocation.Threshold</param.DynamicMemoryAllocation>
@@ -80,7 +79,7 @@
       <param.EnableJITSilentBailOut>false</param.EnableJITSilentBailOut>
       <param.CheckForIssuesJIT>true</param.CheckForIssuesJIT>
       <param.EnableGitSupport>false</param.EnableGitSupport>
-      <param.EnableAutoCommit>true</param.EnableAutoCommit>
+      <param.EnableAutoCommit>false</param.EnableAutoCommit>
       <param.RepositoryStyle>option.RepositoryStyle.Auto</param.RepositoryStyle>
       <unset>
         <param.BuiltInstrumentedMex />
@@ -100,7 +99,6 @@
         <param.SaturateOnIntegerOverflow />
         <param.EnableAutoParallelization />
         <param.NumberOfCpuThreads />
-        <param.OptimizeReductions />
         <param.GlobalDataSyncMethod />
         <param.EnableVariableSizing />
         <param.DynamicMemoryAllocation />
@@ -182,7 +180,6 @@
       <param.LoopUnrollThreshold />
       <param.EnableAutoParallelization>false</param.EnableAutoParallelization>
       <param.NumberOfCpuThreads>0</param.NumberOfCpuThreads>
-      <param.OptimizeReductions>false</param.OptimizeReductions>
       <param.EnableVariableSizing>true</param.EnableVariableSizing>
       <param.DynamicMemoryAllocation>option.DynamicMemoryAllocation.Threshold</param.DynamicMemoryAllocation>
       <param.DynamicMemoryAllocationThreshold>65536</param.DynamicMemoryAllocationThreshold>
@@ -193,7 +190,6 @@
       <param.EliminateSingleDimensions>false</param.EliminateSingleDimensions>
       <param.StackUsageMax>200000</param.StackUsageMax>
       <param.MultiInstanceCode />
-      <param.PreserveUnusedStructFields />
       <param.FilePartitionMethod>option.FilePartitionMethod.MapMFileToCFile</param.FilePartitionMethod>
       <param.GenerateComments>true</param.GenerateComments>
       <param.CommentStyle />
@@ -253,7 +249,6 @@
       <param.SILPILSyncGlobalData />
       <param.CodeExecutionProfiling />
       <param.CodeProfilingInstrumentation />
-      <param.CodeStackProfiling />
       <param.DefaultTestFile />
       <param.MergeInstrumentationResults>false</param.MergeInstrumentationResults>
       <param.RanPilSilVerification>false</param.RanPilSilVerification>
@@ -285,7 +280,7 @@
       <param.HardwareSizeChar.Production>8</param.HardwareSizeChar.Production>
       <param.HardwareSizeShort.Production>16</param.HardwareSizeShort.Production>
       <param.HardwareSizeInt.Production>32</param.HardwareSizeInt.Production>
-      <param.HardwareSizeLong.Production>32</param.HardwareSizeLong.Production>
+      <param.HardwareSizeLong.Production>64</param.HardwareSizeLong.Production>
       <param.HardwareSizeLongLong.Production>64</param.HardwareSizeLongLong.Production>
       <param.HardwareSizeFloat.Production>32</param.HardwareSizeFloat.Production>
       <param.HardwareSizeDouble.Production>64</param.HardwareSizeDouble.Production>
@@ -306,7 +301,7 @@
       <param.HardwareSizeChar.Target>8</param.HardwareSizeChar.Target>
       <param.HardwareSizeShort.Target>16</param.HardwareSizeShort.Target>
       <param.HardwareSizeInt.Target>32</param.HardwareSizeInt.Target>
-      <param.HardwareSizeLong.Target>32</param.HardwareSizeLong.Target>
+      <param.HardwareSizeLong.Target>64</param.HardwareSizeLong.Target>
       <param.HardwareSizeLongLong.Target>64</param.HardwareSizeLongLong.Target>
       <param.HardwareSizeFloat.Target>32</param.HardwareSizeFloat.Target>
       <param.HardwareSizeDouble.Target>64</param.HardwareSizeDouble.Target>
@@ -358,9 +353,9 @@
       <param.GenerateDefaultInSwitch />
       <param.EnableTraceability />
       <param.SILPILVerbosity />
-      <param.UseECoderFeatures>true</param.UseECoderFeatures>
+      <param.UseECoderFeatures>false</param.UseECoderFeatures>
       <param.EnableGitSupport>false</param.EnableGitSupport>
-      <param.EnableAutoCommit>true</param.EnableAutoCommit>
+      <param.EnableAutoCommit>false</param.EnableAutoCommit>
       <param.RepositoryStyle>option.RepositoryStyle.Auto</param.RepositoryStyle>
       <param.psCustomPrjState />
       <param.psCustomProjectFile />
@@ -386,7 +381,6 @@
         <param.LoopUnrollThreshold />
         <param.EnableAutoParallelization />
         <param.NumberOfCpuThreads />
-        <param.OptimizeReductions />
         <param.EnableVariableSizing />
         <param.DynamicMemoryAllocation />
         <param.DynamicMemoryAllocationThreshold />
@@ -397,7 +391,6 @@
         <param.EliminateSingleDimensions />
         <param.StackUsageMax />
         <param.MultiInstanceCode />
-        <param.PreserveUnusedStructFields />
         <param.FilePartitionMethod />
         <param.GenerateComments />
         <param.CommentStyle />
@@ -457,7 +450,6 @@
         <param.SILPILSyncGlobalData />
         <param.CodeExecutionProfiling />
         <param.CodeProfilingInstrumentation />
-        <param.CodeStackProfiling />
         <param.DefaultTestFile />
         <param.MergeInstrumentationResults />
         <param.RanPilSilVerification />
@@ -488,7 +480,6 @@
         <param.HardwareSizeChar.Production />
         <param.HardwareSizeShort.Production />
         <param.HardwareSizeInt.Production />
-        <param.HardwareSizeLong.Production />
         <param.HardwareSizeLongLong.Production />
         <param.HardwareSizeFloat.Production />
         <param.HardwareSizeDouble.Production />
@@ -502,7 +493,6 @@
         <param.HardwareSizeChar.Target />
         <param.HardwareSizeShort.Target />
         <param.HardwareSizeInt.Target />
-        <param.HardwareSizeLong.Target />
         <param.HardwareSizeLongLong.Target />
         <param.HardwareSizeFloat.Target />
         <param.HardwareSizeDouble.Target />
@@ -561,6 +551,364 @@
         <param.psOutputFolder />
       </unset>
     </profile>
+    <profile key="profile.hdl">
+      <param.hdl.Workflow />
+      <param.hdl.TargetLanguage />
+      <param.hdl.TargetPlatform />
+      <param.hdl.SynthesisTool />
+      <param.hdl.InputFrequency />
+      <param.hdl.TargetFrequency />
+      <param.hdl.IPCoreName />
+      <param.hdl.IPCoreVersion />
+      <param.hdl.AdditionalIPFiles />
+      <param.hdl.ExecutionMode />
+      <param.hdl.SynthesisToolChipFamily />
+      <param.hdl.SynthesisToolDeviceName />
+      <param.hdl.SynthesisToolPackageName />
+      <param.hdl.SynthesisToolSpeedValue />
+      <param.hdl.TargetInterface />
+      <param.hdl.CheckConformance />
+      <param.hdl.LaunchConformanceReport />
+      <param.hdl.GenerateEDAScripts />
+      <param.hdl.GenerateHDLCode />
+      <param.hdl.AdditionalSynthesisProjectFiles />
+      <param.hdl.CriticalPathSource />
+      <param.hdl.EmbeddedSystemTool />
+      <param.hdl.EmbeddedSystemProjectFolder />
+      <param.hdl.BitstreamBuildMode />
+      <param.hdl.ReferenceDesign />
+      <param.hdl.ReferenceDesignPath />
+      <param.hdl.LegacyDefaultTestFile />
+      <param.WorkingFolder>option.WorkingFolder.Project</param.WorkingFolder>
+      <param.SpecifiedWorkingFolder />
+      <param.BuildFolder>option.BuildFolder.Project</param.BuildFolder>
+      <param.SpecifiedBuildFolder />
+      <param.SearchPaths />
+      <var.SimdQueryHardwareVendor>Generic</var.SimdQueryHardwareVendor>
+      <var.SimdQueryHardwareType>MATLAB Host Computer</var.SimdQueryHardwareType>
+      <param.InstructionSetExtensionsAvailableInUI>true</param.InstructionSetExtensionsAvailableInUI>
+      <param.InstructionSetExtensions>None</param.InstructionSetExtensions>
+      <param.NumberOfCpuThreads>0</param.NumberOfCpuThreads>
+      <param.hdl.MapPersistentVarsToRAM />
+      <param.hdl.RAMThreshold />
+      <param.hdl.MapPipelineDelaysToRAM />
+      <param.hdl.RAMVariableNames />
+      <param.hdl.RegisterInputs />
+      <param.hdl.RegisterOutputs />
+      <param.hdl.AdaptivePipelining />
+      <param.hdl.DistributedPipelining />
+      <param.hdl.DistributedPipeliningPriority />
+      <param.hdl.PreserveDesignDelays />
+      <param.hdl.InputPipeline />
+      <param.hdl.OutputPipeline />
+      <param.hdl.PipelineVariables />
+      <param.hdl.ResourceSharing />
+      <param.hdl.ConstantMultiplierOptimization />
+      <param.hdl.LoopOptimization />
+      <param.hdl.AggressiveDataflowConversion />
+      <param.GenerateComments>true</param.GenerateComments>
+      <param.MATLABSourceComments>false</param.MATLABSourceComments>
+      <param.hdl.VHDLFileExt />
+      <param.hdl.VerilogFileExt />
+      <param.hdl.DateComment />
+      <param.hdl.UserComment />
+      <param.hdl.ModulePrefix />
+      <param.hdl.PackagePostfix />
+      <param.hdl.EntityConflictPostfix />
+      <param.hdl.ReservedWordPostfix />
+      <param.hdl.ClockProcessPostfix />
+      <param.hdl.ComplexRealPostfix />
+      <param.hdl.ComplexImagPostfix />
+      <param.hdl.PipelinePostfix />
+      <param.hdl.EnablePrefix />
+      <param.hdl.InlineConfigurations />
+      <param.hdl.UseRisingEdge />
+      <param.hdl.UseMatrixTypesInHDL />
+      <param.hdl.HDLCompileFilePostfix />
+      <param.hdl.HDLCompileInit />
+      <param.hdl.HDLCompileVHDLCmd />
+      <param.hdl.HDLCompileVerilogCmd />
+      <param.hdl.HDLCompileTerm />
+      <param.hdl.HDLSimFilePostfix />
+      <param.hdl.HDLSimInit />
+      <param.hdl.HDLSimCmd />
+      <param.hdl.HDLSimViewWaveCmd />
+      <param.hdl.HDLSimTerm />
+      <param.hdl.HDLSynthTool />
+      <var.hasSynthesisToolScript />
+      <var.toolSpecificEDAScript />
+      <param.hdl.HDLSynthFilePostfix />
+      <param.hdl.HDLSynthInit />
+      <param.hdl.HDLSynthCmd />
+      <param.hdl.HDLSynthTerm />
+      <param.hdl.HDLLintTool />
+      <var.LintToolScript />
+      <var.hasHDLLintTool />
+      <param.hdl.HDLLintInit />
+      <param.hdl.HDLLintCmd />
+      <param.hdl.HDLLintTerm />
+      <param.hdl.ResetType />
+      <param.hdl.ResetAssertedLevel />
+      <param.hdl.ResetInputPort />
+      <param.hdl.ClockInputPort />
+      <param.hdl.ClockEdge />
+      <param.hdl.ClockEnableInputPort />
+      <param.hdl.Oversampling />
+      <param.hdl.EnableRate />
+      <param.hdl.InputType />
+      <param.hdl.OutputType />
+      <param.hdl.ClockEnableOutputPort />
+      <param.hdl.ScalarizePorts />
+      <param.hdl.HDLCodingStandard />
+      <var.HDLCodingStandard_FilterPassingRules_enable />
+      <var.HDLCodingStandard_DetectDuplicateNamesCheck_enable />
+      <var.HDLCodingStandard_HDLKeywords_enable />
+      <var.HDLCodingStandard_ModuleInstanceEntityNameLength_enable />
+      <var.HDLCodingStandard_ModuleInstanceEntityNameLength_min />
+      <var.HDLCodingStandard_ModuleInstanceEntityNameLength_max />
+      <var.HDLCodingStandard_SignalPortParamNameLength_enable />
+      <var.HDLCodingStandard_SignalPortParamNameLength_min />
+      <var.HDLCodingStandard_SignalPortParamNameLength_max />
+      <var.HDLCodingStandard_MinimizeVariableUsage_enable />
+      <var.HDLCodingStandard_InitialStatements_enable />
+      <var.HDLCodingStandard_IfElseChain_enable />
+      <var.HDLCodingStandard_IfElseChain_length />
+      <var.HDLCodingStandard_IfElseNesting_enable />
+      <var.HDLCodingStandard_IfElseNesting_depth />
+      <var.HDLCodingStandard_MultiplierBitWidth_enable />
+      <var.HDLCodingStandard_MultiplierBitWidth_width />
+      <var.HDLCodingStandard_NonIntegerTypes_enable />
+      <var.HDLCodingStandard_LineLength_enable />
+      <var.HDLCodingStandard_LineLength_length />
+      <param.hdl.GenerateCosimTestBench />
+      <param.hdl.CosimLogOutputs />
+      <param.hdl.CosimTool />
+      <param.hdl.CosimRunMode />
+      <param.hdl.SimulateCosimTestBench />
+      <param.hdl.CosimClockHighTime />
+      <param.hdl.CosimClockLowTime />
+      <param.hdl.CosimHoldTime />
+      <param.hdl.CosimClockEnableDelay />
+      <param.hdl.CosimResetLength />
+      <param.hdl.GenerateFILTestBench />
+      <param.hdl.FILLogOutputs />
+      <param.hdl.FILBoardName />
+      <param.hdl.FILConnection />
+      <param.hdl.FILBoardIPAddress />
+      <param.hdl.FILBoardMACAddress />
+      <param.hdl.FILAdditionalFiles />
+      <param.hdl.SimulateFILTestBench />
+      <var.hasTestBench />
+      <param.hdl.GenerateHDLTestBench />
+      <param.hdl.SimulateGeneratedCode />
+      <param.hdl.SimulationTool />
+      <param.hdl.TestBenchPostfix />
+      <param.hdl.ForceClock />
+      <param.hdl.ClockHighTime />
+      <param.hdl.ClockLowTime />
+      <param.hdl.HoldTime />
+      <param.hdl.ForceClockEnable />
+      <param.hdl.TestBenchClockEnableDelay />
+      <param.hdl.ForceReset />
+      <param.hdl.ResetLength />
+      <param.hdl.HoldInputDataBetweenSamples />
+      <param.hdl.InputDataInterval />
+      <param.hdl.InitializeTestBenchInputs />
+      <param.hdl.MultifileTestBench />
+      <param.hdl.TestBenchDataPostfix />
+      <param.hdl.TestReferencePostfix />
+      <param.hdl.UseFileIOInTestBench />
+      <param.hdl.IgnoreDataChecking />
+      <param.hdl.SimulationIterationLimit />
+      <param.hdl.UseFiAccelForTestBench />
+      <param.hdl.hdlVariables />
+      <param.hdl.hdlComputedVariables />
+      <param.hdl.InitializeBlockRAM />
+      <param.hdl.RAMArchitecture />
+      <param.hdl.PartitionFunctions />
+      <param.hdl.InstantiateFunctions />
+      <param.hdl.GenerateMLFcnBlock />
+      <param.hdl.GenerateXSGBlock />
+      <unset>
+        <param.hdl.Workflow />
+        <param.hdl.TargetLanguage />
+        <param.hdl.TargetPlatform />
+        <param.hdl.SynthesisTool />
+        <param.hdl.InputFrequency />
+        <param.hdl.TargetFrequency />
+        <param.hdl.IPCoreName />
+        <param.hdl.IPCoreVersion />
+        <param.hdl.AdditionalIPFiles />
+        <param.hdl.ExecutionMode />
+        <param.hdl.SynthesisToolChipFamily />
+        <param.hdl.SynthesisToolDeviceName />
+        <param.hdl.SynthesisToolPackageName />
+        <param.hdl.SynthesisToolSpeedValue />
+        <param.hdl.TargetInterface />
+        <param.hdl.CheckConformance />
+        <param.hdl.LaunchConformanceReport />
+        <param.hdl.GenerateEDAScripts />
+        <param.hdl.GenerateHDLCode />
+        <param.hdl.AdditionalSynthesisProjectFiles />
+        <param.hdl.CriticalPathSource />
+        <param.hdl.EmbeddedSystemTool />
+        <param.hdl.EmbeddedSystemProjectFolder />
+        <param.hdl.BitstreamBuildMode />
+        <param.hdl.ReferenceDesign />
+        <param.hdl.ReferenceDesignPath />
+        <param.hdl.LegacyDefaultTestFile />
+        <param.WorkingFolder />
+        <param.SpecifiedWorkingFolder />
+        <param.BuildFolder />
+        <param.SpecifiedBuildFolder />
+        <param.SearchPaths />
+        <var.SimdQueryHardwareVendor />
+        <var.SimdQueryHardwareType />
+        <param.InstructionSetExtensionsAvailableInUI />
+        <param.InstructionSetExtensions />
+        <param.NumberOfCpuThreads />
+        <param.hdl.MapPersistentVarsToRAM />
+        <param.hdl.RAMThreshold />
+        <param.hdl.MapPipelineDelaysToRAM />
+        <param.hdl.RAMVariableNames />
+        <param.hdl.RegisterInputs />
+        <param.hdl.RegisterOutputs />
+        <param.hdl.AdaptivePipelining />
+        <param.hdl.DistributedPipelining />
+        <param.hdl.DistributedPipeliningPriority />
+        <param.hdl.PreserveDesignDelays />
+        <param.hdl.InputPipeline />
+        <param.hdl.OutputPipeline />
+        <param.hdl.PipelineVariables />
+        <param.hdl.ResourceSharing />
+        <param.hdl.ConstantMultiplierOptimization />
+        <param.hdl.LoopOptimization />
+        <param.hdl.AggressiveDataflowConversion />
+        <param.GenerateComments />
+        <param.MATLABSourceComments />
+        <param.hdl.VHDLFileExt />
+        <param.hdl.VerilogFileExt />
+        <param.hdl.DateComment />
+        <param.hdl.UserComment />
+        <param.hdl.ModulePrefix />
+        <param.hdl.PackagePostfix />
+        <param.hdl.EntityConflictPostfix />
+        <param.hdl.ReservedWordPostfix />
+        <param.hdl.ClockProcessPostfix />
+        <param.hdl.ComplexRealPostfix />
+        <param.hdl.ComplexImagPostfix />
+        <param.hdl.PipelinePostfix />
+        <param.hdl.EnablePrefix />
+        <param.hdl.InlineConfigurations />
+        <param.hdl.UseRisingEdge />
+        <param.hdl.UseMatrixTypesInHDL />
+        <param.hdl.HDLCompileFilePostfix />
+        <param.hdl.HDLCompileInit />
+        <param.hdl.HDLCompileVHDLCmd />
+        <param.hdl.HDLCompileVerilogCmd />
+        <param.hdl.HDLCompileTerm />
+        <param.hdl.HDLSimFilePostfix />
+        <param.hdl.HDLSimInit />
+        <param.hdl.HDLSimCmd />
+        <param.hdl.HDLSimViewWaveCmd />
+        <param.hdl.HDLSimTerm />
+        <param.hdl.HDLSynthTool />
+        <var.hasSynthesisToolScript />
+        <var.toolSpecificEDAScript />
+        <param.hdl.HDLSynthFilePostfix />
+        <param.hdl.HDLSynthInit />
+        <param.hdl.HDLSynthCmd />
+        <param.hdl.HDLSynthTerm />
+        <param.hdl.HDLLintTool />
+        <var.LintToolScript />
+        <var.hasHDLLintTool />
+        <param.hdl.HDLLintInit />
+        <param.hdl.HDLLintCmd />
+        <param.hdl.HDLLintTerm />
+        <param.hdl.ResetType />
+        <param.hdl.ResetAssertedLevel />
+        <param.hdl.ResetInputPort />
+        <param.hdl.ClockInputPort />
+        <param.hdl.ClockEdge />
+        <param.hdl.ClockEnableInputPort />
+        <param.hdl.Oversampling />
+        <param.hdl.EnableRate />
+        <param.hdl.InputType />
+        <param.hdl.OutputType />
+        <param.hdl.ClockEnableOutputPort />
+        <param.hdl.ScalarizePorts />
+        <param.hdl.HDLCodingStandard />
+        <var.HDLCodingStandard_FilterPassingRules_enable />
+        <var.HDLCodingStandard_DetectDuplicateNamesCheck_enable />
+        <var.HDLCodingStandard_HDLKeywords_enable />
+        <var.HDLCodingStandard_ModuleInstanceEntityNameLength_enable />
+        <var.HDLCodingStandard_ModuleInstanceEntityNameLength_min />
+        <var.HDLCodingStandard_ModuleInstanceEntityNameLength_max />
+        <var.HDLCodingStandard_SignalPortParamNameLength_enable />
+        <var.HDLCodingStandard_SignalPortParamNameLength_min />
+        <var.HDLCodingStandard_SignalPortParamNameLength_max />
+        <var.HDLCodingStandard_MinimizeVariableUsage_enable />
+        <var.HDLCodingStandard_InitialStatements_enable />
+        <var.HDLCodingStandard_IfElseChain_enable />
+        <var.HDLCodingStandard_IfElseChain_length />
+        <var.HDLCodingStandard_IfElseNesting_enable />
+        <var.HDLCodingStandard_IfElseNesting_depth />
+        <var.HDLCodingStandard_MultiplierBitWidth_enable />
+        <var.HDLCodingStandard_MultiplierBitWidth_width />
+        <var.HDLCodingStandard_NonIntegerTypes_enable />
+        <var.HDLCodingStandard_LineLength_enable />
+        <var.HDLCodingStandard_LineLength_length />
+        <param.hdl.GenerateCosimTestBench />
+        <param.hdl.CosimLogOutputs />
+        <param.hdl.CosimTool />
+        <param.hdl.CosimRunMode />
+        <param.hdl.SimulateCosimTestBench />
+        <param.hdl.CosimClockHighTime />
+        <param.hdl.CosimClockLowTime />
+        <param.hdl.CosimHoldTime />
+        <param.hdl.CosimClockEnableDelay />
+        <param.hdl.CosimResetLength />
+        <param.hdl.GenerateFILTestBench />
+        <param.hdl.FILLogOutputs />
+        <param.hdl.FILBoardName />
+        <param.hdl.FILConnection />
+        <param.hdl.FILBoardIPAddress />
+        <param.hdl.FILBoardMACAddress />
+        <param.hdl.FILAdditionalFiles />
+        <param.hdl.SimulateFILTestBench />
+        <var.hasTestBench />
+        <param.hdl.GenerateHDLTestBench />
+        <param.hdl.SimulateGeneratedCode />
+        <param.hdl.SimulationTool />
+        <param.hdl.TestBenchPostfix />
+        <param.hdl.ForceClock />
+        <param.hdl.ClockHighTime />
+        <param.hdl.ClockLowTime />
+        <param.hdl.HoldTime />
+        <param.hdl.ForceClockEnable />
+        <param.hdl.TestBenchClockEnableDelay />
+        <param.hdl.ForceReset />
+        <param.hdl.ResetLength />
+        <param.hdl.HoldInputDataBetweenSamples />
+        <param.hdl.InputDataInterval />
+        <param.hdl.InitializeTestBenchInputs />
+        <param.hdl.MultifileTestBench />
+        <param.hdl.TestBenchDataPostfix />
+        <param.hdl.TestReferencePostfix />
+        <param.hdl.UseFileIOInTestBench />
+        <param.hdl.IgnoreDataChecking />
+        <param.hdl.SimulationIterationLimit />
+        <param.hdl.UseFiAccelForTestBench />
+        <param.hdl.hdlVariables />
+        <param.hdl.hdlComputedVariables />
+        <param.hdl.InitializeBlockRAM />
+        <param.hdl.RAMArchitecture />
+        <param.hdl.PartitionFunctions />
+        <param.hdl.InstantiateFunctions />
+        <param.hdl.GenerateMLFcnBlock />
+        <param.hdl.GenerateXSGBlock />
+      </unset>
+    </profile>
     <param.objective>option.objective.c</param.objective>
     <param.WorkflowStep>generateCode</param.WorkflowStep>
     <param.TestSnippets>
@@ -568,11 +916,11 @@
     </param.TestSnippets>
     <param.ExternalFcnMajority>column</param.ExternalFcnMajority>
     <param.UseGlobals>option.UseGlobals.No</param.UseGlobals>
-    <param.outputfile>${PROJECT_ROOT}\cost_mex.mexw64</param.outputfile>
+    <param.outputfile>${PROJECT_ROOT}/cost_mex.mexmaci64</param.outputfile>
     <param.version>R2012a</param.version>
-    <param.HasECoderFeatures>true</param.HasECoderFeatures>
-    <param.HasGpuCoder>true</param.HasGpuCoder>
-    <var.HasNeuralNetworkToolbox>true</var.HasNeuralNetworkToolbox>
+    <param.HasECoderFeatures>false</param.HasECoderFeatures>
+    <param.HasGpuCoder>false</param.HasGpuCoder>
+    <var.HasNeuralNetworkToolbox>false</var.HasNeuralNetworkToolbox>
     <param.mex.mainhtml />
     <param.grt.mainhtml />
     <param.CallGeneratedCodeFromTest>true</param.CallGeneratedCodeFromTest>
@@ -590,15 +938,14 @@
     <var.redirectedInputTypeData />
     <var.DismissScreener>false</var.DismissScreener>
     <param.unifiedParamStorage />
-    <param.hdlParamStorage />
-    <var.gc.lastOutputRoot>codegen\mex\cost</var.gc.lastOutputRoot>
+    <var.gc.lastOutputRoot>codegen/mex/cost</var.gc.lastOutputRoot>
     <var.gc.lastOutputType>MEX_FILE</var.gc.lastOutputType>
-    <var.gc.preBuildChecksum>2570568556</var.gc.preBuildChecksum>
+    <var.gc.preBuildChecksum>2986117089</var.gc.preBuildChecksum>
     <var.cfi.lastOutputRoot />
     <var.cfi.preBuildChecksum />
     <var.outdatedOnRestore>false</var.outdatedOnRestore>
-    <var.lastUserSourceChecksum>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;checksum&gt;&lt;includedFiles&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V3\cost.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V3\EOE2COE.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V3\EOEDerivatives.m&lt;/file&gt;&lt;/includedFiles&gt;&lt;value&gt;3978955719&lt;/value&gt;&lt;/checksum&gt;</var.lastUserSourceChecksum>
-    <var.sourceSetState>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;sourceModel&gt;&lt;primarySourceFiles&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V3\cost.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V3\EOE2COE.m&lt;/file&gt;&lt;file&gt;P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V3\EOEDerivatives.m&lt;/file&gt;&lt;/primarySourceFiles&gt;&lt;fixedPointSourceFiles/&gt;&lt;fixedPointSourceRegistered&gt;false&lt;/fixedPointSourceRegistered&gt;&lt;fixedPointSourceSelected&gt;false&lt;/fixedPointSourceSelected&gt;&lt;/sourceModel&gt;</var.sourceSetState>
+    <var.lastUserSourceChecksum>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;checksum&gt;&lt;includedFiles&gt;&lt;file&gt;/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V3/EOE2COE.m&lt;/file&gt;&lt;file&gt;/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V3/EOEDerivatives.m&lt;/file&gt;&lt;file&gt;/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V3/cost.m&lt;/file&gt;&lt;/includedFiles&gt;&lt;value&gt;3707317378&lt;/value&gt;&lt;/checksum&gt;</var.lastUserSourceChecksum>
+    <var.sourceSetState>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;sourceModel&gt;&lt;primarySourceFiles&gt;&lt;file&gt;/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V3/EOE2COE.m&lt;/file&gt;&lt;file&gt;/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V3/EOEDerivatives.m&lt;/file&gt;&lt;file&gt;/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V3/cost.m&lt;/file&gt;&lt;/primarySourceFiles&gt;&lt;fixedPointSourceFiles/&gt;&lt;fixedPointSourceRegistered&gt;false&lt;/fixedPointSourceRegistered&gt;&lt;fixedPointSourceSelected&gt;false&lt;/fixedPointSourceSelected&gt;&lt;/sourceModel&gt;</var.sourceSetState>
     <param.forceMexBuild>false</param.forceMexBuild>
     <param.NoDefaultJIT>false</param.NoDefaultJIT>
     <param.configImportActive>false</param.configImportActive>
@@ -606,26 +953,20 @@
     <var.notGpuCoder>true</var.notGpuCoder>
     <var.boundToGui>true</var.boundToGui>
     <var.isConfigDialog>false</var.isConfigDialog>
-    <var.ecoderEnabled>true</var.ecoderEnabled>
-    <param.AlwaysGenerateTypedefGuards>false</param.AlwaysGenerateTypedefGuards>
-    <param.RemoveDuplicateFunctionsAndTypes>true</param.RemoveDuplicateFunctionsAndTypes>
-    <param.EnableStructExplosion>true</param.EnableStructExplosion>
-    <param.ForceANSIC>false</param.ForceANSIC>
-    <param.NumCompileJobs>1</param.NumCompileJobs>
+    <var.ecoderEnabled>false</var.ecoderEnabled>
     <param.mex.outputfile>cost_mex</param.mex.outputfile>
     <param.grt.outputfile>cost</param.grt.outputfile>
     <param.artifact>option.target.artifact.mex</param.artifact>
-    <param.outputfile>${PROJECT_ROOT}\cost_mex.mexw64</param.outputfile>
+    <param.outputfile>${PROJECT_ROOT}/cost_mex.mexmaci64</param.outputfile>
     <param.CppNamespace />
     <param.CppPackagesToNamespaces>true</param.CppPackagesToNamespaces>
     <param.CppNamespaceForMathworksCode>coder</param.CppNamespaceForMathworksCode>
     <param.CppPreserveClasses>true</param.CppPreserveClasses>
-    <param.CppGenerateEnumClass>true</param.CppGenerateEnumClass>
     <param.gpu.Enabled>false</param.gpu.Enabled>
     <param.gpu.SelectCudaDevice>-1</param.gpu.SelectCudaDevice>
-    <param.gpu.ComputeCapability>3.5</param.gpu.ComputeCapability>
+    <param.gpu.ComputeCapability />
     <param.gpu.CustomComputeCapability />
-    <param.gpu.MallocMode>discrete</param.gpu.MallocMode>
+    <param.gpu.MallocMode />
     <param.gpu.MallocThreshold>200</param.gpu.MallocThreshold>
     <param.gpu.StackLimitPerThread>1024</param.gpu.StackLimitPerThread>
     <param.gpu.MaximumBlocksPerKernel>0</param.gpu.MaximumBlocksPerKernel>
@@ -633,23 +974,18 @@
     <param.gpu.SafeBuild>false</param.gpu.SafeBuild>
     <param.gpu.KernelNamePrefix />
     <param.gpu.CompilerFlags />
-    <param.gpu.EnableCUBLAS>true</param.gpu.EnableCUBLAS>
-    <param.gpu.EnableCUSOLVER>true</param.gpu.EnableCUSOLVER>
-    <param.gpu.EnableCUFFT>true</param.gpu.EnableCUFFT>
+    <param.gpu.EnableCUBLAS>false</param.gpu.EnableCUBLAS>
+    <param.gpu.EnableCUSOLVER>false</param.gpu.EnableCUSOLVER>
+    <param.gpu.EnableCUFFT>false</param.gpu.EnableCUFFT>
     <param.gpu.EnableMemoryManager>false</param.gpu.EnableMemoryManager>
-    <param.gpu.BlockAlignment>256</param.gpu.BlockAlignment>
-    <param.gpu.FreeMode>Never</param.gpu.FreeMode>
-    <param.gpu.MinPoolSize>8</param.gpu.MinPoolSize>
-    <param.gpu.MaxPoolSize>2048</param.gpu.MaxPoolSize>
     <var.checkIssuesGpu>false</var.checkIssuesGpu>
-    <var.hasGpu>true</var.hasGpu>
+    <var.hasGpu>false</var.hasGpu>
     <var.isDeepLearningForMatlabCoderEnabled>true</var.isDeepLearningForMatlabCoderEnabled>
     <param.deeplearning.EnableDeepLearning>false</param.deeplearning.EnableDeepLearning>
-    <param.deeplearning.DeepLearningCustomCallback />
     <param.deeplearning.TargetLib>option.deeplearning.targetlibrary.none</param.deeplearning.TargetLib>
     <var.cfiTargetLibSuppression>false</var.cfiTargetLibSuppression>
-    <var.hasMatlabDeepLearningSupportPackage>false</var.hasMatlabDeepLearningSupportPackage>
-    <var.hasGpuDeepLearningSupportPackage>false</var.hasGpuDeepLearningSupportPackage>
+    <var.hasMatlabDeepLearningSupportPackage>true</var.hasMatlabDeepLearningSupportPackage>
+    <var.hasGpuDeepLearningSupportPackage>true</var.hasGpuDeepLearningSupportPackage>
     <param.tensorrt.DataType>option.tensorrt.datatype.fp32</param.tensorrt.DataType>
     <param.tensorrt.DataPath />
     <param.tensorrt.NumCalibrationBatches>0</param.tensorrt.NumCalibrationBatches>
@@ -660,8 +996,6 @@
     <param.arm-compute.ArmArchitecture>option.arm-compute.architecture.unspecified</param.arm-compute.ArmArchitecture>
     <param.arm-compute.DataType>option.arm-compute.datatype.fp32</param.arm-compute.DataType>
     <param.arm-compute.CalibrationResultFile />
-    <param.cmsis-nn.DataType>option.arm-compute.datatype.int8</param.cmsis-nn.DataType>
-    <param.cmsis-nn.CalibrationResultFile />
     <param.TargetLang>option.TargetLang.C</param.TargetLang>
     <param.EnableAutoExtrinsicCalls>true</param.EnableAutoExtrinsicCalls>
     <param.EnableImplicitExpansion>true</param.EnableImplicitExpansion>
@@ -735,7 +1069,6 @@
       <var.redirectedInputTypeData />
       <var.DismissScreener />
       <param.unifiedParamStorage />
-      <param.hdlParamStorage />
       <var.cfi.lastOutputRoot />
       <var.cfi.preBuildChecksum />
       <var.outdatedOnRestore />
@@ -746,11 +1079,6 @@
       <var.notGpuCoder />
       <var.isConfigDialog />
       <var.ecoderEnabled />
-      <param.AlwaysGenerateTypedefGuards />
-      <param.RemoveDuplicateFunctionsAndTypes />
-      <param.EnableStructExplosion />
-      <param.ForceANSIC />
-      <param.NumCompileJobs />
       <param.mex.outputfile />
       <param.grt.outputfile />
       <param.artifact />
@@ -758,7 +1086,6 @@
       <param.CppPackagesToNamespaces />
       <param.CppNamespaceForMathworksCode />
       <param.CppPreserveClasses />
-      <param.CppGenerateEnumClass />
       <param.gpu.Enabled />
       <param.gpu.SelectCudaDevice />
       <param.gpu.ComputeCapability />
@@ -775,17 +1102,14 @@
       <param.gpu.EnableCUSOLVER />
       <param.gpu.EnableCUFFT />
       <param.gpu.EnableMemoryManager />
-      <param.gpu.BlockAlignment />
-      <param.gpu.FreeMode />
-      <param.gpu.MinPoolSize />
-      <param.gpu.MaxPoolSize />
       <var.checkIssuesGpu />
       <var.hasGpu />
       <var.isDeepLearningForMatlabCoderEnabled />
       <param.deeplearning.EnableDeepLearning />
-      <param.deeplearning.DeepLearningCustomCallback />
       <param.deeplearning.TargetLib />
       <var.cfiTargetLibSuppression />
+      <var.hasMatlabDeepLearningSupportPackage />
+      <var.hasGpuDeepLearningSupportPackage />
       <param.tensorrt.DataType />
       <param.tensorrt.DataPath />
       <param.tensorrt.NumCalibrationBatches />
@@ -796,8 +1120,6 @@
       <param.arm-compute.ArmArchitecture />
       <param.arm-compute.DataType />
       <param.arm-compute.CalibrationResultFile />
-      <param.cmsis-nn.DataType />
-      <param.cmsis-nn.CalibrationResultFile />
       <param.TargetLang />
       <param.EnableAutoExtrinsicCalls />
       <param.EnableImplicitExpansion />
@@ -847,13 +1169,13 @@
       <param.FixedPointUseDesignRanges />
     </unset>
     <fileset.entrypoints>
-      <file custom-data-expanded="false" value="${PROJECT_ROOT}\cost.m">
+      <file custom-data-expanded="false" value="${PROJECT_ROOT}/cost.m">
         <Marker>1658734710841</Marker>
       </file>
     </fileset.entrypoints>
     <fileset.testbench />
     <fileset.inputtypes>
-      <file custom-data-expanded="false" value="${PROJECT_ROOT}\cost.m">
+      <file custom-data-expanded="false" value="${PROJECT_ROOT}/cost.m">
         <Inputs fileName="cost.m" functionName="cost">
           <Input Name="x" typeId="0" />
           <Input Name="Ts" typeId="1" />
@@ -898,63 +1220,33 @@
       </file>
     </fileset.inputtypes>
     <build-deliverables>
-      <file location="${PROJECT_ROOT}" name="cost_mex.mexw64" optional="false">P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V3\cost_mex.mexw64</file>
+      <file location="${PROJECT_ROOT}" name="cost_mex.mexmaci64" optional="false">/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V3/cost_mex.mexmaci64</file>
     </build-deliverables>
     <workflow />
     <matlab>
-      <root>P:\Matlab\R2022a</root>
+      <root>/Applications/MATLAB_R2021b.app</root>
       <toolboxes>
         <toolbox name="matlabcoder" />
-        <toolbox name="embeddedcoder" />
-        <toolbox name="gpucoder" />
-        <toolbox name="fixedpoint" />
-        <toolbox name="matlabhdlcoder" />
-        <toolbox name="neuralnetwork" />
       </toolboxes>
       <toolbox>
         <matlabcoder>
           <enabled>true</enabled>
         </matlabcoder>
       </toolbox>
-      <toolbox>
-        <embeddedcoder>
-          <enabled>true</enabled>
-        </embeddedcoder>
-      </toolbox>
-      <toolbox>
-        <gpucoder>
-          <enabled>true</enabled>
-        </gpucoder>
-      </toolbox>
-      <toolbox>
-        <fixedpoint>
-          <enabled>true</enabled>
-        </fixedpoint>
-      </toolbox>
-      <toolbox>
-        <matlabhdlcoder>
-          <enabled>true</enabled>
-        </matlabhdlcoder>
-      </toolbox>
-      <toolbox>
-        <neuralnetwork>
-          <enabled>true</enabled>
-        </neuralnetwork>
-      </toolbox>
     </matlab>
     <platform>
-      <unix>false</unix>
-      <mac>false</mac>
-      <windows>true</windows>
+      <unix>true</unix>
+      <mac>true</mac>
+      <windows>false</windows>
       <win2k>false</win2k>
       <winxp>false</winxp>
       <vista>false</vista>
       <linux>false</linux>
       <solaris>false</solaris>
-      <osver>10.0</osver>
+      <osver>12.4</osver>
       <os32>false</os32>
       <os64>true</os64>
-      <arch>win64</arch>
+      <arch>maci64</arch>
       <matlab>true</matlab>
     </platform>
   </configuration>

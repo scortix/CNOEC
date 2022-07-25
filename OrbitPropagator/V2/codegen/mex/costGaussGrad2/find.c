@@ -18,31 +18,33 @@
 
 /* Variable Definitions */
 static emlrtRSInfo ab_emlrtRSI = {
-    144,                                                           /* lineNo */
-    "eml_find",                                                    /* fcnName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\elmat\\find.m" /* pathName
-                                                                    */
+    144,        /* lineNo */
+    "eml_find", /* fcnName */
+    "/Applications/MATLAB_R2021b.app/toolbox/eml/lib/matlab/elmat/find.m" /* pathName
+                                                                           */
 };
 
 static emlrtRSInfo bb_emlrtRSI = {
-    382,                                                           /* lineNo */
-    "find_first_indices",                                          /* fcnName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\elmat\\find.m" /* pathName
-                                                                    */
+    382,                  /* lineNo */
+    "find_first_indices", /* fcnName */
+    "/Applications/MATLAB_R2021b.app/toolbox/eml/lib/matlab/elmat/find.m" /* pathName
+                                                                           */
 };
 
 static emlrtRTEInfo j_emlrtRTEI = {
-    81,                                                            /* lineNo */
-    1,                                                             /* colNo */
-    "eml_find",                                                    /* fName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\elmat\\find.m" /* pName */
+    81,         /* lineNo */
+    1,          /* colNo */
+    "eml_find", /* fName */
+    "/Applications/MATLAB_R2021b.app/toolbox/eml/lib/matlab/elmat/find.m" /* pName
+                                                                           */
 };
 
 static emlrtRTEInfo k_emlrtRTEI = {
-    392,                                                           /* lineNo */
-    1,                                                             /* colNo */
-    "find_first_indices",                                          /* fName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\elmat\\find.m" /* pName */
+    392,                  /* lineNo */
+    1,                    /* colNo */
+    "find_first_indices", /* fName */
+    "/Applications/MATLAB_R2021b.app/toolbox/eml/lib/matlab/elmat/find.m" /* pName
+                                                                           */
 };
 
 /* Function Definitions */
@@ -64,7 +66,7 @@ void eml_find(const emlrtStack *sp, const emxArray_boolean_T *x,
   c_st.prev = &b_st;
   c_st.tls = b_st.tls;
   x_data = x->data;
-  k = (x->size[1] >= 1);
+  k = (1 <= x->size[1]);
   if (k > x->size[1]) {
     emlrtErrorWithMessageIdR2018a(sp, &j_emlrtRTEI,
                                   "Coder:builtins:AssertionFailed",
@@ -75,7 +77,7 @@ void eml_find(const emlrtStack *sp, const emxArray_boolean_T *x,
   i_size[0] = 1;
   i_size[1] = k;
   b_st.site = &bb_emlrtRSI;
-  if (x->size[1] > 2147483646) {
+  if ((1 <= x->size[1]) && (x->size[1] > 2147483646)) {
     c_st.site = &x_emlrtRSI;
     check_forloop_overflow_error(&c_st);
   }
@@ -101,7 +103,7 @@ void eml_find(const emlrtStack *sp, const emxArray_boolean_T *x,
       i_size[1] = 0;
     }
   } else {
-    i_size[1] = (idx >= 1);
+    i_size[1] = (1 <= idx);
   }
 }
 

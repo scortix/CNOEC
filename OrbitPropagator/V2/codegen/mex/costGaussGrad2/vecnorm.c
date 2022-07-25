@@ -19,19 +19,21 @@
 #include "mwmathutil.h"
 
 /* Variable Definitions */
-static emlrtRSInfo gc_emlrtRSI = {
-    51,        /* lineNo */
-    "vecnorm", /* fcnName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\matfun\\vecnorm.m" /* pathName
-                                                                        */
+static emlrtRSInfo dc_emlrtRSI =
+    {
+        51,        /* lineNo */
+        "vecnorm", /* fcnName */
+        "/Applications/MATLAB_R2021b.app/toolbox/eml/lib/matlab/matfun/"
+        "vecnorm.m" /* pathName */
 };
 
-static emlrtRTEInfo kc_emlrtRTEI = {
-    50,        /* lineNo */
-    24,        /* colNo */
-    "vecnorm", /* fName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\matfun\\vecnorm.m" /* pName
-                                                                        */
+static emlrtRTEInfo mc_emlrtRTEI =
+    {
+        50,        /* lineNo */
+        24,        /* colNo */
+        "vecnorm", /* fName */
+        "/Applications/MATLAB_R2021b.app/toolbox/eml/lib/matlab/matfun/"
+        "vecnorm.m" /* pName */
 };
 
 /* Function Definitions */
@@ -40,10 +42,15 @@ void vecnorm(const emlrtStack *sp, const emxArray_real_T *x, emxArray_real_T *y)
   emlrtStack b_st;
   emlrtStack st;
   const real_T *x_data;
+  real_T absxk;
+  real_T b_y;
+  real_T scale;
+  real_T t;
   real_T *y_data;
   int32_T ix0;
   int32_T j;
   int32_T k;
+  int32_T kend;
   int32_T ncols;
   st.prev = sp;
   st.tls = sp->tls;
@@ -54,31 +61,25 @@ void vecnorm(const emlrtStack *sp, const emxArray_real_T *x, emxArray_real_T *y)
   ix0 = y->size[0] * y->size[1];
   y->size[0] = 1;
   y->size[1] = x->size[1];
-  emxEnsureCapacity_real_T(sp, y, ix0, &kc_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, y, ix0, &mc_emlrtRTEI);
   y_data = y->data;
-  st.site = &gc_emlrtRSI;
-  if (x->size[1] > 2147483646) {
+  st.site = &dc_emlrtRSI;
+  if ((1 <= x->size[1]) && (x->size[1] > 2147483646)) {
     b_st.site = &x_emlrtRSI;
     check_forloop_overflow_error(&b_st);
   }
   for (j = 0; j < ncols; j++) {
-    real_T b_y;
-    real_T scale;
-    int32_T kend;
     ix0 = j * 3;
     b_y = 0.0;
     scale = 3.3121686421112381E-170;
     kend = ix0 + 3;
     for (k = ix0 + 1; k <= kend; k++) {
-      real_T absxk;
       absxk = muDoubleScalarAbs(x_data[k - 1]);
       if (absxk > scale) {
-        real_T t;
         t = scale / absxk;
         b_y = b_y * t * t + 1.0;
         scale = absxk;
       } else {
-        real_T t;
         t = absxk / scale;
         b_y += t * t;
       }

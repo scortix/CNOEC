@@ -33,12 +33,14 @@ void costGaussGrad2(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax,
                     emxArray_real_T *Jg, emxArray_real_T *Jh, real_T *p,
                     real_T *q);
 
-void e_binary_expand_op(const emlrtStack *sp, emlrtRSInfo in1,
-                        const emxArray_real_T *in2, const emxArray_real_T *in3,
-                        real_T in4, real_T in5, const real_T in6[6],
-                        const real_T in7[6], real_T in8, real_T in9,
-                        real_T in10, real_T in11, real_T in12[5],
-                        emxArray_real_T *in13);
+void f_binary_expand_op(const emlrtStack *sp, emlrtRSInfo rc_emlrtRSI,
+                        const emxArray_real_T *x, const emxArray_real_T *r1,
+                        real_T fun_workspace_tmax, real_T fun_workspace_Ts,
+                        const real_T fun_workspace_y0[6],
+                        const real_T fun_workspace_ybar[6],
+                        real_T fun_workspace_m0, real_T fun_workspace_coeffT,
+                        real_T fun_workspace_Tmax, real_T fun_workspace_ratio,
+                        real_T g[5], emxArray_real_T *h);
 
 void fun(const emlrtStack *sp, const emxArray_real_T *x, real_T tmax, real_T Ts,
          real_T b_y0[6], const real_T ybar[6], real_T m0, real_T coeffT,

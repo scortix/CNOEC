@@ -18,7 +18,7 @@
 #include "rt_nonfinite.h"
 
 /* Variable Definitions */
-static emlrtRTEInfo vc_emlrtRTEI = {
+static emlrtRTEInfo xc_emlrtRTEI = {
     1,                           /* lineNo */
     1,                           /* colNo */
     "_coder_costGaussGrad2_api", /* fName */
@@ -387,17 +387,17 @@ void costGaussGrad2_api(const mxArray *const prhs[15], int32_T nlhs,
   boolean_T computeGrad;
   st.tls = emlrtRootTLSGlobal;
   emlrtHeapReferenceStackEnterFcnR2012b(&st);
-  emxInit_real_T(&st, &x, 1, &vc_emlrtRTEI);
-  emxInit_real_T(&st, &A, 2, &vc_emlrtRTEI);
-  emxInit_real_T(&st, &b, 2, &vc_emlrtRTEI);
-  emxInit_real_T(&st, &C, 2, &vc_emlrtRTEI);
-  emxInit_real_T(&st, &d, 2, &vc_emlrtRTEI);
-  emxInit_real_T(&st, &J, 1, &vc_emlrtRTEI);
-  emxInit_real_T(&st, &gx, 1, &vc_emlrtRTEI);
-  emxInit_real_T(&st, &hx, 2, &vc_emlrtRTEI);
-  emxInit_real_T(&st, &Jf, 1, &vc_emlrtRTEI);
-  emxInit_real_T(&st, &Jg, 2, &vc_emlrtRTEI);
-  emxInit_real_T(&st, &Jh, 2, &vc_emlrtRTEI);
+  emxInit_real_T(&st, &x, 1, &xc_emlrtRTEI);
+  emxInit_real_T(&st, &A, 2, &xc_emlrtRTEI);
+  emxInit_real_T(&st, &b, 2, &xc_emlrtRTEI);
+  emxInit_real_T(&st, &C, 2, &xc_emlrtRTEI);
+  emxInit_real_T(&st, &d, 2, &xc_emlrtRTEI);
+  emxInit_real_T(&st, &J, 1, &xc_emlrtRTEI);
+  emxInit_real_T(&st, &gx, 1, &xc_emlrtRTEI);
+  emxInit_real_T(&st, &hx, 2, &xc_emlrtRTEI);
+  emxInit_real_T(&st, &Jf, 1, &xc_emlrtRTEI);
+  emxInit_real_T(&st, &Jg, 2, &xc_emlrtRTEI);
+  emxInit_real_T(&st, &Jh, 2, &xc_emlrtRTEI);
   /* Marshall function inputs */
   x->canFreeData = false;
   emlrt_marshallIn(&st, emlrtAlias(prhs[0]), "x", x);

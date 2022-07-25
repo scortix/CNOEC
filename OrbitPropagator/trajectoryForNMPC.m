@@ -20,10 +20,10 @@ elseif t < M && t > 0
     uref(:,1:t) = u0(:,k+1:k+t);
 
     yref(1:5,t+1:M) = y0(1:5,end)*ones(1,M-t);
-    yref(6,t+1:M) = y0(end,end)+d*[1:M-t];
+    yref(6,t+1:M) = y0(end,end)+d*(1:M-t);
     uref(:,t+1:M) = zeros(3,1:M-t);
 else
     uref = zeros(3,M);
     yref(1:5,:) = y0(1:5,end)*ones(1,M);
-    yref(6,:) = y0(end,end)+d*([1:M]-t);
+    yref(6,:) = y0(end,end)+d*((1:M)-t);
 end

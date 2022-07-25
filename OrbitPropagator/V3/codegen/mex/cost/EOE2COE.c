@@ -11,29 +11,27 @@
 
 /* Include files */
 #include "EOE2COE.h"
+#include "cost_data.h"
 #include "rt_nonfinite.h"
 #include "mwmathutil.h"
 
 /* Variable Definitions */
-static emlrtRSInfo eb_emlrtRSI = {
-    25,        /* lineNo */
-    "EOE2COE", /* fcnName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\\EOE2COE.m" /* pathName
-                                                                          */
+static emlrtRSInfo
+    eb_emlrtRSI =
+        {
+            25,        /* lineNo */
+            "EOE2COE", /* fcnName */
+            "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V3/"
+            "EOE2COE.m" /* pathName */
 };
 
-static emlrtRSInfo fb_emlrtRSI = {
-    26,        /* lineNo */
-    "EOE2COE", /* fcnName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\\EOE2COE.m" /* pathName
-                                                                          */
-};
-
-static emlrtRTEInfo j_emlrtRTEI = {
-    13,                                                            /* lineNo */
-    9,                                                             /* colNo */
-    "sqrt",                                                        /* fName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\elfun\\sqrt.m" /* pName */
+static emlrtRSInfo
+    fb_emlrtRSI =
+        {
+            26,        /* lineNo */
+            "EOE2COE", /* fcnName */
+            "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V3/"
+            "EOE2COE.m" /* pathName */
 };
 
 /* Function Definitions */
@@ -71,7 +69,7 @@ void EOE2COE(const emlrtStack *sp, const real_T x[6], real_T y[6])
   e = e_tmp + b_e_tmp;
   if (e < 0.0) {
     emlrtErrorWithMessageIdR2018a(
-        &st, &j_emlrtRTEI, "Coder:toolbox:ElFunDomainError",
+        &st, &emlrtRTEI, "Coder:toolbox:ElFunDomainError",
         "Coder:toolbox:ElFunDomainError", 3, 4, 4, "sqrt");
   }
   e = muDoubleScalarSqrt(e);
@@ -81,7 +79,7 @@ void EOE2COE(const emlrtStack *sp, const real_T x[6], real_T y[6])
   b_x = x_tmp + b_x_tmp;
   if (b_x < 0.0) {
     emlrtErrorWithMessageIdR2018a(
-        &st, &j_emlrtRTEI, "Coder:toolbox:ElFunDomainError",
+        &st, &emlrtRTEI, "Coder:toolbox:ElFunDomainError",
         "Coder:toolbox:ElFunDomainError", 3, 4, 4, "sqrt");
   }
   b_x = muDoubleScalarSqrt(b_x);

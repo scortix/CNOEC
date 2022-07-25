@@ -18,23 +18,26 @@
 
 /* Variable Definitions */
 static emlrtRSInfo p_emlrtRSI = {
-    319,                                                          /* lineNo */
-    "eml_float_colon",                                            /* fcnName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" /* pathName */
+    311,               /* lineNo */
+    "eml_float_colon", /* fcnName */
+    "/Applications/MATLAB_R2021b.app/toolbox/eml/lib/matlab/ops/colon.m" /* pathName
+                                                                          */
 };
 
-static emlrtRTEInfo d_emlrtRTEI = {
-    419,                                                          /* lineNo */
-    15,                                                           /* colNo */
-    "assert_pmaxsize",                                            /* fName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" /* pName */
+static emlrtRTEInfo e_emlrtRTEI = {
+    411,               /* lineNo */
+    15,                /* colNo */
+    "assert_pmaxsize", /* fName */
+    "/Applications/MATLAB_R2021b.app/toolbox/eml/lib/matlab/ops/colon.m" /* pName
+                                                                          */
 };
 
 static emlrtRTEInfo t_emlrtRTEI = {
-    320,                                                          /* lineNo */
-    20,                                                           /* colNo */
-    "colon",                                                      /* fName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" /* pName */
+    312,     /* lineNo */
+    20,      /* colNo */
+    "colon", /* fName */
+    "/Applications/MATLAB_R2021b.app/toolbox/eml/lib/matlab/ops/colon.m" /* pName
+                                                                          */
 };
 
 /* Function Definitions */
@@ -74,7 +77,7 @@ void eml_float_colon(const emlrtStack *sp, real_T d, real_T b,
   }
   st.site = &p_emlrtRSI;
   if (ndbl > 2.147483647E+9) {
-    emlrtErrorWithMessageIdR2018a(&st, &d_emlrtRTEI, "Coder:MATLAB:pmaxsize",
+    emlrtErrorWithMessageIdR2018a(&st, &e_emlrtRTEI, "Coder:MATLAB:pmaxsize",
                                   "Coder:MATLAB:pmaxsize", 0);
   }
   nm1d2 = y->size[0] * y->size[1];

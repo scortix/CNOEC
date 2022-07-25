@@ -28,5 +28,6 @@ extern emlrtContext emlrtContextGlobal;
 extern emlrtRSInfo r_emlrtRSI;
 extern omp_lock_t emlrtLockGlobal;
 extern omp_nest_lock_t cost_nestLockGlobal;
+extern emlrtRTEInfo emlrtRTEI;
 
 /* End of code generation (cost_data.h) */
