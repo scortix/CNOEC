@@ -1,8 +1,8 @@
-function [J,y,tCost,m] = cost(x, Ts, tmax, y0, ybar, ratio, Tmax, coeffT, m0, alpha)
+function [J,y,tCost,m] = costFun(x, Ts, tmax, y0, ybar, ratio, Tmax, coeffT, m0, alpha)
 
 lu = (length(x)-2)/2;
 theta0 = x(1);
-tf = x(end);
+epsilon = x(end);
 csi = x(2:lu+1);
 qAngle = x(lu+2:end-1);
 
@@ -10,13 +10,8 @@ topt = 0:Ts*ratio:tmax;
 
 t = 0:Ts:tmax;
 
-csi = interp1(topt,csi,t);
-qAngle = interp1(topt,qAngle,t);
-
-indtf = find(t>=tf, 1, "first");
-if isempty(indtf)
-    indtf = length(t);
-end
+csi = interp1(topt,csi,t,"pchip");
+qAngle = interp1(topt,qAngle,t,"pchip");
 
 y0(6) = y0(6)+theta0;
 x0 = EOE2COE(y0);
@@ -37,17 +32,19 @@ for k = 1:length(t)-1
     xCOE = EOE2COE(y(:,k));
     m = m - Ts*coeffT*csi(k);
 %     f = f+(xCOE([1:2 5])-xbar([1:2 5]))'*Q*(xCOE([1:2 5])-xbar([1:2 5]))*t(k);
-    tCost = tCost+(xCOE([1:2 5])-xbar([1:2 5]))'*Q*(xCOE([1:2 5])-xbar([1:2 5]))*1.0001^t(k);
+    tCost = tCost+(xCOE([1:2 5])-xbar([1:2 5]))'*Q*(xCOE([1:2 5])-xbar([1:2 5]))*t(k);
 end
 tCost = tCost/length(t)/tmax*1e3;
 
 xCOE = EOE2COE(y(:,end));
+r = ((y(1,:)./(1+sqrt(y(2,:).^2+y(3,:).^2).*cos(y(6,:)-atan2(y(3,:),y(2,:)))))');
 g = (xCOE([1:2 5])-xbar([1:2 5]))'*Q*(xCOE([1:2 5])-xbar([1:2 5]));
-f = alpha*tCost+(1-alpha)*((m0-m)*5)+1e4*g;
+f = alpha*tCost+(1-alpha)*((m0-m)*10)+1e5*g;
 % g = [];
-h = m-500;
+h = [m-500;r-6380];
+% h = m-500;
 
 
-J = [f;g;h];
+J = [f;h];
 
 

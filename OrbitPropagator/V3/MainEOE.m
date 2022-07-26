@@ -3,15 +3,15 @@ clear
 clc
 
 %%
-% mu = 398600;
-% r0 = [0 -29597.43 0]';
-% v0 = [1.8349 0.0002 3.1783]';
-% rf = [0 -29617.43 0]';
-% vf = [1.8371 0.0002 3.1755]';
+mu = 398600;
+r0 = [0 -29597.43 0]';
+v0 = [1.8349 0.0002 3.1783]';
+rf = [0 -29617.43 0]';
+vf = [1.8371 0.0002 3.1755]';
 % 
 % [orb_in.a, orb_in.e, orb_in.i, orb_in.om, orb_in.OM, orb_in.theta] = rv2paraorb(r0,v0,mu);
 % [orb_end.a, orb_end.e, orb_end.i, orb_end.om, orb_end.OM, orb_end.theta] = rv2paraorb(rf,vf,mu);
-% return
+
 
 
 
@@ -21,23 +21,23 @@ clc
 % Forward Euler: x(k+1) = x(k) + Ts*xdot(k)
 Ts = 100; % Discrete time step
 tmax = 2e5; % Maximum time
-ratio = 100; % Per quanto tempo mantiene l'input
-Tmax = 50;
-Isp = 3000;
+ratio = 50; % Per quanto tempo mantiene l'input
+Tmax = 10;
+Isp = 1000;
 g0 = 9.81;
-m0 = 735;
+m0 = 1000;
 t = 0:Ts:tmax; % Time vector
 y = zeros(6,length(t)); % State vector initialization
 lu = (length(t)-1)/ratio+1;
 u = zeros(lu,1); % Input vector initialization 
-tf = 9.999e4; % Initial guess for final time
+epsilon = 1e-3; % Initial guess for final time
 u = [0/180*pi;
-    0.5+u;
+    1+u;
     u+pi/2;
-    tf]; % Initial guess vector
+    epsilon]; % Initial guess vector
 
-orb_in = struct('a', 12000, 'e', 0.1, 'i', pi/4, 'OM', 0, 'om', 0, 'theta', 0); % Initial orbit
-orb_end = struct('a', 13000, 'e', 0.3, 'i', pi/4, 'OM', 0, 'om', pi/4, 'theta', 0); % Final orbit
+orb_in = struct('a', 8000, 'e', 0, 'i', pi/4, 'OM', 0, 'om', 0, 'theta', 0); % Initial orbit
+orb_end = struct('a', 10000, 'e', 0.2, 'i', pi/4, 'OM', 0, 'om', pi/3, 'theta', 0); % Final orbit
 
 y0 = COE2EOE(orb_in); % Initial condition conversion to EOE state
 y(:,1) = y0; % Set first state vector equal to initial condition
@@ -56,36 +56,37 @@ d = [0;
     zeros(lu,1);
     -ones(lu,1);
     0;
-    -tmax];
+    -1e-3];
 
 %% Optimization routine
 
 myoptimset;
 opt.method = "BFGS";
-opt.nitermax = 70;
-opt.tolconstr = 1e-3;
-alpha = 0:0.25:1;
+opt.nitermax = 400;
+alpha = [1 0.99 0.75 0.5 0.25 0.01 0];
+% alpha = 1;
 alphaCell = cell(length(alpha),5);
 
-ratioVec = [100 50 25];
+ratioVec = [ratio 25 10];
 for k = 1:length(alpha)
     uoptlin = u;
     
     for i = 1:length(ratioVec)
         ratio = ratioVec(i);
-        fun = @(x) cost_mex(x, Ts, tmax, y0, ybar, ratio, Tmax, Tmax/g0/Isp, m0, alpha(k));
+        fun = @(x) costFun_mex(x, Ts, tmax, y0, ybar, ratio, Tmax, Tmax/g0/Isp, m0, alpha(k));
         if i == 1 && alpha(k) < -0.1
             fun = @(x) cost_mex(x, Ts, tmax, y0, ybar, ratio, Tmax, Tmax/g0/Isp, m0, 0.8);
             [uoptlin,~,~,~,~] = mySQP(fun,uoptlin,[],[],C,d,1,1,opt);
-            fun = @(x) cost_mex(x, Ts, tmax, y0, ybar, ratio, Tmax, Tmax/g0/Isp, m0, alpha(k));
+            fun = @(x) costFun_mex(x, Ts, tmax, y0, ybar, ratio, Tmax, Tmax/g0/Isp, m0, alpha(k));
         end
+        tNew = 0:ratio*Ts:tmax;
         if i ~= 1
             opt.tolx = 1e-9;
-            fun = @(x) cost_mex(x, Ts, tmax, y0, ybar, ratio, Tmax, Tmax/g0/Isp, m0, alpha(k)); 
+            fun = @(x) costFun_mex(x, Ts, tmax, y0, ybar, ratio, Tmax, Tmax/g0/Isp, m0, alpha(k)); 
             tOld = 0:ratioVec(i-1)*Ts:tmax;
             tNew = 0:ratio*Ts:tmax;
             
-            uoptlinNew = [uoptlin(1);interp1(tOld,uoptlin(2:end/2),tNew)';interp1(tOld,uoptlin(end/2+1:end-1),tNew)';uoptlin(end)];
+            uoptlinNew = [uoptlin(1);interp1(tOld,uoptlin(2:end/2),tNew,"pchip")';interp1(tOld,uoptlin(end/2+1:end-1),tNew,"pchip")';uoptlin(end)];
             uoptlinOld = uoptlin;
             uoptlin = uoptlinNew;
         end
@@ -102,21 +103,67 @@ for k = 1:length(alpha)
                 zeros(lu,1);
                 -ones(lu,1);
                 0;
-                -tmax];
+                -1e-3];
 
-        [uoptlin,cost,~,~,useq] = mySQP(fun,uoptlin,[],[],C,d,1,1,opt);
+        [uoptlin,cost,~,~,useq] = mySQP(fun,uoptlin,[],[],C,d,0,1+length(tNew),opt);
     end
-    [~,y,tCost,m] = cost_mex(uoptlin, Ts, tmax, y0, ybar, ratio, Tmax, Tmax/g0/Isp, m0, alpha(k));
+    [~,y,tCost,m] = costFun_mex(uoptlin, Ts, tmax, y0, ybar, ratio, Tmax, Tmax/g0/Isp, m0, alpha(k));
     alphaCell(k,:) = {alpha(k),uoptlin,y,tCost,m};
 end
 
 %%
-figure()
+x0 = EOE2COE(y0);
+xbar = EOE2COE(ybar);
+Qdiag = (xbar([1:2 5])-0*x0([1:2 5]));
+Qdiag = Qdiag + 0.1*(Qdiag==0);
+Q = diag(1./Qdiag.^2);
+f1 = figure();
+f2 = figure();
+f3 = figure();
+f4 = figure();
 for k = 1:length(alpha)
+    u = alphaCell{k,2};
     m = alphaCell{k,5};
     tCost = alphaCell{k,4};
+    x = alphaCell{k,3};
+    for i = 1:size(x,2)
+        x(:,i) = EOE2COE(x(:,i)); % Conversion of EOE state vector to COE state vector
+    end
+
+    figure(f1)
     semilogy(m0-m,tCost,'Marker','o','MarkerSize',10);
+    grid on
     hold on
+
+    plot2DOrbit(orb_in,orb_end,x);
+    grid on
+
+    figure(f2)
+    subplot(3,1,1)
+    plot(t,x(1,:));
+    hold on
+    grid on
+    subplot(3,1,2)
+    plot(t,x(2,:));
+    hold on
+    grid on
+    subplot(3,1,3)
+    plot(t,x(5,:));
+    grid on
+    hold on
+
+    figure(f3)
+    csisim = interp1(tNew,u(2:end/2),t,"pchip");
+    plot(t,csisim)
+    hold on
+    grid on
+
+    figure(f4)
+    plot(t,vecnorm(sqrt(Q)*(x([1 2 5],:)-xbar([1 2 5]))).^2)
+    hold on
+    grid on
+    
+
 end
 grid on
 
@@ -184,6 +231,40 @@ plot(t, csisim(1:length(t)))
 saveOpt = false;
 if saveOpt
     save("initGuess.mat","uoptlin")
+end
+
+
+
+function fig = plot2DOrbit(orb_in,orb_end,x)
+fig = figure();
+% fimplicit(@(x,y)x.^2+y.^2-6378.1^2,[-6380,6380])
+r = 6378.1;
+rectangle("Position",[-r -r 2*r 2*r],"Curvature",1,"FaceColor",[40 122 184]/255)
+hold on
+orb_in.pos_ge_tot(:,:,1)=Orbit_ge(orb_in.a, orb_in.e, 0, 0, orb_in.om, 0, 2*pi);
+orb_end.pos_ge_tot(:,:,1)=Orbit_ge(orb_end.a,orb_end.e,0,0,orb_end.om,0,2*pi);
+
+
+   
+r=x(1,:).*(1-x(2,:).^2)./(1+x(2,:).*cos(x(6,:)));
+pos_pe(:,1)=r.*cos(x(6,:));
+pos_pe(:,2)=r.*sin(x(6,:));
+pos_pe(:,3)=0;
+for i = 1:length(r)
+    w = x(5,i);
+    Rw=[cos(w) sin(w) 0; -sin(w) cos(w) 0; 0 0 1];
+    pos_pe(i,:) = Rw'*pos_pe(i,:)';
+end
+pos_pe = pos_pe';
+plot(pos_pe(1,:),pos_pe(2,:),'Color','r')
+
+plot(orb_in.pos_ge_tot(:,1),orb_in.pos_ge_tot(:,2),'LineWidth',3,'Color','k')
+plot(orb_end.pos_ge_tot(:,1),orb_end.pos_ge_tot(:,2),'LineWidth',3,'Color','b')
+
+
+axis equal
+
+
 end
 
 

@@ -184,12 +184,20 @@ while true
     AQPeq = gradgxk'; bQPeq = gxk(:,niter);
     AQP = gradhxk'; bQP = hxk(:,niter);
     Alineq = [zeros(length(bQPeq),q) AQPeq; -eye(q) AQP];
-    pk0 = linprog([ones(q,1);zeros(length(x0),1)], [-eye(q) zeros(q,length(x0))], zeros(q,1), -Alineq, [bQPeq; bQP], [], [], optlin);
-    s = pk0(1:q); pk0 = pk0(q+1:end);
-    if any(s<-1e-6)
-        error("Unfeasible");
+    try
+        pk0 = linprog([ones(q,1);zeros(length(x0),1)], [-eye(q) zeros(q,length(x0))], zeros(q,1), -Alineq, [bQPeq; bQP], [], [], optlin);
+        s = pk0(1:q); pk0 = pk0(q+1:end);
+        if any(s<-1e-6)
+            error("Unfeasible");
+        end
+        [pkstar, ~, ~, ~, lb]  = quadprog(Hk, gradfxk, -AQP, bQP, -AQPeq, bQPeq, [], [], pk0, optQP);
+    catch ME
+        optQP = optimoptions("quadprog","Display","none",'Algorithm','interior-point-convex','MaxIterations',1e3,...
+            'OptimalityTolerance',1e-8);
+        [pkstar, ~, ~, ~, lb]  = quadprog(Hk, gradfxk, -AQP, bQP, -AQPeq, bQPeq, [], [], pk0, optQP);
+        optQP = optimoptions("quadprog","Display","none",'Algorithm','active-set','MaxIterations',1e3,...
+            'OptimalityTolerance',1e-8);
     end
-    [pkstar, ~, ~, ~, lb]  = quadprog(Hk, gradfxk, -AQP, bQP, -AQPeq, bQPeq, [], [], pk0, optQP);
     lambdakstar = -lb.eqlin; mukstar = lb.ineqlin;
     dlambdak = lambdakstar - lam(:,niter);
     dmuk = mukstar - mu(:,niter);
