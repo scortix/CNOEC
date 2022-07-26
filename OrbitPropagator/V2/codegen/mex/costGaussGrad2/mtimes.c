@@ -18,38 +18,34 @@
 #include <stddef.h>
 
 /* Variable Definitions */
-static emlrtRSInfo sc_emlrtRSI =
-    {
-        142,      /* lineNo */
-        "mtimes", /* fcnName */
-        "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+internal\\+"
-        "blas\\mtimes.m" /* pathName */
+static emlrtRSInfo pc_emlrtRSI = {
+    142,      /* lineNo */
+    "mtimes", /* fcnName */
+    "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/+blas/"
+    "mtimes.m" /* pathName */
 };
 
-static emlrtRSInfo tc_emlrtRSI =
-    {
-        178,           /* lineNo */
-        "mtimes_blas", /* fcnName */
-        "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+internal\\+"
-        "blas\\mtimes.m" /* pathName */
+static emlrtRSInfo qc_emlrtRSI = {
+    178,           /* lineNo */
+    "mtimes_blas", /* fcnName */
+    "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/+blas/"
+    "mtimes.m" /* pathName */
 };
 
-static emlrtRTEInfo tc_emlrtRTEI =
-    {
-        140,      /* lineNo */
-        5,        /* colNo */
-        "mtimes", /* fName */
-        "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+internal\\+"
-        "blas\\mtimes.m" /* pName */
+static emlrtRTEInfo vc_emlrtRTEI = {
+    140,      /* lineNo */
+    5,        /* colNo */
+    "mtimes", /* fName */
+    "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/+blas/"
+    "mtimes.m" /* pName */
 };
 
-static emlrtRTEInfo uc_emlrtRTEI =
-    {
-        218,      /* lineNo */
-        20,       /* colNo */
-        "mtimes", /* fName */
-        "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+internal\\+"
-        "blas\\mtimes.m" /* pName */
+static emlrtRTEInfo wc_emlrtRTEI = {
+    218,      /* lineNo */
+    20,       /* colNo */
+    "mtimes", /* fName */
+    "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/+blas/"
+    "mtimes.m" /* pName */
 };
 
 /* Function Definitions */
@@ -70,6 +66,7 @@ void mtimes(const emlrtStack *sp, const emxArray_real_T *A,
   real_T beta1;
   real_T *C_data;
   int32_T i;
+  int32_T loop_ub;
   char_T TRANSA1;
   char_T TRANSB1;
   st.prev = sp;
@@ -79,18 +76,17 @@ void mtimes(const emlrtStack *sp, const emxArray_real_T *A,
   B_data = B->data;
   A_data = A->data;
   if ((A->size[0] == 0) || (A->size[1] == 0) || (B->size[0] == 0)) {
-    int32_T loop_ub;
     i = C->size[0];
     C->size[0] = A->size[0];
-    emxEnsureCapacity_real_T(sp, C, i, &tc_emlrtRTEI);
+    emxEnsureCapacity_real_T(sp, C, i, &vc_emlrtRTEI);
     C_data = C->data;
     loop_ub = A->size[0];
     for (i = 0; i < loop_ub; i++) {
       C_data[i] = 0.0;
     }
   } else {
-    st.site = &sc_emlrtRSI;
-    b_st.site = &tc_emlrtRSI;
+    st.site = &pc_emlrtRSI;
+    b_st.site = &qc_emlrtRSI;
     TRANSB1 = 'N';
     TRANSA1 = 'N';
     alpha1 = 1.0;
@@ -103,7 +99,7 @@ void mtimes(const emlrtStack *sp, const emxArray_real_T *A,
     ldc_t = (ptrdiff_t)A->size[0];
     i = C->size[0];
     C->size[0] = A->size[0];
-    emxEnsureCapacity_real_T(&b_st, C, i, &uc_emlrtRTEI);
+    emxEnsureCapacity_real_T(&b_st, C, i, &wc_emlrtRTEI);
     C_data = C->data;
     dgemm(&TRANSA1, &TRANSB1, &m_t, &n_t, &k_t, &alpha1, &A_data[0], &lda_t,
           &B_data[0], &ldb_t, &beta1, &C_data[0], &ldc_t);

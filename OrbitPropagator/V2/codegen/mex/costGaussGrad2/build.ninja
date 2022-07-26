@@ -1,65 +1,65 @@
-# CompilerName=msvc160
+# CompilerName=clang
 # Mode=optim
 ninja_required_version = 1.3
 
 # Basic folders
 root = .
-builddir = $root\build\win64
-matlabdir = P:\Matlab\R2022a
-startdir = P:\Projects\CNOEC\CNOEC_Project\OrbitPropagator\V2
+builddir = $root/build/maci64
+matlabdir = /Applications/MATLAB_R2021b.app
+startdir = /Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2
 
 # Toolchain information
-cc = cl
-cxx = cl
-linker = link
-linkerxx = link
+cc = /usr/bin/xcrun -sdk macosx12.3 clang
+cxx = /usr/bin/xcrun -sdk macosx12.3 clang++
+linker = /usr/bin/xcrun -sdk macosx12.3 clang
+linkerxx = /usr/bin/xcrun -sdk macosx12.3 clang++
 
-cflags =  /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I "$root" /I "$startdir" /I "$root\interface" /I "$matlabdir\extern\include" /I "." -DMODEL=costGaussGrad2_mex  
+cflags =  -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I "$root" -I "$startdir" -I "$root/interface" -I "$matlabdir/extern/include" -I "." -DMODEL=costGaussGrad2_mex -c 
 
-cxxflags =   /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I "$root" /I "$startdir" /I "$root\interface" /I "$matlabdir\extern\include" /I "." -DMODEL=costGaussGrad2_mex  
+cxxflags =  -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -fobjc-arc -std=c++11 -stdlib=libc++ -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c++11 -I "$root" -I "$startdir" -I "$root/interface" -I "$matlabdir/extern/include" -I "." -DMODEL=costGaussGrad2_mex -c 
 
-ldflags =  /nologo /manifest   /DLL /LIBPATH:"$matlabdir\extern\lib\win64\microsoft" libmx.lib libmex.lib libmat.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib  /out:"costGaussGrad2_mex.mexw64" /LIBPATH:"$matlabdir\extern\lib\win64\microsoft" libmwblas.lib libemlrt.lib libcovrt.lib libut.lib libmwmathutil.lib  /export:mexFunction /export:mexfilerequiredapiversion /export:emlrtMexFcnProperties /export:costGaussGrad2 /export:costGaussGrad2_initialize /export:costGaussGrad2_terminate /export:costGaussGrad2_atexit /export:emxEnsureCapacity_boolean_T /export:emxFree_boolean_T /export:emxInit_boolean_T /export:emxEnsureCapacity_int8_T /export:emxFree_int8_T /export:emxInit_int8_T /export:emxFree_real_T /export:emxInit_real_T /export:emxEnsureCapacity_real_T
+ldflags =  -Wl,-twolevel_namespace -undefined error -arch x86_64 -mmacosx-version-min=10.15 -Wl,-syslibroot,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -bundle   -L"$matlabdir/bin/maci64" -lmx -lmex -lmat -lc++  -Wl,-rpath,@loader_path -o costGaussGrad2_mex.mexmaci64 -L"$matlabdir/bin/maci64" -lmwblas -lemlrt -lcovrt -lut -lmwmathutil  -Wl,-exported_symbols_list,costGaussGrad2_mex.map
 
 # Build Rules
 rule cc
-    command = $cc $cflags $in /Fo$out
+    command = $cc $cflags $in -o $out
 
 rule cxx
-    command = $cxx $cxxflags $in /Fo$out
+    command = $cxx $cxxflags $in -o $out
 
 rule link
-    command = $linker @$out.rsp $ldflags
-    rspfile = $out.rsp
-    rspfile_content = $in
+    command = $linker $in $ldflags
 
 rule linkxx
     command = $linkerxx $in $ldflags
 
 # Build
-build $builddir\costGaussGrad2_data.obj : cc $root\costGaussGrad2_data.c
-build $builddir\rt_nonfinite.obj : cc $root\rt_nonfinite.c
-build $builddir\costGaussGrad2_initialize.obj : cc $root\costGaussGrad2_initialize.c
-build $builddir\costGaussGrad2_terminate.obj : cc $root\costGaussGrad2_terminate.c
-build $builddir\costGaussGrad2.obj : cc $root\costGaussGrad2.c
-build $builddir\indexShapeCheck.obj : cc $root\indexShapeCheck.c
-build $builddir\colon.obj : cc $root\colon.c
-build $builddir\find.obj : cc $root\find.c
-build $builddir\EOE2COE.obj : cc $root\EOE2COE.c
-build $builddir\atan2.obj : cc $root\atan2.c
-build $builddir\assertCompatibleDims.obj : cc $root\assertCompatibleDims.c
-build $builddir\vecnorm.obj : cc $root\vecnorm.c
-build $builddir\mygradcalc.obj : cc $root\mygradcalc.c
-build $builddir\eml_mtimes_helper.obj : cc $root\eml_mtimes_helper.c
-build $builddir\mtimes.obj : cc $root\mtimes.c
-build $builddir\_coder_costGaussGrad2_api.obj : cc $root\interface\_coder_costGaussGrad2_api.c
-build $builddir\_coder_costGaussGrad2_mex.obj : cc $root\interface\_coder_costGaussGrad2_mex.c
-build $builddir\EOEDerivatives.obj : cc $root\EOEDerivatives.c
-build $builddir\eml_int_forloop_overflow_check.obj : cc $root\eml_int_forloop_overflow_check.c
-build $builddir\sqrt.obj : cc $root\sqrt.c
-build $builddir\cos.obj : cc $root\cos.c
-build $builddir\costGaussGrad2_emxutil.obj : cc $root\costGaussGrad2_emxutil.c
-build $builddir\_coder_costGaussGrad2_info.obj : cc $root\interface\_coder_costGaussGrad2_info.c
-build $builddir\c_mexapi_version.obj : cc $matlabdir\extern\version\c_mexapi_version.c
+build $builddir/costGaussGrad2_data.o : cc $root/costGaussGrad2_data.c
+build $builddir/rt_nonfinite.o : cc $root/rt_nonfinite.c
+build $builddir/costGaussGrad2_initialize.o : cc $root/costGaussGrad2_initialize.c
+build $builddir/costGaussGrad2_terminate.o : cc $root/costGaussGrad2_terminate.c
+build $builddir/costGaussGrad2.o : cc $root/costGaussGrad2.c
+build $builddir/indexShapeCheck.o : cc $root/indexShapeCheck.c
+build $builddir/colon.o : cc $root/colon.c
+build $builddir/find.o : cc $root/find.c
+build $builddir/EOE2COE.o : cc $root/EOE2COE.c
+build $builddir/power.o : cc $root/power.c
+build $builddir/atan2.o : cc $root/atan2.c
+build $builddir/ixfun.o : cc $root/ixfun.c
+build $builddir/assertCompatibleDims.o : cc $root/assertCompatibleDims.c
+build $builddir/vecnorm.o : cc $root/vecnorm.c
+build $builddir/mygradcalc.o : cc $root/mygradcalc.c
+build $builddir/eml_mtimes_helper.o : cc $root/eml_mtimes_helper.c
+build $builddir/mtimes.o : cc $root/mtimes.c
+build $builddir/_coder_costGaussGrad2_api.o : cc $root/interface/_coder_costGaussGrad2_api.c
+build $builddir/_coder_costGaussGrad2_mex.o : cc $root/interface/_coder_costGaussGrad2_mex.c
+build $builddir/EOEDerivatives.o : cc $root/EOEDerivatives.c
+build $builddir/eml_int_forloop_overflow_check.o : cc $root/eml_int_forloop_overflow_check.c
+build $builddir/sqrt.o : cc $root/sqrt.c
+build $builddir/cos.o : cc $root/cos.c
+build $builddir/costGaussGrad2_emxutil.o : cc $root/costGaussGrad2_emxutil.c
+build $builddir/_coder_costGaussGrad2_info.o : cc $root/interface/_coder_costGaussGrad2_info.c
+build $builddir/c_mexapi_version.o : cc $matlabdir/extern/version/c_mexapi_version.c
 
 # Link
-build $root\costGaussGrad2_mex.mexw64 : link $builddir\costGaussGrad2_data.obj $builddir\rt_nonfinite.obj $builddir\costGaussGrad2_initialize.obj $builddir\costGaussGrad2_terminate.obj $builddir\costGaussGrad2.obj $builddir\indexShapeCheck.obj $builddir\colon.obj $builddir\find.obj $builddir\EOE2COE.obj $builddir\atan2.obj $builddir\assertCompatibleDims.obj $builddir\vecnorm.obj $builddir\mygradcalc.obj $builddir\eml_mtimes_helper.obj $builddir\mtimes.obj $builddir\_coder_costGaussGrad2_api.obj $builddir\_coder_costGaussGrad2_mex.obj $builddir\EOEDerivatives.obj $builddir\eml_int_forloop_overflow_check.obj $builddir\sqrt.obj $builddir\cos.obj $builddir\costGaussGrad2_emxutil.obj $builddir\_coder_costGaussGrad2_info.obj $builddir\c_mexapi_version.obj 
+build $root/costGaussGrad2_mex.mexmaci64 : link $builddir/costGaussGrad2_data.o $builddir/rt_nonfinite.o $builddir/costGaussGrad2_initialize.o $builddir/costGaussGrad2_terminate.o $builddir/costGaussGrad2.o $builddir/indexShapeCheck.o $builddir/colon.o $builddir/find.o $builddir/EOE2COE.o $builddir/power.o $builddir/atan2.o $builddir/ixfun.o $builddir/assertCompatibleDims.o $builddir/vecnorm.o $builddir/mygradcalc.o $builddir/eml_mtimes_helper.o $builddir/mtimes.o $builddir/_coder_costGaussGrad2_api.o $builddir/_coder_costGaussGrad2_mex.o $builddir/EOEDerivatives.o $builddir/eml_int_forloop_overflow_check.o $builddir/sqrt.o $builddir/cos.o $builddir/costGaussGrad2_emxutil.o $builddir/_coder_costGaussGrad2_info.o $builddir/c_mexapi_version.o 

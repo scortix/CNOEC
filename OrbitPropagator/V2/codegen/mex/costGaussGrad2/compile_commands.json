@@ -1,146 +1,158 @@
 [
   {
-    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGaussGrad2",
-    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGaussGrad2_mex   costGaussGrad2_data.c /Fobuild\\win64\\costGaussGrad2_data.obj",
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2/codegen/mex/costGaussGrad2",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costGaussGrad2_mex -c  costGaussGrad2_data.c -o build/maci64/costGaussGrad2_data.o",
     "file": "costGaussGrad2_data.c",
-    "output": "build/win64/costGaussGrad2_data.obj"
+    "output": "build/maci64/costGaussGrad2_data.o"
   },
   {
-    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGaussGrad2",
-    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGaussGrad2_mex   rt_nonfinite.c /Fobuild\\win64\\rt_nonfinite.obj",
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2/codegen/mex/costGaussGrad2",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costGaussGrad2_mex -c  rt_nonfinite.c -o build/maci64/rt_nonfinite.o",
     "file": "rt_nonfinite.c",
-    "output": "build/win64/rt_nonfinite.obj"
+    "output": "build/maci64/rt_nonfinite.o"
   },
   {
-    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGaussGrad2",
-    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGaussGrad2_mex   costGaussGrad2_initialize.c /Fobuild\\win64\\costGaussGrad2_initialize.obj",
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2/codegen/mex/costGaussGrad2",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costGaussGrad2_mex -c  costGaussGrad2_initialize.c -o build/maci64/costGaussGrad2_initialize.o",
     "file": "costGaussGrad2_initialize.c",
-    "output": "build/win64/costGaussGrad2_initialize.obj"
+    "output": "build/maci64/costGaussGrad2_initialize.o"
   },
   {
-    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGaussGrad2",
-    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGaussGrad2_mex   costGaussGrad2_terminate.c /Fobuild\\win64\\costGaussGrad2_terminate.obj",
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2/codegen/mex/costGaussGrad2",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costGaussGrad2_mex -c  costGaussGrad2_terminate.c -o build/maci64/costGaussGrad2_terminate.o",
     "file": "costGaussGrad2_terminate.c",
-    "output": "build/win64/costGaussGrad2_terminate.obj"
+    "output": "build/maci64/costGaussGrad2_terminate.o"
   },
   {
-    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGaussGrad2",
-    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGaussGrad2_mex   costGaussGrad2.c /Fobuild\\win64\\costGaussGrad2.obj",
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2/codegen/mex/costGaussGrad2",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costGaussGrad2_mex -c  costGaussGrad2.c -o build/maci64/costGaussGrad2.o",
     "file": "costGaussGrad2.c",
-    "output": "build/win64/costGaussGrad2.obj"
+    "output": "build/maci64/costGaussGrad2.o"
   },
   {
-    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGaussGrad2",
-    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGaussGrad2_mex   indexShapeCheck.c /Fobuild\\win64\\indexShapeCheck.obj",
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2/codegen/mex/costGaussGrad2",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costGaussGrad2_mex -c  indexShapeCheck.c -o build/maci64/indexShapeCheck.o",
     "file": "indexShapeCheck.c",
-    "output": "build/win64/indexShapeCheck.obj"
+    "output": "build/maci64/indexShapeCheck.o"
   },
   {
-    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGaussGrad2",
-    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGaussGrad2_mex   colon.c /Fobuild\\win64\\colon.obj",
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2/codegen/mex/costGaussGrad2",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costGaussGrad2_mex -c  colon.c -o build/maci64/colon.o",
     "file": "colon.c",
-    "output": "build/win64/colon.obj"
+    "output": "build/maci64/colon.o"
   },
   {
-    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGaussGrad2",
-    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGaussGrad2_mex   find.c /Fobuild\\win64\\find.obj",
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2/codegen/mex/costGaussGrad2",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costGaussGrad2_mex -c  find.c -o build/maci64/find.o",
     "file": "find.c",
-    "output": "build/win64/find.obj"
+    "output": "build/maci64/find.o"
   },
   {
-    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGaussGrad2",
-    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGaussGrad2_mex   EOE2COE.c /Fobuild\\win64\\EOE2COE.obj",
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2/codegen/mex/costGaussGrad2",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costGaussGrad2_mex -c  EOE2COE.c -o build/maci64/EOE2COE.o",
     "file": "EOE2COE.c",
-    "output": "build/win64/EOE2COE.obj"
+    "output": "build/maci64/EOE2COE.o"
   },
   {
-    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGaussGrad2",
-    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGaussGrad2_mex   atan2.c /Fobuild\\win64\\atan2.obj",
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2/codegen/mex/costGaussGrad2",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costGaussGrad2_mex -c  power.c -o build/maci64/power.o",
+    "file": "power.c",
+    "output": "build/maci64/power.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2/codegen/mex/costGaussGrad2",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costGaussGrad2_mex -c  atan2.c -o build/maci64/atan2.o",
     "file": "atan2.c",
-    "output": "build/win64/atan2.obj"
+    "output": "build/maci64/atan2.o"
   },
   {
-    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGaussGrad2",
-    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGaussGrad2_mex   assertCompatibleDims.c /Fobuild\\win64\\assertCompatibleDims.obj",
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2/codegen/mex/costGaussGrad2",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costGaussGrad2_mex -c  ixfun.c -o build/maci64/ixfun.o",
+    "file": "ixfun.c",
+    "output": "build/maci64/ixfun.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2/codegen/mex/costGaussGrad2",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costGaussGrad2_mex -c  assertCompatibleDims.c -o build/maci64/assertCompatibleDims.o",
     "file": "assertCompatibleDims.c",
-    "output": "build/win64/assertCompatibleDims.obj"
+    "output": "build/maci64/assertCompatibleDims.o"
   },
   {
-    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGaussGrad2",
-    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGaussGrad2_mex   vecnorm.c /Fobuild\\win64\\vecnorm.obj",
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2/codegen/mex/costGaussGrad2",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costGaussGrad2_mex -c  vecnorm.c -o build/maci64/vecnorm.o",
     "file": "vecnorm.c",
-    "output": "build/win64/vecnorm.obj"
+    "output": "build/maci64/vecnorm.o"
   },
   {
-    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGaussGrad2",
-    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGaussGrad2_mex   mygradcalc.c /Fobuild\\win64\\mygradcalc.obj",
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2/codegen/mex/costGaussGrad2",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costGaussGrad2_mex -c  mygradcalc.c -o build/maci64/mygradcalc.o",
     "file": "mygradcalc.c",
-    "output": "build/win64/mygradcalc.obj"
+    "output": "build/maci64/mygradcalc.o"
   },
   {
-    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGaussGrad2",
-    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGaussGrad2_mex   eml_mtimes_helper.c /Fobuild\\win64\\eml_mtimes_helper.obj",
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2/codegen/mex/costGaussGrad2",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costGaussGrad2_mex -c  eml_mtimes_helper.c -o build/maci64/eml_mtimes_helper.o",
     "file": "eml_mtimes_helper.c",
-    "output": "build/win64/eml_mtimes_helper.obj"
+    "output": "build/maci64/eml_mtimes_helper.o"
   },
   {
-    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGaussGrad2",
-    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGaussGrad2_mex   mtimes.c /Fobuild\\win64\\mtimes.obj",
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2/codegen/mex/costGaussGrad2",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costGaussGrad2_mex -c  mtimes.c -o build/maci64/mtimes.o",
     "file": "mtimes.c",
-    "output": "build/win64/mtimes.obj"
+    "output": "build/maci64/mtimes.o"
   },
   {
-    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGaussGrad2",
-    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGaussGrad2_mex   interface\\_coder_costGaussGrad2_api.c /Fobuild\\win64\\_coder_costGaussGrad2_api.obj",
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2/codegen/mex/costGaussGrad2",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costGaussGrad2_mex -c  interface/_coder_costGaussGrad2_api.c -o build/maci64/_coder_costGaussGrad2_api.o",
     "file": "interface/_coder_costGaussGrad2_api.c",
-    "output": "build/win64/_coder_costGaussGrad2_api.obj"
+    "output": "build/maci64/_coder_costGaussGrad2_api.o"
   },
   {
-    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGaussGrad2",
-    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGaussGrad2_mex   interface\\_coder_costGaussGrad2_mex.c /Fobuild\\win64\\_coder_costGaussGrad2_mex.obj",
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2/codegen/mex/costGaussGrad2",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costGaussGrad2_mex -c  interface/_coder_costGaussGrad2_mex.c -o build/maci64/_coder_costGaussGrad2_mex.o",
     "file": "interface/_coder_costGaussGrad2_mex.c",
-    "output": "build/win64/_coder_costGaussGrad2_mex.obj"
+    "output": "build/maci64/_coder_costGaussGrad2_mex.o"
   },
   {
-    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGaussGrad2",
-    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGaussGrad2_mex   EOEDerivatives.c /Fobuild\\win64\\EOEDerivatives.obj",
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2/codegen/mex/costGaussGrad2",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costGaussGrad2_mex -c  EOEDerivatives.c -o build/maci64/EOEDerivatives.o",
     "file": "EOEDerivatives.c",
-    "output": "build/win64/EOEDerivatives.obj"
+    "output": "build/maci64/EOEDerivatives.o"
   },
   {
-    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGaussGrad2",
-    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGaussGrad2_mex   eml_int_forloop_overflow_check.c /Fobuild\\win64\\eml_int_forloop_overflow_check.obj",
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2/codegen/mex/costGaussGrad2",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costGaussGrad2_mex -c  eml_int_forloop_overflow_check.c -o build/maci64/eml_int_forloop_overflow_check.o",
     "file": "eml_int_forloop_overflow_check.c",
-    "output": "build/win64/eml_int_forloop_overflow_check.obj"
+    "output": "build/maci64/eml_int_forloop_overflow_check.o"
   },
   {
-    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGaussGrad2",
-    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGaussGrad2_mex   sqrt.c /Fobuild\\win64\\sqrt.obj",
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2/codegen/mex/costGaussGrad2",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costGaussGrad2_mex -c  sqrt.c -o build/maci64/sqrt.o",
     "file": "sqrt.c",
-    "output": "build/win64/sqrt.obj"
+    "output": "build/maci64/sqrt.o"
   },
   {
-    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGaussGrad2",
-    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGaussGrad2_mex   cos.c /Fobuild\\win64\\cos.obj",
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2/codegen/mex/costGaussGrad2",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costGaussGrad2_mex -c  cos.c -o build/maci64/cos.o",
     "file": "cos.c",
-    "output": "build/win64/cos.obj"
+    "output": "build/maci64/cos.o"
   },
   {
-    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGaussGrad2",
-    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGaussGrad2_mex   costGaussGrad2_emxutil.c /Fobuild\\win64\\costGaussGrad2_emxutil.obj",
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2/codegen/mex/costGaussGrad2",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costGaussGrad2_mex -c  costGaussGrad2_emxutil.c -o build/maci64/costGaussGrad2_emxutil.o",
     "file": "costGaussGrad2_emxutil.c",
-    "output": "build/win64/costGaussGrad2_emxutil.obj"
+    "output": "build/maci64/costGaussGrad2_emxutil.o"
   },
   {
-    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGaussGrad2",
-    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGaussGrad2_mex   interface\\_coder_costGaussGrad2_info.c /Fobuild\\win64\\_coder_costGaussGrad2_info.obj",
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2/codegen/mex/costGaussGrad2",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costGaussGrad2_mex -c  interface/_coder_costGaussGrad2_info.c -o build/maci64/_coder_costGaussGrad2_info.o",
     "file": "interface/_coder_costGaussGrad2_info.c",
-    "output": "build/win64/_coder_costGaussGrad2_info.obj"
+    "output": "build/maci64/_coder_costGaussGrad2_info.o"
   },
   {
-    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\codegen\\mex\\costGaussGrad2",
-    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costGaussGrad2_mex   P:\\Matlab\\R2022a\\extern\\version\\c_mexapi_version.c /Fobuild\\win64\\c_mexapi_version.obj",
-    "file": "P:/Matlab/R2022a/extern/version/c_mexapi_version.c",
-    "output": "build/win64/c_mexapi_version.obj"
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2/codegen/mex/costGaussGrad2",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costGaussGrad2_mex -c  /Applications/MATLAB_R2021b.app/extern/version/c_mexapi_version.c -o build/maci64/c_mexapi_version.o",
+    "file": "/Applications/MATLAB_R2021b.app/extern/version/c_mexapi_version.c",
+    "output": "build/maci64/c_mexapi_version.o"
   }
 ]

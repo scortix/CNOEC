@@ -19,10 +19,10 @@
 
 /* Variable Definitions */
 static emlrtRSInfo lb_emlrtRSI = {
-    16,                                                            /* lineNo */
-    "sqrt",                                                        /* fcnName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\elfun\\sqrt.m" /* pathName
-                                                                    */
+    16,     /* lineNo */
+    "sqrt", /* fcnName */
+    "/Applications/MATLAB_R2021b.app/toolbox/eml/lib/matlab/elfun/sqrt.m" /* pathName
+                                                                           */
 };
 
 /* Function Definitions */
@@ -57,7 +57,7 @@ void b_sqrt(const emlrtStack *sp, emxArray_real_T *x)
   st.site = &lb_emlrtRSI;
   nx = x->size[1];
   b_st.site = &mb_emlrtRSI;
-  if (x->size[1] > 2147483646) {
+  if ((1 <= x->size[1]) && (x->size[1] > 2147483646)) {
     c_st.site = &x_emlrtRSI;
     check_forloop_overflow_error(&c_st);
   }

@@ -16,18 +16,22 @@
 #include "mwmathutil.h"
 
 /* Variable Definitions */
-static emlrtRSInfo db_emlrtRSI = {
-    25,        /* lineNo */
-    "EOE2COE", /* fcnName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\EOE2COE.m" /* pathName
-                                                                          */
+static emlrtRSInfo
+    db_emlrtRSI =
+        {
+            25,        /* lineNo */
+            "EOE2COE", /* fcnName */
+            "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2/"
+            "EOE2COE.m" /* pathName */
 };
 
-static emlrtRSInfo eb_emlrtRSI = {
-    26,        /* lineNo */
-    "EOE2COE", /* fcnName */
-    "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V2\\EOE2COE.m" /* pathName
-                                                                          */
+static emlrtRSInfo
+    eb_emlrtRSI =
+        {
+            26,        /* lineNo */
+            "EOE2COE", /* fcnName */
+            "/Users/matteodepaola/Documents/git/CNOEC/OrbitPropagator/V2/"
+            "EOE2COE.m" /* pathName */
 };
 
 /* Function Definitions */

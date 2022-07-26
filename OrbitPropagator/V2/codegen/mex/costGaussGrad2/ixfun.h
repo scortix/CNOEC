@@ -3,25 +3,26 @@
  * course requirements at degree granting institutions only.  Not for
  * government, commercial, or other organizational use.
  *
- * cost_initialize.h
+ * ixfun.h
  *
- * Code generation for function 'cost_initialize'
+ * Code generation for function 'ixfun'
  *
  */
 
 #pragma once
 
 /* Include files */
+#include "costGaussGrad2_types.h"
 #include "rtwtypes.h"
 #include "emlrt.h"
 #include "mex.h"
-#include "omp.h"
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 /* Function Declarations */
-void cost_initialize(void);
+void expand_atan2(const emlrtStack *sp, const emxArray_real_T *a,
+                  const emxArray_real_T *b, emxArray_real_T *c);
 
-/* End of code generation (cost_initialize.h) */
+/* End of code generation (ixfun.h) */

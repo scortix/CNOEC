@@ -17,16 +17,16 @@
 static emlrtRSInfo n_emlrtRSI = {
     42,                /* lineNo */
     "indexShapeCheck", /* fcnName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+internal\\indexShapeCheck."
-    "m" /* pathName */
+    "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/"
+    "indexShapeCheck.m" /* pathName */
 };
 
-static emlrtRTEInfo c_emlrtRTEI = {
+static emlrtRTEInfo d_emlrtRTEI = {
     122,           /* lineNo */
     5,             /* colNo */
     "errOrWarnIf", /* fName */
-    "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+internal\\indexShapeCheck."
-    "m" /* pName */
+    "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/"
+    "indexShapeCheck.m" /* pName */
 };
 
 /* Function Definitions */
@@ -44,7 +44,7 @@ void indexShapeCheck(const emlrtStack *sp, int32_T matrixSize,
   }
   st.site = &n_emlrtRSI;
   if (c) {
-    emlrtErrorWithMessageIdR2018a(&st, &c_emlrtRTEI,
+    emlrtErrorWithMessageIdR2018a(&st, &d_emlrtRTEI,
                                   "Coder:FE:PotentialVectorVector",
                                   "Coder:FE:PotentialVectorVector", 0);
   }

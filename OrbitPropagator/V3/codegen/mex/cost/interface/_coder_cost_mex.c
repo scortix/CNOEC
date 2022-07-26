@@ -17,7 +17,6 @@
 #include "cost_initialize.h"
 #include "cost_terminate.h"
 #include "rt_nonfinite.h"
-#include "omp.h"
 
 /* Function Definitions */
 void cost_mexFunction(int32_T nlhs, mxArray *plhs[4], int32_T nrhs,
@@ -84,9 +83,8 @@ void mexFunction(int32_T nlhs, mxArray *plhs[], int32_T nrhs,
 
 emlrtCTX mexFunctionCreateRootTLS(void)
 {
-  emlrtCreateRootTLSR2022a(&emlrtRootTLSGlobal, &emlrtContextGlobal,
-                           &emlrtLockerFunction, omp_get_num_procs(), NULL,
-                           (const char_T *)"windows-1252", true);
+  emlrtCreateRootTLSR2021a(&emlrtRootTLSGlobal, &emlrtContextGlobal,
+                           &emlrtLockerFunction, omp_get_num_procs(), NULL);
   return emlrtRootTLSGlobal;
 }
 
