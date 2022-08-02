@@ -3,9 +3,9 @@
  * course requirements at degree granting institutions only.  Not for
  * government, commercial, or other organizational use.
  *
- * costFun.h
+ * sqrt.h
  *
- * Code generation for function 'costFun'
+ * Code generation for function 'sqrt'
  *
  */
 
@@ -22,9 +22,6 @@
 #include <string.h>
 
 /* Function Declarations */
-void costFun(const emlrtStack *sp, const emxArray_real_T *x, real_T Ts,
-             real_T tmax, real_T b_y0[6], const real_T ybar[6], real_T ratio,
-             real_T Tmax, real_T coeffT, real_T m0, real_T alpha,
-             emxArray_real_T *J, emxArray_real_T *y, real_T *tCost, real_T *m);
+void b_sqrt(const emlrtStack *sp, emxArray_real_T *x);
 
-/* End of code generation (costFun.h) */
+/* End of code generation (sqrt.h) */

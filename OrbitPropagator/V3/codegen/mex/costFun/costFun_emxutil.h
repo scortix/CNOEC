@@ -26,12 +26,7 @@ void emxEnsureCapacity_real_T(const emlrtStack *sp, emxArray_real_T *emxArray,
                               int32_T oldNumel,
                               const emlrtRTEInfo *srcLocation);
 
-void emxFreeStruct_struct_T(const emlrtStack *sp, struct_T *pStruct);
-
 void emxFree_real_T(const emlrtStack *sp, emxArray_real_T **pEmxArray);
-
-void emxInitStruct_struct_T(const emlrtStack *sp, struct_T *pStruct,
-                            const emlrtRTEInfo *srcLocation);
 
 void emxInit_real_T(const emlrtStack *sp, emxArray_real_T **pEmxArray,
                     int32_T numDimensions, const emlrtRTEInfo *srcLocation);

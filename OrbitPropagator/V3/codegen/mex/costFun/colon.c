@@ -17,7 +17,7 @@
 #include "mwmathutil.h"
 
 /* Variable Definitions */
-static emlrtRSInfo o_emlrtRSI = {
+static emlrtRSInfo m_emlrtRSI = {
     319,                                                          /* lineNo */
     "eml_float_colon",                                            /* fcnName */
     "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" /* pathName */
@@ -30,7 +30,7 @@ static emlrtRTEInfo d_emlrtRTEI = {
     "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" /* pName */
 };
 
-static emlrtRTEInfo eb_emlrtRTEI = {
+static emlrtRTEInfo v_emlrtRTEI = {
     320,                                                          /* lineNo */
     20,                                                           /* colNo */
     "colon",                                                      /* fName */
@@ -72,7 +72,7 @@ void eml_float_colon(const emlrtStack *sp, real_T d, real_T b,
   } else {
     n = 0;
   }
-  st.site = &o_emlrtRSI;
+  st.site = &m_emlrtRSI;
   if (ndbl > 2.147483647E+9) {
     emlrtErrorWithMessageIdR2018a(&st, &d_emlrtRTEI, "Coder:MATLAB:pmaxsize",
                                   "Coder:MATLAB:pmaxsize", 0);
@@ -80,7 +80,7 @@ void eml_float_colon(const emlrtStack *sp, real_T d, real_T b,
   nm1d2 = y->size[0] * y->size[1];
   y->size[0] = 1;
   y->size[1] = n;
-  emxEnsureCapacity_real_T(sp, y, nm1d2, &eb_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, y, nm1d2, &v_emlrtRTEI);
   y_data = y->data;
   if (n > 0) {
     y_data[0] = 0.0;

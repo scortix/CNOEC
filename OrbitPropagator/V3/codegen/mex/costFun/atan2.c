@@ -19,35 +19,35 @@
 #include "mwmathutil.h"
 
 /* Variable Definitions */
-static emlrtRSInfo rb_emlrtRSI = {
+static emlrtRSInfo ab_emlrtRSI = {
     13,      /* lineNo */
     "atan2", /* fcnName */
     "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\elfun\\atan2.m" /* pathName
                                                                      */
 };
 
-static emlrtRSInfo sb_emlrtRSI = {
+static emlrtRSInfo bb_emlrtRSI = {
     66,      /* lineNo */
     "ixfun", /* fcnName */
     "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+internal\\ixfun.m" /* pathName
                                                                          */
 };
 
-static emlrtRSInfo tb_emlrtRSI = {
+static emlrtRSInfo cb_emlrtRSI = {
     45,                          /* lineNo */
     "applyBinaryScalarFunction", /* fcnName */
     "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
     "internal\\applyBinaryScalarFunction.m" /* pathName */
 };
 
-static emlrtRSInfo ub_emlrtRSI = {
+static emlrtRSInfo db_emlrtRSI = {
     66,                          /* lineNo */
     "applyBinaryScalarFunction", /* fcnName */
     "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
     "internal\\applyBinaryScalarFunction.m" /* pathName */
 };
 
-static emlrtRSInfo vb_emlrtRSI =
+static emlrtRSInfo eb_emlrtRSI =
     {
         19,             /* lineNo */
         "scalexpAlloc", /* fcnName */
@@ -55,14 +55,14 @@ static emlrtRSInfo vb_emlrtRSI =
         "internal\\scalexpAlloc.m" /* pathName */
 };
 
-static emlrtRSInfo wb_emlrtRSI = {
+static emlrtRSInfo fb_emlrtRSI = {
     216,        /* lineNo */
     "flatIter", /* fcnName */
     "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
     "internal\\applyBinaryScalarFunction.m" /* pathName */
 };
 
-static emlrtRTEInfo j_emlrtRTEI =
+static emlrtRTEInfo e_emlrtRTEI =
     {
         14,             /* lineNo */
         15,             /* colNo */
@@ -71,7 +71,7 @@ static emlrtRTEInfo j_emlrtRTEI =
         "internal\\scalexpCheck.m" /* pName */
 };
 
-static emlrtRTEInfo ib_emlrtRTEI = {
+static emlrtRTEInfo w_emlrtRTEI = {
     129,                         /* lineNo */
     6,                           /* colNo */
     "applyBinaryScalarFunction", /* fName */
@@ -106,11 +106,11 @@ void b_atan2(const emlrtStack *sp, const emxArray_real_T *y,
   e_st.tls = d_st.tls;
   x_data = x->data;
   y_data = y->data;
-  st.site = &rb_emlrtRSI;
-  b_st.site = &sb_emlrtRSI;
-  c_st.site = &tb_emlrtRSI;
+  st.site = &ab_emlrtRSI;
+  b_st.site = &bb_emlrtRSI;
+  c_st.site = &cb_emlrtRSI;
   nx = muIntScalarMin_sint32(y->size[1], x->size[1]);
-  d_st.site = &vb_emlrtRSI;
+  d_st.site = &eb_emlrtRSI;
   p = true;
   if (nx == y->size[1]) {
     if (nx != x->size[1]) {
@@ -120,19 +120,19 @@ void b_atan2(const emlrtStack *sp, const emxArray_real_T *y,
     p = false;
   }
   if (!p) {
-    emlrtErrorWithMessageIdR2018a(&d_st, &j_emlrtRTEI, "MATLAB:dimagree",
+    emlrtErrorWithMessageIdR2018a(&d_st, &e_emlrtRTEI, "MATLAB:dimagree",
                                   "MATLAB:dimagree", 0);
   }
-  c_st.site = &ub_emlrtRSI;
+  c_st.site = &db_emlrtRSI;
   nx = r->size[0] * r->size[1];
   r->size[0] = 1;
   r->size[1] = muIntScalarMin_sint32(y->size[1], x->size[1]);
-  emxEnsureCapacity_real_T(&c_st, r, nx, &ib_emlrtRTEI);
+  emxEnsureCapacity_real_T(&c_st, r, nx, &w_emlrtRTEI);
   r_data = r->data;
   nx = muIntScalarMin_sint32(y->size[1], x->size[1]);
-  d_st.site = &wb_emlrtRSI;
+  d_st.site = &fb_emlrtRSI;
   if (r->size[1] > 2147483646) {
-    e_st.site = &q_emlrtRSI;
+    e_st.site = &o_emlrtRSI;
     check_forloop_overflow_error(&e_st);
   }
   for (k = 0; k < nx; k++) {

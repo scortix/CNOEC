@@ -59,12 +59,6 @@ void emxEnsureCapacity_real_T(const emlrtStack *sp, emxArray_real_T *emxArray,
   }
 }
 
-void emxFreeStruct_struct_T(const emlrtStack *sp, struct_T *pStruct)
-{
-  emxFree_real_T(sp, &pStruct->breaks);
-  emxFree_real_T(sp, &pStruct->coefs);
-}
-
 void emxFree_real_T(const emlrtStack *sp, emxArray_real_T **pEmxArray)
 {
   if (*pEmxArray != (emxArray_real_T *)NULL) {
@@ -76,13 +70,6 @@ void emxFree_real_T(const emlrtStack *sp, emxArray_real_T **pEmxArray)
     emlrtFreeEmxArray(*pEmxArray);
     *pEmxArray = (emxArray_real_T *)NULL;
   }
-}
-
-void emxInitStruct_struct_T(const emlrtStack *sp, struct_T *pStruct,
-                            const emlrtRTEInfo *srcLocation)
-{
-  emxInit_real_T(sp, &pStruct->breaks, 2, srcLocation);
-  emxInit_real_T(sp, &pStruct->coefs, 2, srcLocation);
 }
 
 void emxInit_real_T(const emlrtStack *sp, emxArray_real_T **pEmxArray,

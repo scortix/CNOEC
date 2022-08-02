@@ -15,7 +15,6 @@
 #include "rtwtypes.h"
 #include "emlrt.h"
 #include "mex.h"
-#include "omp.h"
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -25,9 +24,9 @@
 extern emlrtCTX emlrtRootTLSGlobal;
 extern const volatile char_T *emlrtBreakCheckR2012bFlagVar;
 extern emlrtContext emlrtContextGlobal;
-extern emlrtRSInfo q_emlrtRSI;
-extern omp_lock_t emlrtLockGlobal;
-extern omp_nest_lock_t costFun_nestLockGlobal;
+extern emlrtRSInfo o_emlrtRSI;
+extern emlrtRSInfo y_emlrtRSI;
 extern emlrtRTEInfo b_emlrtRTEI;
+extern emlrtRTEInfo s_emlrtRTEI;
 
 /* End of code generation (costFun_data.h) */

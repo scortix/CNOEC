@@ -1,9 +1,9 @@
 opt = struct;
 opt.tolgrad = 1e-8;
-opt.tolx = 1e-7;
-opt.tolf = 1e-10;
+opt.tolx = 1e-8;
+opt.tolf = 1e-8;
 opt.tolconstr = 1e-6;
-opt.nitermax = 200;
+opt.nitermax = 1000;
 opt.method = 'BFGS';
 opt.lstkmax = 1;
 opt.lsbeta = 0.8;

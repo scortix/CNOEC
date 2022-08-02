@@ -3,9 +3,9 @@
  * course requirements at degree granting institutions only.  Not for
  * government, commercial, or other organizational use.
  *
- * interp1.h
+ * cat.h
  *
- * Code generation for function 'interp1'
+ * Code generation for function 'cat'
  *
  */
 
@@ -22,8 +22,9 @@
 #include <string.h>
 
 /* Function Declarations */
-void interp1(const emlrtStack *sp, const emxArray_real_T *varargin_1,
-             const emxArray_real_T *varargin_2,
-             const emxArray_real_T *varargin_3, emxArray_real_T *Vq);
+void binary_expand_op(const emlrtStack *sp, emxArray_real_T *in1, real_T in2,
+                      real_T in3, real_T in4, real_T in5, const real_T in6[3],
+                      const real_T in7[9], const emxArray_real_T *in8,
+                      const emxArray_real_T *in9);
 
-/* End of code generation (interp1.h) */
+/* End of code generation (cat.h) */

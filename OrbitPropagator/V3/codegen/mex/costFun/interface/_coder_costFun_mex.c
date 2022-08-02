@@ -12,12 +12,10 @@
 /* Include files */
 #include "_coder_costFun_mex.h"
 #include "_coder_costFun_api.h"
-#include "costFun.h"
 #include "costFun_data.h"
 #include "costFun_initialize.h"
 #include "costFun_terminate.h"
 #include "rt_nonfinite.h"
-#include "omp.h"
 
 /* Function Definitions */
 void costFun_mexFunction(int32_T nlhs, mxArray *plhs[4], int32_T nrhs,
@@ -54,39 +52,19 @@ void costFun_mexFunction(int32_T nlhs, mxArray *plhs[4], int32_T nrhs,
 void mexFunction(int32_T nlhs, mxArray *plhs[], int32_T nrhs,
                  const mxArray *prhs[])
 {
-  static jmp_buf emlrtJBEnviron;
-  emlrtStack st = {
-      NULL, /* site */
-      NULL, /* tls */
-      NULL  /* prev */
-  };
   mexAtExit(&costFun_atexit);
-  /* Initialize the memory manager. */
-  omp_init_lock(&emlrtLockGlobal);
-  omp_init_nest_lock(&costFun_nestLockGlobal);
   /* Module initialization. */
   costFun_initialize();
-  st.tls = emlrtRootTLSGlobal;
-  emlrtSetJmpBuf(&st, &emlrtJBEnviron);
-  if (setjmp(emlrtJBEnviron) == 0) {
-    /* Dispatch the entry-point. */
-    costFun_mexFunction(nlhs, plhs, nrhs, prhs);
-    /* Module termination. */
-    costFun_terminate();
-    omp_destroy_lock(&emlrtLockGlobal);
-    omp_destroy_nest_lock(&costFun_nestLockGlobal);
-  } else {
-    omp_destroy_lock(&emlrtLockGlobal);
-    omp_destroy_nest_lock(&costFun_nestLockGlobal);
-    emlrtReportParallelRunTimeError(&st);
-  }
+  /* Dispatch the entry-point. */
+  costFun_mexFunction(nlhs, plhs, nrhs, prhs);
+  /* Module termination. */
+  costFun_terminate();
 }
 
 emlrtCTX mexFunctionCreateRootTLS(void)
 {
-  emlrtCreateRootTLSR2022a(&emlrtRootTLSGlobal, &emlrtContextGlobal,
-                           &emlrtLockerFunction, omp_get_num_procs(), NULL,
-                           (const char_T *)"windows-1252", true);
+  emlrtCreateRootTLSR2022a(&emlrtRootTLSGlobal, &emlrtContextGlobal, NULL, 1,
+                           NULL, (const char_T *)"windows-1252", true);
   return emlrtRootTLSGlobal;
 }
 
