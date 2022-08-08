@@ -1,0 +1,122 @@
+[
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/codegen/mex/NMPC_cost",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/NMPC\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=NMPC_cost_mex -c  NMPC_cost_data.c -o build/maci64/NMPC_cost_data.o",
+    "file": "NMPC_cost_data.c",
+    "output": "build/maci64/NMPC_cost_data.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/codegen/mex/NMPC_cost",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/NMPC\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=NMPC_cost_mex -c  rt_nonfinite.c -o build/maci64/rt_nonfinite.o",
+    "file": "rt_nonfinite.c",
+    "output": "build/maci64/rt_nonfinite.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/codegen/mex/NMPC_cost",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/NMPC\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=NMPC_cost_mex -c  NMPC_cost_initialize.c -o build/maci64/NMPC_cost_initialize.o",
+    "file": "NMPC_cost_initialize.c",
+    "output": "build/maci64/NMPC_cost_initialize.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/codegen/mex/NMPC_cost",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/NMPC\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=NMPC_cost_mex -c  NMPC_cost_terminate.c -o build/maci64/NMPC_cost_terminate.o",
+    "file": "NMPC_cost_terminate.c",
+    "output": "build/maci64/NMPC_cost_terminate.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/codegen/mex/NMPC_cost",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/NMPC\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=NMPC_cost_mex -c  NMPC_cost.c -o build/maci64/NMPC_cost.o",
+    "file": "NMPC_cost.c",
+    "output": "build/maci64/NMPC_cost.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/codegen/mex/NMPC_cost",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/NMPC\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=NMPC_cost_mex -c  power.c -o build/maci64/power.o",
+    "file": "power.c",
+    "output": "build/maci64/power.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/codegen/mex/NMPC_cost",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/NMPC\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=NMPC_cost_mex -c  atan2.c -o build/maci64/atan2.o",
+    "file": "atan2.c",
+    "output": "build/maci64/atan2.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/codegen/mex/NMPC_cost",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/NMPC\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=NMPC_cost_mex -c  ixfun.c -o build/maci64/ixfun.o",
+    "file": "ixfun.c",
+    "output": "build/maci64/ixfun.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/codegen/mex/NMPC_cost",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/NMPC\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=NMPC_cost_mex -c  assertCompatibleDims.c -o build/maci64/assertCompatibleDims.o",
+    "file": "assertCompatibleDims.c",
+    "output": "build/maci64/assertCompatibleDims.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/codegen/mex/NMPC_cost",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/NMPC\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=NMPC_cost_mex -c  eml_mtimes_helper.c -o build/maci64/eml_mtimes_helper.o",
+    "file": "eml_mtimes_helper.c",
+    "output": "build/maci64/eml_mtimes_helper.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/codegen/mex/NMPC_cost",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/NMPC\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=NMPC_cost_mex -c  mtimes.c -o build/maci64/mtimes.o",
+    "file": "mtimes.c",
+    "output": "build/maci64/mtimes.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/codegen/mex/NMPC_cost",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/NMPC\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=NMPC_cost_mex -c  interface/_coder_NMPC_cost_api.c -o build/maci64/_coder_NMPC_cost_api.o",
+    "file": "interface/_coder_NMPC_cost_api.c",
+    "output": "build/maci64/_coder_NMPC_cost_api.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/codegen/mex/NMPC_cost",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/NMPC\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=NMPC_cost_mex -c  interface/_coder_NMPC_cost_mex.c -o build/maci64/_coder_NMPC_cost_mex.o",
+    "file": "interface/_coder_NMPC_cost_mex.c",
+    "output": "build/maci64/_coder_NMPC_cost_mex.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/codegen/mex/NMPC_cost",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/NMPC\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=NMPC_cost_mex -c  EOEDerivatives.c -o build/maci64/EOEDerivatives.o",
+    "file": "EOEDerivatives.c",
+    "output": "build/maci64/EOEDerivatives.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/codegen/mex/NMPC_cost",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/NMPC\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=NMPC_cost_mex -c  eml_int_forloop_overflow_check.c -o build/maci64/eml_int_forloop_overflow_check.o",
+    "file": "eml_int_forloop_overflow_check.c",
+    "output": "build/maci64/eml_int_forloop_overflow_check.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/codegen/mex/NMPC_cost",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/NMPC\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=NMPC_cost_mex -c  sqrt.c -o build/maci64/sqrt.o",
+    "file": "sqrt.c",
+    "output": "build/maci64/sqrt.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/codegen/mex/NMPC_cost",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/NMPC\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=NMPC_cost_mex -c  cos.c -o build/maci64/cos.o",
+    "file": "cos.c",
+    "output": "build/maci64/cos.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/codegen/mex/NMPC_cost",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/NMPC\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=NMPC_cost_mex -c  NMPC_cost_emxutil.c -o build/maci64/NMPC_cost_emxutil.o",
+    "file": "NMPC_cost_emxutil.c",
+    "output": "build/maci64/NMPC_cost_emxutil.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/codegen/mex/NMPC_cost",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/NMPC\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=NMPC_cost_mex -c  interface/_coder_NMPC_cost_info.c -o build/maci64/_coder_NMPC_cost_info.o",
+    "file": "interface/_coder_NMPC_cost_info.c",
+    "output": "build/maci64/_coder_NMPC_cost_info.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/codegen/mex/NMPC_cost",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/NMPC\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=NMPC_cost_mex -c  /Applications/MATLAB_R2021b.app/extern/version/c_mexapi_version.c -o build/maci64/c_mexapi_version.o",
+    "file": "/Applications/MATLAB_R2021b.app/extern/version/c_mexapi_version.c",
+    "output": "build/maci64/c_mexapi_version.o"
+  }
+]
