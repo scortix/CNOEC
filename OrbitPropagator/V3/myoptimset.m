@@ -110,4 +110,3 @@ myoptions.QPoptions     =   ...         % options for QP solver in SQP methods
 
 
 end
-
