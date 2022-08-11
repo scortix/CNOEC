@@ -79,12 +79,6 @@
   },
   {
     "directory": "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/codegen/mex/NMPC_cost",
-    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/NMPC\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=NMPC_cost_mex -c  EOEDerivatives.c -o build/maci64/EOEDerivatives.o",
-    "file": "EOEDerivatives.c",
-    "output": "build/maci64/EOEDerivatives.o"
-  },
-  {
-    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/codegen/mex/NMPC_cost",
     "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/NMPC\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=NMPC_cost_mex -c  eml_int_forloop_overflow_check.c -o build/maci64/eml_int_forloop_overflow_check.o",
     "file": "eml_int_forloop_overflow_check.c",
     "output": "build/maci64/eml_int_forloop_overflow_check.o"

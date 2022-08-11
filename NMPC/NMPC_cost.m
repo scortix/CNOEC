@@ -45,7 +45,7 @@ for k = 1:M
 end
 
 r = min((yhat(1,:)./(1+sqrt(yhat(2,:).^2+yhat(3,:).^2).*cos(yhat(6,:)-atan2(yhat(3,:),yhat(2,:)))))');
-minXi = min(xi);
-maxXi = max(xi);
-J = [F'*F;[r-6378.1 1-maxXi minXi]';F];
+% minXi = min(xi);
+% maxXi = max(xi);
+J = [F'*F;r-6378.1;F];
 end

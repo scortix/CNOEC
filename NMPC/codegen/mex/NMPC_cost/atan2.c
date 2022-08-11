@@ -18,14 +18,14 @@
 #include "mwmathutil.h"
 
 /* Variable Definitions */
-static emlrtRSInfo p_emlrtRSI = {
+static emlrtRSInfo n_emlrtRSI = {
     13,      /* lineNo */
     "atan2", /* fcnName */
     "/Applications/MATLAB_R2021b.app/toolbox/eml/lib/matlab/elfun/atan2.m" /* pathName
                                                                             */
 };
 
-static emlrtRSInfo q_emlrtRSI =
+static emlrtRSInfo o_emlrtRSI =
     {
         57,      /* lineNo */
         "ixfun", /* fcnName */
@@ -33,7 +33,7 @@ static emlrtRSInfo q_emlrtRSI =
         "ixfun.m" /* pathName */
 };
 
-static emlrtRSInfo r_emlrtRSI =
+static emlrtRSInfo p_emlrtRSI =
     {
         102,                          /* lineNo */
         "binaryImplicitExpansionFun", /* fcnName */
@@ -71,8 +71,8 @@ void b_atan2(const emlrtStack *sp, const emxArray_real_T *y,
   c_st.tls = b_st.tls;
   x_data = x->data;
   y_data = y->data;
-  st.site = &p_emlrtRSI;
-  b_st.site = &q_emlrtRSI;
+  st.site = &n_emlrtRSI;
+  b_st.site = &o_emlrtRSI;
   if (y->size[1] == x->size[1]) {
     i = r->size[0] * r->size[1];
     r->size[0] = 1;
@@ -86,7 +86,7 @@ void b_atan2(const emlrtStack *sp, const emxArray_real_T *y,
       r_data[i] = muDoubleScalarAtan2(varargin_1, varargin_2);
     }
   } else {
-    c_st.site = &r_emlrtRSI;
+    c_st.site = &p_emlrtRSI;
     expand_atan2(&c_st, y, x, r);
   }
 }

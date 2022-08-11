@@ -17,7 +17,7 @@
 #include "mwmathutil.h"
 
 /* Variable Definitions */
-static emlrtRTEInfo e_emlrtRTEI =
+static emlrtRTEInfo f_emlrtRTEI =
     {
         160,            /* lineNo */
         23,             /* colNo */
@@ -57,7 +57,7 @@ void expand_atan2(const emlrtStack *sp, const emxArray_real_T *a,
   } else {
     sak = muIntScalarMin_sint32(sak, sbk);
     if (a->size[1] != b->size[1]) {
-      emlrtErrorWithMessageIdR2018a(sp, &e_emlrtRTEI,
+      emlrtErrorWithMessageIdR2018a(sp, &f_emlrtRTEI,
                                     "MATLAB:sizeDimensionsMustMatch",
                                     "MATLAB:sizeDimensionsMustMatch", 0);
     }

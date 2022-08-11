@@ -11,18 +11,12 @@
 
 /* Include files */
 #include "power.h"
+#include "NMPC_cost_data.h"
 #include "NMPC_cost_emxutil.h"
 #include "NMPC_cost_types.h"
 #include "rt_nonfinite.h"
 
 /* Variable Definitions */
-static emlrtRSInfo l_emlrtRSI = {
-    71,      /* lineNo */
-    "power", /* fcnName */
-    "/Applications/MATLAB_R2021b.app/toolbox/eml/lib/matlab/ops/power.m" /* pathName
-                                                                          */
-};
-
 static emlrtRTEInfo cb_emlrtRTEI = {
     71,      /* lineNo */
     5,       /* colNo */
@@ -43,7 +37,7 @@ void power(const emlrtStack *sp, const emxArray_real_T *a, emxArray_real_T *y)
   st.prev = sp;
   st.tls = sp->tls;
   a_data = a->data;
-  st.site = &l_emlrtRSI;
+  st.site = &j_emlrtRSI;
   i = y->size[0] * y->size[1];
   y->size[0] = 1;
   y->size[1] = a->size[1];

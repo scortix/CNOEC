@@ -47,7 +47,6 @@ build $builddir/eml_mtimes_helper.o : cc $root/eml_mtimes_helper.c
 build $builddir/mtimes.o : cc $root/mtimes.c
 build $builddir/_coder_NMPC_cost_api.o : cc $root/interface/_coder_NMPC_cost_api.c
 build $builddir/_coder_NMPC_cost_mex.o : cc $root/interface/_coder_NMPC_cost_mex.c
-build $builddir/EOEDerivatives.o : cc $root/EOEDerivatives.c
 build $builddir/eml_int_forloop_overflow_check.o : cc $root/eml_int_forloop_overflow_check.c
 build $builddir/sqrt.o : cc $root/sqrt.c
 build $builddir/cos.o : cc $root/cos.c
@@ -56,4 +55,4 @@ build $builddir/_coder_NMPC_cost_info.o : cc $root/interface/_coder_NMPC_cost_in
 build $builddir/c_mexapi_version.o : cc $matlabdir/extern/version/c_mexapi_version.c
 
 # Link
-build $root/NMPC_cost_mex.mexmaci64 : link $builddir/NMPC_cost_data.o $builddir/rt_nonfinite.o $builddir/NMPC_cost_initialize.o $builddir/NMPC_cost_terminate.o $builddir/NMPC_cost.o $builddir/power.o $builddir/atan2.o $builddir/ixfun.o $builddir/assertCompatibleDims.o $builddir/eml_mtimes_helper.o $builddir/mtimes.o $builddir/_coder_NMPC_cost_api.o $builddir/_coder_NMPC_cost_mex.o $builddir/EOEDerivatives.o $builddir/eml_int_forloop_overflow_check.o $builddir/sqrt.o $builddir/cos.o $builddir/NMPC_cost_emxutil.o $builddir/_coder_NMPC_cost_info.o $builddir/c_mexapi_version.o 
+build $root/NMPC_cost_mex.mexmaci64 : link $builddir/NMPC_cost_data.o $builddir/rt_nonfinite.o $builddir/NMPC_cost_initialize.o $builddir/NMPC_cost_terminate.o $builddir/NMPC_cost.o $builddir/power.o $builddir/atan2.o $builddir/ixfun.o $builddir/assertCompatibleDims.o $builddir/eml_mtimes_helper.o $builddir/mtimes.o $builddir/_coder_NMPC_cost_api.o $builddir/_coder_NMPC_cost_mex.o $builddir/eml_int_forloop_overflow_check.o $builddir/sqrt.o $builddir/cos.o $builddir/NMPC_cost_emxutil.o $builddir/_coder_NMPC_cost_info.o $builddir/c_mexapi_version.o 

@@ -27,47 +27,18 @@ Cd = 1; % Drag coefficient [?]
 rho_table = rho_tab();
 
 load("simFinal.mat") % loading trajectory
-traj_csi = makima(topt,alphaCell{8}(2:lu+1)',t);
-traj_angle = makima(topt,alphaCell{8}(lu+2:end)',t);
-traj_state = alphaCell{14};
+traj_csi = makima(topt,alphaCell{2,2}(2:lu+1)',t);
+traj_angle = makima(topt,alphaCell{2,2}(lu+2:end)',t);
+traj_state = alphaCell{2,3};
 
 orb_in = struct('a', 8000, 'e', 0, 'i', pi/4, 'OM', 0, 'om', 0, 'theta', 0); % Initial orbit
 orb_end = struct('a', 10000, 'e', 0.2, 'i', pi/4, 'OM', 0, 'om', pi/3, 'theta', 0); % Final orbit
 initOrbit_v = [orb_in.a orb_in.e orb_in.i orb_in.OM orb_in.om traj_state(6,1)]';
 endOrbit_v = [orb_end.a orb_end.e orb_end.i orb_end.OM orb_end.om traj_state(6,end)]';
 
-%% Moon future positions
+% Moon future positions
 t_sim = 0:Ts:stopTime;
 load("moonModelParams.mat");
-
-
-%% Optimization settings
-
-% sim("sim_model.slx",stopTime)
-% 
-% % options = optimoptions(@fminunc,'Display','iter',...
-% %     'MaxFunctionEvaluation', 5e6, 'StepTolerance', 1e-10,...
-% %     'UseParallel', false, 'MaxIterations', 500,...
-% %     'OptimalityTolerance', 1e-8); % options for fminunc solver
-% options = optimoptions(@fmincon,'Display','iter',...
-%     'MaxFunctionEvaluation', 5e6, 'StepTolerance', 1e-8,...
-%     'UseParallel', false, 'MaxIterations', 200,...
-%     'OptimalityTolerance', 1e-8, 'Algorithm', 'sqp'); % options for fminunc solver
-% myoptimset;
-% 
-% % ff = @(ufu
-% +n) cost_mex(tmax,Ts,y0,reshape(ufun(2:end),3,length(t)),ybar,umax,ufun(1));
-% % uopt = mySQP(ff,u,[],[], -[eye(length(u)); -eye(length(u))],-[[2*pi;umax+0*u(2:end)];[0;umax+0*u(2:end)]],0,0,opt);
-% 
-% NMPCfun = @(x) NMPC_cost(M,Ts,x,y0,yref,Q,R,E,coeffT);
-% opt.method = "Gauss-Newton";
-% opt.method = "BFGS";
-% opt.method = "Steepest";
-% opt.gradmethod = "CD";
-% 
-% xopt = mySQP(NMPCfun,x,[],[],[],[],6*M,1+M,opt);
-% 
-% uout = xopt(3,1);
 
 %% NMPC test
 zEOE0 = COE2EOE(initOrbit_v);
@@ -76,7 +47,7 @@ Ts = 100;
 csiRef = traj_csi(:,1:M);
 angleRef = traj_angle(:,1:M);
 yRef = traj_state(:,1:M);
-%%
+
 Q = eye(6);
 R = 1;
 
@@ -92,3 +63,47 @@ xopt = opt_problem(x0,M,Ts,zEOE0,yRef,Q,R,coeffT,mass,Tmax);
 
 xi = xopt(1);
 u = xi*[sin(xopt(M+1,1))*cos(xopt(2*M+1,1)) cos(xopt(M+1,1))*cos(xopt(2*M+1,1)) sin(xopt(2*M+1,1))]'*Tmax/mass/1e3;
+%% Comparison
+load("zEOE.mat")
+tcomp = t(1:length(zEOEsim));
+stateTrajComp = traj_state(:,1:length(zEOEsim));
+figure()
+
+subplot(2,3,1)
+plot(tcomp,zEOEsim(2,:))
+hold on
+plot(tcomp,stateTrajComp(1,:))
+
+subplot(2,3,2)
+plot(tcomp,zEOEsim(3,:))
+hold on
+plot(tcomp,stateTrajComp(2,:))
+
+subplot(2,3,3)
+plot(tcomp,zEOEsim(4,:))
+hold on
+plot(tcomp,stateTrajComp(3,:))
+
+subplot(2,3,4)
+plot(tcomp,zEOEsim(5,:))
+hold on
+plot(tcomp,stateTrajComp(4,:))
+
+subplot(2,3,5)
+plot(tcomp,zEOEsim(6,:))
+hold on
+plot(tcomp,stateTrajComp(5,:))
+
+subplot(2,3,6)
+plot(tcomp,zEOEsim(7,:))
+hold on
+plot(tcomp,stateTrajComp(6,:))
+legend("sim","traj")
+
+%% traj inspector
+figure()
+for k = 1:6
+    subplot(2,3,k)
+    plot(t,traj_state(k,:))
+end
+
