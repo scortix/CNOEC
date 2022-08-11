@@ -1,11 +1,9 @@
-CNOEC Project on Spacecraft Attitude determination and orbital trajectory control
+CNOEC Project on Low-Thrust co-planar transfer optimization
 
 MILESTONES:
 - Create the Matlab/Simulink Model
-    - Attitude Dynamics
-        - Quaternion
     - Orbital Dynamics
 - Define a Cost Function
-    - for attitude determination (filter)
-    - for orbital control (control optimization)
+    - for low-thrust transfer (optimal trajectory)
+    - for control action and disturbances rejection (control optimization)
 - Optimize

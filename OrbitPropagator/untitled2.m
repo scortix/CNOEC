@@ -1,1 +1,0 @@
-drag_on_classical(x,drag_acceleration(rho, va, A*cos(attitude_angle), mass, Cd), mu); % blueprint call for the main
