@@ -67,6 +67,12 @@
   },
   {
     "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\\codegen\\mex\\costFun",
+    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costFun_mex   EOEDerivatives.c /Fobuild\\win64\\EOEDerivatives.obj",
+    "file": "EOEDerivatives.c",
+    "output": "build/win64/EOEDerivatives.obj"
+  },
+  {
+    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\\codegen\\mex\\costFun",
     "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costFun_mex   eml_int_forloop_overflow_check.c /Fobuild\\win64\\eml_int_forloop_overflow_check.obj",
     "file": "eml_int_forloop_overflow_check.c",
     "output": "build/win64/eml_int_forloop_overflow_check.obj"
@@ -76,12 +82,6 @@
     "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costFun_mex   sqrt.c /Fobuild\\win64\\sqrt.obj",
     "file": "sqrt.c",
     "output": "build/win64/sqrt.obj"
-  },
-  {
-    "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\\codegen\\mex\\costFun",
-    "command": "cl /c /Zc:__cplusplus /Zp8 /GR /W3 /EHs /nologo /MD /D_CRT_SECURE_NO_DEPRECATE /D_SCL_SECURE_NO_DEPRECATE /D_SECURE_SCL=0   /DMATLAB_MEX_FILE  /DMATLAB_MEX_FILE /O2 /Oy- /DNDEBUG /fp:strict /utf-8 /I \".\" /I \"P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\" /I \".\\interface\" /I \"P:\\Matlab\\R2022a\\extern\\include\" /I \".\" -DMODEL=costFun_mex   cat.c /Fobuild\\win64\\cat.obj",
-    "file": "cat.c",
-    "output": "build/win64/cat.obj"
   },
   {
     "directory": "P:\\Projects\\CNOEC\\CNOEC_Project\\OrbitPropagator\\V3\\codegen\\mex\\costFun",

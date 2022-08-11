@@ -18,7 +18,7 @@
 #include "rt_nonfinite.h"
 
 /* Variable Definitions */
-static emlrtRTEInfo x_emlrtRTEI = {
+static emlrtRTEInfo ab_emlrtRTEI = {
     1,                    /* lineNo */
     1,                    /* colNo */
     "_coder_costFun_api", /* fName */
@@ -29,7 +29,7 @@ static emlrtRTEInfo x_emlrtRTEI = {
 static void c_emlrt_marshallIn(const emlrtStack *sp, const mxArray *x,
                                const char_T *identifier, emxArray_real_T *y);
 
-static const mxArray *c_emlrt_marshallOut(const emxArray_real_T *u);
+static const mxArray *c_emlrt_marshallOut(const real_T u[3]);
 
 static void d_emlrt_marshallIn(const emlrtStack *sp, const mxArray *u,
                                const emlrtMsgIdentifier *parentId,
@@ -73,17 +73,16 @@ static void c_emlrt_marshallIn(const emlrtStack *sp, const mxArray *x,
   emlrtDestroyArray(&x);
 }
 
-static const mxArray *c_emlrt_marshallOut(const emxArray_real_T *u)
+static const mxArray *c_emlrt_marshallOut(const real_T u[3])
 {
   static const int32_T i = 0;
+  static const int32_T i1 = 3;
   const mxArray *m;
   const mxArray *y;
-  const real_T *u_data;
-  u_data = u->data;
   y = NULL;
   m = emlrtCreateNumericArray(1, (const void *)&i, mxDOUBLE_CLASS, mxREAL);
-  emlrtMxSetData((mxArray *)m, (void *)&u_data[0]);
-  emlrtSetDimensions((mxArray *)m, &u->size[0], 1);
+  emlrtMxSetData((mxArray *)m, (void *)&u[0]);
+  emlrtSetDimensions((mxArray *)m, &i1, 1);
   emlrtAssign(&y, m);
   return y;
 }
@@ -216,12 +215,12 @@ void costFun_api(const mxArray *const prhs[10], int32_T nlhs,
       NULL, /* tls */
       NULL  /* prev */
   };
-  emxArray_real_T *J;
   emxArray_real_T *x;
   emxArray_real_T *y;
   const mxArray *prhs_copy_idx_3;
   real_T(*b_y0)[6];
   real_T(*ybar)[6];
+  real_T(*J)[3];
   real_T Tmax;
   real_T Ts;
   real_T alpha;
@@ -232,10 +231,10 @@ void costFun_api(const mxArray *const prhs[10], int32_T nlhs,
   real_T tCost;
   real_T tmax;
   st.tls = emlrtRootTLSGlobal;
+  J = (real_T(*)[3])mxMalloc(sizeof(real_T[3]));
   emlrtHeapReferenceStackEnterFcnR2012b(&st);
-  emxInit_real_T(&st, &x, 1, &x_emlrtRTEI);
-  emxInit_real_T(&st, &J, 1, &x_emlrtRTEI);
-  emxInit_real_T(&st, &y, 2, &x_emlrtRTEI);
+  emxInit_real_T(&st, &x, 1, &ab_emlrtRTEI);
+  emxInit_real_T(&st, &y, 2, &ab_emlrtRTEI);
   prhs_copy_idx_3 = emlrtProtectR2012b(prhs[3], 3, false, -1);
   /* Marshall function inputs */
   x->canFreeData = false;
@@ -250,12 +249,10 @@ void costFun_api(const mxArray *const prhs[10], int32_T nlhs,
   m0 = e_emlrt_marshallIn(&st, emlrtAliasP(prhs[8]), "m0");
   alpha = e_emlrt_marshallIn(&st, emlrtAliasP(prhs[9]), "alpha");
   /* Invoke the target function */
-  costFun(&st, x, Ts, tmax, *b_y0, *ybar, ratio, Tmax, coeffT, m0, alpha, J, y,
+  costFun(&st, x, Ts, tmax, *b_y0, *ybar, ratio, Tmax, coeffT, m0, alpha, *J, y,
           &tCost, &m);
   /* Marshall function outputs */
-  J->canFreeData = false;
-  plhs[0] = c_emlrt_marshallOut(J);
-  emxFree_real_T(&st, &J);
+  plhs[0] = c_emlrt_marshallOut(*J);
   emxFree_real_T(&st, &x);
   if (nlhs > 1) {
     y->canFreeData = false;

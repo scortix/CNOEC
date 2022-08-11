@@ -8,6 +8,8 @@ end
 set(groot,'defaulttextinterpreter','latex');  
 set(groot,'defaultAxesTickLabelInterpreter','latex');  
 set(groot,'defaultLegendInterpreter','latex');
+load("simFinalOk2.mat")
+alphaCellOld = alphaCell;
 
 %% Parameters Definition and Initialization
 % Integration Parameters
@@ -42,43 +44,38 @@ x0 = [theta0;
     ang]; % Optimization Vector Initial Guess
 
 %% Optimization routine
-myoptimset; % Optimizer Options
-alpha = [0.01 0.25 0.5 0.75 0.99]; % Vector of cost function weight parameter
+opt = myoptimset; % Optimizer Options
 alpha = 0:0.2:1;
 alphaCell = cell(length(alpha),5); % Cell array to save all computed solutions
 ratioVec = [ratio]; % Vector of ratio values used for optimization
-
+opt.Hessmethod = "BFGS";
 % Compute the minimizers for the various alphas
-for k = 1:length(alpha)
-    x0 = [theta0; csi; ang];
-    for i = 1:length(ratioVec)
-        ratio = ratioVec(i); % Actual ratio value
+for k = 2:length(alpha)
+    x0 = alphaCellOld{k,2};
+%     for i = 1:length(ratioVec)
+        
         fun = @(x) costFun_mex(x, Ts, tmax, zEOE0, zEOEbar, ratio, Tmax, Tmax/g0/Isp, m0, alpha(k)); % Cost Function Definition
         tNew = 0:ratio*Ts:tmax; % Time vector with length equal to the input vector
 
-        if i > 1
-            tOld = 0:ratioVec(i-1)*Ts:tmax; % Old time vector
-
-            x0 = [x(1);
-                interp1(tOld,x(2:(end+1)/2),tNew,"makima")';
-                interp1(tOld,x((end+1)/2+1:end),tNew,"makima")']; % Resample Optimization Vector
+%         if i > 1
+%             tOld = 0:ratioVec(i-1)*Ts:tmax; % Old time vector
+% 
+%             x0 = [x(1);
+%                 interp1(tOld,x(2:(end+1)/2),tNew,"makima")';
+%                 interp1(tOld,x((end+1)/2+1:end),tNew,"makima")']; % Resample Optimization Vector
 
             
-        end
+%         end
         lu = (length(t)-1)/ratio+1; % Length of the input vector
         % Inequality Constraints Definition
-        C = [1 zeros(1,2*lu);
-            -1 zeros(1,2*lu);
-            zeros(lu,1) eye(lu) zeros(lu);
+        C = [zeros(lu,1) eye(lu) zeros(lu);
             zeros(lu,1) -eye(lu) zeros(lu)];
-        d = [0;
-            -2*pi;
-            zeros(lu,1);
+        d = [zeros(lu,1);
             -ones(lu,1)];
 
         % Optimization
-        x = mySQP(fun,x0,[],[],C,d,0,1+length(tNew),opt);
-    end
+        x = mySQP(fun,x0,[],[],C,d,0,1+1+0*length(t),opt);
+%     end
     % Call the cost function to compute the single terms of the final cost
     % and the state vector
     [~,zEOE,tCost,m] = costFun_mex(x, Ts, tmax, zEOE0, zEOEbar, ratio, Tmax, Tmax/g0/Isp, m0, alpha(k));
