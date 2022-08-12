@@ -1,0 +1,60 @@
+# CompilerName=clang
+# Mode=optim
+ninja_required_version = 1.3
+
+# Basic folders
+root = .
+builddir = $root/build/maci64
+matlabdir = /Applications/MATLAB_R2021b.app
+startdir = /Users/matteodepaola/Documents/git/CNOEC git/NMPC
+
+# Toolchain information
+cc = /usr/bin/xcrun -sdk macosx12.3 clang
+cxx = /usr/bin/xcrun -sdk macosx12.3 clang++
+linker = /usr/bin/xcrun -sdk macosx12.3 clang
+linkerxx = /usr/bin/xcrun -sdk macosx12.3 clang++
+
+cflags =  -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I "$root" -I "$startdir" -I "$root/interface" -I "$matlabdir/extern/include" -I "." -DMODEL=NMPC_costNew_mex -c 
+
+cxxflags =  -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -fobjc-arc -std=c++11 -stdlib=libc++ -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c++11 -I "$root" -I "$startdir" -I "$root/interface" -I "$matlabdir/extern/include" -I "." -DMODEL=NMPC_costNew_mex -c 
+
+ldflags =  -Wl,-twolevel_namespace -undefined error -arch x86_64 -mmacosx-version-min=10.15 -Wl,-syslibroot,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -bundle   -L"$matlabdir/bin/maci64" -lmx -lmex -lmat -lc++  -Wl,-rpath,@loader_path -o NMPC_costNew_mex.mexmaci64 -L"$matlabdir/bin/maci64" -lmwblas -lemlrt -lcovrt -lut -lmwmathutil  -Wl,-exported_symbols_list,NMPC_costNew_mex.map
+
+# Build Rules
+rule cc
+    command = $cc $cflags $in -o $out
+
+rule cxx
+    command = $cxx $cxxflags $in -o $out
+
+rule link
+    command = $linker $in $ldflags
+
+rule linkxx
+    command = $linkerxx $in $ldflags
+
+# Build
+build $builddir/NMPC_costNew_data.o : cc $root/NMPC_costNew_data.c
+build $builddir/rt_nonfinite.o : cc $root/rt_nonfinite.c
+build $builddir/NMPC_costNew_initialize.o : cc $root/NMPC_costNew_initialize.c
+build $builddir/NMPC_costNew_terminate.o : cc $root/NMPC_costNew_terminate.c
+build $builddir/NMPC_costNew.o : cc $root/NMPC_costNew.c
+build $builddir/indexShapeCheck.o : cc $root/indexShapeCheck.c
+build $builddir/norm.o : cc $root/norm.c
+build $builddir/power.o : cc $root/power.c
+build $builddir/atan2.o : cc $root/atan2.c
+build $builddir/ixfun.o : cc $root/ixfun.c
+build $builddir/assertCompatibleDims.o : cc $root/assertCompatibleDims.c
+build $builddir/eml_mtimes_helper.o : cc $root/eml_mtimes_helper.c
+build $builddir/mtimes.o : cc $root/mtimes.c
+build $builddir/_coder_NMPC_costNew_api.o : cc $root/interface/_coder_NMPC_costNew_api.c
+build $builddir/_coder_NMPC_costNew_mex.o : cc $root/interface/_coder_NMPC_costNew_mex.c
+build $builddir/eml_int_forloop_overflow_check.o : cc $root/eml_int_forloop_overflow_check.c
+build $builddir/sqrt.o : cc $root/sqrt.c
+build $builddir/cos.o : cc $root/cos.c
+build $builddir/NMPC_costNew_emxutil.o : cc $root/NMPC_costNew_emxutil.c
+build $builddir/_coder_NMPC_costNew_info.o : cc $root/interface/_coder_NMPC_costNew_info.c
+build $builddir/c_mexapi_version.o : cc $matlabdir/extern/version/c_mexapi_version.c
+
+# Link
+build $root/NMPC_costNew_mex.mexmaci64 : link $builddir/NMPC_costNew_data.o $builddir/rt_nonfinite.o $builddir/NMPC_costNew_initialize.o $builddir/NMPC_costNew_terminate.o $builddir/NMPC_costNew.o $builddir/indexShapeCheck.o $builddir/norm.o $builddir/power.o $builddir/atan2.o $builddir/ixfun.o $builddir/assertCompatibleDims.o $builddir/eml_mtimes_helper.o $builddir/mtimes.o $builddir/_coder_NMPC_costNew_api.o $builddir/_coder_NMPC_costNew_mex.o $builddir/eml_int_forloop_overflow_check.o $builddir/sqrt.o $builddir/cos.o $builddir/NMPC_costNew_emxutil.o $builddir/_coder_NMPC_costNew_info.o $builddir/c_mexapi_version.o 
