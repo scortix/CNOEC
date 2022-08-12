@@ -283,7 +283,7 @@ try % sometime memory problem occurs
     % Open axe
     if ~ishandle(axehandle)
         %fig = figure();
-        set(fig,'Color','k', 'Name', ['Earth: ' maptype]); % black background
+        set(fig, 'Name', ['Earth: ' maptype]); % black background
         
         %pos = get(0,'screensize'); % full screen
         %set(fig, 'Position', pos);
@@ -326,7 +326,7 @@ try % sometime memory problem occurs
     if exist('clmap','var')
         colormap(ax,clmap);
     end    
-    axis(ax,'off');
+    axis(ax,'on');
     axis(ax,'equal');
     %grid on
     %axis([-1,1,-1,1,-1,1]*6378.1370);

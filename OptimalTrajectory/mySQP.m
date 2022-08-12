@@ -175,7 +175,7 @@ while true
 
     %% Compute the QP Hessian Hk
     switch options.Hessmethod
-        case "GD"
+        case "SD"
             Hk = eye(length(x0));
         case 'GN'
             Hk = 2*(gradFxk*gradFxk');
