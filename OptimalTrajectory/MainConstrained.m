@@ -49,6 +49,7 @@ alpha = 0:0.2:1;
 alphaCell = cell(length(alpha),5); % Cell array to save all computed solutions
 ratioVec = [ratio]; % Vector of ratio values used for optimization
 opt.Hessmethod = "BFGS";
+
 % Compute the minimizers for the various alphas
 for k = 2:length(alpha)
     x0 = alphaCellOld{k,2};
@@ -90,17 +91,20 @@ Qdiag = Qdiag + 0.1*(Qdiag==0); % Made to avoid having a zero as element of the 
 Q = diag(1./Qdiag.^2); % Weight matrix for the state error computation
 tPlot = t/3600; % Convert time in hour
 
+% cscheme = {'#7570b3','#d95f02','#377eb8','#e7298a','#1b9e77','#e6ab02'};
+cscheme = {'#AA4499','#EE7733','#0072BD','#CC3311','#228833','#e6ab02'};
+
 % Create necessary figure objects
 f1 = figure();
 f2 = figure();
 f3 = figure();
-f4 = figure();
 
 % Label for plots
-label = cell(length(alpha),1);
+label = cell(length(alpha)+1,1);
 for k = 1:length(alpha)
     label{k} = "$\alpha = " + num2str(alpha(k)) + "$";
 end
+label{end} = "Reference";
 
 for k = 1:length(alpha)
     x = alphaCell{k,2}; % Optimized varibales
@@ -112,71 +116,73 @@ for k = 1:length(alpha)
         zCOE(:,i) = EOE2COE(zEOE(:,i)); % Conversion of EOE state vector to COE state vector
     end
 
-    % Pareto Front plot
-    figure(f1)
-    scatter(m0-m,tCost,50,'filled');
-    grid on
-    hold on
-    if k == length(alpha)
-        legend(label,"FontSize",14)
-        xlabel("Mass Consumed $[kg]$","FontSize",14)
-        ylabel("Time Weighted Error","FontSize",14)
-        title("Pareto Front","FontSize",18)
-    end
-
+%     % Pareto Front plot
+%     figure(f1)
+%     scatter(m0-m,tCost,50,'filled','o',"MarkerFaceColor",cscheme{k});
+%     grid on
+%     hold on
+%     if k == length(alpha)
+%         legend(label{1:end-1},"FontSize",14)
+%         xlabel("Mass Consumed $[kg]$","FontSize",14)
+%         ylabel("Time Weighted Error","FontSize",14)
+%         title("Pareto Front","FontSize",18)
+%     end
+% 
     % Plot orbital transfer
     plot2DOrbit(orb_in,orb_end,zCOE,tmax);
     grid on
-
-    % Plot time evolution of classical orbital elements
-    figure(f2)
-    subplot(3,1,1)
-    plot(tPlot,zCOE(1,:));
-    hold on
-    grid on
-    if k == length(alpha)
-        ylabel("Semi-major Axis $a$ $[km]$","FontSize",14)
-        xlim([0, tPlot(end)])
-    end
-    subplot(3,1,2)
-    plot(tPlot,zCOE(2,:));
-    hold on
-    grid on
-    if k == length(alpha)
-        ylabel("Eccentricity $e$ $[\backslash]$","FontSize",14)
-        xlim([0, tPlot(end)])
-    end
-    subplot(3,1,3)
-    plot(tPlot,zCOE(5,:));
-    grid on
-    hold on
-    if k == length(alpha)
-        legend(label,"FontSize",14,"Position",[8.2924e-01 9.1513e-01 1.6059e-01 5.1677e-02])
-        xlabel("Time $[h]$","FontSize",14)
-        ylabel("Argument of periapsis $\omega$ $[rad]$","FontSize",14)
-        xlim([0, tPlot(end)])
-        sgtitle("COE State Time Evolution","FontSize",18)
-        f2.Position = [680 42 754 954];
-    end
-
+% 
+%     % Plot time evolution of classical orbital elements
+%     figure(f2)
+%     subplot(3,1,1)
+%     plot(tPlot,zCOE(1,:),'Color',cscheme{k},'LineWidth',1.5);
+%     hold on
+%     grid on
+%     if k == length(alpha)
+%         line([0,tmax],orb_end.a*[1,1],'Color','k','LineWidth',1.5,'LineStyle','--')
+%         ylabel("Semi-major Axis $a$ $[km]$","FontSize",14)
+%         xlabel("Time $[h]$","FontSize",14)
+%         xlim([0, tPlot(end)])
+%     end
+%     subplot(3,1,2)
+%     plot(tPlot,zCOE(2,:),'Color',cscheme{k},'LineWidth',1.5);
+%     hold on
+%     grid on
+%     if k == length(alpha)
+%         line([0,tmax],orb_end.e*[1,1],'Color','k','LineWidth',1.5,'LineStyle','--')
+%         ylabel("Eccentricity $e$ $[\backslash]$","FontSize",14)
+%         xlabel("Time $[h]$","FontSize",14)
+%         xlim([0, tPlot(end)])
+%     end
+%     subplot(3,1,3)
+%     plot(tPlot,zCOE(5,:),'Color',cscheme{k},'LineWidth',1.5);
+%     grid on
+%     hold on
+%     if k == length(alpha)
+%         line([0,tmax],orb_end.om*[1,1],'Color','k','LineWidth',1.5,'LineStyle','--')
+%         legend(label,"FontSize",14,"Position",[5.6778e-01   1.2802e-01   3.2010e-01   9.9686e-02],'NumColumns',2)
+%         xlabel("Time $[h]$","FontSize",14)
+%         ylabel("Argument of periapsis $\omega$ $[rad]$","FontSize",14)
+%         yticks(-pi:pi/2:pi)
+%         yticklabels({'$-\pi$','$-\frac{\pi}{2}$','$0$','$\frac{\pi}{2}$','$\pi$'})
+%         xlim([0, tPlot(end)])
+%         ylim([-pi,pi])
+%         sgtitle("COE State Time Evolution","FontSize",18)
+%         f2.Position = [680 42 754 954];
+%     end
 
 %     figure(f3)
-%     csisim = interp1(tNew,x(2:(end+1)/2),t,"pchip");
-%     angsim = interp1(tNew,x((end+1)/2+1:end),t,"pchip");
-%     subplot(length(alpha),2,2*k-1)
-%     plot(tPlot,csisim)
+%     csisim = interp1(tNew,x(2:(end+1)/2),t,"makima");
+%     plot(tPlot,mfun(t,csisim,Ts,Tmax/g0/Isp),'Color',cscheme{k},'LineWidth',1.5);
 %     hold on
 %     grid on
-%     subplot(length(alpha),2,2*k)
-%     plot(tPlot,mod(angsim,2*pi)*180/pi)
-%     hold on
-%     grid on
-% 
-%     figure(f4)
-%     plot(tPlot,vecnorm(sqrt(Q)*(zCOE([1 2 5],:)-zCOEbar([1 2 5]))).^2)
-%     hold on
-%     grid on
-    
+%     if k == length(alpha)
+%         legend(label{1:end-1},"FontSize",14,'Location','best')
+%         xlabel("Time $[h]$","FontSize",14)
+%         ylabel("Available Mass $[kg]$","FontSize",14)
+%         xlim([0, tPlot(end)])
+%         title("Mass Time Evolution","FontSize",18)
+%     end
 
 end
 
@@ -263,3 +269,9 @@ function h = ccplot(x,y,c,map)
     if status == 0, hold off; end   % reset hold status
 end
 
+function m = mfun(t,csi,Ts,coeffT)
+m = t;
+for i = 1:length(t)
+    m(i) = 1000-Ts*sum(coeffT*csi(1:t(i)/Ts+1));
+end
+end

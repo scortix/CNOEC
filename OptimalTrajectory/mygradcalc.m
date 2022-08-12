@@ -1,29 +1,45 @@
-function [gradfx] = mygradcalc(fun, x, fx, opt, eta, p)
+function gradfx = mygradcalc(fun, x, fx, opt, eta)
+% MYGRADCALC Computes the gradient (i.e. the Jacobian transpose) of a 
+% given function, using one of several possible methods.
+%   INPUTS:
+%           fun         =   function whose gradient shall be evaluated (in
+%                           general a vector of N functions)
+%           x           =   value of the n-dimensional input argument at 
+%                           which to evaluate
+%                           the gradient (dfun(x)/dx)'
+%           fx          =   vlaue of the function fun at the point x
+%           opt         =   struct which must have at least two fields:
+%               method      =   string indicating the differentiation method:
+%                                   'FD' (Forward Finite Differences), 
+%                                   'BD' (Backward Finite Differences), 
+%                                   'CD' (Central Finite Differences), 
+%                                   'IM' (Imaginary-part trick).
+%               useParallel =   boolean indicating wether to use parallel
+%                               pool to compute the gradient
+%           eta         =   perturbation step used
+%
+%   OUTPUT:
+%           gradient    =   n-by-N matrix containing in each column the
+%                           partial derivatives of the corresponding element of function
+%                           fun(x) with respect to each component of x,
+%                           evaluated at xk
 
 dim = length(x);
 J = zeros(length(fx),dim);
-if nargin < 6
-    p = eye(dim);
-end
+p = eye(dim);
 method = opt.gradmethod;
 useParallel = opt.useParallel;
-switch method
-    case 'FD'
-        if nargin == 4
+if nargin == 4
+    switch method
+        case 'FD'
             eta = sqrt(eps);
-        end
-    case 'BD'
-        if nargin == 4
+        case 'BD'
             eta = sqrt(eps);
-        end
-    case 'CD'
-        if nargin == 4
+        case 'CD'
             eta = eps^(1/3);
-        end
-    case 'IM'
-        if nargin == 4
-            eta = eps^(1/3);
-        end
+        case 'IM'
+            eta = 1e-100;
+    end
 end
 if useParallel
     parfor i = 1:dim

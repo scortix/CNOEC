@@ -9,8 +9,6 @@ t = 0:Ts:tmax; % Time vector for the state variables
 topt = 0:Ts*ratio:tmax; % Time vector for the optimization variables
 
 % Interpolation using time vector t
-% csi = interp1(topt,csi,t,"pchip");
-% qAngle = interp1(topt,qAngle,t,"pchip");
 coder.extrinsic("makima");
 csi = (makima(topt,csi,t))';
 qAngle = (makima(topt,qAngle,t))';

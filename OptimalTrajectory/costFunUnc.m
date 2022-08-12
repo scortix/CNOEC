@@ -1,4 +1,4 @@
-function [J,y,tCost,m] = costFun(x, Ts, tmax, y0, ybar, ratio, Tmax, coeffT, m0, alpha)
+function [J,y,tCost,m] = costFunUnc(x, Ts, tmax, y0, ybar, ratio, Tmax, coeffT, m0, alpha)
 
 lu = (length(x)-1)/2; % Length of the input vector
 theta0 = x(1); % True anomaly at the beginning of the transfer

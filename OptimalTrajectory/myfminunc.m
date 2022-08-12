@@ -43,7 +43,6 @@ while true
         case 'SD'
             pk = -gradfxk;
         case 'GN'
-%             pk = -(2*(gradFxk'*gradFxk))\(2*gradFxk'*Fxk);
             pk = -gradFxk\Fxk;
         case 'BFGS'
             pk = -Hk\gradfxk;
