@@ -1,10 +1,7 @@
 close all
 clear
 clc
-pool = gcp("nocreate");
-if isempty(gcp)
-    parpool;
-end
+
 set(groot,'defaulttextinterpreter','latex');
 set(groot,'defaultAxesTickLabelInterpreter','latex');
 set(groot,'defaultLegendInterpreter','latex');
@@ -12,6 +9,10 @@ Parameters % Load Parameters
 onlyPlot = true; % Boolean to skip the optimization part and just plot pre-saved results
 
 if ~onlyPlot
+    pool = gcp("nocreate");
+    if isempty(gcp)
+        parpool;
+    end
     %% Compute Initial Guesses for Optimizations
     opt.nitermax = 1e2; %Reduce maximum number of iterations
 
