@@ -1,4 +1,15 @@
-function [Ddrag_r, Ddrag_t] = drag(rho,S,Cd,a,e,i,Omega,w,theta)
+function [Ddrag_r, Ddrag_t] = drag(x)
+
+rho = rho_selection(x);
+S = 1;
+Cd = 1;
+
+a = x(1);
+e = x(2);
+i = x(3);
+Omega = x(4);
+w = x(5);
+theta = x(6);
 
 mu_earth = 398600;
 [~,vv] = paraorb2rv(a,e,i,Omega,w,theta,mu_earth);
@@ -10,8 +21,11 @@ g = e*sin(w+Omega);
 % k = sin(Omega)*tan(i/2);
 L = Omega+w+theta;
 
+if p < 0
+    p = -p;
+end
 
-v_mod = sqrt(vv(1)^2+vv(2)^2+vv(3)^2);
+v_mod = norm(vv);
 v_r   = sqrt(mu_earth/p)*(f*sin(L)-g*cos(L));
 v_t   = sqrt(mu_earth/p)*(1+f*cos(L)+g*sin(L));
 

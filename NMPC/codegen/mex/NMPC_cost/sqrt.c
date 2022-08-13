@@ -18,7 +18,7 @@
 #include "mwmathutil.h"
 
 /* Variable Definitions */
-static emlrtRSInfo k_emlrtRSI = {
+static emlrtRSInfo m_emlrtRSI = {
     16,     /* lineNo */
     "sqrt", /* fcnName */
     "/Applications/MATLAB_R2021b.app/toolbox/eml/lib/matlab/elfun/sqrt.m" /* pathName
@@ -26,7 +26,27 @@ static emlrtRSInfo k_emlrtRSI = {
 };
 
 /* Function Definitions */
-void b_sqrt(const emlrtStack *sp, emxArray_real_T *x)
+void b_sqrt(const emlrtStack *sp, real_T x[36])
+{
+  int32_T k;
+  boolean_T p;
+  p = false;
+  for (k = 0; k < 36; k++) {
+    if (p || (x[k] < 0.0)) {
+      p = true;
+    }
+  }
+  if (p) {
+    emlrtErrorWithMessageIdR2018a(
+        sp, &emlrtRTEI, "Coder:toolbox:ElFunDomainError",
+        "Coder:toolbox:ElFunDomainError", 3, 4, 4, "sqrt");
+  }
+  for (k = 0; k < 36; k++) {
+    x[k] = muDoubleScalarSqrt(x[k]);
+  }
+}
+
+void c_sqrt(const emlrtStack *sp, emxArray_real_T *x)
 {
   emlrtStack b_st;
   emlrtStack c_st;
@@ -54,11 +74,11 @@ void b_sqrt(const emlrtStack *sp, emxArray_real_T *x)
         sp, &emlrtRTEI, "Coder:toolbox:ElFunDomainError",
         "Coder:toolbox:ElFunDomainError", 3, 4, 4, "sqrt");
   }
-  st.site = &k_emlrtRSI;
+  st.site = &m_emlrtRSI;
   nx = x->size[1];
-  b_st.site = &l_emlrtRSI;
+  b_st.site = &n_emlrtRSI;
   if ((1 <= x->size[1]) && (x->size[1] > 2147483646)) {
-    c_st.site = &m_emlrtRSI;
+    c_st.site = &o_emlrtRSI;
     check_forloop_overflow_error(&c_st);
   }
   for (k = 0; k < nx; k++) {

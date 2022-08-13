@@ -21,31 +21,27 @@ function J = NMPC_cost(M,Ts,x,y0,yref,Q,R,coeffT,m0,Tmax)
 yhat = zeros(6,M+1); % Initialization of state vectors
 yhat(:,1) = y0; % Set initial conditions
 u = zeros(3,M); % Initialization of input vectors
-xi = zeros(1,M); % Initialization of fuel utilization
-qAngle = zeros(1,M); % Initialization of qAngle
-rAngle = zeros(1,M); % Initialization of rAngle
+dir = zeros(3,M); % Initialization of direction vector
+cons = zeros(M,1); % Initialization of consumption vector
 m = zeros(1,M); m(1) = m0; % Initialization of mass
 
 for k = 1:M
-    xi(1,k) = x(k,1);
-    qAngle(1,k) = x(M+k,1);
-    rAngle(1,k) = x(2*M+k,1);
+    dir(:,k) = x(3*(k-1)+1:3*k);
+    cons(k) = norm(dir(:,k));
 end
 
 F = zeros(7*M,1);
 % Cost Function Calculation
 for k = 1:M
-    u(:,k) = Tmax/m(k)/1e3*xi(1,k)*[sin(qAngle(k))*cos(rAngle(k)) cos(qAngle(k))*cos(rAngle(k)) sin(rAngle(k))]';
+    u(:,k) = Tmax/m(k)/1e3*dir(:,k);
     yhat(:,k+1) = yhat(:,k)+Ts*EOEDerivatives(0,yhat(:,k),u(:,k),398600);
-    F(k,1) = sqrt(R)*xi(1,k);
+    F(k,1) = sqrt(R)*cons(k);
     F(M+6*(k-1)+1:M+6*k,1) = sqrt(Q)*(yref(:,k)-yhat(:,k+1));
     if k < M
-        m(k+1) = m(k) - Ts*xi(1,k)*coeffT;
+        m(k+1) = m(k) - Ts*cons(k)*coeffT;
     end
 end
 
 r = min((yhat(1,:)./(1+sqrt(yhat(2,:).^2+yhat(3,:).^2).*cos(yhat(6,:)-atan2(yhat(3,:),yhat(2,:)))))');
-% minXi = min(xi);
-% maxXi = max(xi);
-J = [F'*F;r-6378.1;F];
+J = [F'*F;[r-6378.1; 1-cons];F];
 end

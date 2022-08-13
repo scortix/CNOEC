@@ -15,7 +15,7 @@
 #include "rt_nonfinite.h"
 
 /* Variable Definitions */
-static emlrtRTEInfo h_emlrtRTEI = {
+static emlrtRTEInfo i_emlrtRTEI = {
     134,                   /* lineNo */
     23,                    /* colNo */
     "dynamic_size_checks", /* fName */
@@ -23,7 +23,7 @@ static emlrtRTEInfo h_emlrtRTEI = {
     "eml_mtimes_helper.m" /* pName */
 };
 
-static emlrtRTEInfo i_emlrtRTEI = {
+static emlrtRTEInfo j_emlrtRTEI = {
     129,                   /* lineNo */
     23,                    /* colNo */
     "dynamic_size_checks", /* fName */
@@ -39,10 +39,10 @@ void dynamic_size_checks(const emlrtStack *sp, const emxArray_real_T *a,
   if (innerDimA != innerDimB) {
     if ((a->size[0] == 1) || (b->size[0] == 1)) {
       emlrtErrorWithMessageIdR2018a(
-          sp, &i_emlrtRTEI, "Coder:toolbox:mtimes_noDynamicScalarExpansion",
+          sp, &j_emlrtRTEI, "Coder:toolbox:mtimes_noDynamicScalarExpansion",
           "Coder:toolbox:mtimes_noDynamicScalarExpansion", 0);
     } else {
-      emlrtErrorWithMessageIdR2018a(sp, &h_emlrtRTEI, "MATLAB:innerdim",
+      emlrtErrorWithMessageIdR2018a(sp, &i_emlrtRTEI, "MATLAB:innerdim",
                                     "MATLAB:innerdim", 0);
     }
   }

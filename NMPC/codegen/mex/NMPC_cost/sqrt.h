@@ -22,6 +22,8 @@
 #include <string.h>
 
 /* Function Declarations */
-void b_sqrt(const emlrtStack *sp, emxArray_real_T *x);
+void b_sqrt(const emlrtStack *sp, real_T x[36]);
+
+void c_sqrt(const emlrtStack *sp, emxArray_real_T *x);
 
 /* End of code generation (sqrt.h) */
