@@ -18,14 +18,14 @@
 #include "mwmathutil.h"
 
 /* Variable Definitions */
-static emlrtRSInfo n_emlrtRSI = {
+static emlrtRSInfo p_emlrtRSI = {
     13,      /* lineNo */
     "atan2", /* fcnName */
     "/Applications/MATLAB_R2021b.app/toolbox/eml/lib/matlab/elfun/atan2.m" /* pathName
                                                                             */
 };
 
-static emlrtRSInfo o_emlrtRSI =
+static emlrtRSInfo q_emlrtRSI =
     {
         57,      /* lineNo */
         "ixfun", /* fcnName */
@@ -33,7 +33,7 @@ static emlrtRSInfo o_emlrtRSI =
         "ixfun.m" /* pathName */
 };
 
-static emlrtRSInfo p_emlrtRSI =
+static emlrtRSInfo r_emlrtRSI =
     {
         102,                          /* lineNo */
         "binaryImplicitExpansionFun", /* fcnName */
@@ -41,7 +41,7 @@ static emlrtRSInfo p_emlrtRSI =
         "ixfun.m" /* pathName */
 };
 
-static emlrtRTEInfo db_emlrtRTEI = {
+static emlrtRTEInfo fb_emlrtRTEI = {
     13,      /* lineNo */
     1,       /* colNo */
     "atan2", /* fName */
@@ -71,13 +71,13 @@ void b_atan2(const emlrtStack *sp, const emxArray_real_T *y,
   c_st.tls = b_st.tls;
   x_data = x->data;
   y_data = y->data;
-  st.site = &n_emlrtRSI;
-  b_st.site = &o_emlrtRSI;
+  st.site = &p_emlrtRSI;
+  b_st.site = &q_emlrtRSI;
   if (y->size[1] == x->size[1]) {
     i = r->size[0] * r->size[1];
     r->size[0] = 1;
     r->size[1] = y->size[1];
-    emxEnsureCapacity_real_T(&b_st, r, i, &db_emlrtRTEI);
+    emxEnsureCapacity_real_T(&b_st, r, i, &fb_emlrtRTEI);
     r_data = r->data;
     loop_ub = y->size[1];
     for (i = 0; i < loop_ub; i++) {
@@ -86,7 +86,7 @@ void b_atan2(const emlrtStack *sp, const emxArray_real_T *y,
       r_data[i] = muDoubleScalarAtan2(varargin_1, varargin_2);
     }
   } else {
-    c_st.site = &p_emlrtRSI;
+    c_st.site = &r_emlrtRSI;
     expand_atan2(&c_st, y, x, r);
   }
 }

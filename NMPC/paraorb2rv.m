@@ -16,7 +16,11 @@ TGEPF=Rw*Ri*RO;
 p=TGEPF(1,:); q=TGEPF(2,:);
 
 % Computation of position and velocity vectors
-h=sqrt(mu*a*(1-e^2));
+p_ORB = a*(1-e^2);
+if p_ORB < 0
+    p_ORB = -p_ORB;
+end
+h=sqrt(mu*p_ORB);
 rr=h^2/mu*1/(1+e*cos(theta))*(cos(theta)*p+sin(theta)*q);
 vv=mu/h*(-sin(theta)*p+(e+cos(theta))*q);
 end

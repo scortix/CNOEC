@@ -31,6 +31,18 @@
   },
   {
     "directory": "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/codegen/mex/NMPC_cost",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/NMPC\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=NMPC_cost_mex -c  indexShapeCheck.c -o build/maci64/indexShapeCheck.o",
+    "file": "indexShapeCheck.c",
+    "output": "build/maci64/indexShapeCheck.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/codegen/mex/NMPC_cost",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/NMPC\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=NMPC_cost_mex -c  norm.c -o build/maci64/norm.o",
+    "file": "norm.c",
+    "output": "build/maci64/norm.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/codegen/mex/NMPC_cost",
     "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/NMPC\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=NMPC_cost_mex -c  power.c -o build/maci64/power.o",
     "file": "power.c",
     "output": "build/maci64/power.o"

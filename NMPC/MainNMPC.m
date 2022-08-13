@@ -64,6 +64,7 @@ x0(M+1:2*M,1) = angleRef;
 mass = 1000;
 
 % J = NMPC_cost(M,Ts,x0,zEOE0,yRef,Q,R,coeffT,mass,Tmax);
+% J = NMPC_costDist(M,Ts,x0,zEOE0,yRef,Q,R,coeffT,mass,Tmax,x_par,y_par,z_par);
 %%
 coder.extrinsic("opt_problem");
 xopt = opt_problem(x0,M,Ts,zEOE0,yRef,Q,R,coeffT,mass,Tmax);

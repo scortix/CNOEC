@@ -17,7 +17,7 @@
 #include "mwmathutil.h"
 
 /* Variable Definitions */
-static emlrtRTEInfo f_emlrtRTEI =
+static emlrtRTEInfo g_emlrtRTEI =
     {
         160,            /* lineNo */
         23,             /* colNo */
@@ -26,7 +26,7 @@ static emlrtRTEInfo f_emlrtRTEI =
         "ixfun.m" /* pName */
 };
 
-static emlrtRTEInfo eb_emlrtRTEI =
+static emlrtRTEInfo gb_emlrtRTEI =
     {
         169,     /* lineNo */
         20,      /* colNo */
@@ -57,7 +57,7 @@ void expand_atan2(const emlrtStack *sp, const emxArray_real_T *a,
   } else {
     sak = muIntScalarMin_sint32(sak, sbk);
     if (a->size[1] != b->size[1]) {
-      emlrtErrorWithMessageIdR2018a(sp, &f_emlrtRTEI,
+      emlrtErrorWithMessageIdR2018a(sp, &g_emlrtRTEI,
                                     "MATLAB:sizeDimensionsMustMatch",
                                     "MATLAB:sizeDimensionsMustMatch", 0);
     }
@@ -65,7 +65,7 @@ void expand_atan2(const emlrtStack *sp, const emxArray_real_T *a,
   sbk = c->size[0] * c->size[1];
   c->size[0] = 1;
   c->size[1] = sak;
-  emxEnsureCapacity_real_T(sp, c, sbk, &eb_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, c, sbk, &gb_emlrtRTEI);
   c_data = c->data;
   if (sak != 0) {
     acoef = (a->size[1] != 1);
