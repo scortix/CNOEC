@@ -3,9 +3,9 @@
  * course requirements at degree granting institutions only.  Not for
  * government, commercial, or other organizational use.
  *
- * drag.h
+ * EOEDerivatives.h
  *
- * Code generation for function 'drag'
+ * Code generation for function 'EOEDerivatives'
  *
  */
 
@@ -21,7 +21,7 @@
 #include <string.h>
 
 /* Function Declarations */
-void drag(const emlrtStack *sp, const real_T x[6], real_T *Ddrag_r,
-          real_T *Ddrag_t);
+void EOEDerivatives(const emlrtStack *sp, const real_T x[6], const real_T u[3],
+                    real_T xdot[6]);
 
-/* End of code generation (drag.h) */
+/* End of code generation (EOEDerivatives.h) */

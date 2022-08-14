@@ -1,5 +1,5 @@
-function [rho_tab] = rho_tab()
-rho_tab = [0 1.225 7.249 ;
+% [km kg/m^3 km] % check Bernelli slides for references
+rho_table = [0 1.225 7.249 ;
     25 3.899e-2 6.349 ;
     30 1.774e-2 6.682 ;
     40 3.972e-3 7.554 ;
@@ -27,4 +27,3 @@ rho_tab = [0 1.225 7.249 ;
     800 1.170e-14 124.64 ;
     900 5.245e-15 181.05 ;
     1000 3.019e-15 268.00];
-end

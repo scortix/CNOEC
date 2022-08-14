@@ -21,7 +21,6 @@
 #include <string.h>
 
 /* Function Declarations */
-void earthNonSphericity(const real_T x[6], real_T *DJ2r, real_T *DJ2t,
-                        real_T *DJ2n);
+void earthNonSphericity(const real_T x[6], real_T DJ2[3]);
 
 /* End of code generation (earthNonSphericity.h) */

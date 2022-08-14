@@ -12,17 +12,19 @@
 /* Include files */
 #include "NMPC_costDist.h"
 #include "EOE2COE.h"
+#include "EOEDerivatives.h"
 #include "NMPC_costDist_data.h"
 #include "NMPC_costDist_emxutil.h"
 #include "NMPC_costDist_types.h"
 #include "assertCompatibleDims.h"
 #include "cos.h"
-#include "drag.h"
 #include "earthNonSphericity.h"
 #include "eml_int_forloop_overflow_check.h"
 #include "eml_mtimes_helper.h"
 #include "indexShapeCheck.h"
 #include "moonDisturbance.h"
+#include "norm.h"
+#include "paraorb2rv.h"
 #include "power.h"
 #include "rt_nonfinite.h"
 #include "sqrt.h"
@@ -68,7 +70,7 @@ static emlrtRSInfo e_emlrtRSI = {
 };
 
 static emlrtRSInfo f_emlrtRSI = {
-    43,              /* lineNo */
+    40,              /* lineNo */
     "NMPC_costDist", /* fcnName */
     "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pathName
                                                                          */
@@ -89,7 +91,7 @@ static emlrtRSInfo h_emlrtRSI = {
 };
 
 static emlrtRSInfo i_emlrtRSI = {
-    51,              /* lineNo */
+    46,              /* lineNo */
     "NMPC_costDist", /* fcnName */
     "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pathName
                                                                          */
@@ -102,35 +104,34 @@ static emlrtRSInfo j_emlrtRSI = {
                                                                          */
 };
 
-static emlrtRSInfo ib_emlrtRSI = {
-    29,               /* lineNo */
-    "EOEDerivatives", /* fcnName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/EOEDerivatives.m" /* pathName
-                                                                          */
+static emlrtRSInfo k_emlrtRSI = {
+    53,              /* lineNo */
+    "NMPC_costDist", /* fcnName */
+    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pathName
+                                                                         */
 };
 
-static emlrtRSInfo jb_emlrtRSI = {
-    30,               /* lineNo */
-    "EOEDerivatives", /* fcnName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/EOEDerivatives.m" /* pathName
-                                                                          */
+static emlrtRSInfo y_emlrtRSI = {
+    6,               /* lineNo */
+    "rho_selection", /* fcnName */
+    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/rho_selection.m" /* pathName
+                                                                         */
 };
 
-static emlrtRSInfo kb_emlrtRSI = {
-    38,               /* lineNo */
-    "EOEDerivatives", /* fcnName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/EOEDerivatives.m" /* pathName
-                                                                          */
+static emlrtRSInfo ab_emlrtRSI = {
+    13,                                                        /* lineNo */
+    "drag",                                                    /* fcnName */
+    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/drag.m" /* pathName */
 };
 
-static emlrtRSInfo ob_emlrtRSI = {
+static emlrtRSInfo lb_emlrtRSI = {
     13,      /* lineNo */
     "atan2", /* fcnName */
     "/Applications/MATLAB_R2021b.app/toolbox/eml/lib/matlab/elfun/atan2.m" /* pathName
                                                                             */
 };
 
-static emlrtRSInfo pb_emlrtRSI =
+static emlrtRSInfo mb_emlrtRSI =
     {
         57,      /* lineNo */
         "ixfun", /* fcnName */
@@ -138,7 +139,7 @@ static emlrtRSInfo pb_emlrtRSI =
         "ixfun.m" /* pathName */
 };
 
-static emlrtRSInfo rb_emlrtRSI = {
+static emlrtRSInfo ob_emlrtRSI = {
     34,               /* lineNo */
     "rdivide_helper", /* fcnName */
     "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/"
@@ -146,7 +147,7 @@ static emlrtRSInfo rb_emlrtRSI = {
 };
 
 static emlrtRSInfo
-    sb_emlrtRSI =
+    pb_emlrtRSI =
         {
             51,    /* lineNo */
             "div", /* fcnName */
@@ -154,70 +155,70 @@ static emlrtRSInfo
             "div.m" /* pathName */
 };
 
-static emlrtRSInfo tb_emlrtRSI = {
+static emlrtRSInfo qb_emlrtRSI = {
     15,    /* lineNo */
     "min", /* fcnName */
     "/Applications/MATLAB_R2021b.app/toolbox/eml/lib/matlab/datafun/min.m" /* pathName
                                                                             */
 };
 
-static emlrtRSInfo ub_emlrtRSI = {
+static emlrtRSInfo rb_emlrtRSI = {
     46,         /* lineNo */
     "minOrMax", /* fcnName */
     "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/"
     "minOrMax.m" /* pathName */
 };
 
-static emlrtRSInfo vb_emlrtRSI = {
+static emlrtRSInfo sb_emlrtRSI = {
     92,        /* lineNo */
     "minimum", /* fcnName */
     "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/"
     "minOrMax.m" /* pathName */
 };
 
-static emlrtRSInfo wb_emlrtRSI = {
+static emlrtRSInfo tb_emlrtRSI = {
     204,             /* lineNo */
     "unaryMinOrMax", /* fcnName */
     "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/"
     "unaryMinOrMax.m" /* pathName */
 };
 
-static emlrtRSInfo xb_emlrtRSI = {
+static emlrtRSInfo ub_emlrtRSI = {
     893,                    /* lineNo */
     "minRealVectorOmitNaN", /* fcnName */
     "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/"
     "unaryMinOrMax.m" /* pathName */
 };
 
-static emlrtRSInfo yb_emlrtRSI = {
+static emlrtRSInfo vb_emlrtRSI = {
     62,                      /* lineNo */
     "vectorMinOrMaxInPlace", /* fcnName */
     "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/"
     "vectorMinOrMaxInPlace.m" /* pathName */
 };
 
-static emlrtRSInfo ac_emlrtRSI = {
+static emlrtRSInfo wb_emlrtRSI = {
     54,                      /* lineNo */
     "vectorMinOrMaxInPlace", /* fcnName */
     "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/"
     "vectorMinOrMaxInPlace.m" /* pathName */
 };
 
-static emlrtRSInfo bc_emlrtRSI = {
+static emlrtRSInfo xb_emlrtRSI = {
     103,         /* lineNo */
     "findFirst", /* fcnName */
     "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/"
     "vectorMinOrMaxInPlace.m" /* pathName */
 };
 
-static emlrtRSInfo cc_emlrtRSI = {
+static emlrtRSInfo yb_emlrtRSI = {
     120,                        /* lineNo */
     "minOrMaxRealVectorKernel", /* fcnName */
     "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/"
     "vectorMinOrMaxInPlace.m" /* pathName */
 };
 
-static emlrtRSInfo dc_emlrtRSI = {
+static emlrtRSInfo ac_emlrtRSI = {
     69,                  /* lineNo */
     "eml_mtimes_helper", /* fcnName */
     "/Applications/MATLAB_R2021b.app/toolbox/eml/lib/matlab/ops/"
@@ -227,7 +228,7 @@ static emlrtRSInfo dc_emlrtRSI = {
 static emlrtBCInfo emlrtBCI = {
     -1,              /* iFirst */
     -1,              /* iLast */
-    42,              /* lineNo */
+    43,              /* lineNo */
     9,               /* colNo */
     "u",             /* aName */
     "NMPC_costDist", /* fName */
@@ -348,8 +349,8 @@ static emlrtBCInfo h_emlrtBCI = {
 static emlrtBCInfo i_emlrtBCI = {
     -1,              /* iFirst */
     -1,              /* iLast */
-    40,              /* lineNo */
-    73,              /* colNo */
+    41,              /* lineNo */
+    25,              /* colNo */
     "m",             /* aName */
     "NMPC_costDist", /* fName */
     "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
@@ -360,7 +361,7 @@ static emlrtBCInfo i_emlrtBCI = {
 static emlrtBCInfo j_emlrtBCI = {
     -1,              /* iFirst */
     -1,              /* iLast */
-    42,              /* lineNo */
+    43,              /* lineNo */
     34,              /* colNo */
     "dir",           /* aName */
     "NMPC_costDist", /* fName */
@@ -372,7 +373,7 @@ static emlrtBCInfo j_emlrtBCI = {
 static emlrtBCInfo k_emlrtBCI = {
     -1,              /* iFirst */
     -1,              /* iLast */
-    43,              /* lineNo */
+    44,              /* lineNo */
     26,              /* colNo */
     "yhat",          /* aName */
     "NMPC_costDist", /* fName */
@@ -384,7 +385,7 @@ static emlrtBCInfo k_emlrtBCI = {
 static emlrtBCInfo l_emlrtBCI = {
     -1,              /* iFirst */
     -1,              /* iLast */
-    43,              /* lineNo */
+    44,              /* lineNo */
     56,              /* colNo */
     "yhat",          /* aName */
     "NMPC_costDist", /* fName */
@@ -396,7 +397,7 @@ static emlrtBCInfo l_emlrtBCI = {
 static emlrtBCInfo m_emlrtBCI = {
     -1,              /* iFirst */
     -1,              /* iLast */
-    43,              /* lineNo */
+    44,              /* lineNo */
     63,              /* colNo */
     "u",             /* aName */
     "NMPC_costDist", /* fName */
@@ -408,7 +409,7 @@ static emlrtBCInfo m_emlrtBCI = {
 static emlrtBCInfo n_emlrtBCI = {
     -1,              /* iFirst */
     -1,              /* iLast */
-    43,              /* lineNo */
+    44,              /* lineNo */
     12,              /* colNo */
     "yhat",          /* aName */
     "NMPC_costDist", /* fName */
@@ -420,7 +421,7 @@ static emlrtBCInfo n_emlrtBCI = {
 static emlrtBCInfo o_emlrtBCI = {
     -1,              /* iFirst */
     -1,              /* iLast */
-    45,              /* lineNo */
+    46,              /* lineNo */
     46,              /* colNo */
     "yref",          /* aName */
     "NMPC_costDist", /* fName */
@@ -432,7 +433,7 @@ static emlrtBCInfo o_emlrtBCI = {
 static emlrtBCInfo p_emlrtBCI = {
     -1,              /* iFirst */
     -1,              /* iLast */
-    45,              /* lineNo */
+    46,              /* lineNo */
     56,              /* colNo */
     "yhat",          /* aName */
     "NMPC_costDist", /* fName */
@@ -443,7 +444,7 @@ static emlrtBCInfo p_emlrtBCI = {
 
 static emlrtECInfo b_emlrtECI = {
     2,               /* nDims */
-    51,              /* lineNo */
+    52,              /* lineNo */
     29,              /* colNo */
     "NMPC_costDist", /* fName */
     "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
@@ -452,7 +453,7 @@ static emlrtECInfo b_emlrtECI = {
 
 static emlrtECInfo c_emlrtECI = {
     2,               /* nDims */
-    51,              /* lineNo */
+    52,              /* lineNo */
     61,              /* colNo */
     "NMPC_costDist", /* fName */
     "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
@@ -461,7 +462,7 @@ static emlrtECInfo c_emlrtECI = {
 
 static emlrtECInfo d_emlrtECI = {
     2,               /* nDims */
-    51,              /* lineNo */
+    52,              /* lineNo */
     24,              /* colNo */
     "NMPC_costDist", /* fName */
     "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
@@ -471,7 +472,7 @@ static emlrtECInfo d_emlrtECI = {
 static emlrtBCInfo q_emlrtBCI = {
     -1,              /* iFirst */
     -1,              /* iLast */
-    45,              /* lineNo */
+    46,              /* lineNo */
     7,               /* colNo */
     "F",             /* aName */
     "NMPC_costDist", /* fName */
@@ -483,7 +484,7 @@ static emlrtBCInfo q_emlrtBCI = {
 static emlrtBCInfo r_emlrtBCI = {
     -1,              /* iFirst */
     -1,              /* iLast */
-    45,              /* lineNo */
+    46,              /* lineNo */
     19,              /* colNo */
     "F",             /* aName */
     "NMPC_costDist", /* fName */
@@ -494,7 +495,7 @@ static emlrtBCInfo r_emlrtBCI = {
 
 static emlrtECInfo e_emlrtECI = {
     -1,              /* nDims */
-    45,              /* lineNo */
+    46,              /* lineNo */
     5,               /* colNo */
     "NMPC_costDist", /* fName */
     "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
@@ -629,18 +630,6 @@ static emlrtDCInfo m_emlrtDCI = {
 static emlrtBCInfo s_emlrtBCI = {
     -1,              /* iFirst */
     -1,              /* iLast */
-    42,              /* lineNo */
-    21,              /* colNo */
-    "m",             /* aName */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    0 /* checkKind */
-};
-
-static emlrtBCInfo t_emlrtBCI = {
-    -1,              /* iFirst */
-    -1,              /* iLast */
     30,              /* lineNo */
     10,              /* colNo */
     "cons",          /* aName */
@@ -650,10 +639,22 @@ static emlrtBCInfo t_emlrtBCI = {
     0 /* checkKind */
 };
 
+static emlrtBCInfo t_emlrtBCI = {
+    -1,              /* iFirst */
+    -1,              /* iLast */
+    43,              /* lineNo */
+    21,              /* colNo */
+    "m",             /* aName */
+    "NMPC_costDist", /* fName */
+    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
+                                                                          */
+    0 /* checkKind */
+};
+
 static emlrtBCInfo u_emlrtBCI = {
     -1,              /* iFirst */
     -1,              /* iLast */
-    44,              /* lineNo */
+    45,              /* lineNo */
     27,              /* colNo */
     "cons",          /* aName */
     "NMPC_costDist", /* fName */
@@ -665,7 +666,7 @@ static emlrtBCInfo u_emlrtBCI = {
 static emlrtBCInfo v_emlrtBCI = {
     -1,              /* iFirst */
     -1,              /* iLast */
-    44,              /* lineNo */
+    45,              /* lineNo */
     7,               /* colNo */
     "F",             /* aName */
     "NMPC_costDist", /* fName */
@@ -677,7 +678,7 @@ static emlrtBCInfo v_emlrtBCI = {
 static emlrtBCInfo w_emlrtBCI = {
     -1,              /* iFirst */
     -1,              /* iLast */
-    47,              /* lineNo */
+    48,              /* lineNo */
     20,              /* colNo */
     "m",             /* aName */
     "NMPC_costDist", /* fName */
@@ -689,7 +690,7 @@ static emlrtBCInfo w_emlrtBCI = {
 static emlrtBCInfo x_emlrtBCI = {
     -1,              /* iFirst */
     -1,              /* iLast */
-    47,              /* lineNo */
+    48,              /* lineNo */
     33,              /* colNo */
     "cons",          /* aName */
     "NMPC_costDist", /* fName */
@@ -701,7 +702,7 @@ static emlrtBCInfo x_emlrtBCI = {
 static emlrtBCInfo y_emlrtBCI = {
     -1,              /* iFirst */
     -1,              /* iLast */
-    47,              /* lineNo */
+    48,              /* lineNo */
     11,              /* colNo */
     "m",             /* aName */
     "NMPC_costDist", /* fName */
@@ -759,7 +760,7 @@ static emlrtRTEInfo q_emlrtRTEI = {
 };
 
 static emlrtRTEInfo r_emlrtRTEI = {
-    51,              /* lineNo */
+    52,              /* lineNo */
     29,              /* colNo */
     "NMPC_costDist", /* fName */
     "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
@@ -767,7 +768,7 @@ static emlrtRTEInfo r_emlrtRTEI = {
 };
 
 static emlrtRTEInfo s_emlrtRTEI = {
-    51,              /* lineNo */
+    52,              /* lineNo */
     42,              /* colNo */
     "NMPC_costDist", /* fName */
     "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
@@ -775,7 +776,7 @@ static emlrtRTEInfo s_emlrtRTEI = {
 };
 
 static emlrtRTEInfo t_emlrtRTEI = {
-    51,              /* lineNo */
+    52,              /* lineNo */
     71,              /* colNo */
     "NMPC_costDist", /* fName */
     "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
@@ -783,7 +784,7 @@ static emlrtRTEInfo t_emlrtRTEI = {
 };
 
 static emlrtRTEInfo u_emlrtRTEI = {
-    51,              /* lineNo */
+    52,              /* lineNo */
     24,              /* colNo */
     "NMPC_costDist", /* fName */
     "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
@@ -791,7 +792,7 @@ static emlrtRTEInfo u_emlrtRTEI = {
 };
 
 static emlrtRTEInfo v_emlrtRTEI = {
-    51,              /* lineNo */
+    52,              /* lineNo */
     57,              /* colNo */
     "NMPC_costDist", /* fName */
     "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
@@ -799,7 +800,7 @@ static emlrtRTEInfo v_emlrtRTEI = {
 };
 
 static emlrtRTEInfo w_emlrtRTEI = {
-    51,              /* lineNo */
+    52,              /* lineNo */
     22,              /* colNo */
     "NMPC_costDist", /* fName */
     "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
@@ -807,7 +808,7 @@ static emlrtRTEInfo w_emlrtRTEI = {
 };
 
 static emlrtRTEInfo x_emlrtRTEI = {
-    51,              /* lineNo */
+    52,              /* lineNo */
     10,              /* colNo */
     "NMPC_costDist", /* fName */
     "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
@@ -815,7 +816,7 @@ static emlrtRTEInfo x_emlrtRTEI = {
 };
 
 static emlrtRTEInfo y_emlrtRTEI = {
-    51,              /* lineNo */
+    52,              /* lineNo */
     9,               /* colNo */
     "NMPC_costDist", /* fName */
     "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
@@ -823,7 +824,7 @@ static emlrtRTEInfo y_emlrtRTEI = {
 };
 
 static emlrtRTEInfo ab_emlrtRTEI = {
-    52,              /* lineNo */
+    53,              /* lineNo */
     1,               /* colNo */
     "NMPC_costDist", /* fName */
     "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
@@ -839,7 +840,7 @@ static emlrtRTEInfo bb_emlrtRTEI = {
 };
 
 static emlrtRTEInfo eb_emlrtRTEI = {
-    51,              /* lineNo */
+    52,              /* lineNo */
     61,              /* colNo */
     "NMPC_costDist", /* fName */
     "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
@@ -1042,7 +1043,8 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
                    const emxArray_real_T *x, const real_T b_y0[6],
                    const emxArray_real_T *yref, const real_T Q[36], real_T R,
                    real_T coeffT, real_T m0, real_T Tmax, const real_T xp[4],
-                   const real_T yp[4], const real_T zp[4], emxArray_real_T *J)
+                   const real_T yp[4], const real_T zp[4], real_T S, real_T Cd,
+                   const real_T rho_table[84], emxArray_real_T *J)
 {
   ptrdiff_t incx_t;
   ptrdiff_t incy_t;
@@ -1057,31 +1059,33 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
   emlrtStack i_st;
   emlrtStack st;
   emxArray_real_T *b_F;
-  emxArray_real_T *b_m;
-  emxArray_real_T *b_y;
   emxArray_real_T *b_yhat;
   emxArray_real_T *cons;
   emxArray_real_T *dir;
+  emxArray_real_T *m;
   emxArray_real_T *u;
   emxArray_real_T *varargin_1;
+  emxArray_real_T *y;
   emxArray_real_T *yhat;
   real_T b_a[36];
+  real_T ir[9];
   real_T c_a[6];
   real_T yCOE[6];
+  real_T DJ2[3];
+  real_T b_r[3];
+  real_T v[3];
+  real_T v_rel[3];
   const real_T *x_data;
   const real_T *yref_data;
-  real_T DJ2n;
-  real_T DJ2r_idx_0;
-  real_T DJ2r_idx_1;
-  real_T Dmoon_n;
   real_T a;
-  real_T absxk;
-  real_T m;
-  real_T p_mu05;
-  real_T scale;
-  real_T t;
-  real_T w;
-  real_T y;
+  real_T d;
+  real_T d1;
+  real_T ir_idx_0;
+  real_T ir_idx_1;
+  real_T r;
+  real_T v_idx_0;
+  real_T v_idx_1;
+  real_T v_idx_2;
   real_T *F_data;
   real_T *cons_data;
   real_T *dir_data;
@@ -1090,14 +1094,15 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
   real_T *yhat_data;
   int32_T F[2];
   int32_T F_tmp;
-  int32_T b_yCOE_tmp;
+  int32_T b_m;
+  int32_T b_select;
+  int32_T i;
+  int32_T i1;
   int32_T idx;
   int32_T k;
-  int32_T last;
   int32_T loop_ub_tmp;
-  int32_T w_tmp;
-  int32_T yCOE_tmp;
   boolean_T exitg1;
+  boolean_T p;
   st.prev = sp;
   st.tls = sp->tls;
   b_st.prev = &st;
@@ -1138,107 +1143,107 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
   /*        Q: state trajectory weights 6x6 */
   /*        R: fuel consumption weight */
   /*  t = 0:Ts:Ts*M; % Time vector */
-  yCOE_tmp = yhat->size[0] * yhat->size[1];
+  i = yhat->size[0] * yhat->size[1];
   yhat->size[0] = 6;
-  emxEnsureCapacity_real_T(sp, yhat, yCOE_tmp, &l_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, yhat, i, &l_emlrtRTEI);
   if (!(M + 1.0 >= 0.0)) {
     emlrtNonNegativeCheckR2012b(M + 1.0, &b_emlrtDCI, (emlrtCTX)sp);
   }
-  m = (int32_T)muDoubleScalarFloor(M + 1.0);
-  if (M + 1.0 != m) {
+  d = (int32_T)muDoubleScalarFloor(M + 1.0);
+  if (M + 1.0 != d) {
     emlrtIntegerCheckR2012b(M + 1.0, &emlrtDCI, (emlrtCTX)sp);
   }
-  yCOE_tmp = yhat->size[0] * yhat->size[1];
+  i = yhat->size[0] * yhat->size[1];
   yhat->size[1] = (int32_T)(M + 1.0);
-  emxEnsureCapacity_real_T(sp, yhat, yCOE_tmp, &l_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, yhat, i, &l_emlrtRTEI);
   yhat_data = yhat->data;
   if (!(M + 1.0 >= 0.0)) {
     emlrtNonNegativeCheckR2012b(M + 1.0, &h_emlrtDCI, (emlrtCTX)sp);
   }
-  if (M + 1.0 != m) {
+  if (M + 1.0 != d) {
     emlrtIntegerCheckR2012b(M + 1.0, &g_emlrtDCI, (emlrtCTX)sp);
   }
-  last = 6 * (int32_T)(M + 1.0);
-  for (yCOE_tmp = 0; yCOE_tmp < last; yCOE_tmp++) {
-    yhat_data[yCOE_tmp] = 0.0;
+  idx = 6 * (int32_T)(M + 1.0);
+  for (i = 0; i < idx; i++) {
+    yhat_data[i] = 0.0;
   }
   /*  Initialization of state vectors */
   if (1 > (int32_T)(M + 1.0)) {
     emlrtDynamicBoundsCheckR2012b(1, 1, (int32_T)(M + 1.0), &f_emlrtBCI,
                                   (emlrtCTX)sp);
   }
-  for (yCOE_tmp = 0; yCOE_tmp < 6; yCOE_tmp++) {
-    yhat_data[yCOE_tmp] = b_y0[yCOE_tmp];
+  for (i = 0; i < 6; i++) {
+    yhat_data[i] = b_y0[i];
   }
   emxInit_real_T(sp, &u, 2, &m_emlrtRTEI);
   /*  Set initial conditions */
-  yCOE_tmp = u->size[0] * u->size[1];
+  i = u->size[0] * u->size[1];
   u->size[0] = 3;
-  emxEnsureCapacity_real_T(sp, u, yCOE_tmp, &m_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, u, i, &m_emlrtRTEI);
   if (!(M >= 0.0)) {
     emlrtNonNegativeCheckR2012b(M, &d_emlrtDCI, (emlrtCTX)sp);
   }
-  yCOE_tmp = (int32_T)muDoubleScalarFloor(M);
-  if (M != yCOE_tmp) {
+  i = (int32_T)muDoubleScalarFloor(M);
+  if (M != i) {
     emlrtIntegerCheckR2012b(M, &c_emlrtDCI, (emlrtCTX)sp);
   }
-  b_yCOE_tmp = u->size[0] * u->size[1];
+  i1 = u->size[0] * u->size[1];
   u->size[1] = (int32_T)M;
-  emxEnsureCapacity_real_T(sp, u, b_yCOE_tmp, &m_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, u, i1, &m_emlrtRTEI);
   u_data = u->data;
-  if (M != yCOE_tmp) {
+  if (M != i) {
     emlrtIntegerCheckR2012b(M, &i_emlrtDCI, (emlrtCTX)sp);
   }
-  last = 3 * (int32_T)M;
-  for (b_yCOE_tmp = 0; b_yCOE_tmp < last; b_yCOE_tmp++) {
-    u_data[b_yCOE_tmp] = 0.0;
+  idx = 3 * (int32_T)M;
+  for (i1 = 0; i1 < idx; i1++) {
+    u_data[i1] = 0.0;
   }
   emxInit_real_T(sp, &dir, 2, &n_emlrtRTEI);
   /*  Initialization of input vectors */
-  b_yCOE_tmp = dir->size[0] * dir->size[1];
+  i1 = dir->size[0] * dir->size[1];
   dir->size[0] = 3;
-  emxEnsureCapacity_real_T(sp, dir, b_yCOE_tmp, &n_emlrtRTEI);
-  if (M != yCOE_tmp) {
+  emxEnsureCapacity_real_T(sp, dir, i1, &n_emlrtRTEI);
+  if (M != i) {
     emlrtIntegerCheckR2012b(M, &e_emlrtDCI, (emlrtCTX)sp);
   }
   loop_ub_tmp = (int32_T)M;
-  b_yCOE_tmp = dir->size[0] * dir->size[1];
+  i1 = dir->size[0] * dir->size[1];
   dir->size[1] = loop_ub_tmp;
-  emxEnsureCapacity_real_T(sp, dir, b_yCOE_tmp, &n_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, dir, i1, &n_emlrtRTEI);
   dir_data = dir->data;
-  if (loop_ub_tmp != yCOE_tmp) {
+  if (loop_ub_tmp != i) {
     emlrtIntegerCheckR2012b(M, &j_emlrtDCI, (emlrtCTX)sp);
   }
-  last = 3 * (int32_T)M;
-  for (b_yCOE_tmp = 0; b_yCOE_tmp < last; b_yCOE_tmp++) {
-    dir_data[b_yCOE_tmp] = 0.0;
+  idx = 3 * (int32_T)M;
+  for (i1 = 0; i1 < idx; i1++) {
+    dir_data[i1] = 0.0;
   }
   /*  Initialization of direction vector */
-  if (loop_ub_tmp != yCOE_tmp) {
+  if (loop_ub_tmp != i) {
     emlrtIntegerCheckR2012b(M, &k_emlrtDCI, (emlrtCTX)sp);
   }
   emxInit_real_T(sp, &cons, 1, &bb_emlrtRTEI);
-  emxInit_real_T(sp, &b_m, 2, &p_emlrtRTEI);
-  b_yCOE_tmp = cons->size[0];
+  emxInit_real_T(sp, &m, 2, &p_emlrtRTEI);
+  i1 = cons->size[0];
   cons->size[0] = loop_ub_tmp;
-  emxEnsureCapacity_real_T(sp, cons, b_yCOE_tmp, &o_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, cons, i1, &o_emlrtRTEI);
   cons_data = cons->data;
   /*  Initialization of consumption vector */
-  b_yCOE_tmp = b_m->size[0] * b_m->size[1];
-  b_m->size[0] = 1;
-  emxEnsureCapacity_real_T(sp, b_m, b_yCOE_tmp, &p_emlrtRTEI);
-  if (loop_ub_tmp != yCOE_tmp) {
+  i1 = m->size[0] * m->size[1];
+  m->size[0] = 1;
+  emxEnsureCapacity_real_T(sp, m, i1, &p_emlrtRTEI);
+  if (loop_ub_tmp != i) {
     emlrtIntegerCheckR2012b(M, &f_emlrtDCI, (emlrtCTX)sp);
   }
-  b_yCOE_tmp = b_m->size[0] * b_m->size[1];
-  b_m->size[1] = loop_ub_tmp;
-  emxEnsureCapacity_real_T(sp, b_m, b_yCOE_tmp, &p_emlrtRTEI);
-  m_data = b_m->data;
-  if (loop_ub_tmp != yCOE_tmp) {
+  i1 = m->size[0] * m->size[1];
+  m->size[1] = loop_ub_tmp;
+  emxEnsureCapacity_real_T(sp, m, i1, &p_emlrtRTEI);
+  m_data = m->data;
+  if (loop_ub_tmp != i) {
     emlrtIntegerCheckR2012b(M, &l_emlrtDCI, (emlrtCTX)sp);
   }
-  for (yCOE_tmp = 0; yCOE_tmp < loop_ub_tmp; yCOE_tmp++) {
-    m_data[yCOE_tmp] = 0.0;
+  for (i = 0; i < loop_ub_tmp; i++) {
+    m_data[i] = 0.0;
   }
   if (1.0 > M) {
     emlrtDynamicBoundsCheckR2012b(1, 1, (int32_T)M, &h_emlrtBCI, (emlrtCTX)sp);
@@ -1249,27 +1254,27 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
                                 &emlrtRTEI, (emlrtCTX)sp);
   if (0.0 <= M - 1.0) {
     F[0] = 1;
-    idx = 3;
+    b_m = 3;
   }
   for (k = 0; k < loop_ub_tmp; k++) {
-    m = 3.0 * (((real_T)k + 1.0) - 1.0) + 1.0;
-    scale = 3.0 * ((real_T)k + 1.0);
-    if (m > scale) {
-      yCOE_tmp = 0;
-      b_yCOE_tmp = 0;
+    d = 3.0 * (((real_T)k + 1.0) - 1.0) + 1.0;
+    v_idx_2 = 3.0 * ((real_T)k + 1.0);
+    if (d > v_idx_2) {
+      i = 0;
+      i1 = 0;
     } else {
-      if (((int32_T)m < 1) || ((int32_T)m > x->size[0])) {
-        emlrtDynamicBoundsCheckR2012b((int32_T)m, 1, x->size[0], &b_emlrtBCI,
+      if (((int32_T)d < 1) || ((int32_T)d > x->size[0])) {
+        emlrtDynamicBoundsCheckR2012b((int32_T)d, 1, x->size[0], &b_emlrtBCI,
                                       (emlrtCTX)sp);
       }
-      yCOE_tmp = (int32_T)m - 1;
-      if (((int32_T)scale < 1) || ((int32_T)scale > x->size[0])) {
-        emlrtDynamicBoundsCheckR2012b((int32_T)scale, 1, x->size[0],
+      i = (int32_T)d - 1;
+      if (((int32_T)v_idx_2 < 1) || ((int32_T)v_idx_2 > x->size[0])) {
+        emlrtDynamicBoundsCheckR2012b((int32_T)v_idx_2, 1, x->size[0],
                                       &c_emlrtBCI, (emlrtCTX)sp);
       }
-      b_yCOE_tmp = (int32_T)scale;
+      i1 = (int32_T)v_idx_2;
     }
-    F_tmp = b_yCOE_tmp - yCOE_tmp;
+    F_tmp = i1 - i;
     F[1] = F_tmp;
     st.site = &emlrtRSI;
     indexShapeCheck(&st, x->size[0], F);
@@ -1277,72 +1282,44 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
       emlrtDynamicBoundsCheckR2012b(k + 1, 1, dir->size[1], &d_emlrtBCI,
                                     (emlrtCTX)sp);
     }
-    emlrtSubAssignSizeCheckR2012b(&idx, 1, &F_tmp, 1, &emlrtECI, (emlrtCTX)sp);
-    dir_data[3 * k] = x_data[yCOE_tmp];
-    b_yCOE_tmp = 3 * k + 1;
-    dir_data[b_yCOE_tmp] = x_data[yCOE_tmp + 1];
-    w_tmp = 3 * k + 2;
-    dir_data[w_tmp] = x_data[yCOE_tmp + 2];
-    if (k + 1 > dir->size[1]) {
-      emlrtDynamicBoundsCheckR2012b(k + 1, 1, dir->size[1], &e_emlrtBCI,
-                                    (emlrtCTX)sp);
-    }
-    scale = 3.3121686421112381E-170;
-    absxk = muDoubleScalarAbs(dir_data[3 * k]);
-    if (absxk > 3.3121686421112381E-170) {
-      y = 1.0;
-      scale = absxk;
-    } else {
-      t = absxk / 3.3121686421112381E-170;
-      y = t * t;
-    }
-    absxk = muDoubleScalarAbs(dir_data[b_yCOE_tmp]);
-    if (absxk > scale) {
-      t = scale / absxk;
-      y = y * t * t + 1.0;
-      scale = absxk;
-    } else {
-      t = absxk / scale;
-      y += t * t;
-    }
-    absxk = muDoubleScalarAbs(dir_data[w_tmp]);
-    if (absxk > scale) {
-      t = scale / absxk;
-      y = y * t * t + 1.0;
-      scale = absxk;
-    } else {
-      t = absxk / scale;
-      y += t * t;
+    emlrtSubAssignSizeCheckR2012b(&b_m, 1, &F_tmp, 1, &emlrtECI, (emlrtCTX)sp);
+    dir_data[3 * k] = x_data[i];
+    dir_data[3 * k + 1] = x_data[i + 1];
+    dir_data[3 * k + 2] = x_data[i + 2];
+    if ((int32_T)(k + 1U) > dir->size[1]) {
+      emlrtDynamicBoundsCheckR2012b((int32_T)(k + 1U), 1, dir->size[1],
+                                    &e_emlrtBCI, (emlrtCTX)sp);
     }
     if ((int32_T)(k + 1U) > cons->size[0]) {
       emlrtDynamicBoundsCheckR2012b((int32_T)(k + 1U), 1, cons->size[0],
-                                    &t_emlrtBCI, (emlrtCTX)sp);
+                                    &s_emlrtBCI, (emlrtCTX)sp);
     }
-    cons_data[k] = scale * muDoubleScalarSqrt(y);
+    cons_data[k] = b_norm(*(real_T(*)[3]) & dir_data[3 * k]);
     if (*emlrtBreakCheckR2012bFlagVar != 0) {
       emlrtBreakCheckR2012b((emlrtCTX)sp);
     }
   }
   emxInit_real_T(sp, &b_F, 1, &q_emlrtRTEI);
-  m = 7.0 * M;
-  if (m != (int32_T)m) {
-    emlrtIntegerCheckR2012b(m, &m_emlrtDCI, (emlrtCTX)sp);
+  d = 7.0 * M;
+  if (d != (int32_T)d) {
+    emlrtIntegerCheckR2012b(d, &m_emlrtDCI, (emlrtCTX)sp);
   }
-  yCOE_tmp = b_F->size[0];
-  b_F->size[0] = (int32_T)m;
-  emxEnsureCapacity_real_T(sp, b_F, yCOE_tmp, &q_emlrtRTEI);
+  i = b_F->size[0];
+  b_F->size[0] = (int32_T)d;
+  emxEnsureCapacity_real_T(sp, b_F, i, &q_emlrtRTEI);
   F_data = b_F->data;
-  if (m != (int32_T)m) {
-    emlrtIntegerCheckR2012b(m, &m_emlrtDCI, (emlrtCTX)sp);
+  if (d != (int32_T)d) {
+    emlrtIntegerCheckR2012b(d, &m_emlrtDCI, (emlrtCTX)sp);
   }
-  last = (int32_T)m;
-  for (yCOE_tmp = 0; yCOE_tmp < last; yCOE_tmp++) {
-    F_data[yCOE_tmp] = 0.0;
+  idx = (int32_T)d;
+  for (i = 0; i < idx; i++) {
+    F_data[i] = 0.0;
   }
   /*  Cost Function Calculation */
   emlrtForLoopVectorCheckR2021a(1.0, 1.0, M, mxDOUBLE_CLASS, (int32_T)M,
                                 &b_emlrtRTEI, (emlrtCTX)sp);
   if (0.0 <= M - 1.0) {
+    p = (R < 0.0);
     F_tmp = 6;
   }
   for (k = 0; k < loop_ub_tmp; k++) {
@@ -1353,21 +1330,85 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
     st.site = &b_emlrtRSI;
     EOE2COE(&st, *(real_T(*)[6]) & yhat_data[6 * k], yCOE);
     st.site = &c_emlrtRSI;
-    earthNonSphericity(yCOE, &scale, &y, &DJ2n);
+    earthNonSphericity(yCOE, DJ2);
     st.site = &d_emlrtRSI;
-    drag(&st, yCOE, &absxk, &w);
+    b_st.site = &y_emlrtRSI;
+    c_st.site = &p_emlrtRSI;
+    d_st.site = &q_emlrtRSI;
+    /*  semilatum rectum [km] */
+    r = yCOE[0] * (1.0 - yCOE[1] * yCOE[1]) /
+        (yCOE[1] * muDoubleScalarCos(yCOE[5]) + 1.0);
+    /*  distance from focus in km */
+    /* [km] %correction, before it was e+6 */
+    /* [km] */
+    /*  R = sqrt(r^2+(e*a)^2+2*r*e*a*cos(theta)) % distance from earth */
+    /* selection of rho_ */
+    b_select = -1;
+    idx = 0;
+    exitg1 = false;
+    while ((!exitg1) && (idx < 27)) {
+      if (r - 6378.1 < rho_table[idx + 1]) {
+        b_select = idx;
+        exitg1 = true;
+      } else {
+        idx++;
+        if (*emlrtBreakCheckR2012bFlagVar != 0) {
+          emlrtBreakCheckR2012b(&st);
+        }
+      }
+    }
+    if (b_select + 1 == 0) {
+      b_select = 27;
+    }
     st.site = &e_emlrtRSI;
-    moonDisturbance(&st, yCOE, ((real_T)k + 1.0) * Ts, xp, yp, zp, &t, &p_mu05,
-                    &Dmoon_n);
-    if (k + 1 > b_m->size[1]) {
-      emlrtDynamicBoundsCheckR2012b(k + 1, 1, b_m->size[1], &i_emlrtBCI,
+    b_st.site = &ab_emlrtRSI;
+    paraorb2rv(yCOE[0], yCOE[1], yCOE[2], yCOE[3], yCOE[4], yCOE[5], b_r, v);
+    a = -S * Cd / 2.0 *
+        (rho_table[b_select + 28] *
+         muDoubleScalarExp(-((r - 6378.1) - rho_table[b_select]) /
+                           rho_table[b_select + 56]));
+    d = b_norm(b_r);
+    v_rel[0] = b_r[1] * v[2] - v[1] * b_r[2];
+    v_rel[1] = v[0] * b_r[2] - b_r[0] * v[2];
+    v_rel[2] = b_r[0] * v[1] - v[0] * b_r[1];
+    v_idx_2 = b_norm(v_rel);
+    r = b_r[0] / d;
+    ir_idx_0 = r;
+    d1 = v_rel[0] / v_idx_2;
+    v_rel[0] = d1;
+    ir[0] = r;
+    ir[2] = d1;
+    v_idx_0 = v[0] - (0.0 * b_r[2] - 7.2921E-5 * b_r[1]);
+    r = b_r[1] / d;
+    ir_idx_1 = r;
+    d1 = v_rel[1] / v_idx_2;
+    v_rel[1] = d1;
+    ir[3] = r;
+    ir[5] = d1;
+    v_idx_1 = v[1] - (7.2921E-5 * b_r[0] - 0.0 * b_r[2]);
+    r = b_r[2] / d;
+    d1 = v_rel[2] / v_idx_2;
+    ir[6] = r;
+    ir[8] = d1;
+    v_idx_2 = v[2] - (0.0 * b_r[1] - 0.0 * b_r[0]);
+    ir[1] = v_rel[1] * r - ir_idx_1 * d1;
+    ir[4] = ir_idx_0 * d1 - v_rel[0] * r;
+    ir[7] = v_rel[0] * ir_idx_1 - ir_idx_0 * v_rel[1];
+    for (idx = 0; idx < 3; idx++) {
+      d = (ir[idx] * v_idx_0 + ir[idx + 3] * v_idx_1) + ir[idx + 6] * v_idx_2;
+      b_r[idx] = d * d;
+    }
+    st.site = &f_emlrtRSI;
+    moonDisturbance(&st, yCOE, ((real_T)k + 1.0) * Ts, xp, yp, zp, v_rel);
+    if (k + 1 > m->size[1]) {
+      emlrtDynamicBoundsCheckR2012b(k + 1, 1, m->size[1], &i_emlrtBCI,
                                     (emlrtCTX)sp);
     }
-    if ((int32_T)(k + 1U) > b_m->size[1]) {
-      emlrtDynamicBoundsCheckR2012b((int32_T)(k + 1U), 1, b_m->size[1],
-                                    &s_emlrtBCI, (emlrtCTX)sp);
+    if ((int32_T)(k + 1U) > m->size[1]) {
+      emlrtDynamicBoundsCheckR2012b((int32_T)(k + 1U), 1, m->size[1],
+                                    &t_emlrtBCI, (emlrtCTX)sp);
     }
-    a = Tmax / m_data[k] / 1000.0;
+    v_idx_2 = Tmax / m_data[k] / 1000.0;
     if (k + 1 > dir->size[1]) {
       emlrtDynamicBoundsCheckR2012b(k + 1, 1, dir->size[1], &j_emlrtBCI,
                                     (emlrtCTX)sp);
@@ -1376,115 +1417,43 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
       emlrtDynamicBoundsCheckR2012b((int32_T)(k + 1U), 1, u->size[1], &emlrtBCI,
                                     (emlrtCTX)sp);
     }
-    u_data[3 * k] = a * dir_data[3 * k];
-    yCOE_tmp = 3 * k + 1;
-    u_data[yCOE_tmp] = a * dir_data[yCOE_tmp];
-    b_yCOE_tmp = 3 * k + 2;
-    u_data[b_yCOE_tmp] = a * dir_data[b_yCOE_tmp];
-    st.site = &f_emlrtRSI;
-    if (k + 1 > yhat->size[1]) {
-      emlrtDynamicBoundsCheckR2012b(k + 1, 1, yhat->size[1], &l_emlrtBCI, &st);
+    u_data[3 * k] = v_idx_2 * dir_data[3 * k];
+    i = 3 * k + 1;
+    u_data[i] = v_idx_2 * dir_data[i];
+    i1 = 3 * k + 2;
+    u_data[i1] = v_idx_2 * dir_data[i1];
+    if ((int32_T)(k + 1U) > yhat->size[1]) {
+      emlrtDynamicBoundsCheckR2012b((int32_T)(k + 1U), 1, yhat->size[1],
+                                    &l_emlrtBCI, (emlrtCTX)sp);
     }
     if ((int32_T)(k + 1U) > u->size[1]) {
       emlrtDynamicBoundsCheckR2012b((int32_T)(k + 1U), 1, u->size[1],
-                                    &m_emlrtBCI, &st);
+                                    &m_emlrtBCI, (emlrtCTX)sp);
     }
-    m = m_data[k];
-    DJ2r_idx_0 = u_data[3 * k] + ((scale + absxk) + t) / m;
-    DJ2r_idx_1 = u_data[yCOE_tmp] + ((y + w) + p_mu05) / m;
-    absxk = u_data[b_yCOE_tmp] + (DJ2n + Dmoon_n) / m;
-    /* EOEDerivatives Compute the derivative of the EOE state */
-    /*  */
-    /*    Inputs: */
-    /*        - Time (Unused but necessary for built-in ode integration) */
-    /*        - State vector */
-    /*        - Acceleration vector */
-    /*        - Planetary constant (for Earth use 398600) */
-    /*  Equinoctial Orbital Elements */
-    scale = yhat_data[6 * k];
-    if (yhat_data[6 * k] < 0.0) {
-      scale = -yhat_data[6 * k];
-    }
-    /*  Accelerations */
-    /*  Definition of useful values */
-    last = 6 * k + 5;
-    t = muDoubleScalarSin(yhat_data[last]);
-    y = muDoubleScalarCos(yhat_data[last]);
-    idx = 6 * k + 1;
-    w_tmp = 6 * k + 2;
-    w = (yhat_data[idx] * y + 1.0) + yhat_data[w_tmp] * t;
-    b_st.site = &ib_emlrtRSI;
-    c_st.site = &o_emlrtRSI;
-    d_st.site = &p_emlrtRSI;
-    b_st.site = &ib_emlrtRSI;
-    c_st.site = &o_emlrtRSI;
-    d_st.site = &p_emlrtRSI;
-    p_mu05 = scale / 398600.0;
-    b_st.site = &jb_emlrtRSI;
-    if (p_mu05 < 0.0) {
-      emlrtErrorWithMessageIdR2018a(
-          &b_st, &f_emlrtRTEI, "Coder:toolbox:ElFunDomainError",
-          "Coder:toolbox:ElFunDomainError", 3, 4, 4, "sqrt");
-    }
-    p_mu05 = muDoubleScalarSqrt(p_mu05);
-    /*  State Derivative Calculation */
-    b_st.site = &kb_emlrtRSI;
-    a = w / scale;
-    c_st.site = &o_emlrtRSI;
-    d_st.site = &p_emlrtRSI;
-    m = 398600.0 * scale;
-    b_st.site = &kb_emlrtRSI;
-    if (m < 0.0) {
-      emlrtErrorWithMessageIdR2018a(
-          &b_st, &f_emlrtRTEI, "Coder:toolbox:ElFunDomainError",
-          "Coder:toolbox:ElFunDomainError", 3, 4, 4, "sqrt");
-    }
-    m = muDoubleScalarSqrt(m);
+    v_idx_2 = m_data[k];
+    DJ2[0] = u_data[3 * k] + ((DJ2[0] + a * b_r[0] / v_idx_2) + v_rel[0]);
+    DJ2[1] = u_data[i] + ((DJ2[1] + a * b_r[1] / v_idx_2) + v_rel[1]);
+    DJ2[2] = u_data[i1] + ((DJ2[2] + a * b_r[2] / v_idx_2) + v_rel[2]);
+    st.site = &g_emlrtRSI;
+    EOEDerivatives(&st, *(real_T(*)[6]) & yhat_data[6 * k], DJ2, yCOE);
     if ((int32_T)(k + 1U) > yhat->size[1]) {
       emlrtDynamicBoundsCheckR2012b((int32_T)(k + 1U), 1, yhat->size[1],
                                     &k_emlrtBCI, (emlrtCTX)sp);
     }
-    yCOE[0] = Ts * (2.0 * scale / w * p_mu05 * DJ2r_idx_1);
-    yCOE_tmp = 6 * k + 3;
-    b_yCOE_tmp = 6 * k + 4;
-    yCOE[1] =
-        Ts * (p_mu05 * ((DJ2r_idx_0 * t +
-                         ((w + 1.0) * y + yhat_data[idx]) * DJ2r_idx_1 / w) -
-                        (yhat_data[yCOE_tmp] * t - yhat_data[b_yCOE_tmp] * y) *
-                            yhat_data[w_tmp] * absxk / w));
-    yCOE[2] =
-        Ts * (p_mu05 *
-              ((-DJ2r_idx_0 * y +
-                ((w + 1.0) * t + yhat_data[w_tmp]) * DJ2r_idx_1 / w) +
-               (yhat_data[yCOE_tmp] * muDoubleScalarSin(yhat_data[last]) -
-                yhat_data[b_yCOE_tmp] * muDoubleScalarCos(yhat_data[last])) *
-                   yhat_data[w_tmp] * absxk / w));
-    scale = p_mu05 *
-            ((yhat_data[yCOE_tmp] * yhat_data[yCOE_tmp] + 1.0) +
-             yhat_data[b_yCOE_tmp] * yhat_data[b_yCOE_tmp]) *
-            absxk / 2.0 / w;
-    yCOE[3] = Ts * (scale * y);
-    yCOE[4] = Ts * (scale * t);
-    yCOE[5] =
-        Ts * (m * (a * a) +
-              p_mu05 / w *
-                  (yhat_data[yCOE_tmp] * muDoubleScalarSin(yhat_data[last]) -
-                   yhat_data[b_yCOE_tmp] * muDoubleScalarCos(yhat_data[last])) *
-                  absxk);
     if (((int32_T)(k + 2U) < 1) || ((int32_T)(k + 2U) > yhat->size[1])) {
       emlrtDynamicBoundsCheckR2012b((int32_T)(k + 2U), 1, yhat->size[1],
                                     &n_emlrtBCI, (emlrtCTX)sp);
     }
-    for (yCOE_tmp = 0; yCOE_tmp < 6; yCOE_tmp++) {
-      yCOE[yCOE_tmp] += yhat_data[yCOE_tmp + 6 * k];
+    for (i = 0; i < 6; i++) {
+      yCOE[i] = yhat_data[i + 6 * k] + Ts * yCOE[i];
     }
-    for (yCOE_tmp = 0; yCOE_tmp < 6; yCOE_tmp++) {
-      yhat_data[yCOE_tmp + 6 * (k + 1)] = yCOE[yCOE_tmp];
+    for (i = 0; i < 6; i++) {
+      yhat_data[i + 6 * (k + 1)] = yCOE[i];
     }
-    st.site = &g_emlrtRSI;
-    if (R < 0.0) {
+    st.site = &h_emlrtRSI;
+    if (p) {
       emlrtErrorWithMessageIdR2018a(
-          &st, &f_emlrtRTEI, "Coder:toolbox:ElFunDomainError",
+          &st, &e_emlrtRTEI, "Coder:toolbox:ElFunDomainError",
           "Coder:toolbox:ElFunDomainError", 3, 4, 4, "sqrt");
     }
     if ((int32_T)(k + 1U) > cons->size[0]) {
@@ -1496,28 +1465,28 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
                                     &v_emlrtBCI, (emlrtCTX)sp);
     }
     F_data[k] = muDoubleScalarSqrt(R) * cons_data[k];
-    m = (M + 6.0 * (((real_T)k + 1.0) - 1.0)) + 1.0;
-    scale = M + 6.0 * ((real_T)k + 1.0);
-    if (m > scale) {
-      yCOE_tmp = 0;
-      b_yCOE_tmp = 0;
+    d = (M + 6.0 * (((real_T)k + 1.0) - 1.0)) + 1.0;
+    v_idx_2 = M + 6.0 * ((real_T)k + 1.0);
+    if (d > v_idx_2) {
+      i = 0;
+      i1 = 0;
     } else {
-      if (((int32_T)m < 1) || ((int32_T)m > b_F->size[0])) {
-        emlrtDynamicBoundsCheckR2012b((int32_T)m, 1, b_F->size[0], &q_emlrtBCI,
+      if (((int32_T)d < 1) || ((int32_T)d > b_F->size[0])) {
+        emlrtDynamicBoundsCheckR2012b((int32_T)d, 1, b_F->size[0], &q_emlrtBCI,
                                       (emlrtCTX)sp);
       }
-      yCOE_tmp = (int32_T)m - 1;
-      if (((int32_T)scale < 1) || ((int32_T)scale > b_F->size[0])) {
-        emlrtDynamicBoundsCheckR2012b((int32_T)scale, 1, b_F->size[0],
+      i = (int32_T)d - 1;
+      if (((int32_T)v_idx_2 < 1) || ((int32_T)v_idx_2 > b_F->size[0])) {
+        emlrtDynamicBoundsCheckR2012b((int32_T)v_idx_2, 1, b_F->size[0],
                                       &r_emlrtBCI, (emlrtCTX)sp);
       }
-      b_yCOE_tmp = (int32_T)scale;
+      i1 = (int32_T)v_idx_2;
     }
-    last = b_yCOE_tmp - yCOE_tmp;
-    emlrtSubAssignSizeCheckR2012b(&last, 1, &F_tmp, 1, &e_emlrtECI,
+    idx = i1 - i;
+    emlrtSubAssignSizeCheckR2012b(&idx, 1, &F_tmp, 1, &e_emlrtECI,
                                   (emlrtCTX)sp);
     memcpy(&b_a[0], &Q[0], 36U * sizeof(real_T));
-    st.site = &h_emlrtRSI;
+    st.site = &i_emlrtRSI;
     b_sqrt(&st, b_a);
     if (k + 1 > yref->size[1]) {
       emlrtDynamicBoundsCheckR2012b(k + 1, 1, yref->size[1], &o_emlrtBCI,
@@ -1527,31 +1496,30 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
       emlrtDynamicBoundsCheckR2012b(k + 2, 1, yhat->size[1], &p_emlrtBCI,
                                     (emlrtCTX)sp);
     }
-    for (b_yCOE_tmp = 0; b_yCOE_tmp < 6; b_yCOE_tmp++) {
-      yCOE[b_yCOE_tmp] =
-          yref_data[b_yCOE_tmp + 6 * k] - yhat_data[b_yCOE_tmp + 6 * (k + 1)];
+    for (i1 = 0; i1 < 6; i1++) {
+      yCOE[i1] = yref_data[i1 + 6 * k] - yhat_data[i1 + 6 * (k + 1)];
     }
-    for (b_yCOE_tmp = 0; b_yCOE_tmp < 6; b_yCOE_tmp++) {
-      m = 0.0;
-      for (w_tmp = 0; w_tmp < 6; w_tmp++) {
-        m += b_a[b_yCOE_tmp + 6 * w_tmp] * yCOE[w_tmp];
+    for (i1 = 0; i1 < 6; i1++) {
+      d = 0.0;
+      for (b_select = 0; b_select < 6; b_select++) {
+        d += b_a[i1 + 6 * b_select] * yCOE[b_select];
       }
-      c_a[b_yCOE_tmp] = m;
+      c_a[i1] = d;
     }
-    for (b_yCOE_tmp = 0; b_yCOE_tmp < last; b_yCOE_tmp++) {
-      F_data[yCOE_tmp + b_yCOE_tmp] = c_a[b_yCOE_tmp];
+    for (i1 = 0; i1 < idx; i1++) {
+      F_data[i + i1] = c_a[i1];
     }
     if (k + 1 < loop_ub_tmp) {
-      if ((int32_T)(k + 1U) > b_m->size[1]) {
-        emlrtDynamicBoundsCheckR2012b((int32_T)(k + 1U), 1, b_m->size[1],
+      if ((int32_T)(k + 1U) > m->size[1]) {
+        emlrtDynamicBoundsCheckR2012b((int32_T)(k + 1U), 1, m->size[1],
                                       &w_emlrtBCI, (emlrtCTX)sp);
       }
       if ((int32_T)(k + 1U) > cons->size[0]) {
         emlrtDynamicBoundsCheckR2012b((int32_T)(k + 1U), 1, cons->size[0],
                                       &x_emlrtBCI, (emlrtCTX)sp);
       }
-      if (((int32_T)(k + 2U) < 1) || ((int32_T)(k + 2U) > b_m->size[1])) {
-        emlrtDynamicBoundsCheckR2012b((int32_T)(k + 2U), 1, b_m->size[1],
+      if (((int32_T)(k + 2U) < 1) || ((int32_T)(k + 2U) > m->size[1])) {
+        emlrtDynamicBoundsCheckR2012b((int32_T)(k + 2U), 1, m->size[1],
                                       &y_emlrtBCI, (emlrtCTX)sp);
       }
       m_data[k + 1] = m_data[k] - Ts * cons_data[k] * coeffT;
@@ -1563,170 +1531,169 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
   emxFree_real_T(sp, &dir);
   emxFree_real_T(sp, &u);
   emxInit_real_T(sp, &b_yhat, 2, &r_emlrtRTEI);
-  last = yhat->size[1];
-  yCOE_tmp = b_yhat->size[0] * b_yhat->size[1];
+  idx = yhat->size[1];
+  i = b_yhat->size[0] * b_yhat->size[1];
   b_yhat->size[0] = 1;
   b_yhat->size[1] = yhat->size[1];
-  emxEnsureCapacity_real_T(sp, b_yhat, yCOE_tmp, &r_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, b_yhat, i, &r_emlrtRTEI);
   u_data = b_yhat->data;
-  for (yCOE_tmp = 0; yCOE_tmp < last; yCOE_tmp++) {
-    u_data[yCOE_tmp] = yhat_data[6 * yCOE_tmp + 1];
+  for (i = 0; i < idx; i++) {
+    u_data[i] = yhat_data[6 * i + 1];
   }
-  emxInit_real_T(sp, &b_y, 2, &w_emlrtRTEI);
-  st.site = &i_emlrtRSI;
-  power(&st, b_yhat, b_y);
-  last = yhat->size[1];
-  yCOE_tmp = b_yhat->size[0] * b_yhat->size[1];
+  emxInit_real_T(sp, &y, 2, &w_emlrtRTEI);
+  st.site = &j_emlrtRSI;
+  power(&st, b_yhat, y);
+  idx = yhat->size[1];
+  i = b_yhat->size[0] * b_yhat->size[1];
   b_yhat->size[0] = 1;
   b_yhat->size[1] = yhat->size[1];
-  emxEnsureCapacity_real_T(sp, b_yhat, yCOE_tmp, &s_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, b_yhat, i, &s_emlrtRTEI);
   u_data = b_yhat->data;
-  for (yCOE_tmp = 0; yCOE_tmp < last; yCOE_tmp++) {
-    u_data[yCOE_tmp] = yhat_data[6 * yCOE_tmp + 2];
+  for (i = 0; i < idx; i++) {
+    u_data[i] = yhat_data[6 * i + 2];
   }
-  st.site = &i_emlrtRSI;
-  power(&st, b_yhat, b_m);
-  m_data = b_m->data;
-  if ((b_y->size[1] != b_m->size[1]) &&
-      ((b_y->size[1] != 1) && (b_m->size[1] != 1))) {
-    emlrtDimSizeImpxCheckR2021b(b_y->size[1], b_m->size[1], &b_emlrtECI,
+  st.site = &j_emlrtRSI;
+  power(&st, b_yhat, m);
+  m_data = m->data;
+  if ((y->size[1] != m->size[1]) && ((y->size[1] != 1) && (m->size[1] != 1))) {
+    emlrtDimSizeImpxCheckR2021b(y->size[1], m->size[1], &b_emlrtECI,
                                 (emlrtCTX)sp);
   }
-  st.site = &i_emlrtRSI;
-  b_st.site = &ob_emlrtRSI;
-  c_st.site = &pb_emlrtRSI;
-  last = yhat->size[1];
-  yCOE_tmp = b_yhat->size[0] * b_yhat->size[1];
+  st.site = &j_emlrtRSI;
+  b_st.site = &lb_emlrtRSI;
+  c_st.site = &mb_emlrtRSI;
+  idx = yhat->size[1];
+  i = b_yhat->size[0] * b_yhat->size[1];
   b_yhat->size[0] = 1;
   b_yhat->size[1] = yhat->size[1];
-  emxEnsureCapacity_real_T(&c_st, b_yhat, yCOE_tmp, &t_emlrtRTEI);
+  emxEnsureCapacity_real_T(&c_st, b_yhat, i, &t_emlrtRTEI);
   u_data = b_yhat->data;
-  for (yCOE_tmp = 0; yCOE_tmp < last; yCOE_tmp++) {
-    scale = yhat_data[6 * yCOE_tmp + 2];
-    absxk = yhat_data[6 * yCOE_tmp + 1];
-    u_data[yCOE_tmp] = muDoubleScalarAtan2(scale, absxk);
+  for (i = 0; i < idx; i++) {
+    v_idx_2 = yhat_data[6 * i + 2];
+    r = yhat_data[6 * i + 1];
+    u_data[i] = muDoubleScalarAtan2(v_idx_2, r);
   }
   if ((yhat->size[1] != b_yhat->size[1]) &&
       ((yhat->size[1] != 1) && (b_yhat->size[1] != 1))) {
     emlrtDimSizeImpxCheckR2021b(yhat->size[1], b_yhat->size[1], &c_emlrtECI,
                                 (emlrtCTX)sp);
   }
-  if (b_y->size[1] == b_m->size[1]) {
-    last = b_y->size[1] - 1;
-    yCOE_tmp = b_y->size[0] * b_y->size[1];
-    b_y->size[0] = 1;
-    emxEnsureCapacity_real_T(sp, b_y, yCOE_tmp, &u_emlrtRTEI);
-    dir_data = b_y->data;
-    for (yCOE_tmp = 0; yCOE_tmp <= last; yCOE_tmp++) {
-      dir_data[yCOE_tmp] += m_data[yCOE_tmp];
+  if (y->size[1] == m->size[1]) {
+    idx = y->size[1] - 1;
+    i = y->size[0] * y->size[1];
+    y->size[0] = 1;
+    emxEnsureCapacity_real_T(sp, y, i, &u_emlrtRTEI);
+    dir_data = y->data;
+    for (i = 0; i <= idx; i++) {
+      dir_data[i] += m_data[i];
     }
   } else {
-    plus(sp, b_y, b_m);
+    plus(sp, y, m);
   }
-  emxFree_real_T(sp, &b_m);
-  st.site = &i_emlrtRSI;
-  c_sqrt(&st, b_y);
+  emxFree_real_T(sp, &m);
+  st.site = &j_emlrtRSI;
+  c_sqrt(&st, y);
   if (yhat->size[1] == b_yhat->size[1]) {
-    last = yhat->size[1];
-    yCOE_tmp = b_yhat->size[0] * b_yhat->size[1];
+    idx = yhat->size[1];
+    i = b_yhat->size[0] * b_yhat->size[1];
     b_yhat->size[0] = 1;
     b_yhat->size[1] = yhat->size[1];
-    emxEnsureCapacity_real_T(sp, b_yhat, yCOE_tmp, &v_emlrtRTEI);
+    emxEnsureCapacity_real_T(sp, b_yhat, i, &v_emlrtRTEI);
     u_data = b_yhat->data;
-    for (yCOE_tmp = 0; yCOE_tmp < last; yCOE_tmp++) {
-      u_data[yCOE_tmp] = yhat_data[6 * yCOE_tmp + 5] - u_data[yCOE_tmp];
+    for (i = 0; i < idx; i++) {
+      u_data[i] = yhat_data[6 * i + 5] - u_data[i];
     }
   } else {
     c_binary_expand_op(sp, b_yhat, yhat);
   }
-  st.site = &i_emlrtRSI;
+  st.site = &j_emlrtRSI;
   b_cos(&st, b_yhat);
   u_data = b_yhat->data;
-  if ((b_y->size[1] != b_yhat->size[1]) &&
-      ((b_y->size[1] != 1) && (b_yhat->size[1] != 1))) {
-    emlrtDimSizeImpxCheckR2021b(b_y->size[1], b_yhat->size[1], &d_emlrtECI,
+  if ((y->size[1] != b_yhat->size[1]) &&
+      ((y->size[1] != 1) && (b_yhat->size[1] != 1))) {
+    emlrtDimSizeImpxCheckR2021b(y->size[1], b_yhat->size[1], &d_emlrtECI,
                                 (emlrtCTX)sp);
   }
-  st.site = &i_emlrtRSI;
-  if (b_y->size[1] == b_yhat->size[1]) {
-    last = b_y->size[1] - 1;
-    yCOE_tmp = b_y->size[0] * b_y->size[1];
-    b_y->size[0] = 1;
-    emxEnsureCapacity_real_T(&st, b_y, yCOE_tmp, &w_emlrtRTEI);
-    dir_data = b_y->data;
-    for (yCOE_tmp = 0; yCOE_tmp <= last; yCOE_tmp++) {
-      dir_data[yCOE_tmp] = dir_data[yCOE_tmp] * u_data[yCOE_tmp] + 1.0;
+  st.site = &j_emlrtRSI;
+  if (y->size[1] == b_yhat->size[1]) {
+    idx = y->size[1] - 1;
+    i = y->size[0] * y->size[1];
+    y->size[0] = 1;
+    emxEnsureCapacity_real_T(&st, y, i, &w_emlrtRTEI);
+    dir_data = y->data;
+    for (i = 0; i <= idx; i++) {
+      dir_data[i] = dir_data[i] * u_data[i] + 1.0;
     }
   } else {
-    b_st.site = &i_emlrtRSI;
-    b_binary_expand_op(&b_st, b_y, b_yhat);
-    dir_data = b_y->data;
+    b_st.site = &j_emlrtRSI;
+    b_binary_expand_op(&b_st, y, b_yhat);
+    dir_data = y->data;
   }
-  b_st.site = &rb_emlrtRSI;
-  last = yhat->size[1];
-  yCOE_tmp = b_yhat->size[0] * b_yhat->size[1];
+  b_st.site = &ob_emlrtRSI;
+  idx = yhat->size[1];
+  i = b_yhat->size[0] * b_yhat->size[1];
   b_yhat->size[0] = 1;
   b_yhat->size[1] = yhat->size[1];
-  emxEnsureCapacity_real_T(&b_st, b_yhat, yCOE_tmp, &x_emlrtRTEI);
+  emxEnsureCapacity_real_T(&b_st, b_yhat, i, &x_emlrtRTEI);
   u_data = b_yhat->data;
-  for (yCOE_tmp = 0; yCOE_tmp < last; yCOE_tmp++) {
-    u_data[yCOE_tmp] = yhat_data[6 * yCOE_tmp];
+  for (i = 0; i < idx; i++) {
+    u_data[i] = yhat_data[6 * i];
   }
-  c_st.site = &sb_emlrtRSI;
-  assertCompatibleDims(&c_st, b_yhat, b_y);
-  st.site = &i_emlrtRSI;
+  c_st.site = &pb_emlrtRSI;
+  assertCompatibleDims(&c_st, b_yhat, y);
+  st.site = &j_emlrtRSI;
   emxFree_real_T(&st, &b_yhat);
   emxInit_real_T(&st, &varargin_1, 1, &y_emlrtRTEI);
-  if (yhat->size[1] == b_y->size[1]) {
-    last = yhat->size[1];
-    yCOE_tmp = varargin_1->size[0];
+  if (yhat->size[1] == y->size[1]) {
+    idx = yhat->size[1];
+    i = varargin_1->size[0];
     varargin_1->size[0] = yhat->size[1];
-    emxEnsureCapacity_real_T(&st, varargin_1, yCOE_tmp, &y_emlrtRTEI);
+    emxEnsureCapacity_real_T(&st, varargin_1, i, &y_emlrtRTEI);
     u_data = varargin_1->data;
-    for (yCOE_tmp = 0; yCOE_tmp < last; yCOE_tmp++) {
-      u_data[yCOE_tmp] = yhat_data[6 * yCOE_tmp] / dir_data[yCOE_tmp];
+    for (i = 0; i < idx; i++) {
+      u_data[i] = yhat_data[6 * i] / dir_data[i];
     }
   } else {
-    b_st.site = &i_emlrtRSI;
-    binary_expand_op(&b_st, varargin_1, yhat, b_y);
+    b_st.site = &j_emlrtRSI;
+    binary_expand_op(&b_st, varargin_1, yhat, y);
     u_data = varargin_1->data;
   }
-  emxFree_real_T(&st, &b_y);
+  emxFree_real_T(&st, &y);
   emxFree_real_T(&st, &yhat);
-  b_st.site = &tb_emlrtRSI;
-  c_st.site = &ub_emlrtRSI;
-  d_st.site = &vb_emlrtRSI;
+  b_st.site = &qb_emlrtRSI;
+  c_st.site = &rb_emlrtRSI;
+  d_st.site = &sb_emlrtRSI;
   if (varargin_1->size[0] < 1) {
     emlrtErrorWithMessageIdR2018a(&d_st, &d_emlrtRTEI,
                                   "Coder:toolbox:eml_min_or_max_varDimZero",
                                   "Coder:toolbox:eml_min_or_max_varDimZero", 0);
   }
-  e_st.site = &wb_emlrtRSI;
-  f_st.site = &xb_emlrtRSI;
-  last = varargin_1->size[0];
+  e_st.site = &tb_emlrtRSI;
+  f_st.site = &ub_emlrtRSI;
+  b_select = varargin_1->size[0];
   if (varargin_1->size[0] <= 2) {
     if (varargin_1->size[0] == 1) {
-      absxk = u_data[0];
+      r = u_data[0];
     } else if ((u_data[0] > u_data[1]) || (muDoubleScalarIsNaN(u_data[0]) &&
                                            (!muDoubleScalarIsNaN(u_data[1])))) {
-      absxk = u_data[1];
+      r = u_data[1];
     } else {
-      absxk = u_data[0];
+      r = u_data[0];
     }
   } else {
-    g_st.site = &ac_emlrtRSI;
+    g_st.site = &wb_emlrtRSI;
     if (!muDoubleScalarIsNaN(u_data[0])) {
       idx = 1;
     } else {
       idx = 0;
-      h_st.site = &bc_emlrtRSI;
+      h_st.site = &xb_emlrtRSI;
       if (varargin_1->size[0] > 2147483646) {
-        i_st.site = &nb_emlrtRSI;
+        i_st.site = &kb_emlrtRSI;
         check_forloop_overflow_error(&i_st);
       }
       k = 2;
       exitg1 = false;
-      while ((!exitg1) && (k <= last)) {
+      while ((!exitg1) && (k <= b_select)) {
         if (!muDoubleScalarIsNaN(u_data[k - 1])) {
           idx = k;
           exitg1 = true;
@@ -1736,50 +1703,50 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
       }
     }
     if (idx == 0) {
-      absxk = u_data[0];
+      r = u_data[0];
     } else {
-      g_st.site = &yb_emlrtRSI;
-      absxk = u_data[idx - 1];
-      w_tmp = idx + 1;
-      h_st.site = &cc_emlrtRSI;
+      g_st.site = &vb_emlrtRSI;
+      r = u_data[idx - 1];
+      b_m = idx + 1;
+      h_st.site = &yb_emlrtRSI;
       if ((idx + 1 <= varargin_1->size[0]) &&
           (varargin_1->size[0] > 2147483646)) {
-        i_st.site = &nb_emlrtRSI;
+        i_st.site = &kb_emlrtRSI;
         check_forloop_overflow_error(&i_st);
       }
-      for (k = w_tmp; k <= last; k++) {
-        m = u_data[k - 1];
-        if (absxk > m) {
-          absxk = m;
+      for (k = b_m; k <= b_select; k++) {
+        d = u_data[k - 1];
+        if (r > d) {
+          r = d;
         }
       }
     }
   }
   emxFree_real_T(&f_st, &varargin_1);
-  st.site = &j_emlrtRSI;
-  b_st.site = &dc_emlrtRSI;
+  st.site = &k_emlrtRSI;
+  b_st.site = &ac_emlrtRSI;
   dynamic_size_checks(&b_st, b_F, b_F, b_F->size[0], b_F->size[0]);
   if (b_F->size[0] < 1) {
-    scale = 0.0;
+    v_idx_2 = 0.0;
   } else {
     n_t = (ptrdiff_t)b_F->size[0];
     incx_t = (ptrdiff_t)1;
     incy_t = (ptrdiff_t)1;
-    scale = ddot(&n_t, &F_data[0], &incx_t, &F_data[0], &incy_t);
+    v_idx_2 = ddot(&n_t, &F_data[0], &incx_t, &F_data[0], &incy_t);
   }
-  yCOE_tmp = J->size[0];
+  i = J->size[0];
   J->size[0] = (cons->size[0] + b_F->size[0]) + 2;
-  emxEnsureCapacity_real_T(sp, J, yCOE_tmp, &ab_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, J, i, &ab_emlrtRTEI);
   u_data = J->data;
-  u_data[0] = scale;
-  u_data[1] = absxk - 6378.1;
-  last = cons->size[0];
-  for (yCOE_tmp = 0; yCOE_tmp < last; yCOE_tmp++) {
-    u_data[yCOE_tmp + 2] = 1.0 - cons_data[yCOE_tmp];
+  u_data[0] = v_idx_2;
+  u_data[1] = r - 6378.1;
+  idx = cons->size[0];
+  for (i = 0; i < idx; i++) {
+    u_data[i + 2] = 1.0 - cons_data[i];
   }
-  last = b_F->size[0];
-  for (yCOE_tmp = 0; yCOE_tmp < last; yCOE_tmp++) {
-    u_data[(yCOE_tmp + cons->size[0]) + 2] = F_data[yCOE_tmp];
+  idx = b_F->size[0];
+  for (i = 0; i < idx; i++) {
+    u_data[(i + cons->size[0]) + 2] = F_data[i];
   }
   emxFree_real_T(sp, &b_F);
   emxFree_real_T(sp, &cons);

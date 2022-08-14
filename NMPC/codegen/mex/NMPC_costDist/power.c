@@ -37,7 +37,7 @@ void power(const emlrtStack *sp, const emxArray_real_T *a, emxArray_real_T *y)
   st.prev = sp;
   st.tls = sp->tls;
   a_data = a->data;
-  st.site = &p_emlrtRSI;
+  st.site = &q_emlrtRSI;
   i = y->size[0] * y->size[1];
   y->size[0] = 1;
   y->size[1] = a->size[1];

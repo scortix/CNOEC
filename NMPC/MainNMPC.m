@@ -8,25 +8,25 @@ clc
 Tmax = 10; % Maximum Thrust [N]
 Isp = 1000; % Specific Impulse [s]
 g0 = 9.80665; % Standard Earth Gravity [m/s^2]
-m0 = 1000; % Initial Mass
+m0 = 1000; % Initial Mass [kg]
 
 tmax = 6e5; % maximum time for trajectory
 
-Ts = 100; % Discrete time step
+Ts = 100; % Discrete time step [s]
 ratio = 10; % Per quanto tempo mantiene l'input
 lu = tmax/Ts/ratio+1;
 t = 0:Ts:tmax;
 topt = 0:Ts*ratio:tmax;
 stopTime = 6e6;
 
-M = 20; % Prediction horizon
+M = 50; % Prediction horizon
 coeffT = Tmax/g0/Isp;
 mu = 398600; % Earth Standard Gravitational Parameter [km^3/s^2]
-S = 1; % Spacecraft Surface [m^2]
-Cd = 1; % Drag coefficient [?]
-rho_table = rho_tab();
+S = 5; % Spacecraft Surface [m^2]
+Cd = 2.2; % Drag coefficient
 
 load("simFinal.mat") % loading trajectory
+run("rhoTab.m")
 traj_csi = makima(topt,alphaCell{2,2}(2:lu+1)',t);
 traj_angle = makima(topt,alphaCell{2,2}(lu+2:end)',t);
 traj_state = alphaCell{2,3};
@@ -64,54 +64,54 @@ x0(M+1:2*M,1) = angleRef;
 mass = 1000;
 
 % J = NMPC_cost(M,Ts,x0,zEOE0,yRef,Q,R,coeffT,mass,Tmax);
-% J = NMPC_costDist(M,Ts,x0,zEOE0,yRef,Q,R,coeffT,mass,Tmax,x_par,y_par,z_par);
-%%
-coder.extrinsic("opt_problem");
-xopt = opt_problem(x0,M,Ts,zEOE0,yRef,Q,R,coeffT,mass,Tmax);
-
-xi = xopt(1);
-u = xi*[sin(xopt(M+1,1))*cos(xopt(2*M+1,1)) cos(xopt(M+1,1))*cos(xopt(2*M+1,1)) sin(xopt(2*M+1,1))]'*Tmax/mass/1e3;
-%% Comparison
-load("zEOE.mat")
-tcomp = t(1:length(zEOEsim));
-stateTrajComp = traj_state(:,1:length(zEOEsim));
-figure()
-
-subplot(2,3,1)
-plot(tcomp,zEOEsim(2,:))
-hold on
-plot(tcomp,stateTrajComp(1,:))
-
-subplot(2,3,2)
-plot(tcomp,zEOEsim(3,:))
-hold on
-plot(tcomp,stateTrajComp(2,:))
-
-subplot(2,3,3)
-plot(tcomp,zEOEsim(4,:))
-hold on
-plot(tcomp,stateTrajComp(3,:))
-
-subplot(2,3,4)
-plot(tcomp,zEOEsim(5,:))
-hold on
-plot(tcomp,stateTrajComp(4,:))
-
-subplot(2,3,5)
-plot(tcomp,zEOEsim(6,:))
-hold on
-plot(tcomp,stateTrajComp(5,:))
-
-subplot(2,3,6)
-plot(tcomp,zEOEsim(7,:))
-hold on
-plot(tcomp,stateTrajComp(6,:))
-legend("sim","traj")
-
-%% traj inspector
-figure()
-for k = 1:6
-    subplot(2,3,k)
-    plot(t,traj_state(k,:))
-end
-
+J = NMPC_costDist(M,Ts,x0,zEOE0,yRef,Q,R,coeffT,mass,Tmax,x_par,y_par,z_par,S,Cd,rho_table);
+% %%
+% coder.extrinsic("opt_problem");
+% xopt = opt_problem(x0,M,Ts,zEOE0,yRef,Q,R,coeffT,mass,Tmax);
+% 
+% % xi = xopt(1);
+% % u = xi*[sin(xopt(M+1,1))*cos(xopt(2*M+1,1)) cos(xopt(M+1,1))*cos(xopt(2*M+1,1)) sin(xopt(2*M+1,1))]'*Tmax/mass/1e3;
+% %% Comparison
+% load("zEOE.mat")
+% tcomp = t(1:length(zEOEsim));
+% stateTrajComp = traj_state(:,1:length(zEOEsim));
+% figure()
+% 
+% subplot(2,3,1)
+% plot(tcomp,zEOEsim(2,:))
+% hold on
+% plot(tcomp,stateTrajComp(1,:))
+% 
+% subplot(2,3,2)
+% plot(tcomp,zEOEsim(3,:))
+% hold on
+% plot(tcomp,stateTrajComp(2,:))
+% 
+% subplot(2,3,3)
+% plot(tcomp,zEOEsim(4,:))
+% hold on
+% plot(tcomp,stateTrajComp(3,:))
+% 
+% subplot(2,3,4)
+% plot(tcomp,zEOEsim(5,:))
+% hold on
+% plot(tcomp,stateTrajComp(4,:))
+% 
+% subplot(2,3,5)
+% plot(tcomp,zEOEsim(6,:))
+% hold on
+% plot(tcomp,stateTrajComp(5,:))
+% 
+% subplot(2,3,6)
+% plot(tcomp,zEOEsim(7,:))
+% hold on
+% plot(tcomp,stateTrajComp(6,:))
+% legend("sim","traj")
+% 
+% %% traj inspector
+% figure()
+% for k = 1:6
+%     subplot(2,3,k)
+%     plot(t,traj_state(k,:))
+% end
+% 

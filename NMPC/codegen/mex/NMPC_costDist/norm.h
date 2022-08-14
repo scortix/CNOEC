@@ -3,9 +3,9 @@
  * course requirements at degree granting institutions only.  Not for
  * government, commercial, or other organizational use.
  *
- * _coder_NMPC_costDist_api.h
+ * norm.h
  *
- * Code generation for function '_coder_NMPC_costDist_api'
+ * Code generation for function 'norm'
  *
  */
 
@@ -21,6 +21,6 @@
 #include <string.h>
 
 /* Function Declarations */
-void NMPC_costDist_api(const mxArray *const prhs[16], const mxArray **plhs);
+real_T b_norm(const real_T x[3]);
 
-/* End of code generation (_coder_NMPC_costDist_api.h) */
+/* End of code generation (norm.h) */

@@ -40,17 +40,18 @@ build $builddir/NMPC_costDist_initialize.o : cc $root/NMPC_costDist_initialize.c
 build $builddir/NMPC_costDist_terminate.o : cc $root/NMPC_costDist_terminate.c
 build $builddir/NMPC_costDist.o : cc $root/NMPC_costDist.c
 build $builddir/indexShapeCheck.o : cc $root/indexShapeCheck.c
+build $builddir/norm.o : cc $root/norm.c
 build $builddir/EOE2COE.o : cc $root/EOE2COE.c
 build $builddir/earthNonSphericity.o : cc $root/earthNonSphericity.c
-build $builddir/drag.o : cc $root/drag.c
 build $builddir/moonDisturbance.o : cc $root/moonDisturbance.c
 build $builddir/power.o : cc $root/power.c
 build $builddir/assertCompatibleDims.o : cc $root/assertCompatibleDims.c
 build $builddir/eml_mtimes_helper.o : cc $root/eml_mtimes_helper.c
 build $builddir/_coder_NMPC_costDist_api.o : cc $root/interface/_coder_NMPC_costDist_api.c
 build $builddir/_coder_NMPC_costDist_mex.o : cc $root/interface/_coder_NMPC_costDist_mex.c
-build $builddir/eml_int_forloop_overflow_check.o : cc $root/eml_int_forloop_overflow_check.c
 build $builddir/paraorb2rv.o : cc $root/paraorb2rv.c
+build $builddir/EOEDerivatives.o : cc $root/EOEDerivatives.c
+build $builddir/eml_int_forloop_overflow_check.o : cc $root/eml_int_forloop_overflow_check.c
 build $builddir/sqrt.o : cc $root/sqrt.c
 build $builddir/cos.o : cc $root/cos.c
 build $builddir/NMPC_costDist_emxutil.o : cc $root/NMPC_costDist_emxutil.c
@@ -58,4 +59,4 @@ build $builddir/_coder_NMPC_costDist_info.o : cc $root/interface/_coder_NMPC_cos
 build $builddir/c_mexapi_version.o : cc $matlabdir/extern/version/c_mexapi_version.c
 
 # Link
-build $root/NMPC_costDist_mex.mexmaci64 : link $builddir/NMPC_costDist_data.o $builddir/rt_nonfinite.o $builddir/NMPC_costDist_initialize.o $builddir/NMPC_costDist_terminate.o $builddir/NMPC_costDist.o $builddir/indexShapeCheck.o $builddir/EOE2COE.o $builddir/earthNonSphericity.o $builddir/drag.o $builddir/moonDisturbance.o $builddir/power.o $builddir/assertCompatibleDims.o $builddir/eml_mtimes_helper.o $builddir/_coder_NMPC_costDist_api.o $builddir/_coder_NMPC_costDist_mex.o $builddir/eml_int_forloop_overflow_check.o $builddir/paraorb2rv.o $builddir/sqrt.o $builddir/cos.o $builddir/NMPC_costDist_emxutil.o $builddir/_coder_NMPC_costDist_info.o $builddir/c_mexapi_version.o 
+build $root/NMPC_costDist_mex.mexmaci64 : link $builddir/NMPC_costDist_data.o $builddir/rt_nonfinite.o $builddir/NMPC_costDist_initialize.o $builddir/NMPC_costDist_terminate.o $builddir/NMPC_costDist.o $builddir/indexShapeCheck.o $builddir/norm.o $builddir/EOE2COE.o $builddir/earthNonSphericity.o $builddir/moonDisturbance.o $builddir/power.o $builddir/assertCompatibleDims.o $builddir/eml_mtimes_helper.o $builddir/_coder_NMPC_costDist_api.o $builddir/_coder_NMPC_costDist_mex.o $builddir/paraorb2rv.o $builddir/EOEDerivatives.o $builddir/eml_int_forloop_overflow_check.o $builddir/sqrt.o $builddir/cos.o $builddir/NMPC_costDist_emxutil.o $builddir/_coder_NMPC_costDist_info.o $builddir/c_mexapi_version.o 

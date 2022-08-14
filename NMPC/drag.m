@@ -1,8 +1,4 @@
-function [Ddrag_r, Ddrag_t] = drag(x)
-
-rho = rho_selection(x);
-S = 1;
-Cd = 1;
+function Ddrag  = drag(rho,S,Cd,x)
 
 a = x(1);
 e = x(2);
@@ -11,24 +7,21 @@ Omega = x(4);
 w = x(5);
 theta = x(6);
 
+w_earth = 7.2921e-5;
+w_e = [0 0 w_earth]';
 mu_earth = 398600;
-[~,vv] = paraorb2rv(a,e,i,Omega,w,theta,mu_earth);
+[r,v] = paraorb2rv(a,e,i,Omega,w,theta,mu_earth);
+r = r';
+v = v';
 
-p = a*(1-e^2);
-f = e*cos(w+Omega);
-g = e*sin(w+Omega);
-% h = cos(Omega)*tan(i/2);
-% k = sin(Omega)*tan(i/2);
-L = Omega+w+theta;
+Dconst = -S*Cd/2*rho;
 
-if p < 0
-    p = -p;
-end
+ir = r/norm(r);
+in = cross(r,v)/norm(cross(r,v));
+it = cross(in,ir);
+Q = [ir it in];
+v_rel = Q'*(v-cross(w_e,r));
 
-v_mod = norm(vv);
-v_r   = sqrt(mu_earth/p)*(f*sin(L)-g*cos(L));
-v_t   = sqrt(mu_earth/p)*(1+f*cos(L)+g*sin(L));
+Ddrag = Dconst*v_rel.^2;
 
-Ddrag_r = -1/2*rho*S*Cd*v_mod*v_r;
-Ddrag_t = -1/2*rho*S*Cd*v_mod*v_t;
 end

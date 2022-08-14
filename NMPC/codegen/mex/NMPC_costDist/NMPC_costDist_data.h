@@ -24,10 +24,10 @@
 extern emlrtCTX emlrtRootTLSGlobal;
 extern const volatile char_T *emlrtBreakCheckR2012bFlagVar;
 extern emlrtContext emlrtContextGlobal;
-extern emlrtRSInfo o_emlrtRSI;
 extern emlrtRSInfo p_emlrtRSI;
-extern emlrtRSInfo mb_emlrtRSI;
-extern emlrtRSInfo nb_emlrtRSI;
-extern emlrtRTEInfo f_emlrtRTEI;
+extern emlrtRSInfo q_emlrtRSI;
+extern emlrtRSInfo jb_emlrtRSI;
+extern emlrtRSInfo kb_emlrtRSI;
+extern emlrtRTEInfo e_emlrtRTEI;
 
 /* End of code generation (NMPC_costDist_data.h) */

@@ -19,7 +19,7 @@
 
 /* Function Definitions */
 void NMPC_costDist_mexFunction(int32_T nlhs, mxArray *plhs[1], int32_T nrhs,
-                               const mxArray *prhs[13])
+                               const mxArray *prhs[16])
 {
   emlrtStack st = {
       NULL, /* site */
@@ -29,8 +29,8 @@ void NMPC_costDist_mexFunction(int32_T nlhs, mxArray *plhs[1], int32_T nrhs,
   const mxArray *outputs;
   st.tls = emlrtRootTLSGlobal;
   /* Check for proper number of arguments. */
-  if (nrhs != 13) {
-    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, 12, 13, 4,
+  if (nrhs != 16) {
+    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, 12, 16, 4,
                         13, "NMPC_costDist");
   }
   if (nlhs > 1) {

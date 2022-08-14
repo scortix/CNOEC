@@ -22,7 +22,7 @@
 
 /* Function Declarations */
 void NMPC_costDist_mexFunction(int32_T nlhs, mxArray *plhs[1], int32_T nrhs,
-                               const mxArray *prhs[13]);
+                               const mxArray *prhs[16]);
 
 MEXFUNCTION_LINKAGE void mexFunction(int32_T nlhs, mxArray *plhs[],
                                      int32_T nrhs, const mxArray *prhs[]);

@@ -16,8 +16,7 @@
 #include "mwmathutil.h"
 
 /* Function Definitions */
-void earthNonSphericity(const real_T x[6], real_T *DJ2r, real_T *DJ2t,
-                        real_T *DJ2n)
+void earthNonSphericity(const real_T x[6], real_T DJ2[3])
 {
   real_T a__1[3];
   real_T rr[3];
@@ -33,7 +32,7 @@ void earthNonSphericity(const real_T x[6], real_T *DJ2r, real_T *DJ2t,
   real_T t;
   /*  x classical orbit vector */
   /*  geopotential coefficient of earth's oblateness */
-  /*  [km^3*s^-3] standard gravitational parameter of earh (mu = G*M) */
+  /*  [km^3/s^2] standard gravitational parameter of earh (mu = G*M) */
   /*  [km] earth equatorial radius */
   scale = muDoubleScalarTan(x[2] / 2.0);
   h = muDoubleScalarCos(x[3]) * scale;
@@ -68,19 +67,19 @@ void earthNonSphericity(const real_T x[6], real_T *DJ2r, real_T *DJ2t,
     r += t * t;
   }
   r = scale * muDoubleScalarSqrt(r);
-  t = muDoubleScalarSin(L);
   a_tmp = muDoubleScalarCos(L);
+  t = muDoubleScalarSin(L);
+  L = h * t - k * a_tmp;
   a_tmp_tmp = h * h;
   b_a_tmp_tmp = k * k;
   scale = (a_tmp_tmp + 1.0) + b_a_tmp_tmp;
-  r = muDoubleScalarPower(r, 4.0);
-  absxk = scale * scale;
-  *DJ2r = -5.2517134309839607E+10 / (2.0 * r) *
-          (1.0 - 12.0 * (h * t - k * (a_tmp * a_tmp)) / absxk);
-  scale = h * muDoubleScalarSin(L) - k * a_tmp;
-  *DJ2t = -2.1006853723935843E+11 / r * scale * (h * a_tmp + k * t) / absxk;
-  *DJ2n = -1.0503426861967921E+11 / r * ((1.0 - a_tmp_tmp) - b_a_tmp_tmp) *
-          scale / absxk;
+  absxk = muDoubleScalarPower(r, 4.0);
+  scale *= scale;
+  DJ2[0] =
+      -5.2517134309839607E+10 / (2.0 * absxk) * (1.0 - 12.0 * (L * L) / scale);
+  DJ2[1] = -2.1006853723935843E+11 / absxk * L * (h * a_tmp + k * t) / scale;
+  DJ2[2] = -1.0503426861967921E+11 / absxk * ((1.0 - a_tmp_tmp) - b_a_tmp_tmp) *
+           L / scale;
 }
 
 /* End of code generation (earthNonSphericity.c) */

@@ -1,4 +1,4 @@
-function [Dmoon_r, Dmoon_t, Dmoon_n]  = moonDisturbance(x, time, xp, yp, zp)
+function Dm  = moonDisturbance(x, time, xp, yp, zp)
 
 a = x(1);
 e = x(2);
@@ -29,7 +29,7 @@ s = [x_m; y_m; z_m];
 % r position vector of the spacecraft
 % time is the value representing the Julian day in TDT scale
 
-mu_moon = 490487;               % moon standard gravitational coefficient
+mu_moon = 4904.87;               % moon standard gravitational coefficient
 
 d = r-s;                            % vector from moon to spacecraft
 d_mod = sqrt(d(1)^2+d(2)^2+d(3)^2); % modulus of d
@@ -44,9 +44,11 @@ it = cross(in,ir);
 
 Q = [ir it in];
 
-a_tb = Q*t;
+a_tb = Q'*t;
 
 Dmoon_r = a_tb(1);
 Dmoon_t = a_tb(2);
 Dmoon_n = a_tb(3);
+
+Dm = [Dmoon_r Dmoon_t Dmoon_n]';
 end

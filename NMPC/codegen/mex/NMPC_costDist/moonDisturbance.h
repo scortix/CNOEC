@@ -23,6 +23,6 @@
 /* Function Declarations */
 void moonDisturbance(const emlrtStack *sp, const real_T x[6], real_T b_time,
                      const real_T xp[4], const real_T yp[4], const real_T zp[4],
-                     real_T *Dmoon_r, real_T *Dmoon_t, real_T *Dmoon_n);
+                     real_T Dm[3]);
 
 /* End of code generation (moonDisturbance.h) */

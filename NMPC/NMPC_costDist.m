@@ -1,4 +1,4 @@
-function J = NMPC_costDist(M,Ts,x,y0,yref,Q,R,coeffT,m0,Tmax,xp,yp,zp)
+function J = NMPC_costDist(M,Ts,x,y0,yref,Q,R,coeffT,m0,Tmax,xp,yp,zp,S,Cd,rho_table)
 
 %COST Function calculates the cost of the orbital maneuvre considering
 %   arbitrary defined weigthed sums. The cost takes into account both the
@@ -34,10 +34,11 @@ F = zeros(7*M,1);
 % Cost Function Calculation
 for k = 1:M
     yCOE = EOE2COE(yhat(:,k));
-    [DJ2r, DJ2t, DJ2n] = earthNonSphericity(yCOE);
-    [Ddrag_r, Ddrag_t] = drag(yCOE);
-    [Dmoon_r, Dmoon_t, Dmoon_n] = moonDisturbance(yCOE, k*Ts, xp, yp, zp);
-    dTemp = [DJ2r+Ddrag_r+Dmoon_r DJ2t+Ddrag_t+Dmoon_t DJ2n+Dmoon_n]'/m(k);
+    DJ2 = earthNonSphericity(yCOE);
+    rho = rho_selection(yCOE,rho_table);
+    Ddrag = drag(rho,S,Cd,yCOE);
+    Dmoon = moonDisturbance(yCOE, k*Ts, xp, yp, zp);
+    dTemp = DJ2+Ddrag/m(k)+Dmoon;
 
     u(:,k) = Tmax/m(k)/1e3*dir(:,k);
     yhat(:,k+1) = yhat(:,k)+Ts*EOEDerivatives(0,yhat(:,k),u(:,k)+dTemp,398600);
