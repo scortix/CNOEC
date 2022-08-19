@@ -33,7 +33,7 @@ while true
     end
     if fxk < 0
         fprintf(strcat(niterStr,"| %6.5e  |  %6.5e  |  %6.5e  |  %6.5e  |\n"),...
-            k, fxk,norm(gradfxk),dx(k),df(k));
+            k, fxk,norm(gradfxk),dxk,dfk);
     else
         fprintf(strcat(niterStr,"|  %6.5e  |  %6.5e  |  %6.5e  |  %6.5e  |\n"),...
             k, fxk,norm(gradfxk),dxk,dfk);

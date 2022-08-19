@@ -48,7 +48,7 @@ fx0 = fun(x0);
 
 %% Define functions f (or F), g and h
 gradJ = @(x) mygradcalc(fun,x, fun(x), options);
-if strcmp(options.Hessmethod,"BFGS") || strcmp(options.Hessmethod,"GD")    
+if strcmp(options.Hessmethod,"BFGS") || strcmp(options.Hessmethod,"SD")    
     fmatr = [1; zeros(length(fx0)-1,1)];
     gmatr = [zeros(1,p); eye(p); zeros(length(fx0)-1-p,p)];
     hmatr = [zeros(1+p,q); eye(q); zeros(length(fx0)-1-p-q,q)];
@@ -190,14 +190,14 @@ while true
     AQPeq = gradgxk'; bQPeq = gxk(:,niter);
     AQP = gradhxk'; bQP = hxk(:,niter);
     [pkstar, ~, ~, ~, lb]  = quadprog(Hk, gradfxk, -AQP, bQP, -AQPeq, bQPeq, [], [], [], options.QPoptions);
-    lambdakstar = -lb.eqlin; mukstar = lb.ineqlin;
+    lambdakstar = -lb.eqlin; mukstar = min(lb.ineqlin,1e15);
     dlambdak = lambdakstar - lam(:,niter);
     dmuk = mukstar - mu(:,niter);
     for i = 1:p
         sigma(i) = max(abs(lambdakstar(i)), (sigma(i)+abs(lambdakstar(i)))/2);
     end
     for i = 1:q
-        tau(i) = max(abs(mukstar(i)), (tau(i)+abs(mukstar(i)))/2);
+        tau(i) = min(max(abs(mukstar(i)), (tau(i)+abs(mukstar(i)))/2),1e15);
     end
     
     %% Backtracking line-search and update state and Lagrange multipliers
@@ -241,15 +241,37 @@ while true
                     break
                 end
             end
+            w = 1e-6;
+            for attempt = 1:10
+                v = 0*y;
+                for j = 1:length(v)
+                    if y(i)*w < 0 && y(i)*s(i)<0
+                        v(i) = -y(i);
+                    end
+                end
+                y = y + w*v;
+                if y'*s > 0
+                    break
+                end
+                w = 2*w;
+            end
+            if y'*s <= options.BFGS_gamma*s'*Hk*s
+                y = y + (options.BFGS_gamma*s'*Hk*s-s'*y)/(s'*Hk*s-s'*y)*(Hk*s-y);
+            end
         end
         if all(s==0)
             s = 1e-14*pkstar/norm(pkstar);
         end
-        Hk = Hk - ((Hk*s)*(Hk*s)')/(s'*Hk*s) + (y*y')/(s'*y);
-        if min(eig(Hk))/max(eig(Hk)) < -1e-8
+        HkOld = Hk;
+        [Uh,Sh] = svd(Hk*s);
+        [Uy,Sy] = svd(y);
+%         Hk = Hk - ((Hk*s)*(Hk*s)')/(s'*Hk*s) + (y*y')/(s'*y);
+        Hk = Hk - (Uh*Sh*Sh'*Uh')/(s'*Hk*s) + (Uy*Sy*Sy'*Uy')/(s'*y);
+        Hk = nearestSPD(Hk);
+        if min(eig(Hk))/max(eig(Hk)) < -1e-6
             m = min(eig(Hk));
             warning(strcat("Hk is not positive definite - min(eig(Hk)) = ", num2str(m)));
-            Hk = eye(size(Hk,1));
+            Hk = HkOld;
         end
         if isequal(Hk,zeros(size(Hk)))
             Hk = eye(size(Hk))*1e-14;

@@ -7,7 +7,7 @@ set(groot,'defaultAxesTickLabelInterpreter','latex');
 set(groot,'defaultLegendInterpreter','latex');
 Parameters % Load Parameters
 onlyPlot = true; % Boolean to skip the optimization part and just plot pre-saved results
-
+%%
 if ~onlyPlot
     pool = gcp("nocreate");
     if isempty(gcp)
@@ -71,8 +71,8 @@ if ~onlyPlot
         zeros(lu,1) -eye(lu) zeros(lu)];
     d = [zeros(lu,1);
         -ones(lu,1)];
-
-    for k = 1:length(alpha)
+%%
+    for k = length(alpha):-1:2
         x0 = initGuess{k,2};
         fun = @(x) costFun_mex(x, Ts, tmax, zEOE0, zEOEbar, ratio, Tmax, Tmax/g0/Isp, m0, alpha(k)); % Cost Function Definition
 
@@ -85,6 +85,7 @@ if ~onlyPlot
         conCell(k,:) = {alpha(k),x,zEOE,tCost,m}; % Save results in the cell array
     end
     save("simulation.mat","conCell","-append")
+    %%
 end
 
 %% Plotting Results
