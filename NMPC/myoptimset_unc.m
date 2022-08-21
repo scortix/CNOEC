@@ -68,7 +68,7 @@ myoptions.nitermax      =	200;        % Termination tolerance on the number of
 myoptions.outputfcn     =	[];         % Handle for output function
 
 %% Differentiation options
-myoptions.gradmethod  	=	'FD';       % Method for gradient computation
+myoptions.gradmethod  	=	'IM';       % Method for gradient computation
                                         % FD    =   Forward Differences
                                         % CD    =   Central Differences
                                         % IM    =   Imaginary-part trick
@@ -82,9 +82,9 @@ myoptions.useParallel   =   false;       % Use parallelization to compute the gr
 myoptions.ls_tkmax      =	1;          % Maximum step size
 myoptions.ls_beta       =	0.8;        % Beta scaling factor for 
                                         % back-tracking line search
-myoptions.ls_c          =	0.6;        % c coefficient factor for 
+myoptions.ls_c          =	0.1;        % c coefficient factor for 
                                         % back-tracking line search
-myoptions.ls_nitermax   =	500;         % max. number of back-tracking 
+myoptions.ls_nitermax   =	200;         % max. number of back-tracking 
                                         % line search iterations
 
 %% Quasi-Newton method options
@@ -97,7 +97,7 @@ myoptions.Hessmethod  	=	'BFGS';    % Method for Hessian computation
                                         % BFGS  =   BFGS algorithm
                                         % GN    =   Gauss-Newton algorithm
                                         % SD    =   Steepest Descent
-myoptions.BFGS_gamma  	=	1;        % gamma factor for Powell's trick in
+myoptions.BFGS_gamma  	=	0.4;        % gamma factor for Powell's trick in
                                         % BFGS algorithm
 myoptions.GN_sigma      =	1e-14;      % coefficient to ensure Hessian is 
                                         % positive definite in Gauss-Newton

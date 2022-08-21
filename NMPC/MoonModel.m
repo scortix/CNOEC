@@ -16,9 +16,9 @@ s = [x_m; y_m; z_m];
 t_plot = t_sim/3600;
 %%
 
-initX = [mean(x_m) pi/2+pi/6 1/5/86400 4e5]';
-initY = [mean(y_m) pi/3 1/5/86400 3e5]';
-initZ = [mean(z_m) pi/3 1/5/86400 2e5]';
+initX = [mean(x_m) pi/2+pi/6 30*86400 4e5]';
+initY = [mean(y_m) pi/3 30*86400 3e5]';
+initZ = [mean(z_m) pi/3 30*86400 2e5]';
 
 %% Estimation
 funX = @(x) moonCost(x,t_sim,x_m);
@@ -42,17 +42,17 @@ y_par_unc = myfminunc(funY,initY,opt);
 z_par = fminsearch(funZ,initZ);
 z_par_unc = myfminunc(funZ,initZ,opt);
 
-x_m_hatUnc = x_par_unc(4)*sin(x_par_unc(3)*t_sim+x_par_unc(2))+x_par_unc(1);
-x_m_hat = x_par(1)+x_par(4)*sin(x_par(3)*t_sim+x_par(2));
-x_m0_hat = initX(1)+initX(4)*sin(initX(3)*t_sim+initX(2));
+x_m_hatUnc = x_par_unc(4)*sin(2*pi/x_par_unc(3)*t_sim+x_par_unc(2))+x_par_unc(1);
+x_m_hat = x_par(1)+x_par(4)*sin(2*pi/x_par(3)*t_sim+x_par(2));
+x_m0_hat = initX(1)+initX(4)*sin(2*pi/initX(3)*t_sim+initX(2));
 
-y_m_hatUnc = y_par_unc(4)*sin(y_par_unc(3)*t_sim+y_par_unc(2))+y_par_unc(1);
-y_m_hat = y_par(4)*sin(y_par(3)*t_sim+y_par(2))+y_par(1);
-y_m0_hat = initY(1)+initY(4)*sin(initY(3)*t_sim+initY(2));
+y_m_hatUnc = y_par_unc(4)*sin(2*pi/y_par_unc(3)*t_sim+y_par_unc(2))+y_par_unc(1);
+y_m_hat = y_par(4)*sin(2*pi/y_par(3)*t_sim+y_par(2))+y_par(1);
+y_m0_hat = initY(1)+initY(4)*sin(2*pi/initY(3)*t_sim+initY(2));
 
-z_m_hatUnc = z_par_unc(4)*sin(z_par_unc(3)*t_sim+z_par_unc(2))+z_par_unc(1);
-z_m_hat = z_par(4)*sin(z_par(3)*t_sim+z_par(2))+z_par(1);
-z_m0_hat = initZ(1)+initZ(4)*sin(initZ(3)*t_sim+initZ(2));
+z_m_hatUnc = z_par_unc(4)*sin(2*pi/z_par_unc(3)*t_sim+z_par_unc(2))+z_par_unc(1);
+z_m_hat = z_par(4)*sin(2*pi/z_par(3)*t_sim+z_par(2))+z_par(1);
+z_m0_hat = initZ(1)+initZ(4)*sin(2*pi/initZ(3)*t_sim+initZ(2));
 %%
 
 set(groot,'defaulttextinterpreter','latex');
