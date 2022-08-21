@@ -16,9 +16,9 @@ v = v';
 k = floor(time/Ts)*Ts;
 
 % the 4 following lines for approximated moon position (fast)
-x_m = xp(1)+xp(4)*sin(xp(3)*k+xp(2));
-y_m = yp(1)+yp(4)*sin(yp(3)*k+yp(2));
-z_m = zp(1)+zp(4)*sin(zp(3)*k+zp(2));
+x_m = xp(1)+xp(4)*sin(2*pi/xp(3)*k+xp(2));
+y_m = yp(1)+yp(4)*sin(2*pi/yp(3)*k+yp(2));
+z_m = zp(1)+zp(4)*sin(2*pi/zp(3)*k+zp(2));
 s = [x_m; y_m; z_m];
 
 % the 3 following line for real moon position (slow)

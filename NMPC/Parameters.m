@@ -13,14 +13,14 @@ mu = 398600; % Earth Standard Gravitational Parameter [km^3/s^2]
 Tmax = 10; % Maximum Thrust [N]
 Isp = 1000; % Specific Impulse [s]
 g0 = 9.80665; % Standard Earth Gravity [m/s^2]
-m0 = 1000; % Initial Mass
+m0 = 1000; % Initial Mass [kg]
 coeffT = Tmax/g0/Isp;
 
 % Optimizer Parameters
 alpha = 0:0.2:1; % Vector of cost function weight parameter
 
 % NMPC Parameters
-M = 50; % Prediction horizon
+M = 20; % Prediction horizon
 S = 5; % Spacecraft Surface [m^2]
 Cd = 2.2; % Drag coefficient
 run("rhoTab.m") % rho table

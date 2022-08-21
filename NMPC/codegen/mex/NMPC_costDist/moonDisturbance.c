@@ -94,9 +94,12 @@ void moonDisturbance(const emlrtStack *sp, const real_T x[6], real_T b_time,
   paraorb2rv(x[0], x[1], x[2], x[3], x[4], x[5], r, a_tb);
   k = muDoubleScalarFloor(b_time / 100.0) * 100.0;
   /*  the 4 following lines for approximated moon position (fast) */
-  s_idx_0 = xp[0] + xp[3] * muDoubleScalarSin(xp[2] * k + xp[1]);
-  s_idx_1 = yp[0] + yp[3] * muDoubleScalarSin(yp[2] * k + yp[1]);
-  s_idx_2 = zp[0] + zp[3] * muDoubleScalarSin(zp[2] * k + zp[1]);
+  s_idx_0 =
+      xp[0] + xp[3] * muDoubleScalarSin(6.2831853071795862 / xp[2] * k + xp[1]);
+  s_idx_1 =
+      yp[0] + yp[3] * muDoubleScalarSin(6.2831853071795862 / yp[2] * k + yp[1]);
+  s_idx_2 =
+      zp[0] + zp[3] * muDoubleScalarSin(6.2831853071795862 / zp[2] * k + zp[1]);
   /*  the 3 following line for real moon position (slow) */
   /*  s = zeros(3,1); */
   /*  coder.extrinsic("myMoonpos") */

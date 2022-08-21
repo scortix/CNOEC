@@ -8,7 +8,9 @@ set(groot,'defaultLegendInterpreter','latex');
 Parameters % Load Parameters
 load("simulation.mat") % loading trajectory
 
-alpha = 0.2; % choose from [0, 0.2, 0.4, 0.6, 0.8, 1]
+alpha = 0.2; % 0.2 or 0.8
+% (Even 0, 0.4, 0.6, 1 but references in simulink must be chanced in signal
+% builders)
 sel = alpha*5+1;
 
 xt = makima(tu,conCell{sel,2}(2:lu+1)',t); % Throttle trajectory
