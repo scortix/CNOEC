@@ -434,7 +434,7 @@ static emlrtBCInfo p_emlrtBCI = {
     -1,              /* iFirst */
     -1,              /* iLast */
     46,              /* lineNo */
-    56,              /* colNo */
+    58,              /* colNo */
     "yhat",          /* aName */
     "NMPC_costDist", /* fName */
     "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
@@ -1137,8 +1137,7 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
   /*        u0: input vector from trajectory */
   /*        ybar: desired state vector */
   /*        umax: maximum value for inputs */
-  /*        x: optimization variables 3*M inputs,  6*M states (current state
-   * given) */
+  /*        x: optimization variables 3*M inputs */
   /*        variables in this order */
   /*        Q: state trajectory weights 6x6 */
   /*        R: fuel consumption weight */
@@ -1482,14 +1481,14 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
       }
       i1 = (int32_T)v_idx_2;
     }
-    idx = i1 - i;
-    emlrtSubAssignSizeCheckR2012b(&idx, 1, &F_tmp, 1, &e_emlrtECI,
+    b_select = i1 - i;
+    emlrtSubAssignSizeCheckR2012b(&b_select, 1, &F_tmp, 1, &e_emlrtECI,
                                   (emlrtCTX)sp);
     memcpy(&b_a[0], &Q[0], 36U * sizeof(real_T));
     st.site = &i_emlrtRSI;
     b_sqrt(&st, b_a);
-    if (k + 1 > yref->size[1]) {
-      emlrtDynamicBoundsCheckR2012b(k + 1, 1, yref->size[1], &o_emlrtBCI,
+    if ((k + 2 < 1) || (k + 2 > yref->size[1])) {
+      emlrtDynamicBoundsCheckR2012b(k + 2, 1, yref->size[1], &o_emlrtBCI,
                                     (emlrtCTX)sp);
     }
     if ((k + 2 < 1) || (k + 2 > yhat->size[1])) {
@@ -1497,16 +1496,17 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
                                     (emlrtCTX)sp);
     }
     for (i1 = 0; i1 < 6; i1++) {
-      yCOE[i1] = yref_data[i1 + 6 * k] - yhat_data[i1 + 6 * (k + 1)];
+      idx = i1 + 6 * (k + 1);
+      yCOE[i1] = yref_data[idx] - yhat_data[idx];
     }
     for (i1 = 0; i1 < 6; i1++) {
       d = 0.0;
-      for (b_select = 0; b_select < 6; b_select++) {
-        d += b_a[i1 + 6 * b_select] * yCOE[b_select];
+      for (idx = 0; idx < 6; idx++) {
+        d += b_a[i1 + 6 * idx] * yCOE[idx];
       }
       c_a[i1] = d;
     }
-    for (i1 = 0; i1 < idx; i1++) {
+    for (i1 = 0; i1 < b_select; i1++) {
       F_data[i + i1] = c_a[i1];
     }
     if (k + 1 < loop_ub_tmp) {

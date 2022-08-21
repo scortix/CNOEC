@@ -2,9 +2,6 @@ close all
 clear
 clc
 
-set(groot,'defaulttextinterpreter','latex');
-set(groot,'defaultAxesTickLabelInterpreter','latex');
-set(groot,'defaultLegendInterpreter','latex');
 Parameters % Load Parameters
 onlyPlot = true; % Boolean to skip the optimization part and just plot pre-saved results
 %%

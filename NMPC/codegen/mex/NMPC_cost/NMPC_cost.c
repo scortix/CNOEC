@@ -264,7 +264,7 @@ static emlrtBCInfo d_emlrtBCI = {
     -1,          /* iFirst */
     -1,          /* iLast */
     39,          /* lineNo */
-    56,          /* colNo */
+    58,          /* colNo */
     "yhat",      /* aName */
     "NMPC_cost", /* fName */
     "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_cost.m", /* pName */
@@ -1022,8 +1022,7 @@ void NMPC_cost(const emlrtStack *sp, real_T M, real_T Ts,
   /*        u0: input vector from trajectory */
   /*        ybar: desired state vector */
   /*        umax: maximum value for inputs */
-  /*        x: optimization variables 3*M inputs,  6*M states (current state
-   * given) */
+  /*        x: optimization variables 3*M inputs */
   /*        variables in this order */
   /*        Q: state trajectory weights 6x6 */
   /*        R: fuel consumption weight */
@@ -1360,8 +1359,8 @@ void NMPC_cost(const emlrtStack *sp, real_T M, real_T Ts,
     memcpy(&b_a[0], &Q[0], 36U * sizeof(real_T));
     st.site = &d_emlrtRSI;
     b_sqrt(&st, b_a);
-    if (k + 1 > yref->size[1]) {
-      emlrtDynamicBoundsCheckR2012b(k + 1, 1, yref->size[1], &e_emlrtBCI,
+    if ((k + 2 < 1) || (k + 2 > yref->size[1])) {
+      emlrtDynamicBoundsCheckR2012b(k + 2, 1, yref->size[1], &e_emlrtBCI,
                                     (emlrtCTX)sp);
     }
     if ((k + 2 < 1) || (k + 2 > yhat->size[1])) {
@@ -1369,7 +1368,8 @@ void NMPC_cost(const emlrtStack *sp, real_T M, real_T Ts,
                                     (emlrtCTX)sp);
     }
     for (i1 = 0; i1 < 6; i1++) {
-      b_Ts[i1] = yref_data[i1 + 6 * k] - yhat_data[i1 + 6 * (k + 1)];
+      b_Ts_tmp = i1 + 6 * (k + 1);
+      b_Ts[i1] = yref_data[b_Ts_tmp] - yhat_data[b_Ts_tmp];
     }
     for (i1 = 0; i1 < 6; i1++) {
       Ts_tmp = 0.0;

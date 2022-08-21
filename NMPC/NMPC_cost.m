@@ -11,7 +11,7 @@ function J = NMPC_cost(M,Ts,x,y0,yref,Q,R,coeffT,m0,Tmax)
 %       u0: input vector from trajectory
 %       ybar: desired state vector
 %       umax: maximum value for inputs
-%       x: optimization variables 3*M inputs,  6*M states (current state given)
+%       x: optimization variables 3*M inputs
 %       variables in this order
 %       Q: state trajectory weights 6x6
 %       R: fuel consumption weight
@@ -36,7 +36,7 @@ for k = 1:M
     u(:,k) = Tmax/m(k)/1e3*dir(:,k);
     yhat(:,k+1) = yhat(:,k)+Ts*EOEDerivatives(0,yhat(:,k),u(:,k),398600);
     F(k,1) = sqrt(R)*cons(k);
-    F(M+6*(k-1)+1:M+6*k,1) = sqrt(Q)*(yref(:,k)-yhat(:,k+1));
+    F(M+6*(k-1)+1:M+6*k,1) = sqrt(Q)*(yref(:,k+1)-yhat(:,k+1));
     if k < M
         m(k+1) = m(k) - Ts*cons(k)*coeffT;
     end
