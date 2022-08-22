@@ -23,5 +23,6 @@ m0 = 1000; % Initial Mass
 alpha = 0:0.2:1; % Vector of cost function weight parameter
 opt = myoptimset; % Optimizer Options
 
+% Color scheme used for plot
 cscheme = {'#AA4499','#EE7733','#0072BD','#CC3311','#228833','#e6ab02'};
 
