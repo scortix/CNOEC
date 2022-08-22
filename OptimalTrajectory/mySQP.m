@@ -182,7 +182,7 @@ while true
             Hk = Hk + options.GN_sigma*eye(size(Hk));
         case 'BFGS'
             if niter == 1
-                Hk = eye(length(x0));
+                Hk = 1e-4*eye(length(x0));
             end
     end
 
@@ -222,7 +222,7 @@ while true
     %% For BFGS only, update Hk matrix
     if strcmp(options.Hessmethod, 'BFGS')
         gradlxkup = gradfxk-gradgxk*lam(:,niter+1)-gradhxk*mu(:,niter+1);
-        gradJxk = gradJ(xk(:,niter));
+        gradJxk = gradJ(xk(:,niter+1));
         gradfxk = gradJxk*fmatr;
         gradgxk = [A', gradJxk*gmatr];
         gradhxk = [C', gradJxk*hmatr];

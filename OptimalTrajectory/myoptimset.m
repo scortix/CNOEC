@@ -56,7 +56,7 @@ function myoptions = myoptimset
 %% General options
 myoptions.display    	=	'Iter';     % Display iteration output
 myoptions.xsequence    	=	'off';      % Store sequence of points {xk}
-myoptions.tolconstr    	=	1e-8;       % Constraint satisfaction tolerance
+myoptions.tolconstr    	=	1e-6;       % Constraint satisfaction tolerance
 myoptions.tolgrad    	=	1e-6;       % Termination tolerance on the norm
                                         % of the directional derivative
 myoptions.tolx          =	1e-16;      % Termination tolerance on the relative
@@ -79,7 +79,7 @@ myoptions.graddx        =	2^-26;      % Perturbation for gradient computation
 myoptions.useParallel   =   true;       % Use parallelization to compute the gradient
                                         
 %% Line search options
-myoptions.ls_tkmax      =	6;          % Maximum step size
+myoptions.ls_tkmax      =	1;          % Maximum step size
 myoptions.ls_beta       =	0.8;        % Beta scaling factor for 
                                         % back-tracking line search
 myoptions.ls_c          =	0.4;        % c coefficient factor for 

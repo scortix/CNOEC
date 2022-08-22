@@ -75,7 +75,7 @@ if ~onlyPlot
         zeros(lu,1) -eye(lu) zeros(lu)];
     d = [zeros(lu,1);
         -ones(lu,1)];
-    for k = length(alpha):-1:1
+    for k = [2 5 1 3 4 6]%length(alpha):-1:1
         x0 = initGuess{k,2};
         fun = @(x) costFun_mex(x, Ts, tmax, zEOE0, zEOEbar, ratio, Tmax, Tmax/g0/Isp, m0, alpha(k)); % Cost Function Definition
 

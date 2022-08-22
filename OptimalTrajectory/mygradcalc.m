@@ -30,7 +30,7 @@ J = zeros(length(fx),dim);
 p = eye(dim);
 method = opt.gradmethod;
 useParallel = opt.useParallel;
-if ~isfield(opt,graddx)
+if ~isfield(opt,"graddx")
     switch method
         case 'FD'
             eta = sqrt(eps);
