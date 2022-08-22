@@ -1,3 +1,10 @@
+% Main for the computation of the optimal trajectory
+% The script requires to modify the boolean OnlyPlot in order to choose
+% wheter to run the whole optimization routine or just make all the plots
+% loading previously calculated optimal trajectories.
+% WARNING: The whole optimization routine requires several hours (up to a 
+% day) to be completed, as explained in the report
+
 close all
 clear
 clc
@@ -37,7 +44,7 @@ if ~onlyPlot
     save("simulation.mat","initGuess");
 
     %% Unconstrained Optimization
-    opt.nitermax = 1e4;
+    opt.nitermax = 1e4; %Increase maximum number of iteration
     if ~exist("initGuess","var")
         load("simulation.mat","initGuess");
     end
@@ -68,8 +75,7 @@ if ~onlyPlot
         zeros(lu,1) -eye(lu) zeros(lu)];
     d = [zeros(lu,1);
         -ones(lu,1)];
-%%
-    for k = length(alpha):-1:2
+    for k = length(alpha):-1:1
         x0 = initGuess{k,2};
         fun = @(x) costFun_mex(x, Ts, tmax, zEOE0, zEOEbar, ratio, Tmax, Tmax/g0/Isp, m0, alpha(k)); % Cost Function Definition
 

@@ -84,7 +84,7 @@ myoptions.ls_beta       =	0.8;        % Beta scaling factor for
                                         % back-tracking line search
 myoptions.ls_c          =	0.6;        % c coefficient factor for 
                                         % back-tracking line search
-myoptions.ls_nitermax   =	500;         % max. number of back-tracking 
+myoptions.ls_nitermax   =	100;         % max. number of back-tracking 
                                         % line search iterations
 
 %% Quasi-Newton method options

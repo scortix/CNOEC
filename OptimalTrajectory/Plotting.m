@@ -41,10 +41,12 @@ title("Pareto Front","FontSize",18)
 for sim = 1:2
     if sim == 1
         f = figure(f2);
+        clf
         alphaCell = conCell;
         secondLine = "Constrained Optimization";
     else
         f = figure(f3);
+        clf
         alphaCell = uncCell;
         secondLine = "Unconstrained Optimization";
     end
@@ -58,7 +60,7 @@ for sim = 1:2
         for i = 1:size(zEOE,2)
             zCOE(:,i) = EOE2COE(zEOE(:,i)); % Conversion of EOE state vector to COE state vector
         end
-        % Plot time evolution of classical orbital elements
+        %Plot time evolution of classical orbital elements
 
         subplot(2,2,1)
         plot(tPlot,zCOE(1,:),'Color',cscheme{k},'LineWidth',1.5);
@@ -88,13 +90,13 @@ for sim = 1:2
             line([0,tmax],orb_end.om*[1,1],'Color','k','LineWidth',1.5,'LineStyle','--')
             legend(label,"FontSize",14,"Position",[2.3367e-01   1.2029e-01   2.2410e-01   1.5956e-01],'NumColumns',2)
             xlabel("Time $[h]$","FontSize",14)
-            ylabel("Argument of periapsis $\omega$ $[rad]$","FontSize",14)
+            ylabel("Arg of periapsis $\omega$ $[rad]$","FontSize",14)
             yticks(-pi:pi/2:pi)
             yticklabels({'$-\pi$','$-\frac{\pi}{2}$','$0$','$\frac{\pi}{2}$','$\pi$'})
             xlim([0, tPlot(end)])
             ylim([-pi,pi])
             sgtitle({"State - Time Evolution", secondLine},"FontSize",18)
-            f.Position = [320 307 1077 596];
+            f.Position = [320 200 1000 600];
         end
         subplot(2,2,4)
         csisim = interp1(tu,x(2:(end+1)/2),t,"makima");
@@ -106,9 +108,9 @@ for sim = 1:2
             ylabel("Available Mass $[kg]$","FontSize",14)
             xlim([0, tPlot(end)])
         end
-        
         plot2DOrbit(orb_in,orb_end,zCOE,tmax,[strcat("Orbital Transfer - $\alpha=", num2str(alpha(k)), "$" ), secondLine, "Perifocal Reference Frame"]);
-%         Orb_Earth_plot(orb_in, orb_end, zCOE);
+%         Orb_Earth_plot(orb_in, orb_end, zCOE); %Uncomment this line to
+%         plot the trajectory as a 3D plot
         
     end
 end

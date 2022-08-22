@@ -1,4 +1,4 @@
-function gradfx = mygradcalc(fun, x, fx, opt, eta)
+function gradfx = mygradcalc(fun, x, fx, opt)
 % MYGRADCALC Computes the gradient (i.e. the Jacobian transpose) of a 
 % given function, using one of several possible methods.
 %   INPUTS:
@@ -16,7 +16,8 @@ function gradfx = mygradcalc(fun, x, fx, opt, eta)
 %                                   'IM' (Imaginary-part trick).
 %               useParallel =   boolean indicating wether to use parallel
 %                               pool to compute the gradient
-%           eta         =   perturbation step used
+%               graddx      =   perturbation step used (If not specified, a
+%                               default value will be used)
 %
 %   OUTPUT:
 %           gradient    =   n-by-N matrix containing in each column the
@@ -29,7 +30,7 @@ J = zeros(length(fx),dim);
 p = eye(dim);
 method = opt.gradmethod;
 useParallel = opt.useParallel;
-if nargin == 4
+if ~isfield(opt,graddx)
     switch method
         case 'FD'
             eta = sqrt(eps);
@@ -40,6 +41,8 @@ if nargin == 4
         case 'IM'
             eta = 1e-100;
     end
+else
+    eta = opt.graddx;
 end
 if useParallel
     parfor i = 1:dim

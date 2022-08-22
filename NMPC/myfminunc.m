@@ -67,16 +67,10 @@ while true
         end
         Hk = Hk - (Hk*(s*s')*Hk)/(s'*Hk*s) + (y*y')/(s'*y);
 
-        HkOld = Hk;
         [Uh,Sh] = svd(Hk*s);
         [Uy,Sy] = svd(y);
         Hk = Hk - (Uh*Sh*Sh'*Uh')/(s'*Hk*s) + (Uy*Sy*Sy'*Uy')/(s'*y);
         Hk = nearestSPD(Hk);
-        if min(eig(Hk))/max(eig(Hk)) < -1e-6
-            m = min(eig(Hk));
-            warning(strcat("Hk is not positive definite - min(eig(Hk)) = ", num2str(m)));
-            Hk = HkOld;
-        end
 
         gradfxk = gradfxknew;
     end

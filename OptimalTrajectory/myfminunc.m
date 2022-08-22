@@ -53,6 +53,7 @@ while true
         xstar = x(:,k);
         fxstar = fxk;
         exitflag = 1;
+        fprintf("\nOptimization Completed\n")
         break
     end
     
@@ -66,6 +67,12 @@ while true
             y = y + (opt.BFGS_gamma*s'*Hk*s-s'*y)/(s'*Hk*s-s'*y)*(Hk*s-y);
         end
         Hk = Hk - (Hk*(s*s')*Hk)/(s'*Hk*s) + (y*y')/(s'*y);
+
+        [Uh,Sh] = svd(Hk*s);
+        [Uy,Sy] = svd(y);
+        Hk = Hk - (Uh*Sh*Sh'*Uh')/(s'*Hk*s) + (Uy*Sy*Sy'*Uy')/(s'*y);
+        Hk = nearestSPD(Hk);
+
         gradfxk = gradfxknew;
     end
     dxk = norm(x(:,k+1)-x(:,k))/max(eps,norm(x(:,k)));
