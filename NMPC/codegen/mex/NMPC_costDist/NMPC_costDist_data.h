@@ -28,6 +28,6 @@ extern emlrtRSInfo p_emlrtRSI;
 extern emlrtRSInfo q_emlrtRSI;
 extern emlrtRSInfo jb_emlrtRSI;
 extern emlrtRSInfo kb_emlrtRSI;
-extern emlrtRTEInfo emlrtRTEI;
+extern emlrtRTEInfo e_emlrtRTEI;
 
 /* End of code generation (NMPC_costDist_data.h) */
