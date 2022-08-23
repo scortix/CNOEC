@@ -82,7 +82,7 @@ myoptions.useParallel   =   false;       % Use parallelization to compute the gr
 myoptions.ls_tkmax      =	6;          % Maximum step size
 myoptions.ls_beta       =	0.8;        % Beta scaling factor for 
                                         % back-tracking line search
-myoptions.ls_c          =	0.6;        % c coefficient factor for 
+myoptions.ls_c          =	0.2;        % c coefficient factor for 
                                         % back-tracking line search
 myoptions.ls_nitermax   =	100;         % max. number of back-tracking 
                                         % line search iterations

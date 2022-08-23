@@ -57,7 +57,7 @@ function myoptions = myoptimset
 myoptions.display    	=	'Iter';     % Display iteration output
 myoptions.xsequence    	=	'off';      % Store sequence of points {xk}
 myoptions.tolconstr    	=	1e-6;       % Constraint satisfaction tolerance
-myoptions.tolgrad    	=	1e-6;       % Termination tolerance on the norm
+myoptions.tolgrad    	=	1e-8;       % Termination tolerance on the norm
                                         % of the directional derivative
 myoptions.tolx          =	1e-16;      % Termination tolerance on the relative
                                         % change of optimization variables
@@ -82,7 +82,7 @@ myoptions.useParallel   =   true;       % Use parallelization to compute the gra
 myoptions.ls_tkmax      =	1;          % Maximum step size
 myoptions.ls_beta       =	0.8;        % Beta scaling factor for 
                                         % back-tracking line search
-myoptions.ls_c          =	0.4;        % c coefficient factor for 
+myoptions.ls_c          =	0.1;        % c coefficient factor for 
                                         % back-tracking line search
 myoptions.ls_nitermax   =	100;         % max. number of back-tracking 
                                         % line search iterations
