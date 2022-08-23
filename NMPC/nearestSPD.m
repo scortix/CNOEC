@@ -48,6 +48,10 @@ while p ~= 0
     % tweak by adding a tiny multiple of an identity matrix.
     mineig = min(eig(Ahat));
     Ahat = Ahat + (-mineig*k.^2 + eps(mineig))*eye(size(A));
+    if k>1e3
+        warning("Impossible to find SQP matrix")
+        break
+    end
   end
 end
 
