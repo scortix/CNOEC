@@ -1,0 +1,104 @@
+[
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/OptimalTrajectory/codegen/mex/costFun",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/OptimalTrajectory\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costFun_mex -c  costFun_data.c -o build/maci64/costFun_data.o",
+    "file": "costFun_data.c",
+    "output": "build/maci64/costFun_data.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/OptimalTrajectory/codegen/mex/costFun",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/OptimalTrajectory\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costFun_mex -c  rt_nonfinite.c -o build/maci64/rt_nonfinite.o",
+    "file": "rt_nonfinite.c",
+    "output": "build/maci64/rt_nonfinite.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/OptimalTrajectory/codegen/mex/costFun",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/OptimalTrajectory\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costFun_mex -c  costFun_initialize.c -o build/maci64/costFun_initialize.o",
+    "file": "costFun_initialize.c",
+    "output": "build/maci64/costFun_initialize.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/OptimalTrajectory/codegen/mex/costFun",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/OptimalTrajectory\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costFun_mex -c  costFun_terminate.c -o build/maci64/costFun_terminate.o",
+    "file": "costFun_terminate.c",
+    "output": "build/maci64/costFun_terminate.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/OptimalTrajectory/codegen/mex/costFun",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/OptimalTrajectory\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costFun_mex -c  costFun.c -o build/maci64/costFun.o",
+    "file": "costFun.c",
+    "output": "build/maci64/costFun.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/OptimalTrajectory/codegen/mex/costFun",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/OptimalTrajectory\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costFun_mex -c  indexShapeCheck.c -o build/maci64/indexShapeCheck.o",
+    "file": "indexShapeCheck.c",
+    "output": "build/maci64/indexShapeCheck.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/OptimalTrajectory/codegen/mex/costFun",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/OptimalTrajectory\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costFun_mex -c  colon.c -o build/maci64/colon.o",
+    "file": "colon.c",
+    "output": "build/maci64/colon.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/OptimalTrajectory/codegen/mex/costFun",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/OptimalTrajectory\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costFun_mex -c  EOE2COE.c -o build/maci64/EOE2COE.o",
+    "file": "EOE2COE.c",
+    "output": "build/maci64/EOE2COE.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/OptimalTrajectory/codegen/mex/costFun",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/OptimalTrajectory\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costFun_mex -c  power.c -o build/maci64/power.o",
+    "file": "power.c",
+    "output": "build/maci64/power.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/OptimalTrajectory/codegen/mex/costFun",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/OptimalTrajectory\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costFun_mex -c  interface/_coder_costFun_api.c -o build/maci64/_coder_costFun_api.o",
+    "file": "interface/_coder_costFun_api.c",
+    "output": "build/maci64/_coder_costFun_api.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/OptimalTrajectory/codegen/mex/costFun",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/OptimalTrajectory\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costFun_mex -c  interface/_coder_costFun_mex.c -o build/maci64/_coder_costFun_mex.o",
+    "file": "interface/_coder_costFun_mex.c",
+    "output": "build/maci64/_coder_costFun_mex.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/OptimalTrajectory/codegen/mex/costFun",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/OptimalTrajectory\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costFun_mex -c  EOEDerivatives.c -o build/maci64/EOEDerivatives.o",
+    "file": "EOEDerivatives.c",
+    "output": "build/maci64/EOEDerivatives.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/OptimalTrajectory/codegen/mex/costFun",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/OptimalTrajectory\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costFun_mex -c  eml_int_forloop_overflow_check.c -o build/maci64/eml_int_forloop_overflow_check.o",
+    "file": "eml_int_forloop_overflow_check.c",
+    "output": "build/maci64/eml_int_forloop_overflow_check.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/OptimalTrajectory/codegen/mex/costFun",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/OptimalTrajectory\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costFun_mex -c  sqrt.c -o build/maci64/sqrt.o",
+    "file": "sqrt.c",
+    "output": "build/maci64/sqrt.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/OptimalTrajectory/codegen/mex/costFun",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/OptimalTrajectory\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costFun_mex -c  costFun_emxutil.c -o build/maci64/costFun_emxutil.o",
+    "file": "costFun_emxutil.c",
+    "output": "build/maci64/costFun_emxutil.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/OptimalTrajectory/codegen/mex/costFun",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/OptimalTrajectory\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costFun_mex -c  interface/_coder_costFun_info.c -o build/maci64/_coder_costFun_info.o",
+    "file": "interface/_coder_costFun_info.c",
+    "output": "build/maci64/_coder_costFun_info.o"
+  },
+  {
+    "directory": "/Users/matteodepaola/Documents/git/CNOEC git/OptimalTrajectory/codegen/mex/costFun",
+    "command": "/usr/bin/xcrun -sdk macosx12.3 clang -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/matteodepaola/Documents/git/CNOEC git/OptimalTrajectory\" -I \"./interface\" -I \"/Applications/MATLAB_R2021b.app/extern/include\" -I \".\" -DMODEL=costFun_mex -c  /Applications/MATLAB_R2021b.app/extern/version/c_mexapi_version.c -o build/maci64/c_mexapi_version.o",
+    "file": "/Applications/MATLAB_R2021b.app/extern/version/c_mexapi_version.c",
+    "output": "build/maci64/c_mexapi_version.o"
+  }
+]

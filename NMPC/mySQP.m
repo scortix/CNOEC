@@ -48,7 +48,7 @@ fx0 = fun(x0);
 
 %% Define functions f (or F), g and h
 gradJ = @(x) mygradcalc(fun,x, fun(x), options);
-if strcmp(options.Hessmethod,"BFGS") || strcmp(options.Hessmethod,"GD")    
+if strcmp(options.Hessmethod,"BFGS") || strcmp(options.Hessmethod,"SD")    
     fmatr = [1; zeros(length(fx0)-1,1)];
     gmatr = [zeros(1,p); eye(p); zeros(length(fx0)-1-p,p)];
     hmatr = [zeros(1+p,q); eye(q); zeros(length(fx0)-1-p-q,q)];
@@ -175,7 +175,7 @@ while true
 
     %% Compute the QP Hessian Hk
     switch options.Hessmethod
-        case "GD"
+        case "SD"
             Hk = eye(length(x0));
         case 'GN'
             Hk = 2*(gradFxk*gradFxk');
@@ -192,9 +192,10 @@ while true
     try
         [pkstar, ~, ~, ~, lb]  = quadprog(Hk, gradfxk, -AQP, bQP, -AQPeq, bQPeq, [], [], [], options.QPoptions);
     catch
-        [pkstar, ~, ~, ~, lb]  = quadprog(1e9*eye(length(x0)), gradfxk, -AQP, bQP, -AQPeq, bQPeq, [], [], [], options.QPoptions);
+        warning("Attention! Infinite Hk or else")
+        [pkstar, ~, ~, ~, lb]  = quadprog(1e10*eye(length(x0)), 1e5*ones(length(x0),1) , -AQP, bQP, -AQPeq, bQPeq, [], [], [], options.QPoptions);
     end
-    lambdakstar = -lb.eqlin; mukstar = lb.ineqlin;
+    lambdakstar = -lb.eqlin; mukstar = min(lb.ineqlin,1e15);
     dlambdak = lambdakstar - lam(:,niter);
     dmuk = mukstar - mu(:,niter);
     for i = 1:p
@@ -226,7 +227,7 @@ while true
     %% For BFGS only, update Hk matrix
     if strcmp(options.Hessmethod, 'BFGS')
         gradlxkup = gradfxk-gradgxk*lam(:,niter+1)-gradhxk*mu(:,niter+1);
-        gradJxk = gradJ(xk(:,niter));
+        gradJxk = gradJ(xk(:,niter+1));
         gradfxk = gradJxk*fmatr;
         gradgxk = [A', gradJxk*gmatr];
         gradhxk = [C', gradJxk*hmatr];

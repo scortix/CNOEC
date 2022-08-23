@@ -8,7 +8,7 @@ set(groot,'defaultLegendInterpreter','latex');
 Parameters % Load Parameters
 load("simulation.mat") % loading trajectory
 
-alpha = 0.2; % 0.2 or 0.8
+alpha = 1; % 0.2 or 0.8
 % (Even 0, 0.4, 0.6, 1 but references in simulink must be chanced in signal
 % builders)
 sel = alpha*5+1;

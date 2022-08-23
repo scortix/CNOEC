@@ -1,0 +1,56 @@
+# CompilerName=clang
+# Mode=optim
+ninja_required_version = 1.3
+
+# Basic folders
+root = .
+builddir = $root/build/maci64
+matlabdir = /Applications/MATLAB_R2021b.app
+startdir = /Users/matteodepaola/Documents/git/CNOEC git/OptimalTrajectory
+
+# Toolchain information
+cc = /usr/bin/xcrun -sdk macosx12.3 clang
+cxx = /usr/bin/xcrun -sdk macosx12.3 clang++
+linker = /usr/bin/xcrun -sdk macosx12.3 clang
+linkerxx = /usr/bin/xcrun -sdk macosx12.3 clang++
+
+cflags =  -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I "$root" -I "$startdir" -I "$root/interface" -I "$matlabdir/extern/include" -I "." -DMODEL=costFun_mex -c 
+
+cxxflags =  -fno-common -arch x86_64 -mmacosx-version-min=10.15 -fexceptions -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -fobjc-arc -std=c++11 -stdlib=libc++ -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c++11 -I "$root" -I "$startdir" -I "$root/interface" -I "$matlabdir/extern/include" -I "." -DMODEL=costFun_mex -c 
+
+ldflags =  -Wl,-twolevel_namespace -undefined error -arch x86_64 -mmacosx-version-min=10.15 -Wl,-syslibroot,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -bundle   -L"$matlabdir/bin/maci64" -lmx -lmex -lmat -lc++  -Wl,-rpath,@loader_path -o costFun_mex.mexmaci64 -lemlrt -lcovrt -lut -lmwmathutil  -Wl,-exported_symbols_list,costFun_mex.map
+
+# Build Rules
+rule cc
+    command = $cc $cflags $in -o $out
+
+rule cxx
+    command = $cxx $cxxflags $in -o $out
+
+rule link
+    command = $linker $in $ldflags
+
+rule linkxx
+    command = $linkerxx $in $ldflags
+
+# Build
+build $builddir/costFun_data.o : cc $root/costFun_data.c
+build $builddir/rt_nonfinite.o : cc $root/rt_nonfinite.c
+build $builddir/costFun_initialize.o : cc $root/costFun_initialize.c
+build $builddir/costFun_terminate.o : cc $root/costFun_terminate.c
+build $builddir/costFun.o : cc $root/costFun.c
+build $builddir/indexShapeCheck.o : cc $root/indexShapeCheck.c
+build $builddir/colon.o : cc $root/colon.c
+build $builddir/EOE2COE.o : cc $root/EOE2COE.c
+build $builddir/power.o : cc $root/power.c
+build $builddir/_coder_costFun_api.o : cc $root/interface/_coder_costFun_api.c
+build $builddir/_coder_costFun_mex.o : cc $root/interface/_coder_costFun_mex.c
+build $builddir/EOEDerivatives.o : cc $root/EOEDerivatives.c
+build $builddir/eml_int_forloop_overflow_check.o : cc $root/eml_int_forloop_overflow_check.c
+build $builddir/sqrt.o : cc $root/sqrt.c
+build $builddir/costFun_emxutil.o : cc $root/costFun_emxutil.c
+build $builddir/_coder_costFun_info.o : cc $root/interface/_coder_costFun_info.c
+build $builddir/c_mexapi_version.o : cc $matlabdir/extern/version/c_mexapi_version.c
+
+# Link
+build $root/costFun_mex.mexmaci64 : link $builddir/costFun_data.o $builddir/rt_nonfinite.o $builddir/costFun_initialize.o $builddir/costFun_terminate.o $builddir/costFun.o $builddir/indexShapeCheck.o $builddir/colon.o $builddir/EOE2COE.o $builddir/power.o $builddir/_coder_costFun_api.o $builddir/_coder_costFun_mex.o $builddir/EOEDerivatives.o $builddir/eml_int_forloop_overflow_check.o $builddir/sqrt.o $builddir/costFun_emxutil.o $builddir/_coder_costFun_info.o $builddir/c_mexapi_version.o 
