@@ -30,6 +30,9 @@ void earthNonSphericity(const real_T x[6], real_T DJ2[3])
   real_T r;
   real_T scale;
   real_T t;
+  /*    EARTHNONSPHERICITY returns a vector of perturbations in accelerations */
+  /*    form in the spacecraft frame taking as input the orbital state in */
+  /*    classical coordinate */
   /*  x classical orbit vector */
   /*  geopotential coefficient of earth's oblateness */
   /*  [km^3/s^2] standard gravitational parameter of earh (mu = G*M) */

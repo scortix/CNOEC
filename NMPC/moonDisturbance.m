@@ -1,5 +1,11 @@
 function Dm  = moonDisturbance(x, time, xp, yp, zp)
 
+%   MOONDISTURBANCE returns a vector of perturbations Dm in acceleration
+%   form taking as imput a vector x of the orbital state in classical
+%   coordinate, a scalar time indicating the second and three vector xp,yp
+%   and zp of 4 parameters modeling the position of the moon in the
+%   Geocentrical reference frame
+
 a = x(1);
 e = x(2);
 i = x(3);

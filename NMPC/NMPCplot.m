@@ -1,3 +1,5 @@
+% Script to obtain different plot exploiting data out of the simulations
+
 clear
 close
 clc
@@ -35,10 +37,16 @@ uReal       = data(20:22,:);
 dReal       = data(23:25,:);
 mReal       = data(26,:);
 
-for k = 1: length(dirReal)
+nd          = zeros(1,length(dirReal));
+
+for k = 1:length(dirReal)
     if norm(dirReal(:,k)) ~= 0
         dirReal(:,k) = dirReal(:,k)/norm(dirReal(:,k));
     end
+end
+
+for k = 1:length(nd)
+    nd(k) = norm(dReal(:,k));
 end
 
 
@@ -101,7 +109,7 @@ title("L(t)","FontSize",14)
 grid on
 xlim([0, t(end)/3600])
 
-legend("Reference","Real","FontSize",14,"Position",[0.22 0.85 0 0])
+legend("Reference","Real","FontSize",14,"Position",[0.27 0.7 0 0])
 saveas(fs,"zCompA"+alpha+dist+".eps","epsc")
 %% Mass plot
 fm = figure();
@@ -134,7 +142,7 @@ grid on
 xlim([0, t(end)/3600])
 xlabel("Time $[h]$","FontSize",14)
 ylabel("Throttle","FontSize",14)
-legend("Reference","Real","FontSize",14,"Position",[0.22 0.85 0 0])
+legend("Reference","Real","FontSize",14,"Position",[0.22 0.7 0 0])
 
 subplot(2,3,4)
 plot(t/3600,sin(angleRef),"LineWidth",.5,"Color",refColor)

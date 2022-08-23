@@ -1,5 +1,10 @@
 function DJ2 = earthNonSphericity(x)
 
+%   EARTHNONSPHERICITY returns a vector of perturbations in accelerations
+%   form in the spacecraft frame taking as input the orbital state in
+%   classical coordinate
+
+
 % x classical orbit vector
 J2 = 0.001082;  % geopotential coefficient of earth's oblateness
 mu_earth = 398600;    % [km^3/s^2] standard gravitational parameter of earh (mu = G*M)
