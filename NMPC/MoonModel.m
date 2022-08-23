@@ -1,3 +1,6 @@
+% Code to obtain the model of the moon simulating its position for more or
+% less 70 days starting from 1/1/2023, plots in the end
+
 close all
 clear
 clc

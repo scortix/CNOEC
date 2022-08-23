@@ -1,3 +1,5 @@
+% Script to load all required parameters for NMPC
+
 % Integration Parameters
 Ts = 100; % Discrete time step [s]
 tmax = 6e5; % Maximum time [s]

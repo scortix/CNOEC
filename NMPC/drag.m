@@ -1,5 +1,13 @@
 function Ddrag  = drag(rho,S,Cd,x)
 
+%   DRAG returns a vector of perturbations in the spacecraft frame given
+%   from the aerodynamical drag in kg*km/s^2 taking as input:
+%       the air density rho [kg/m^3]
+%       the surface S [m^2]
+%       the drag coefficient Cd
+%       the orbital elements in Classica Coordinate x
+
+
 a = x(1);
 e = x(2);
 i = x(3);
@@ -22,6 +30,8 @@ it = cross(in,ir);
 Q = [ir it in];
 v_rel = Q'*(v-cross(w_e,r));
 
-Ddrag = Dconst*v_rel.^2;
+Ddrag = Dconst*v_rel.^2/1000;
+% 1000 is a scaling factor since the surface S is given in m^2, the
+% relative velocity v_rel in km/s and the air density in kg/m^3
 
 end

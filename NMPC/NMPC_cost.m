@@ -1,20 +1,19 @@
 function J = NMPC_cost(M,Ts,x,y0,yref,Q,R,coeffT,m0,Tmax)
 
-%COST Function calculates the cost of the orbital maneuvre considering
+%   NMPC_COST Function calculates the cost of the orbital maneuvre considering
 %   arbitrary defined weigthed sums. The cost takes into account both the
 %   state error and the input magnitude. In addition, an hard constraint on
 %   the maximum value of the input has been considered.
 %   As inputs, the function needs:
-%       M: prediction horizon
-%       Ts: time step of the discrete system
-%       y0: initial condition vector
-%       u0: input vector from trajectory
-%       ybar: desired state vector
-%       umax: maximum value for inputs
-%       x: optimization variables 3*M inputs
-%       variables in this order
-%       Q: state trajectory weights 6x6
-%       R: fuel consumption weight
+%       M:      prediction horizon
+%       Ts:     time step of the discrete system
+%       x:      optimization variables 3*M
+%       y0:     initial condition vector (zEOE state)
+%       yref:   desired state vector evolution (zEOE trajectory)
+%       Q:      state trajectory weights 6x6
+%       R:      fuel consumption weight
+%       m0:     initial mass
+%       Tmax:   maximum Thrust
 
 % t = 0:Ts:Ts*M; % Time vector
 

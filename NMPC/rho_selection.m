@@ -1,4 +1,9 @@
 function rho = rho_selection(x,rho_table)
+
+%   RHO_SELECTION function to select the air density taking as input the
+%   orbital state in classical coordinate and the rho_table, see relative
+%   script
+
 a = x(1);
 e = x(2);
 theta = x(6);

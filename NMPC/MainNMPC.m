@@ -1,3 +1,8 @@
+% Script to load the useful data before simulation, just set the alpha
+% value down below and run the code before running the simulation in the
+% respective simulink file desired. In the end there's code to test the
+% first iteration of the NMPC
+
 close all
 clear
 clc
@@ -8,9 +13,12 @@ set(groot,'defaultLegendInterpreter','latex');
 Parameters % Load Parameters
 load("simulation.mat") % loading trajectory
 
-alpha = 1; % 0.2 or 0.8
-% (Even 0, 0.4, 0.6, 1 but references in simulink must be chanced in signal
+
+alpha = 0.2; % 0.2, 0.8 or 1.0
+
+% (Even 0.0, 0.4, 0.6 but references in simulink must be chanced in signal
 % builders)
+
 sel = alpha*5+1;
 
 xt = makima(tu,conCell{sel,2}(2:lu+1)',t); % Throttle trajectory
