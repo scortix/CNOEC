@@ -17,6 +17,7 @@
 #include "NMPC_costDist_emxutil.h"
 #include "NMPC_costDist_types.h"
 #include "assertCompatibleDims.h"
+#include "atan2.h"
 #include "cos.h"
 #include "earthNonSphericity.h"
 #include "eml_int_forloop_overflow_check.h"
@@ -25,1017 +26,943 @@
 #include "moonDisturbance.h"
 #include "norm.h"
 #include "paraorb2rv.h"
-#include "power.h"
 #include "rt_nonfinite.h"
 #include "sqrt.h"
 #include "blas.h"
 #include "mwmathutil.h"
 #include <stddef.h>
-#include <string.h>
 
 /* Variable Definitions */
 static emlrtRSInfo emlrtRSI = {
-    29,              /* lineNo */
-    "NMPC_costDist", /* fcnName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pathName
-                                                                         */
+    29,                                                         /* lineNo */
+    "NMPC_costDist",                                            /* fcnName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pathName */
 };
 
 static emlrtRSInfo b_emlrtRSI = {
-    36,              /* lineNo */
-    "NMPC_costDist", /* fcnName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pathName
-                                                                         */
+    36,                                                         /* lineNo */
+    "NMPC_costDist",                                            /* fcnName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pathName */
 };
 
 static emlrtRSInfo c_emlrtRSI = {
-    37,              /* lineNo */
-    "NMPC_costDist", /* fcnName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pathName
-                                                                         */
+    37,                                                         /* lineNo */
+    "NMPC_costDist",                                            /* fcnName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pathName */
 };
 
 static emlrtRSInfo d_emlrtRSI = {
-    38,              /* lineNo */
-    "NMPC_costDist", /* fcnName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pathName
-                                                                         */
+    38,                                                         /* lineNo */
+    "NMPC_costDist",                                            /* fcnName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pathName */
 };
 
 static emlrtRSInfo e_emlrtRSI = {
-    39,              /* lineNo */
-    "NMPC_costDist", /* fcnName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pathName
-                                                                         */
+    39,                                                         /* lineNo */
+    "NMPC_costDist",                                            /* fcnName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pathName */
 };
 
 static emlrtRSInfo f_emlrtRSI = {
-    40,              /* lineNo */
-    "NMPC_costDist", /* fcnName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pathName
-                                                                         */
+    40,                                                         /* lineNo */
+    "NMPC_costDist",                                            /* fcnName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pathName */
 };
 
 static emlrtRSInfo g_emlrtRSI = {
-    44,              /* lineNo */
-    "NMPC_costDist", /* fcnName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pathName
-                                                                         */
+    44,                                                         /* lineNo */
+    "NMPC_costDist",                                            /* fcnName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pathName */
 };
 
 static emlrtRSInfo h_emlrtRSI = {
-    45,              /* lineNo */
-    "NMPC_costDist", /* fcnName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pathName
-                                                                         */
+    45,                                                         /* lineNo */
+    "NMPC_costDist",                                            /* fcnName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pathName */
 };
 
 static emlrtRSInfo i_emlrtRSI = {
-    46,              /* lineNo */
-    "NMPC_costDist", /* fcnName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pathName
-                                                                         */
+    46,                                                         /* lineNo */
+    "NMPC_costDist",                                            /* fcnName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pathName */
 };
 
 static emlrtRSInfo j_emlrtRSI = {
-    52,              /* lineNo */
-    "NMPC_costDist", /* fcnName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pathName
-                                                                         */
+    52,                                                         /* lineNo */
+    "NMPC_costDist",                                            /* fcnName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pathName */
 };
 
 static emlrtRSInfo k_emlrtRSI = {
-    53,              /* lineNo */
-    "NMPC_costDist", /* fcnName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pathName
-                                                                         */
+    53,                                                         /* lineNo */
+    "NMPC_costDist",                                            /* fcnName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pathName */
 };
 
 static emlrtRSInfo y_emlrtRSI = {
-    6,               /* lineNo */
-    "rho_selection", /* fcnName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/rho_selection.m" /* pathName
-                                                                         */
+    6,                                                          /* lineNo */
+    "rho_selection",                                            /* fcnName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\rho_selection.m" /* pathName */
 };
 
 static emlrtRSInfo ab_emlrtRSI = {
-    13,                                                        /* lineNo */
-    "drag",                                                    /* fcnName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/drag.m" /* pathName */
+    13,                                                /* lineNo */
+    "drag",                                            /* fcnName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\drag.m" /* pathName */
 };
 
-static emlrtRSInfo lb_emlrtRSI = {
-    13,      /* lineNo */
-    "atan2", /* fcnName */
-    "/Applications/MATLAB_R2021b.app/toolbox/eml/lib/matlab/elfun/atan2.m" /* pathName
-                                                                            */
-};
-
-static emlrtRSInfo mb_emlrtRSI =
+static emlrtRSInfo sb_emlrtRSI =
     {
-        57,      /* lineNo */
-        "ixfun", /* fcnName */
-        "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/"
-        "ixfun.m" /* pathName */
-};
-
-static emlrtRSInfo ob_emlrtRSI = {
-    34,               /* lineNo */
-    "rdivide_helper", /* fcnName */
-    "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/"
-    "rdivide_helper.m" /* pathName */
-};
-
-static emlrtRSInfo
-    pb_emlrtRSI =
-        {
-            51,    /* lineNo */
-            "div", /* fcnName */
-            "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/"
-            "div.m" /* pathName */
-};
-
-static emlrtRSInfo qb_emlrtRSI = {
-    15,    /* lineNo */
-    "min", /* fcnName */
-    "/Applications/MATLAB_R2021b.app/toolbox/eml/lib/matlab/datafun/min.m" /* pathName
-                                                                            */
-};
-
-static emlrtRSInfo rb_emlrtRSI = {
-    46,         /* lineNo */
-    "minOrMax", /* fcnName */
-    "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/"
-    "minOrMax.m" /* pathName */
-};
-
-static emlrtRSInfo sb_emlrtRSI = {
-    92,        /* lineNo */
-    "minimum", /* fcnName */
-    "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/"
-    "minOrMax.m" /* pathName */
+        34,               /* lineNo */
+        "rdivide_helper", /* fcnName */
+        "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+internal\\rdivide_"
+        "helper.m" /* pathName */
 };
 
 static emlrtRSInfo tb_emlrtRSI = {
-    204,             /* lineNo */
-    "unaryMinOrMax", /* fcnName */
-    "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/"
-    "unaryMinOrMax.m" /* pathName */
+    51,    /* lineNo */
+    "div", /* fcnName */
+    "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+internal\\div.m" /* pathName
+                                                                       */
 };
 
 static emlrtRSInfo ub_emlrtRSI = {
-    893,                    /* lineNo */
-    "minRealVectorOmitNaN", /* fcnName */
-    "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/"
-    "unaryMinOrMax.m" /* pathName */
+    15,    /* lineNo */
+    "min", /* fcnName */
+    "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\datafun\\min.m" /* pathName
+                                                                     */
 };
 
 static emlrtRSInfo vb_emlrtRSI = {
-    62,                      /* lineNo */
-    "vectorMinOrMaxInPlace", /* fcnName */
-    "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/"
-    "vectorMinOrMaxInPlace.m" /* pathName */
+    46,         /* lineNo */
+    "minOrMax", /* fcnName */
+    "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+internal\\minOrMax.m" /* pathName
+                                                                            */
 };
 
 static emlrtRSInfo wb_emlrtRSI = {
-    54,                      /* lineNo */
-    "vectorMinOrMaxInPlace", /* fcnName */
-    "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/"
-    "vectorMinOrMaxInPlace.m" /* pathName */
+    92,        /* lineNo */
+    "minimum", /* fcnName */
+    "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+internal\\minOrMax.m" /* pathName
+                                                                            */
 };
 
-static emlrtRSInfo xb_emlrtRSI = {
-    103,         /* lineNo */
-    "findFirst", /* fcnName */
-    "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/"
-    "vectorMinOrMaxInPlace.m" /* pathName */
+static emlrtRSInfo xb_emlrtRSI =
+    {
+        209,             /* lineNo */
+        "unaryMinOrMax", /* fcnName */
+        "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
+        "internal\\unaryMinOrMax.m" /* pathName */
 };
 
-static emlrtRSInfo yb_emlrtRSI = {
-    120,                        /* lineNo */
-    "minOrMaxRealVectorKernel", /* fcnName */
-    "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/"
-    "vectorMinOrMaxInPlace.m" /* pathName */
+static emlrtRSInfo yb_emlrtRSI =
+    {
+        898,                    /* lineNo */
+        "minRealVectorOmitNaN", /* fcnName */
+        "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
+        "internal\\unaryMinOrMax.m" /* pathName */
 };
 
 static emlrtRSInfo ac_emlrtRSI = {
-    69,                  /* lineNo */
-    "eml_mtimes_helper", /* fcnName */
-    "/Applications/MATLAB_R2021b.app/toolbox/eml/lib/matlab/ops/"
-    "eml_mtimes_helper.m" /* pathName */
+    72,                      /* lineNo */
+    "vectorMinOrMaxInPlace", /* fcnName */
+    "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
+    "internal\\vectorMinOrMaxInPlace.m" /* pathName */
+};
+
+static emlrtRSInfo bc_emlrtRSI = {
+    64,                      /* lineNo */
+    "vectorMinOrMaxInPlace", /* fcnName */
+    "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
+    "internal\\vectorMinOrMaxInPlace.m" /* pathName */
+};
+
+static emlrtRSInfo cc_emlrtRSI = {
+    113,         /* lineNo */
+    "findFirst", /* fcnName */
+    "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
+    "internal\\vectorMinOrMaxInPlace.m" /* pathName */
+};
+
+static emlrtRSInfo dc_emlrtRSI = {
+    130,                        /* lineNo */
+    "minOrMaxRealVectorKernel", /* fcnName */
+    "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
+    "internal\\vectorMinOrMaxInPlace.m" /* pathName */
+};
+
+static emlrtRSInfo ec_emlrtRSI =
+    {
+        69,                  /* lineNo */
+        "eml_mtimes_helper", /* fcnName */
+        "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\ops\\eml_mtimes_helper."
+        "m" /* pathName */
 };
 
 static emlrtBCInfo emlrtBCI = {
-    -1,              /* iFirst */
-    -1,              /* iLast */
-    43,              /* lineNo */
-    9,               /* colNo */
-    "u",             /* aName */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    0 /* checkKind */
-};
-
-static emlrtRTEInfo emlrtRTEI = {
-    28,              /* lineNo */
-    9,               /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
-                                                                         */
-};
-
-static emlrtBCInfo b_emlrtBCI = {
-    -1,              /* iFirst */
-    -1,              /* iLast */
-    29,              /* lineNo */
-    18,              /* colNo */
-    "x",             /* aName */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    0 /* checkKind */
-};
-
-static emlrtBCInfo c_emlrtBCI = {
-    -1,              /* iFirst */
-    -1,              /* iLast */
-    29,              /* lineNo */
-    28,              /* colNo */
-    "x",             /* aName */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    0 /* checkKind */
-};
-
-static emlrtBCInfo d_emlrtBCI = {
-    -1,              /* iFirst */
-    -1,              /* iLast */
-    29,              /* lineNo */
-    11,              /* colNo */
-    "dir",           /* aName */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    0 /* checkKind */
-};
-
-static emlrtECInfo emlrtECI = {
-    -1,              /* nDims */
-    29,              /* lineNo */
-    5,               /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
-                                                                         */
-};
-
-static emlrtBCInfo e_emlrtBCI = {
-    -1,              /* iFirst */
-    -1,              /* iLast */
-    30,              /* lineNo */
-    26,              /* colNo */
-    "dir",           /* aName */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    0 /* checkKind */
+    -1,                                                          /* iFirst */
+    -1,                                                          /* iLast */
+    43,                                                          /* lineNo */
+    9,                                                           /* colNo */
+    "u",                                                         /* aName */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    0                                                            /* checkKind */
 };
 
 static emlrtRTEInfo b_emlrtRTEI = {
-    35,              /* lineNo */
-    9,               /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
-                                                                         */
+    28,                                                         /* lineNo */
+    9,                                                          /* colNo */
+    "NMPC_costDist",                                            /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pName */
+};
+
+static emlrtBCInfo b_emlrtBCI = {
+    -1,                                                          /* iFirst */
+    -1,                                                          /* iLast */
+    29,                                                          /* lineNo */
+    18,                                                          /* colNo */
+    "x",                                                         /* aName */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    0                                                            /* checkKind */
+};
+
+static emlrtBCInfo c_emlrtBCI = {
+    -1,                                                          /* iFirst */
+    -1,                                                          /* iLast */
+    29,                                                          /* lineNo */
+    28,                                                          /* colNo */
+    "x",                                                         /* aName */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    0                                                            /* checkKind */
+};
+
+static emlrtBCInfo d_emlrtBCI = {
+    -1,                                                          /* iFirst */
+    -1,                                                          /* iLast */
+    29,                                                          /* lineNo */
+    11,                                                          /* colNo */
+    "dir",                                                       /* aName */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    0                                                            /* checkKind */
+};
+
+static emlrtECInfo emlrtECI = {
+    -1,                                                         /* nDims */
+    29,                                                         /* lineNo */
+    5,                                                          /* colNo */
+    "NMPC_costDist",                                            /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pName */
+};
+
+static emlrtBCInfo e_emlrtBCI = {
+    -1,                                                          /* iFirst */
+    -1,                                                          /* iLast */
+    30,                                                          /* lineNo */
+    26,                                                          /* colNo */
+    "dir",                                                       /* aName */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    0                                                            /* checkKind */
+};
+
+static emlrtRTEInfo c_emlrtRTEI = {
+    35,                                                         /* lineNo */
+    9,                                                          /* colNo */
+    "NMPC_costDist",                                            /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pName */
 };
 
 static emlrtBCInfo f_emlrtBCI = {
-    -1,              /* iFirst */
-    -1,              /* iLast */
-    22,              /* lineNo */
-    8,               /* colNo */
-    "yhat",          /* aName */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    0 /* checkKind */
+    -1,                                                          /* iFirst */
+    -1,                                                          /* iLast */
+    22,                                                          /* lineNo */
+    8,                                                           /* colNo */
+    "yhat",                                                      /* aName */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    0                                                            /* checkKind */
 };
 
 static emlrtBCInfo g_emlrtBCI = {
-    -1,              /* iFirst */
-    -1,              /* iLast */
-    36,              /* lineNo */
-    27,              /* colNo */
-    "yhat",          /* aName */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    0 /* checkKind */
+    -1,                                                          /* iFirst */
+    -1,                                                          /* iLast */
+    36,                                                          /* lineNo */
+    27,                                                          /* colNo */
+    "yhat",                                                      /* aName */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    0                                                            /* checkKind */
 };
 
 static emlrtBCInfo h_emlrtBCI = {
-    -1,              /* iFirst */
-    -1,              /* iLast */
-    26,              /* lineNo */
-    19,              /* colNo */
-    "m",             /* aName */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    0 /* checkKind */
+    -1,                                                          /* iFirst */
+    -1,                                                          /* iLast */
+    26,                                                          /* lineNo */
+    19,                                                          /* colNo */
+    "m",                                                         /* aName */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    0                                                            /* checkKind */
 };
 
 static emlrtBCInfo i_emlrtBCI = {
-    -1,              /* iFirst */
-    -1,              /* iLast */
-    41,              /* lineNo */
-    25,              /* colNo */
-    "m",             /* aName */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    0 /* checkKind */
+    -1,                                                          /* iFirst */
+    -1,                                                          /* iLast */
+    41,                                                          /* lineNo */
+    25,                                                          /* colNo */
+    "m",                                                         /* aName */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    0                                                            /* checkKind */
 };
 
 static emlrtBCInfo j_emlrtBCI = {
-    -1,              /* iFirst */
-    -1,              /* iLast */
-    43,              /* lineNo */
-    34,              /* colNo */
-    "dir",           /* aName */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    0 /* checkKind */
+    -1,                                                          /* iFirst */
+    -1,                                                          /* iLast */
+    43,                                                          /* lineNo */
+    34,                                                          /* colNo */
+    "dir",                                                       /* aName */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    0                                                            /* checkKind */
 };
 
 static emlrtBCInfo k_emlrtBCI = {
-    -1,              /* iFirst */
-    -1,              /* iLast */
-    44,              /* lineNo */
-    26,              /* colNo */
-    "yhat",          /* aName */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    0 /* checkKind */
+    -1,                                                          /* iFirst */
+    -1,                                                          /* iLast */
+    44,                                                          /* lineNo */
+    26,                                                          /* colNo */
+    "yhat",                                                      /* aName */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    0                                                            /* checkKind */
 };
 
 static emlrtBCInfo l_emlrtBCI = {
-    -1,              /* iFirst */
-    -1,              /* iLast */
-    44,              /* lineNo */
-    56,              /* colNo */
-    "yhat",          /* aName */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    0 /* checkKind */
+    -1,                                                          /* iFirst */
+    -1,                                                          /* iLast */
+    44,                                                          /* lineNo */
+    56,                                                          /* colNo */
+    "yhat",                                                      /* aName */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    0                                                            /* checkKind */
 };
 
 static emlrtBCInfo m_emlrtBCI = {
-    -1,              /* iFirst */
-    -1,              /* iLast */
-    44,              /* lineNo */
-    63,              /* colNo */
-    "u",             /* aName */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    0 /* checkKind */
+    -1,                                                          /* iFirst */
+    -1,                                                          /* iLast */
+    44,                                                          /* lineNo */
+    63,                                                          /* colNo */
+    "u",                                                         /* aName */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    0                                                            /* checkKind */
 };
 
 static emlrtBCInfo n_emlrtBCI = {
-    -1,              /* iFirst */
-    -1,              /* iLast */
-    44,              /* lineNo */
-    12,              /* colNo */
-    "yhat",          /* aName */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    0 /* checkKind */
+    -1,                                                          /* iFirst */
+    -1,                                                          /* iLast */
+    44,                                                          /* lineNo */
+    12,                                                          /* colNo */
+    "yhat",                                                      /* aName */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    0                                                            /* checkKind */
 };
 
 static emlrtBCInfo o_emlrtBCI = {
-    -1,              /* iFirst */
-    -1,              /* iLast */
-    46,              /* lineNo */
-    46,              /* colNo */
-    "yref",          /* aName */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    0 /* checkKind */
+    -1,                                                          /* iFirst */
+    -1,                                                          /* iLast */
+    46,                                                          /* lineNo */
+    46,                                                          /* colNo */
+    "yref",                                                      /* aName */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    0                                                            /* checkKind */
 };
 
 static emlrtBCInfo p_emlrtBCI = {
-    -1,              /* iFirst */
-    -1,              /* iLast */
-    46,              /* lineNo */
-    58,              /* colNo */
-    "yhat",          /* aName */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    0 /* checkKind */
+    -1,                                                          /* iFirst */
+    -1,                                                          /* iLast */
+    46,                                                          /* lineNo */
+    58,                                                          /* colNo */
+    "yhat",                                                      /* aName */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    0                                                            /* checkKind */
 };
 
 static emlrtECInfo b_emlrtECI = {
-    2,               /* nDims */
-    52,              /* lineNo */
-    29,              /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
-                                                                         */
+    2,                                                          /* nDims */
+    52,                                                         /* lineNo */
+    29,                                                         /* colNo */
+    "NMPC_costDist",                                            /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pName */
 };
 
 static emlrtECInfo c_emlrtECI = {
-    2,               /* nDims */
-    52,              /* lineNo */
-    61,              /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
-                                                                         */
+    2,                                                          /* nDims */
+    52,                                                         /* lineNo */
+    61,                                                         /* colNo */
+    "NMPC_costDist",                                            /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pName */
 };
 
 static emlrtECInfo d_emlrtECI = {
-    2,               /* nDims */
-    52,              /* lineNo */
-    24,              /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
-                                                                         */
+    2,                                                          /* nDims */
+    52,                                                         /* lineNo */
+    24,                                                         /* colNo */
+    "NMPC_costDist",                                            /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pName */
 };
 
 static emlrtBCInfo q_emlrtBCI = {
-    -1,              /* iFirst */
-    -1,              /* iLast */
-    46,              /* lineNo */
-    7,               /* colNo */
-    "F",             /* aName */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    0 /* checkKind */
+    -1,                                                          /* iFirst */
+    -1,                                                          /* iLast */
+    46,                                                          /* lineNo */
+    7,                                                           /* colNo */
+    "F",                                                         /* aName */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    0                                                            /* checkKind */
 };
 
 static emlrtBCInfo r_emlrtBCI = {
-    -1,              /* iFirst */
-    -1,              /* iLast */
-    46,              /* lineNo */
-    19,              /* colNo */
-    "F",             /* aName */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    0 /* checkKind */
+    -1,                                                          /* iFirst */
+    -1,                                                          /* iLast */
+    46,                                                          /* lineNo */
+    19,                                                          /* colNo */
+    "F",                                                         /* aName */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    0                                                            /* checkKind */
 };
 
 static emlrtECInfo e_emlrtECI = {
-    -1,              /* nDims */
-    46,              /* lineNo */
-    5,               /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
-                                                                         */
+    -1,                                                         /* nDims */
+    46,                                                         /* lineNo */
+    5,                                                          /* colNo */
+    "NMPC_costDist",                                            /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pName */
 };
 
-static emlrtRTEInfo d_emlrtRTEI = {
-    130,             /* lineNo */
-    27,              /* colNo */
-    "unaryMinOrMax", /* fName */
-    "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/"
-    "unaryMinOrMax.m" /* pName */
+static emlrtRTEInfo e_emlrtRTEI =
+    {
+        135,             /* lineNo */
+        27,              /* colNo */
+        "unaryMinOrMax", /* fName */
+        "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
+        "internal\\unaryMinOrMax.m" /* pName */
 };
 
 static emlrtDCInfo emlrtDCI = {
-    21,              /* lineNo */
-    16,              /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    1 /* checkKind */
+    21,                                                          /* lineNo */
+    16,                                                          /* colNo */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    1                                                            /* checkKind */
 };
 
 static emlrtDCInfo b_emlrtDCI = {
-    21,              /* lineNo */
-    16,              /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    4 /* checkKind */
+    21,                                                          /* lineNo */
+    16,                                                          /* colNo */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    4                                                            /* checkKind */
 };
 
 static emlrtDCInfo c_emlrtDCI = {
-    23,              /* lineNo */
-    13,              /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    1 /* checkKind */
+    23,                                                          /* lineNo */
+    13,                                                          /* colNo */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    1                                                            /* checkKind */
 };
 
 static emlrtDCInfo d_emlrtDCI = {
-    23,              /* lineNo */
-    13,              /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    4 /* checkKind */
+    23,                                                          /* lineNo */
+    13,                                                          /* colNo */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    4                                                            /* checkKind */
 };
 
 static emlrtDCInfo e_emlrtDCI = {
-    24,              /* lineNo */
-    15,              /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    1 /* checkKind */
+    24,                                                          /* lineNo */
+    15,                                                          /* colNo */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    1                                                            /* checkKind */
 };
 
 static emlrtDCInfo f_emlrtDCI = {
-    26,              /* lineNo */
-    13,              /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    1 /* checkKind */
+    26,                                                          /* lineNo */
+    13,                                                          /* colNo */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    1                                                            /* checkKind */
 };
 
 static emlrtDCInfo g_emlrtDCI = {
-    21,              /* lineNo */
-    1,               /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    1 /* checkKind */
+    21,                                                          /* lineNo */
+    1,                                                           /* colNo */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    1                                                            /* checkKind */
 };
 
 static emlrtDCInfo h_emlrtDCI = {
-    21,              /* lineNo */
-    1,               /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    4 /* checkKind */
+    21,                                                          /* lineNo */
+    1,                                                           /* colNo */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    4                                                            /* checkKind */
 };
 
 static emlrtDCInfo i_emlrtDCI = {
-    23,              /* lineNo */
-    1,               /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    1 /* checkKind */
+    23,                                                          /* lineNo */
+    1,                                                           /* colNo */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    1                                                            /* checkKind */
 };
 
 static emlrtDCInfo j_emlrtDCI = {
-    24,              /* lineNo */
-    1,               /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    1 /* checkKind */
+    24,                                                          /* lineNo */
+    1,                                                           /* colNo */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    1                                                            /* checkKind */
 };
 
 static emlrtDCInfo k_emlrtDCI = {
-    25,              /* lineNo */
-    14,              /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    1 /* checkKind */
+    25,                                                          /* lineNo */
+    14,                                                          /* colNo */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    1                                                            /* checkKind */
 };
 
 static emlrtDCInfo l_emlrtDCI = {
-    26,              /* lineNo */
-    1,               /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    1 /* checkKind */
+    26,                                                          /* lineNo */
+    1,                                                           /* colNo */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    1                                                            /* checkKind */
 };
 
 static emlrtDCInfo m_emlrtDCI = {
-    33,              /* lineNo */
-    1,               /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    1 /* checkKind */
+    33,                                                          /* lineNo */
+    1,                                                           /* colNo */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    1                                                            /* checkKind */
 };
 
 static emlrtBCInfo s_emlrtBCI = {
-    -1,              /* iFirst */
-    -1,              /* iLast */
-    30,              /* lineNo */
-    10,              /* colNo */
-    "cons",          /* aName */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    0 /* checkKind */
+    -1,                                                          /* iFirst */
+    -1,                                                          /* iLast */
+    30,                                                          /* lineNo */
+    10,                                                          /* colNo */
+    "cons",                                                      /* aName */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    0                                                            /* checkKind */
 };
 
 static emlrtBCInfo t_emlrtBCI = {
-    -1,              /* iFirst */
-    -1,              /* iLast */
-    43,              /* lineNo */
-    21,              /* colNo */
-    "m",             /* aName */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    0 /* checkKind */
+    -1,                                                          /* iFirst */
+    -1,                                                          /* iLast */
+    43,                                                          /* lineNo */
+    21,                                                          /* colNo */
+    "m",                                                         /* aName */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    0                                                            /* checkKind */
 };
 
 static emlrtBCInfo u_emlrtBCI = {
-    -1,              /* iFirst */
-    -1,              /* iLast */
-    45,              /* lineNo */
-    27,              /* colNo */
-    "cons",          /* aName */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    0 /* checkKind */
+    -1,                                                          /* iFirst */
+    -1,                                                          /* iLast */
+    45,                                                          /* lineNo */
+    27,                                                          /* colNo */
+    "cons",                                                      /* aName */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    0                                                            /* checkKind */
 };
 
 static emlrtBCInfo v_emlrtBCI = {
-    -1,              /* iFirst */
-    -1,              /* iLast */
-    45,              /* lineNo */
-    7,               /* colNo */
-    "F",             /* aName */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    0 /* checkKind */
+    -1,                                                          /* iFirst */
+    -1,                                                          /* iLast */
+    45,                                                          /* lineNo */
+    7,                                                           /* colNo */
+    "F",                                                         /* aName */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    0                                                            /* checkKind */
 };
 
 static emlrtBCInfo w_emlrtBCI = {
-    -1,              /* iFirst */
-    -1,              /* iLast */
-    48,              /* lineNo */
-    20,              /* colNo */
-    "m",             /* aName */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    0 /* checkKind */
+    -1,                                                          /* iFirst */
+    -1,                                                          /* iLast */
+    48,                                                          /* lineNo */
+    20,                                                          /* colNo */
+    "m",                                                         /* aName */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    0                                                            /* checkKind */
 };
 
 static emlrtBCInfo x_emlrtBCI = {
-    -1,              /* iFirst */
-    -1,              /* iLast */
-    48,              /* lineNo */
-    33,              /* colNo */
-    "cons",          /* aName */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    0 /* checkKind */
+    -1,                                                          /* iFirst */
+    -1,                                                          /* iLast */
+    48,                                                          /* lineNo */
+    33,                                                          /* colNo */
+    "cons",                                                      /* aName */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    0                                                            /* checkKind */
 };
 
 static emlrtBCInfo y_emlrtBCI = {
-    -1,              /* iFirst */
-    -1,              /* iLast */
-    48,              /* lineNo */
-    11,              /* colNo */
-    "m",             /* aName */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m", /* pName
-                                                                          */
-    0 /* checkKind */
-};
-
-static emlrtRTEInfo l_emlrtRTEI = {
-    21,              /* lineNo */
-    1,               /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
-                                                                         */
+    -1,                                                          /* iFirst */
+    -1,                                                          /* iLast */
+    48,                                                          /* lineNo */
+    11,                                                          /* colNo */
+    "m",                                                         /* aName */
+    "NMPC_costDist",                                             /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m", /* pName */
+    0                                                            /* checkKind */
 };
 
 static emlrtRTEInfo m_emlrtRTEI = {
-    23,              /* lineNo */
-    1,               /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
-                                                                         */
+    21,                                                         /* lineNo */
+    1,                                                          /* colNo */
+    "NMPC_costDist",                                            /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pName */
 };
 
 static emlrtRTEInfo n_emlrtRTEI = {
-    24,              /* lineNo */
-    1,               /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
-                                                                         */
+    23,                                                         /* lineNo */
+    1,                                                          /* colNo */
+    "NMPC_costDist",                                            /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pName */
 };
 
 static emlrtRTEInfo o_emlrtRTEI = {
-    25,              /* lineNo */
-    8,               /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
-                                                                         */
+    24,                                                         /* lineNo */
+    1,                                                          /* colNo */
+    "NMPC_costDist",                                            /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pName */
 };
 
 static emlrtRTEInfo p_emlrtRTEI = {
-    26,              /* lineNo */
-    1,               /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
-                                                                         */
+    25,                                                         /* lineNo */
+    8,                                                          /* colNo */
+    "NMPC_costDist",                                            /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pName */
 };
 
 static emlrtRTEInfo q_emlrtRTEI = {
-    33,              /* lineNo */
-    1,               /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
-                                                                         */
+    26,                                                         /* lineNo */
+    1,                                                          /* colNo */
+    "NMPC_costDist",                                            /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pName */
 };
 
 static emlrtRTEInfo r_emlrtRTEI = {
-    52,              /* lineNo */
-    29,              /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
-                                                                         */
+    33,                                                         /* lineNo */
+    1,                                                          /* colNo */
+    "NMPC_costDist",                                            /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pName */
 };
 
 static emlrtRTEInfo s_emlrtRTEI = {
-    52,              /* lineNo */
-    42,              /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
-                                                                         */
+    52,                                                         /* lineNo */
+    29,                                                         /* colNo */
+    "NMPC_costDist",                                            /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pName */
 };
 
 static emlrtRTEInfo t_emlrtRTEI = {
-    52,              /* lineNo */
-    71,              /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
-                                                                         */
+    52,                                                         /* lineNo */
+    42,                                                         /* colNo */
+    "NMPC_costDist",                                            /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pName */
 };
 
 static emlrtRTEInfo u_emlrtRTEI = {
-    52,              /* lineNo */
-    24,              /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
-                                                                         */
+    52,                                                         /* lineNo */
+    77,                                                         /* colNo */
+    "NMPC_costDist",                                            /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pName */
 };
 
 static emlrtRTEInfo v_emlrtRTEI = {
-    52,              /* lineNo */
-    57,              /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
-                                                                         */
+    52,                                                         /* lineNo */
+    87,                                                         /* colNo */
+    "NMPC_costDist",                                            /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pName */
 };
 
 static emlrtRTEInfo w_emlrtRTEI = {
-    52,              /* lineNo */
-    22,              /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
-                                                                         */
+    52,                                                         /* lineNo */
+    24,                                                         /* colNo */
+    "NMPC_costDist",                                            /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pName */
 };
 
 static emlrtRTEInfo x_emlrtRTEI = {
-    52,              /* lineNo */
-    10,              /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
-                                                                         */
+    52,                                                         /* lineNo */
+    57,                                                         /* colNo */
+    "NMPC_costDist",                                            /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pName */
 };
 
 static emlrtRTEInfo y_emlrtRTEI = {
-    52,              /* lineNo */
-    9,               /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
-                                                                         */
+    52,                                                         /* lineNo */
+    22,                                                         /* colNo */
+    "NMPC_costDist",                                            /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pName */
 };
 
 static emlrtRTEInfo ab_emlrtRTEI = {
-    53,              /* lineNo */
-    1,               /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
-                                                                         */
+    52,                                                         /* lineNo */
+    10,                                                         /* colNo */
+    "NMPC_costDist",                                            /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pName */
 };
 
 static emlrtRTEInfo bb_emlrtRTEI = {
-    25,              /* lineNo */
-    1,               /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
-                                                                         */
+    52,                                                         /* lineNo */
+    9,                                                          /* colNo */
+    "NMPC_costDist",                                            /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pName */
+};
+
+static emlrtRTEInfo cb_emlrtRTEI = {
+    53,                                                         /* lineNo */
+    1,                                                          /* colNo */
+    "NMPC_costDist",                                            /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pName */
+};
+
+static emlrtRTEInfo db_emlrtRTEI = {
+    25,                                                         /* lineNo */
+    1,                                                          /* colNo */
+    "NMPC_costDist",                                            /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pName */
 };
 
 static emlrtRTEInfo eb_emlrtRTEI = {
-    52,              /* lineNo */
-    61,              /* colNo */
-    "NMPC_costDist", /* fName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/NMPC_costDist.m" /* pName
-                                                                         */
+    1,                                                          /* lineNo */
+    14,                                                         /* colNo */
+    "NMPC_costDist",                                            /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pName */
+};
+
+static emlrtRTEInfo hb_emlrtRTEI = {
+    52,                                                         /* lineNo */
+    61,                                                         /* colNo */
+    "NMPC_costDist",                                            /* fName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_costDist.m" /* pName */
 };
 
 /* Function Declarations */
-static void b_binary_expand_op(const emlrtStack *sp, emxArray_real_T *y,
-                               const emxArray_real_T *r1);
+static void b_binary_expand_op(const emlrtStack *sp, emxArray_real_T *in1,
+                               const emxArray_real_T *in2);
 
-static void binary_expand_op(const emlrtStack *sp, emxArray_real_T *varargin_1,
-                             const emxArray_real_T *yhat,
-                             const emxArray_real_T *y);
+static void binary_expand_op(const emlrtStack *sp, emxArray_real_T *in1,
+                             const emxArray_real_T *in2,
+                             const emxArray_real_T *in3);
 
-static void c_binary_expand_op(const emlrtStack *sp, emxArray_real_T *r1,
-                               const emxArray_real_T *yhat);
+static void c_binary_expand_op(const emlrtStack *sp, emxArray_real_T *in1,
+                               const emxArray_real_T *in2);
 
-static void plus(const emlrtStack *sp, emxArray_real_T *y,
-                 const emxArray_real_T *m);
+static void plus(const emlrtStack *sp, emxArray_real_T *in1,
+                 const emxArray_real_T *in2);
 
 /* Function Definitions */
-static void b_binary_expand_op(const emlrtStack *sp, emxArray_real_T *y,
-                               const emxArray_real_T *r1)
+static void b_binary_expand_op(const emlrtStack *sp, emxArray_real_T *in1,
+                               const emxArray_real_T *in2)
 {
-  emxArray_real_T *b_y;
-  const real_T *r;
-  real_T *b_y_data;
-  real_T *y_data;
+  emxArray_real_T *b_in1;
+  const real_T *in2_data;
+  real_T *b_in1_data;
+  real_T *in1_data;
   int32_T i;
   int32_T loop_ub;
   int32_T stride_0_1;
   int32_T stride_1_1;
-  r = r1->data;
-  y_data = y->data;
+  in2_data = in2->data;
+  in1_data = in1->data;
   emlrtHeapReferenceStackEnterFcnR2012b((emlrtCTX)sp);
-  emxInit_real_T(sp, &b_y, 2, &w_emlrtRTEI);
-  i = b_y->size[0] * b_y->size[1];
-  b_y->size[0] = 1;
-  if (r1->size[1] == 1) {
-    b_y->size[1] = y->size[1];
+  emxInit_real_T(sp, &b_in1, 2, &y_emlrtRTEI);
+  i = b_in1->size[0] * b_in1->size[1];
+  b_in1->size[0] = 1;
+  if (in2->size[1] == 1) {
+    b_in1->size[1] = in1->size[1];
   } else {
-    b_y->size[1] = r1->size[1];
+    b_in1->size[1] = in2->size[1];
   }
-  emxEnsureCapacity_real_T(sp, b_y, i, &w_emlrtRTEI);
-  b_y_data = b_y->data;
-  stride_0_1 = (y->size[1] != 1);
-  stride_1_1 = (r1->size[1] != 1);
-  if (r1->size[1] == 1) {
-    loop_ub = y->size[1];
+  emxEnsureCapacity_real_T(sp, b_in1, i, &y_emlrtRTEI);
+  b_in1_data = b_in1->data;
+  stride_0_1 = (in1->size[1] != 1);
+  stride_1_1 = (in2->size[1] != 1);
+  if (in2->size[1] == 1) {
+    loop_ub = in1->size[1];
   } else {
-    loop_ub = r1->size[1];
+    loop_ub = in2->size[1];
   }
   for (i = 0; i < loop_ub; i++) {
-    b_y_data[i] = y_data[i * stride_0_1] * r[i * stride_1_1] + 1.0;
+    b_in1_data[i] = in1_data[i * stride_0_1] * in2_data[i * stride_1_1] + 1.0;
   }
-  i = y->size[0] * y->size[1];
-  y->size[0] = 1;
-  y->size[1] = b_y->size[1];
-  emxEnsureCapacity_real_T(sp, y, i, &w_emlrtRTEI);
-  y_data = y->data;
-  loop_ub = b_y->size[1];
+  i = in1->size[0] * in1->size[1];
+  in1->size[0] = 1;
+  in1->size[1] = b_in1->size[1];
+  emxEnsureCapacity_real_T(sp, in1, i, &y_emlrtRTEI);
+  in1_data = in1->data;
+  loop_ub = b_in1->size[1];
   for (i = 0; i < loop_ub; i++) {
-    y_data[i] = b_y_data[i];
+    in1_data[i] = b_in1_data[i];
   }
-  emxFree_real_T(sp, &b_y);
+  emxFree_real_T(sp, &b_in1);
   emlrtHeapReferenceStackLeaveFcnR2012b((emlrtCTX)sp);
 }
 
-static void binary_expand_op(const emlrtStack *sp, emxArray_real_T *varargin_1,
-                             const emxArray_real_T *yhat,
-                             const emxArray_real_T *y)
+static void binary_expand_op(const emlrtStack *sp, emxArray_real_T *in1,
+                             const emxArray_real_T *in2,
+                             const emxArray_real_T *in3)
 {
-  const real_T *y_data;
-  const real_T *yhat_data;
-  real_T *varargin_1_data;
+  const real_T *in2_data;
+  const real_T *in3_data;
+  real_T *in1_data;
   int32_T i;
   int32_T loop_ub;
   int32_T stride_0_0;
   int32_T stride_1_0;
-  y_data = y->data;
-  yhat_data = yhat->data;
-  i = yhat->size[1];
-  stride_0_0 = varargin_1->size[0];
-  if (y->size[1] == 1) {
-    varargin_1->size[0] = i;
+  in3_data = in3->data;
+  in2_data = in2->data;
+  i = in2->size[1];
+  stride_0_0 = in1->size[0];
+  if (in3->size[1] == 1) {
+    in1->size[0] = i;
   } else {
-    varargin_1->size[0] = y->size[1];
+    in1->size[0] = in3->size[1];
   }
-  emxEnsureCapacity_real_T(sp, varargin_1, stride_0_0, &y_emlrtRTEI);
-  varargin_1_data = varargin_1->data;
+  emxEnsureCapacity_real_T(sp, in1, stride_0_0, &bb_emlrtRTEI);
+  in1_data = in1->data;
   stride_0_0 = (i != 1);
-  stride_1_0 = (y->size[1] != 1);
-  if (y->size[1] == 1) {
+  stride_1_0 = (in3->size[1] != 1);
+  if (in3->size[1] == 1) {
     loop_ub = i;
   } else {
-    loop_ub = y->size[1];
+    loop_ub = in3->size[1];
   }
   for (i = 0; i < loop_ub; i++) {
-    varargin_1_data[i] =
-        yhat_data[6 * (i * stride_0_0)] / y_data[i * stride_1_0];
+    in1_data[i] = in2_data[6 * (i * stride_0_0)] / in3_data[i * stride_1_0];
   }
 }
 
-static void c_binary_expand_op(const emlrtStack *sp, emxArray_real_T *r1,
-                               const emxArray_real_T *yhat)
+static void c_binary_expand_op(const emlrtStack *sp, emxArray_real_T *in1,
+                               const emxArray_real_T *in2)
 {
-  emxArray_real_T *b_yhat;
-  const real_T *yhat_data;
-  real_T *b_yhat_data;
-  real_T *r;
+  emxArray_real_T *b_in2;
+  const real_T *in2_data;
+  real_T *b_in2_data;
+  real_T *in1_data;
   int32_T i;
   int32_T loop_ub;
   int32_T stride_0_1;
   int32_T stride_1_1;
-  yhat_data = yhat->data;
-  r = r1->data;
+  in2_data = in2->data;
+  in1_data = in1->data;
   emlrtHeapReferenceStackEnterFcnR2012b((emlrtCTX)sp);
-  emxInit_real_T(sp, &b_yhat, 2, &eb_emlrtRTEI);
-  i = yhat->size[1];
-  stride_0_1 = b_yhat->size[0] * b_yhat->size[1];
-  b_yhat->size[0] = 1;
-  if (r1->size[1] == 1) {
-    b_yhat->size[1] = i;
+  emxInit_real_T(sp, &b_in2, 2, &hb_emlrtRTEI);
+  i = in2->size[1];
+  stride_0_1 = b_in2->size[0] * b_in2->size[1];
+  b_in2->size[0] = 1;
+  if (in1->size[1] == 1) {
+    b_in2->size[1] = i;
   } else {
-    b_yhat->size[1] = r1->size[1];
+    b_in2->size[1] = in1->size[1];
   }
-  emxEnsureCapacity_real_T(sp, b_yhat, stride_0_1, &eb_emlrtRTEI);
-  b_yhat_data = b_yhat->data;
+  emxEnsureCapacity_real_T(sp, b_in2, stride_0_1, &hb_emlrtRTEI);
+  b_in2_data = b_in2->data;
   stride_0_1 = (i != 1);
-  stride_1_1 = (r1->size[1] != 1);
-  if (r1->size[1] == 1) {
+  stride_1_1 = (in1->size[1] != 1);
+  if (in1->size[1] == 1) {
     loop_ub = i;
   } else {
-    loop_ub = r1->size[1];
+    loop_ub = in1->size[1];
   }
   for (i = 0; i < loop_ub; i++) {
-    b_yhat_data[i] = yhat_data[6 * (i * stride_0_1) + 5] - r[i * stride_1_1];
+    b_in2_data[i] =
+        in2_data[6 * (i * stride_0_1) + 5] - in1_data[i * stride_1_1];
   }
-  i = r1->size[0] * r1->size[1];
-  r1->size[0] = 1;
-  r1->size[1] = b_yhat->size[1];
-  emxEnsureCapacity_real_T(sp, r1, i, &eb_emlrtRTEI);
-  r = r1->data;
-  loop_ub = b_yhat->size[1];
+  i = in1->size[0] * in1->size[1];
+  in1->size[0] = 1;
+  in1->size[1] = b_in2->size[1];
+  emxEnsureCapacity_real_T(sp, in1, i, &hb_emlrtRTEI);
+  in1_data = in1->data;
+  loop_ub = b_in2->size[1];
   for (i = 0; i < loop_ub; i++) {
-    r[i] = b_yhat_data[i];
+    in1_data[i] = b_in2_data[i];
   }
-  emxFree_real_T(sp, &b_yhat);
+  emxFree_real_T(sp, &b_in2);
   emlrtHeapReferenceStackLeaveFcnR2012b((emlrtCTX)sp);
 }
 
-static void plus(const emlrtStack *sp, emxArray_real_T *y,
-                 const emxArray_real_T *m)
+static void plus(const emlrtStack *sp, emxArray_real_T *in1,
+                 const emxArray_real_T *in2)
 {
-  emxArray_real_T *b_y;
-  const real_T *m_data;
-  real_T *b_y_data;
-  real_T *y_data;
+  emxArray_real_T *b_in1;
+  const real_T *in2_data;
+  real_T *b_in1_data;
+  real_T *in1_data;
   int32_T i;
   int32_T loop_ub;
   int32_T stride_0_1;
   int32_T stride_1_1;
-  m_data = m->data;
-  y_data = y->data;
+  in2_data = in2->data;
+  in1_data = in1->data;
   emlrtHeapReferenceStackEnterFcnR2012b((emlrtCTX)sp);
-  emxInit_real_T(sp, &b_y, 2, &r_emlrtRTEI);
-  i = b_y->size[0] * b_y->size[1];
-  b_y->size[0] = 1;
-  if (m->size[1] == 1) {
-    b_y->size[1] = y->size[1];
+  emxInit_real_T(sp, &b_in1, 2, &s_emlrtRTEI);
+  i = b_in1->size[0] * b_in1->size[1];
+  b_in1->size[0] = 1;
+  if (in2->size[1] == 1) {
+    b_in1->size[1] = in1->size[1];
   } else {
-    b_y->size[1] = m->size[1];
+    b_in1->size[1] = in2->size[1];
   }
-  emxEnsureCapacity_real_T(sp, b_y, i, &r_emlrtRTEI);
-  b_y_data = b_y->data;
-  stride_0_1 = (y->size[1] != 1);
-  stride_1_1 = (m->size[1] != 1);
-  if (m->size[1] == 1) {
-    loop_ub = y->size[1];
+  emxEnsureCapacity_real_T(sp, b_in1, i, &s_emlrtRTEI);
+  b_in1_data = b_in1->data;
+  stride_0_1 = (in1->size[1] != 1);
+  stride_1_1 = (in2->size[1] != 1);
+  if (in2->size[1] == 1) {
+    loop_ub = in1->size[1];
   } else {
-    loop_ub = m->size[1];
+    loop_ub = in2->size[1];
   }
   for (i = 0; i < loop_ub; i++) {
-    b_y_data[i] = y_data[i * stride_0_1] + m_data[i * stride_1_1];
+    b_in1_data[i] = in1_data[i * stride_0_1] + in2_data[i * stride_1_1];
   }
-  i = y->size[0] * y->size[1];
-  y->size[0] = 1;
-  y->size[1] = b_y->size[1];
-  emxEnsureCapacity_real_T(sp, y, i, &r_emlrtRTEI);
-  y_data = y->data;
-  loop_ub = b_y->size[1];
+  i = in1->size[0] * in1->size[1];
+  in1->size[0] = 1;
+  in1->size[1] = b_in1->size[1];
+  emxEnsureCapacity_real_T(sp, in1, i, &s_emlrtRTEI);
+  in1_data = in1->data;
+  loop_ub = b_in1->size[1];
   for (i = 0; i < loop_ub; i++) {
-    y_data[i] = b_y_data[i];
+    in1_data[i] = b_in1_data[i];
   }
-  emxFree_real_T(sp, &b_y);
+  emxFree_real_T(sp, &b_in1);
   emlrtHeapReferenceStackLeaveFcnR2012b((emlrtCTX)sp);
 }
 
@@ -1060,6 +987,8 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
   emlrtStack st;
   emxArray_real_T *b_F;
   emxArray_real_T *b_yhat;
+  emxArray_real_T *c_r;
+  emxArray_real_T *c_yhat;
   emxArray_real_T *cons;
   emxArray_real_T *dir;
   emxArray_real_T *m;
@@ -1067,24 +996,11 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
   emxArray_real_T *varargin_1;
   emxArray_real_T *y;
   emxArray_real_T *yhat;
-  real_T b_a[36];
-  real_T ir[9];
-  real_T c_a[6];
-  real_T yCOE[6];
-  real_T DJ2[3];
-  real_T b_r[3];
-  real_T v[3];
   real_T v_rel[3];
   const real_T *x_data;
   const real_T *yref_data;
-  real_T a;
   real_T d;
-  real_T d1;
-  real_T ir_idx_0;
-  real_T ir_idx_1;
   real_T r;
-  real_T v_idx_0;
-  real_T v_idx_1;
   real_T v_idx_2;
   real_T *F_data;
   real_T *cons_data;
@@ -1124,7 +1040,7 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
   yref_data = yref->data;
   x_data = x->data;
   emlrtHeapReferenceStackEnterFcnR2012b((emlrtCTX)sp);
-  emxInit_real_T(sp, &yhat, 2, &l_emlrtRTEI);
+  emxInit_real_T(sp, &yhat, 2, &m_emlrtRTEI);
   /* COST Function calculates the cost of the orbital maneuvre considering */
   /*    arbitrary defined weigthed sums. The cost takes into account both the */
   /*    state error and the input magnitude. In addition, an hard constraint on
@@ -1144,7 +1060,7 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
   /*  t = 0:Ts:Ts*M; % Time vector */
   i = yhat->size[0] * yhat->size[1];
   yhat->size[0] = 6;
-  emxEnsureCapacity_real_T(sp, yhat, i, &l_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, yhat, i, &m_emlrtRTEI);
   if (!(M + 1.0 >= 0.0)) {
     emlrtNonNegativeCheckR2012b(M + 1.0, &b_emlrtDCI, (emlrtCTX)sp);
   }
@@ -1154,7 +1070,7 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
   }
   i = yhat->size[0] * yhat->size[1];
   yhat->size[1] = (int32_T)(M + 1.0);
-  emxEnsureCapacity_real_T(sp, yhat, i, &l_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, yhat, i, &m_emlrtRTEI);
   yhat_data = yhat->data;
   if (!(M + 1.0 >= 0.0)) {
     emlrtNonNegativeCheckR2012b(M + 1.0, &h_emlrtDCI, (emlrtCTX)sp);
@@ -1167,18 +1083,18 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
     yhat_data[i] = 0.0;
   }
   /*  Initialization of state vectors */
-  if (1 > (int32_T)(M + 1.0)) {
+  if ((int32_T)(M + 1.0) < 1) {
     emlrtDynamicBoundsCheckR2012b(1, 1, (int32_T)(M + 1.0), &f_emlrtBCI,
                                   (emlrtCTX)sp);
   }
   for (i = 0; i < 6; i++) {
     yhat_data[i] = b_y0[i];
   }
-  emxInit_real_T(sp, &u, 2, &m_emlrtRTEI);
+  emxInit_real_T(sp, &u, 2, &n_emlrtRTEI);
   /*  Set initial conditions */
   i = u->size[0] * u->size[1];
   u->size[0] = 3;
-  emxEnsureCapacity_real_T(sp, u, i, &m_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, u, i, &n_emlrtRTEI);
   if (!(M >= 0.0)) {
     emlrtNonNegativeCheckR2012b(M, &d_emlrtDCI, (emlrtCTX)sp);
   }
@@ -1188,7 +1104,7 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
   }
   i1 = u->size[0] * u->size[1];
   u->size[1] = (int32_T)M;
-  emxEnsureCapacity_real_T(sp, u, i1, &m_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, u, i1, &n_emlrtRTEI);
   u_data = u->data;
   if (M != i) {
     emlrtIntegerCheckR2012b(M, &i_emlrtDCI, (emlrtCTX)sp);
@@ -1197,18 +1113,18 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
   for (i1 = 0; i1 < idx; i1++) {
     u_data[i1] = 0.0;
   }
-  emxInit_real_T(sp, &dir, 2, &n_emlrtRTEI);
+  emxInit_real_T(sp, &dir, 2, &o_emlrtRTEI);
   /*  Initialization of input vectors */
   i1 = dir->size[0] * dir->size[1];
   dir->size[0] = 3;
-  emxEnsureCapacity_real_T(sp, dir, i1, &n_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, dir, i1, &o_emlrtRTEI);
   if (M != i) {
     emlrtIntegerCheckR2012b(M, &e_emlrtDCI, (emlrtCTX)sp);
   }
   loop_ub_tmp = (int32_T)M;
   i1 = dir->size[0] * dir->size[1];
   dir->size[1] = loop_ub_tmp;
-  emxEnsureCapacity_real_T(sp, dir, i1, &n_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, dir, i1, &o_emlrtRTEI);
   dir_data = dir->data;
   if (loop_ub_tmp != i) {
     emlrtIntegerCheckR2012b(M, &j_emlrtDCI, (emlrtCTX)sp);
@@ -1221,22 +1137,22 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
   if (loop_ub_tmp != i) {
     emlrtIntegerCheckR2012b(M, &k_emlrtDCI, (emlrtCTX)sp);
   }
-  emxInit_real_T(sp, &cons, 1, &bb_emlrtRTEI);
-  emxInit_real_T(sp, &m, 2, &p_emlrtRTEI);
+  emxInit_real_T(sp, &cons, 1, &db_emlrtRTEI);
+  emxInit_real_T(sp, &m, 2, &q_emlrtRTEI);
   i1 = cons->size[0];
   cons->size[0] = loop_ub_tmp;
-  emxEnsureCapacity_real_T(sp, cons, i1, &o_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, cons, i1, &p_emlrtRTEI);
   cons_data = cons->data;
   /*  Initialization of consumption vector */
   i1 = m->size[0] * m->size[1];
   m->size[0] = 1;
-  emxEnsureCapacity_real_T(sp, m, i1, &p_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, m, i1, &q_emlrtRTEI);
   if (loop_ub_tmp != i) {
     emlrtIntegerCheckR2012b(M, &f_emlrtDCI, (emlrtCTX)sp);
   }
   i1 = m->size[0] * m->size[1];
   m->size[1] = loop_ub_tmp;
-  emxEnsureCapacity_real_T(sp, m, i1, &p_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, m, i1, &q_emlrtRTEI);
   m_data = m->data;
   if (loop_ub_tmp != i) {
     emlrtIntegerCheckR2012b(M, &l_emlrtDCI, (emlrtCTX)sp);
@@ -1244,14 +1160,14 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
   for (i = 0; i < loop_ub_tmp; i++) {
     m_data[i] = 0.0;
   }
-  if (1.0 > M) {
+  if (M < 1.0) {
     emlrtDynamicBoundsCheckR2012b(1, 1, (int32_T)M, &h_emlrtBCI, (emlrtCTX)sp);
   }
   m_data[0] = m0;
   /*  Initialization of mass */
   emlrtForLoopVectorCheckR2021a(1.0, 1.0, M, mxDOUBLE_CLASS, (int32_T)M,
-                                &emlrtRTEI, (emlrtCTX)sp);
-  if (0.0 <= M - 1.0) {
+                                &b_emlrtRTEI, (emlrtCTX)sp);
+  if (M - 1.0 >= 0.0) {
     F[0] = 1;
     b_m = 3;
   }
@@ -1298,14 +1214,14 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
       emlrtBreakCheckR2012b((emlrtCTX)sp);
     }
   }
-  emxInit_real_T(sp, &b_F, 1, &q_emlrtRTEI);
+  emxInit_real_T(sp, &b_F, 1, &r_emlrtRTEI);
   d = 7.0 * M;
   if (d != (int32_T)d) {
     emlrtIntegerCheckR2012b(d, &m_emlrtDCI, (emlrtCTX)sp);
   }
   i = b_F->size[0];
   b_F->size[0] = (int32_T)d;
-  emxEnsureCapacity_real_T(sp, b_F, i, &q_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, b_F, i, &r_emlrtRTEI);
   F_data = b_F->data;
   if (d != (int32_T)d) {
     emlrtIntegerCheckR2012b(d, &m_emlrtDCI, (emlrtCTX)sp);
@@ -1316,12 +1232,26 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
   }
   /*  Cost Function Calculation */
   emlrtForLoopVectorCheckR2021a(1.0, 1.0, M, mxDOUBLE_CLASS, (int32_T)M,
-                                &b_emlrtRTEI, (emlrtCTX)sp);
-  if (0.0 <= M - 1.0) {
+                                &c_emlrtRTEI, (emlrtCTX)sp);
+  if (M - 1.0 >= 0.0) {
     p = (R < 0.0);
     F_tmp = 6;
   }
   for (k = 0; k < loop_ub_tmp; k++) {
+    real_T b_a[36];
+    real_T ir[9];
+    real_T c_a[6];
+    real_T yCOE[6];
+    real_T DJ2[3];
+    real_T b_r[3];
+    real_T v[3];
+    real_T a;
+    real_T d1;
+    real_T ir_idx_0;
+    real_T ir_idx_1;
+    real_T v_idx_0;
+    real_T v_idx_1;
+    boolean_T b_p;
     if ((int32_T)(k + 1U) > yhat->size[1]) {
       emlrtDynamicBoundsCheckR2012b((int32_T)(k + 1U), 1, yhat->size[1],
                                     &g_emlrtBCI, (emlrtCTX)sp);
@@ -1434,7 +1364,7 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
     DJ2[1] = u_data[i] + ((DJ2[1] + a * b_r[1] / v_idx_2) + v_rel[1]);
     DJ2[2] = u_data[i1] + ((DJ2[2] + a * b_r[2] / v_idx_2) + v_rel[2]);
     st.site = &g_emlrtRSI;
-    EOEDerivatives(&st, *(real_T(*)[6]) & yhat_data[6 * k], DJ2, yCOE);
+    EOEDerivatives(*(real_T(*)[6]) & yhat_data[6 * k], DJ2, yCOE);
     if ((int32_T)(k + 1U) > yhat->size[1]) {
       emlrtDynamicBoundsCheckR2012b((int32_T)(k + 1U), 1, yhat->size[1],
                                     &k_emlrtBCI, (emlrtCTX)sp);
@@ -1452,7 +1382,7 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
     st.site = &h_emlrtRSI;
     if (p) {
       emlrtErrorWithMessageIdR2018a(
-          &st, &e_emlrtRTEI, "Coder:toolbox:ElFunDomainError",
+          &st, &emlrtRTEI, "Coder:toolbox:ElFunDomainError",
           "Coder:toolbox:ElFunDomainError", 3, 4, 4, "sqrt");
     }
     if ((int32_T)(k + 1U) > cons->size[0]) {
@@ -1484,9 +1414,23 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
     b_select = i1 - i;
     emlrtSubAssignSizeCheckR2012b(&b_select, 1, &F_tmp, 1, &e_emlrtECI,
                                   (emlrtCTX)sp);
-    memcpy(&b_a[0], &Q[0], 36U * sizeof(real_T));
     st.site = &i_emlrtRSI;
-    b_sqrt(&st, b_a);
+    b_p = false;
+    for (idx = 0; idx < 36; idx++) {
+      d = Q[idx];
+      b_a[idx] = d;
+      if (b_p || (d < 0.0)) {
+        b_p = true;
+      }
+    }
+    if (b_p) {
+      emlrtErrorWithMessageIdR2018a(
+          &st, &emlrtRTEI, "Coder:toolbox:ElFunDomainError",
+          "Coder:toolbox:ElFunDomainError", 3, 4, 4, "sqrt");
+    }
+    for (idx = 0; idx < 36; idx++) {
+      b_a[idx] = muDoubleScalarSqrt(b_a[idx]);
+    }
     if ((k + 2 < 1) || (k + 2 > yref->size[1])) {
       emlrtDynamicBoundsCheckR2012b(k + 2, 1, yref->size[1], &o_emlrtBCI,
                                     (emlrtCTX)sp);
@@ -1530,59 +1474,69 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
   }
   emxFree_real_T(sp, &dir);
   emxFree_real_T(sp, &u);
-  emxInit_real_T(sp, &b_yhat, 2, &r_emlrtRTEI);
-  idx = yhat->size[1];
-  i = b_yhat->size[0] * b_yhat->size[1];
-  b_yhat->size[0] = 1;
-  b_yhat->size[1] = yhat->size[1];
-  emxEnsureCapacity_real_T(sp, b_yhat, i, &r_emlrtRTEI);
-  u_data = b_yhat->data;
-  for (i = 0; i < idx; i++) {
-    u_data[i] = yhat_data[6 * i + 1];
-  }
-  emxInit_real_T(sp, &y, 2, &w_emlrtRTEI);
+  emxInit_real_T(sp, &y, 2, &y_emlrtRTEI);
   st.site = &j_emlrtRSI;
-  power(&st, b_yhat, y);
+  b_st.site = &q_emlrtRSI;
   idx = yhat->size[1];
-  i = b_yhat->size[0] * b_yhat->size[1];
-  b_yhat->size[0] = 1;
-  b_yhat->size[1] = yhat->size[1];
-  emxEnsureCapacity_real_T(sp, b_yhat, i, &s_emlrtRTEI);
-  u_data = b_yhat->data;
+  i = y->size[0] * y->size[1];
+  y->size[0] = 1;
+  y->size[1] = yhat->size[1];
+  emxEnsureCapacity_real_T(&b_st, y, i, &s_emlrtRTEI);
+  dir_data = y->data;
   for (i = 0; i < idx; i++) {
-    u_data[i] = yhat_data[6 * i + 2];
+    v_idx_2 = yhat_data[6 * i + 1];
+    dir_data[i] = v_idx_2 * v_idx_2;
   }
   st.site = &j_emlrtRSI;
-  power(&st, b_yhat, m);
+  b_st.site = &q_emlrtRSI;
+  idx = yhat->size[1];
+  i = m->size[0] * m->size[1];
+  m->size[0] = 1;
+  m->size[1] = yhat->size[1];
+  emxEnsureCapacity_real_T(&b_st, m, i, &t_emlrtRTEI);
   m_data = m->data;
+  for (i = 0; i < idx; i++) {
+    v_idx_2 = yhat_data[6 * i + 2];
+    m_data[i] = v_idx_2 * v_idx_2;
+  }
   if ((y->size[1] != m->size[1]) && ((y->size[1] != 1) && (m->size[1] != 1))) {
     emlrtDimSizeImpxCheckR2021b(y->size[1], m->size[1], &b_emlrtECI,
                                 (emlrtCTX)sp);
   }
-  st.site = &j_emlrtRSI;
-  b_st.site = &lb_emlrtRSI;
-  c_st.site = &mb_emlrtRSI;
+  emxInit_real_T(sp, &b_yhat, 2, &u_emlrtRTEI);
   idx = yhat->size[1];
   i = b_yhat->size[0] * b_yhat->size[1];
   b_yhat->size[0] = 1;
   b_yhat->size[1] = yhat->size[1];
-  emxEnsureCapacity_real_T(&c_st, b_yhat, i, &t_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, b_yhat, i, &u_emlrtRTEI);
   u_data = b_yhat->data;
   for (i = 0; i < idx; i++) {
-    v_idx_2 = yhat_data[6 * i + 2];
-    r = yhat_data[6 * i + 1];
-    u_data[i] = muDoubleScalarAtan2(v_idx_2, r);
+    u_data[i] = yhat_data[6 * i + 2];
   }
-  if ((yhat->size[1] != b_yhat->size[1]) &&
-      ((yhat->size[1] != 1) && (b_yhat->size[1] != 1))) {
-    emlrtDimSizeImpxCheckR2021b(yhat->size[1], b_yhat->size[1], &c_emlrtECI,
+  emxInit_real_T(sp, &c_yhat, 2, &v_emlrtRTEI);
+  idx = yhat->size[1];
+  i = c_yhat->size[0] * c_yhat->size[1];
+  c_yhat->size[0] = 1;
+  c_yhat->size[1] = yhat->size[1];
+  emxEnsureCapacity_real_T(sp, c_yhat, i, &v_emlrtRTEI);
+  u_data = c_yhat->data;
+  for (i = 0; i < idx; i++) {
+    u_data[i] = yhat_data[6 * i + 1];
+  }
+  emxInit_real_T(sp, &c_r, 2, &eb_emlrtRTEI);
+  st.site = &j_emlrtRSI;
+  b_atan2(&st, b_yhat, c_yhat, c_r);
+  emxFree_real_T(sp, &c_yhat);
+  if ((yhat->size[1] != c_r->size[1]) &&
+      ((yhat->size[1] != 1) && (c_r->size[1] != 1))) {
+    emlrtDimSizeImpxCheckR2021b(yhat->size[1], c_r->size[1], &c_emlrtECI,
                                 (emlrtCTX)sp);
   }
   if (y->size[1] == m->size[1]) {
     idx = y->size[1] - 1;
     i = y->size[0] * y->size[1];
     y->size[0] = 1;
-    emxEnsureCapacity_real_T(sp, y, i, &u_emlrtRTEI);
+    emxEnsureCapacity_real_T(sp, y, i, &w_emlrtRTEI);
     dir_data = y->data;
     for (i = 0; i <= idx; i++) {
       dir_data[i] += m_data[i];
@@ -1592,63 +1546,64 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
   }
   emxFree_real_T(sp, &m);
   st.site = &j_emlrtRSI;
-  c_sqrt(&st, y);
-  if (yhat->size[1] == b_yhat->size[1]) {
+  b_sqrt(&st, y);
+  if (yhat->size[1] == c_r->size[1]) {
     idx = yhat->size[1];
-    i = b_yhat->size[0] * b_yhat->size[1];
-    b_yhat->size[0] = 1;
-    b_yhat->size[1] = yhat->size[1];
-    emxEnsureCapacity_real_T(sp, b_yhat, i, &v_emlrtRTEI);
-    u_data = b_yhat->data;
+    i = c_r->size[0] * c_r->size[1];
+    c_r->size[0] = 1;
+    c_r->size[1] = yhat->size[1];
+    emxEnsureCapacity_real_T(sp, c_r, i, &x_emlrtRTEI);
+    u_data = c_r->data;
     for (i = 0; i < idx; i++) {
       u_data[i] = yhat_data[6 * i + 5] - u_data[i];
     }
   } else {
-    c_binary_expand_op(sp, b_yhat, yhat);
+    c_binary_expand_op(sp, c_r, yhat);
   }
   st.site = &j_emlrtRSI;
-  b_cos(&st, b_yhat);
-  u_data = b_yhat->data;
-  if ((y->size[1] != b_yhat->size[1]) &&
-      ((y->size[1] != 1) && (b_yhat->size[1] != 1))) {
-    emlrtDimSizeImpxCheckR2021b(y->size[1], b_yhat->size[1], &d_emlrtECI,
+  b_cos(&st, c_r);
+  u_data = c_r->data;
+  if ((y->size[1] != c_r->size[1]) &&
+      ((y->size[1] != 1) && (c_r->size[1] != 1))) {
+    emlrtDimSizeImpxCheckR2021b(y->size[1], c_r->size[1], &d_emlrtECI,
                                 (emlrtCTX)sp);
   }
   st.site = &j_emlrtRSI;
-  if (y->size[1] == b_yhat->size[1]) {
+  if (y->size[1] == c_r->size[1]) {
     idx = y->size[1] - 1;
     i = y->size[0] * y->size[1];
     y->size[0] = 1;
-    emxEnsureCapacity_real_T(&st, y, i, &w_emlrtRTEI);
+    emxEnsureCapacity_real_T(&st, y, i, &y_emlrtRTEI);
     dir_data = y->data;
     for (i = 0; i <= idx; i++) {
       dir_data[i] = dir_data[i] * u_data[i] + 1.0;
     }
   } else {
     b_st.site = &j_emlrtRSI;
-    b_binary_expand_op(&b_st, y, b_yhat);
+    b_binary_expand_op(&b_st, y, c_r);
     dir_data = y->data;
   }
-  b_st.site = &ob_emlrtRSI;
+  emxFree_real_T(&st, &c_r);
+  b_st.site = &sb_emlrtRSI;
   idx = yhat->size[1];
   i = b_yhat->size[0] * b_yhat->size[1];
   b_yhat->size[0] = 1;
   b_yhat->size[1] = yhat->size[1];
-  emxEnsureCapacity_real_T(&b_st, b_yhat, i, &x_emlrtRTEI);
+  emxEnsureCapacity_real_T(&b_st, b_yhat, i, &ab_emlrtRTEI);
   u_data = b_yhat->data;
   for (i = 0; i < idx; i++) {
     u_data[i] = yhat_data[6 * i];
   }
-  c_st.site = &pb_emlrtRSI;
+  c_st.site = &tb_emlrtRSI;
   assertCompatibleDims(&c_st, b_yhat, y);
   st.site = &j_emlrtRSI;
   emxFree_real_T(&st, &b_yhat);
-  emxInit_real_T(&st, &varargin_1, 1, &y_emlrtRTEI);
+  emxInit_real_T(&st, &varargin_1, 1, &bb_emlrtRTEI);
   if (yhat->size[1] == y->size[1]) {
     idx = yhat->size[1];
     i = varargin_1->size[0];
     varargin_1->size[0] = yhat->size[1];
-    emxEnsureCapacity_real_T(&st, varargin_1, i, &y_emlrtRTEI);
+    emxEnsureCapacity_real_T(&st, varargin_1, i, &bb_emlrtRTEI);
     u_data = varargin_1->data;
     for (i = 0; i < idx; i++) {
       u_data[i] = yhat_data[6 * i] / dir_data[i];
@@ -1660,16 +1615,16 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
   }
   emxFree_real_T(&st, &y);
   emxFree_real_T(&st, &yhat);
-  b_st.site = &qb_emlrtRSI;
-  c_st.site = &rb_emlrtRSI;
-  d_st.site = &sb_emlrtRSI;
+  b_st.site = &ub_emlrtRSI;
+  c_st.site = &vb_emlrtRSI;
+  d_st.site = &wb_emlrtRSI;
   if (varargin_1->size[0] < 1) {
-    emlrtErrorWithMessageIdR2018a(&d_st, &d_emlrtRTEI,
+    emlrtErrorWithMessageIdR2018a(&d_st, &e_emlrtRTEI,
                                   "Coder:toolbox:eml_min_or_max_varDimZero",
                                   "Coder:toolbox:eml_min_or_max_varDimZero", 0);
   }
-  e_st.site = &tb_emlrtRSI;
-  f_st.site = &ub_emlrtRSI;
+  e_st.site = &xb_emlrtRSI;
+  f_st.site = &yb_emlrtRSI;
   b_select = varargin_1->size[0];
   if (varargin_1->size[0] <= 2) {
     if (varargin_1->size[0] == 1) {
@@ -1681,12 +1636,12 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
       r = u_data[0];
     }
   } else {
-    g_st.site = &wb_emlrtRSI;
+    g_st.site = &bc_emlrtRSI;
     if (!muDoubleScalarIsNaN(u_data[0])) {
       idx = 1;
     } else {
       idx = 0;
-      h_st.site = &xb_emlrtRSI;
+      h_st.site = &cc_emlrtRSI;
       if (varargin_1->size[0] > 2147483646) {
         i_st.site = &kb_emlrtRSI;
         check_forloop_overflow_error(&i_st);
@@ -1705,10 +1660,10 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
     if (idx == 0) {
       r = u_data[0];
     } else {
-      g_st.site = &vb_emlrtRSI;
+      g_st.site = &ac_emlrtRSI;
       r = u_data[idx - 1];
       b_m = idx + 1;
-      h_st.site = &yb_emlrtRSI;
+      h_st.site = &dc_emlrtRSI;
       if ((idx + 1 <= varargin_1->size[0]) &&
           (varargin_1->size[0] > 2147483646)) {
         i_st.site = &kb_emlrtRSI;
@@ -1724,7 +1679,7 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
   }
   emxFree_real_T(&f_st, &varargin_1);
   st.site = &k_emlrtRSI;
-  b_st.site = &ac_emlrtRSI;
+  b_st.site = &ec_emlrtRSI;
   dynamic_size_checks(&b_st, b_F, b_F, b_F->size[0], b_F->size[0]);
   if (b_F->size[0] < 1) {
     v_idx_2 = 0.0;
@@ -1736,7 +1691,7 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
   }
   i = J->size[0];
   J->size[0] = (cons->size[0] + b_F->size[0]) + 2;
-  emxEnsureCapacity_real_T(sp, J, i, &ab_emlrtRTEI);
+  emxEnsureCapacity_real_T(sp, J, i, &cb_emlrtRTEI);
   u_data = J->data;
   u_data[0] = v_idx_2;
   u_data[1] = r - 6378.1;

@@ -19,10 +19,10 @@
 
 /* Variable Definitions */
 static emlrtRSInfo m_emlrtRSI = {
-    16,     /* lineNo */
-    "sqrt", /* fcnName */
-    "/Applications/MATLAB_R2021b.app/toolbox/eml/lib/matlab/elfun/sqrt.m" /* pathName
-                                                                           */
+    16,                                                            /* lineNo */
+    "sqrt",                                                        /* fcnName */
+    "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\elfun\\sqrt.m" /* pathName
+                                                                    */
 };
 
 /* Function Definitions */
@@ -38,7 +38,7 @@ void b_sqrt(const emlrtStack *sp, real_T x[36])
   }
   if (p) {
     emlrtErrorWithMessageIdR2018a(
-        sp, &emlrtRTEI, "Coder:toolbox:ElFunDomainError",
+        sp, &e_emlrtRTEI, "Coder:toolbox:ElFunDomainError",
         "Coder:toolbox:ElFunDomainError", 3, 4, 4, "sqrt");
   }
   for (k = 0; k < 36; k++) {
@@ -71,13 +71,13 @@ void c_sqrt(const emlrtStack *sp, emxArray_real_T *x)
   }
   if (p) {
     emlrtErrorWithMessageIdR2018a(
-        sp, &emlrtRTEI, "Coder:toolbox:ElFunDomainError",
+        sp, &e_emlrtRTEI, "Coder:toolbox:ElFunDomainError",
         "Coder:toolbox:ElFunDomainError", 3, 4, 4, "sqrt");
   }
   st.site = &m_emlrtRSI;
   nx = x->size[1];
   b_st.site = &n_emlrtRSI;
-  if ((1 <= x->size[1]) && (x->size[1] > 2147483646)) {
+  if (x->size[1] > 2147483646) {
     c_st.site = &o_emlrtRSI;
     check_forloop_overflow_error(&c_st);
   }

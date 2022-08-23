@@ -18,7 +18,7 @@
 #include "rt_nonfinite.h"
 
 /* Variable Definitions */
-static emlrtRTEInfo db_emlrtRTEI = {
+static emlrtRTEInfo gb_emlrtRTEI = {
     1,                          /* lineNo */
     1,                          /* colNo */
     "_coder_NMPC_costDist_api", /* fName */
@@ -386,9 +386,9 @@ void NMPC_costDist_api(const mxArray *const prhs[16], const mxArray **plhs)
   real_T m0;
   st.tls = emlrtRootTLSGlobal;
   emlrtHeapReferenceStackEnterFcnR2012b(&st);
-  emxInit_real_T(&st, &x, 1, &db_emlrtRTEI);
-  emxInit_real_T(&st, &yref, 2, &db_emlrtRTEI);
-  emxInit_real_T(&st, &J, 1, &db_emlrtRTEI);
+  emxInit_real_T(&st, &x, 1, &gb_emlrtRTEI);
+  emxInit_real_T(&st, &yref, 2, &gb_emlrtRTEI);
+  emxInit_real_T(&st, &J, 1, &gb_emlrtRTEI);
   /* Marshall function inputs */
   M = emlrt_marshallIn(&st, emlrtAliasP(prhs[0]), "M");
   Ts = emlrt_marshallIn(&st, emlrtAliasP(prhs[1]), "Ts");

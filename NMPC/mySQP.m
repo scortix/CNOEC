@@ -182,7 +182,7 @@ while true
             Hk = Hk + options.GN_sigma*eye(size(Hk));
         case 'BFGS'
             if niter == 1
-                Hk = eye(length(x0));
+                Hk = 1e-4*eye(length(x0));
             end
     end
 
@@ -250,7 +250,11 @@ while true
         if all(s==0)
             s = 1e-14*pkstar/norm(pkstar);
         end
-        Hk = Hk - ((Hk*s)*(Hk*s)')/(s'*Hk*s) + (y*y')/(s'*y);
+        [Uh,Sh] = svd(Hk*s);
+        [Uy,Sy] = svd(y);
+        Hk = Hk - (Uh*Sh*Sh'*Uh')/(s'*Hk*s) + (Uy*Sy*Sy'*Uy')/(s'*y);
+%         Hk = Hk - ((Hk*s)*(Hk*s)')/(s'*Hk*s) + (y*y')/(s'*y);
+        Hk = nearestSPD(Hk);
         if min(eig(Hk))/max(eig(Hk)) < -1e-8
             m = min(eig(Hk));
             warning(strcat("Hk is not positive definite - min(eig(Hk)) = ", num2str(m)));

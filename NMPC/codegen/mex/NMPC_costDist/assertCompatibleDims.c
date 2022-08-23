@@ -15,12 +15,12 @@
 #include "rt_nonfinite.h"
 
 /* Variable Definitions */
-static emlrtRTEInfo h_emlrtRTEI = {
+static emlrtRTEInfo i_emlrtRTEI = {
     13,                     /* lineNo */
     27,                     /* colNo */
     "assertCompatibleDims", /* fName */
-    "/Applications/MATLAB_R2021b.app/toolbox/shared/coder/coder/lib/+coder/"
-    "+internal/assertCompatibleDims.m" /* pName */
+    "P:\\Matlab\\R2022a\\toolbox\\shared\\coder\\coder\\lib\\+coder\\+"
+    "internal\\assertCompatibleDims.m" /* pName */
 };
 
 /* Function Definitions */
@@ -28,7 +28,7 @@ void assertCompatibleDims(const emlrtStack *sp, const emxArray_real_T *x,
                           const emxArray_real_T *y)
 {
   if ((x->size[1] != 1) && (y->size[1] != 1) && (x->size[1] != y->size[1])) {
-    emlrtErrorWithMessageIdR2018a(sp, &h_emlrtRTEI,
+    emlrtErrorWithMessageIdR2018a(sp, &i_emlrtRTEI,
                                   "MATLAB:sizeDimensionsMustMatch",
                                   "MATLAB:sizeDimensionsMustMatch", 0);
   }

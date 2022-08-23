@@ -3,15 +3,16 @@
  * course requirements at degree granting institutions only.  Not for
  * government, commercial, or other organizational use.
  *
- * EOEDerivatives.h
+ * atan2.h
  *
- * Code generation for function 'EOEDerivatives'
+ * Code generation for function 'atan2'
  *
  */
 
 #pragma once
 
 /* Include files */
+#include "NMPC_costDist_types.h"
 #include "rtwtypes.h"
 #include "emlrt.h"
 #include "mex.h"
@@ -21,6 +22,7 @@
 #include <string.h>
 
 /* Function Declarations */
-void EOEDerivatives(const real_T x[6], const real_T u[3], real_T xdot[6]);
+void b_atan2(const emlrtStack *sp, const emxArray_real_T *y,
+             const emxArray_real_T *x, emxArray_real_T *r);
 
-/* End of code generation (EOEDerivatives.h) */
+/* End of code generation (atan2.h) */

@@ -17,15 +17,15 @@
 
 /* Variable Definitions */
 static emlrtRSInfo n_emlrtRSI = {
-    26,                                                           /* lineNo */
-    "EOE2COE",                                                    /* fcnName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/EOE2COE.m" /* pathName */
+    26,                                                   /* lineNo */
+    "EOE2COE",                                            /* fcnName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\EOE2COE.m" /* pathName */
 };
 
 static emlrtRSInfo o_emlrtRSI = {
-    27,                                                           /* lineNo */
-    "EOE2COE",                                                    /* fcnName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/EOE2COE.m" /* pathName */
+    27,                                                   /* lineNo */
+    "EOE2COE",                                            /* fcnName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\EOE2COE.m" /* pathName */
 };
 
 /* Function Definitions */
@@ -64,7 +64,7 @@ void EOE2COE(const emlrtStack *sp, const real_T x[6], real_T y[6])
   e = e_tmp + b_e_tmp;
   if (e < 0.0) {
     emlrtErrorWithMessageIdR2018a(
-        &st, &e_emlrtRTEI, "Coder:toolbox:ElFunDomainError",
+        &st, &emlrtRTEI, "Coder:toolbox:ElFunDomainError",
         "Coder:toolbox:ElFunDomainError", 3, 4, 4, "sqrt");
   }
   e = muDoubleScalarSqrt(e);
@@ -74,7 +74,7 @@ void EOE2COE(const emlrtStack *sp, const real_T x[6], real_T y[6])
   b_x = x_tmp + b_x_tmp;
   if (b_x < 0.0) {
     emlrtErrorWithMessageIdR2018a(
-        &st, &e_emlrtRTEI, "Coder:toolbox:ElFunDomainError",
+        &st, &emlrtRTEI, "Coder:toolbox:ElFunDomainError",
         "Coder:toolbox:ElFunDomainError", 3, 4, 4, "sqrt");
   }
   b_x = muDoubleScalarSqrt(b_x);

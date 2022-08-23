@@ -18,39 +18,34 @@
 
 /* Variable Definitions */
 static emlrtRSInfo bb_emlrtRSI = {
-    12,                /* lineNo */
-    "moonDisturbance", /* fcnName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/moonDisturbance.m" /* pathName
-                                                                           */
+    12,                                                           /* lineNo */
+    "moonDisturbance",                                            /* fcnName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\moonDisturbance.m" /* pathName */
 };
 
 static emlrtRSInfo cb_emlrtRSI = {
-    35,                /* lineNo */
-    "moonDisturbance", /* fcnName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/moonDisturbance.m" /* pathName
-                                                                           */
+    35,                                                           /* lineNo */
+    "moonDisturbance",                                            /* fcnName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\moonDisturbance.m" /* pathName */
 };
 
 static emlrtRSInfo db_emlrtRSI = {
-    39,                /* lineNo */
-    "moonDisturbance", /* fcnName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/moonDisturbance.m" /* pathName
-                                                                           */
+    39,                                                           /* lineNo */
+    "moonDisturbance",                                            /* fcnName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\moonDisturbance.m" /* pathName */
 };
 
 static emlrtRSInfo eb_emlrtRSI = {
-    37,                                  /* lineNo */
-    "@(q)q*(3+3*q+q^2)/(1+(1+q)^(3/2))", /* fcnName */
-    "/Users/matteodepaola/Documents/git/CNOEC git/NMPC/moonDisturbance.m" /* pathName
-                                                                           */
+    37,                                                           /* lineNo */
+    "@(q)q*(3+3*q+q^2)/(1+(1+q)^(3/2))",                          /* fcnName */
+    "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\moonDisturbance.m" /* pathName */
 };
 
 static emlrtRTEInfo g_emlrtRTEI = {
-    82,         /* lineNo */
-    5,          /* colNo */
-    "fltpower", /* fName */
-    "/Applications/MATLAB_R2021b.app/toolbox/eml/lib/matlab/ops/power.m" /* pName
-                                                                          */
+    82,                                                           /* lineNo */
+    5,                                                            /* colNo */
+    "fltpower",                                                   /* fName */
+    "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\ops\\power.m" /* pName */
 };
 
 /* Function Definitions */
@@ -84,13 +79,13 @@ void moonDisturbance(const emlrtStack *sp, const real_T x[6], real_T b_time,
   int32_T i;
   st.prev = sp;
   st.tls = sp->tls;
-  st.site = &bb_emlrtRSI;
   b_st.prev = &st;
   b_st.tls = st.tls;
   c_st.prev = &b_st;
   c_st.tls = b_st.tls;
   d_st.prev = &c_st;
   d_st.tls = c_st.tls;
+  st.site = &bb_emlrtRSI;
   paraorb2rv(x[0], x[1], x[2], x[3], x[4], x[5], r, a_tb);
   k = muDoubleScalarFloor(b_time / 100.0) * 100.0;
   /*  the 4 following lines for approximated moon position (fast) */
@@ -124,7 +119,7 @@ void moonDisturbance(const emlrtStack *sp, const real_T x[6], real_T b_time,
   d_idx_2 = (d_idx_0 * d_idx_0 + d_idx_1 * d_idx_1) + d_idx_2 * d_idx_2;
   if (d_idx_2 < 0.0) {
     emlrtErrorWithMessageIdR2018a(
-        &st, &e_emlrtRTEI, "Coder:toolbox:ElFunDomainError",
+        &st, &emlrtRTEI, "Coder:toolbox:ElFunDomainError",
         "Coder:toolbox:ElFunDomainError", 3, 4, 4, "sqrt");
   }
   /*  modulus of d */

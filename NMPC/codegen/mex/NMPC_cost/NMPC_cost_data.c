@@ -21,7 +21,7 @@ const volatile char_T *emlrtBreakCheckR2012bFlagVar = NULL;
 emlrtContext emlrtContextGlobal = {
     true,                                                 /* bFirstTime */
     false,                                                /* bInitialized */
-    131611U,                                              /* fVersionInfo */
+    131626U,                                              /* fVersionInfo */
     NULL,                                                 /* fErrorFunction */
     "NMPC_cost",                                          /* fFunctionName */
     NULL,                                                 /* fRTCallStack */
@@ -30,33 +30,25 @@ emlrtContext emlrtContextGlobal = {
     NULL                                                  /* fSigMem */
 };
 
-emlrtRSInfo l_emlrtRSI = {
-    71,      /* lineNo */
-    "power", /* fcnName */
-    "/Applications/MATLAB_R2021b.app/toolbox/eml/lib/matlab/ops/power.m" /* pathName
-                                                                          */
-};
-
 emlrtRSInfo n_emlrtRSI = {
     33,                           /* lineNo */
     "applyScalarFunctionInPlace", /* fcnName */
-    "/Applications/MATLAB_R2021b.app/toolbox/eml/eml/+coder/+internal/"
-    "applyScalarFunctionInPlace.m" /* pathName */
+    "P:\\Matlab\\R2022a\\toolbox\\eml\\eml\\+coder\\+"
+    "internal\\applyScalarFunctionInPlace.m" /* pathName */
 };
 
 emlrtRSInfo o_emlrtRSI = {
-    21,                               /* lineNo */
+    20,                               /* lineNo */
     "eml_int_forloop_overflow_check", /* fcnName */
-    "/Applications/MATLAB_R2021b.app/toolbox/eml/lib/matlab/eml/"
-    "eml_int_forloop_overflow_check.m" /* pathName */
+    "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\eml\\eml_int_forloop_"
+    "overflow_check.m" /* pathName */
 };
 
-emlrtRTEInfo emlrtRTEI = {
-    13,     /* lineNo */
-    9,      /* colNo */
-    "sqrt", /* fName */
-    "/Applications/MATLAB_R2021b.app/toolbox/eml/lib/matlab/elfun/sqrt.m" /* pName
-                                                                           */
+emlrtRTEInfo e_emlrtRTEI = {
+    13,                                                            /* lineNo */
+    9,                                                             /* colNo */
+    "sqrt",                                                        /* fName */
+    "P:\\Matlab\\R2022a\\toolbox\\eml\\lib\\matlab\\elfun\\sqrt.m" /* pName */
 };
 
 /* End of code generation (NMPC_cost_data.c) */
