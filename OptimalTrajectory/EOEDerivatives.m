@@ -17,7 +17,7 @@ k = x(5);
 L = x(6);
 
 if p<0
-    p = -p;
+    p = -p; %Generally useless, but necessary if the orbit becomes parabolic or hyperbolic
 end
 % Accelerations
 ar = u(1);

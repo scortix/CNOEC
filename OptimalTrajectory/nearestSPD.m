@@ -49,7 +49,7 @@ while p ~= 0
     mineig = min(eig(Ahat));
     Ahat = Ahat + (-mineig*k.^2 + eps(mineig))*eye(size(A));
   end
-  if k>1e3
+  if k>1e4
       warning("Impossible to find SQP matrix")
       break
   end

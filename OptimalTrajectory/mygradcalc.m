@@ -39,7 +39,7 @@ if ~isfield(opt,"graddx")
         case 'CD'
             eta = eps^(1/3);
         case 'IM'
-            eta = 1e-100;
+            eta = 1;
     end
 else
     eta = opt.graddx;

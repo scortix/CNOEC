@@ -7,8 +7,7 @@ function myoptions = myoptimset
 %                                   required by the NLP solvers
 % 
 % %% General options
-% myoptions.display    	=	'Iter';     % Display iteration output
-% myoptions.xsequence 	=	'off';      % Store sequence of points {xk}
+% myoptions.display    	=	"Iter";     % Display iteration output
 % myoptions.tolconstr   =	1e-6;       % Constraint tolerance satisfaction
 %                                       % tolerance
 % myoptions.tolgrad    	=	1e-6;       % Termination tolerance on the norm
@@ -54,10 +53,9 @@ function myoptions = myoptimset
 %                                       % BFGS algorithm
 
 %% General options
-myoptions.display    	=	'Iter';     % Display iteration output
-myoptions.xsequence    	=	'off';      % Store sequence of points {xk}
+myoptions.display    	=	"Iter";     % Display iteration output
 myoptions.tolconstr    	=	1e-6;       % Constraint satisfaction tolerance
-myoptions.tolgrad    	=	1e-8;       % Termination tolerance on the norm
+myoptions.tolgrad    	=	1e-6;       % Termination tolerance on the norm
                                         % of the directional derivative
 myoptions.tolx          =	1e-16;      % Termination tolerance on the relative
                                         % change of optimization variables
@@ -65,7 +63,6 @@ myoptions.tolfun        =	1e-16;      % Termination tolerance on the relative
                                         % improvement of the cost function
 myoptions.nitermax      =	1e4;        % Termination tolerance on the number of
                                         % iterations
-myoptions.outputfcn     =	[];         % Handle for output function
 
 %% Differentiation options
 myoptions.gradmethod  	=	'FD';       % Method for gradient computation

@@ -68,7 +68,7 @@ if ~onlyPlot
     if ~exist("initGuess","var")
         load("simulation.mat","initGuess");
     end
-
+    opt.tolgrad = 1e-8;
     conCell = cell(length(alpha),5); % Cell array to save all computed solutions
     % Inequality Constraints Definition
     C = [zeros(lu,1) eye(lu) zeros(lu);

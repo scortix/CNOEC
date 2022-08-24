@@ -28,37 +28,37 @@
 
 /* Variable Definitions */
 static emlrtRSInfo emlrtRSI = {
-    29,                                                     /* lineNo */
+    28,                                                     /* lineNo */
     "NMPC_cost",                                            /* fcnName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m" /* pathName */
 };
 
 static emlrtRSInfo b_emlrtRSI = {
-    37,                                                     /* lineNo */
+    36,                                                     /* lineNo */
     "NMPC_cost",                                            /* fcnName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m" /* pathName */
 };
 
 static emlrtRSInfo c_emlrtRSI = {
-    38,                                                     /* lineNo */
+    37,                                                     /* lineNo */
     "NMPC_cost",                                            /* fcnName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m" /* pathName */
 };
 
 static emlrtRSInfo d_emlrtRSI = {
-    39,                                                     /* lineNo */
+    38,                                                     /* lineNo */
     "NMPC_cost",                                            /* fcnName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m" /* pathName */
 };
 
 static emlrtRSInfo e_emlrtRSI = {
-    45,                                                     /* lineNo */
+    44,                                                     /* lineNo */
     "NMPC_cost",                                            /* fcnName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m" /* pathName */
 };
 
 static emlrtRSInfo f_emlrtRSI = {
-    46,                                                     /* lineNo */
+    45,                                                     /* lineNo */
     "NMPC_cost",                                            /* fcnName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m" /* pathName */
 };
@@ -185,7 +185,7 @@ static emlrtRSInfo ib_emlrtRSI =
 static emlrtBCInfo emlrtBCI = {
     -1,                                                      /* iFirst */
     -1,                                                      /* iLast */
-    36,                                                      /* lineNo */
+    35,                                                      /* lineNo */
     9,                                                       /* colNo */
     "u",                                                     /* aName */
     "NMPC_cost",                                             /* fName */
@@ -194,7 +194,7 @@ static emlrtBCInfo emlrtBCI = {
 };
 
 static emlrtRTEInfo emlrtRTEI = {
-    28,                                                     /* lineNo */
+    27,                                                     /* lineNo */
     9,                                                      /* colNo */
     "NMPC_cost",                                            /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m" /* pName */
@@ -203,7 +203,7 @@ static emlrtRTEInfo emlrtRTEI = {
 static emlrtBCInfo b_emlrtBCI = {
     -1,                                                      /* iFirst */
     -1,                                                      /* iLast */
-    29,                                                      /* lineNo */
+    28,                                                      /* lineNo */
     18,                                                      /* colNo */
     "x",                                                     /* aName */
     "NMPC_cost",                                             /* fName */
@@ -214,7 +214,7 @@ static emlrtBCInfo b_emlrtBCI = {
 static emlrtBCInfo c_emlrtBCI = {
     -1,                                                      /* iFirst */
     -1,                                                      /* iLast */
-    29,                                                      /* lineNo */
+    28,                                                      /* lineNo */
     28,                                                      /* colNo */
     "x",                                                     /* aName */
     "NMPC_cost",                                             /* fName */
@@ -225,7 +225,7 @@ static emlrtBCInfo c_emlrtBCI = {
 static emlrtBCInfo d_emlrtBCI = {
     -1,                                                      /* iFirst */
     -1,                                                      /* iLast */
-    29,                                                      /* lineNo */
+    28,                                                      /* lineNo */
     11,                                                      /* colNo */
     "dir",                                                   /* aName */
     "NMPC_cost",                                             /* fName */
@@ -235,7 +235,7 @@ static emlrtBCInfo d_emlrtBCI = {
 
 static emlrtECInfo emlrtECI = {
     -1,                                                     /* nDims */
-    29,                                                     /* lineNo */
+    28,                                                     /* lineNo */
     5,                                                      /* colNo */
     "NMPC_cost",                                            /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m" /* pName */
@@ -244,7 +244,7 @@ static emlrtECInfo emlrtECI = {
 static emlrtBCInfo e_emlrtBCI = {
     -1,                                                      /* iFirst */
     -1,                                                      /* iLast */
-    30,                                                      /* lineNo */
+    29,                                                      /* lineNo */
     26,                                                      /* colNo */
     "dir",                                                   /* aName */
     "NMPC_cost",                                             /* fName */
@@ -253,7 +253,7 @@ static emlrtBCInfo e_emlrtBCI = {
 };
 
 static emlrtRTEInfo b_emlrtRTEI = {
-    35,                                                     /* lineNo */
+    34,                                                     /* lineNo */
     9,                                                      /* colNo */
     "NMPC_cost",                                            /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m" /* pName */
@@ -262,7 +262,7 @@ static emlrtRTEInfo b_emlrtRTEI = {
 static emlrtBCInfo f_emlrtBCI = {
     -1,                                                      /* iFirst */
     -1,                                                      /* iLast */
-    26,                                                      /* lineNo */
+    25,                                                      /* lineNo */
     19,                                                      /* colNo */
     "m",                                                     /* aName */
     "NMPC_cost",                                             /* fName */
@@ -273,7 +273,7 @@ static emlrtBCInfo f_emlrtBCI = {
 static emlrtBCInfo g_emlrtBCI = {
     -1,                                                      /* iFirst */
     -1,                                                      /* iLast */
-    36,                                                      /* lineNo */
+    35,                                                      /* lineNo */
     34,                                                      /* colNo */
     "dir",                                                   /* aName */
     "NMPC_cost",                                             /* fName */
@@ -284,7 +284,7 @@ static emlrtBCInfo g_emlrtBCI = {
 static emlrtBCInfo h_emlrtBCI = {
     -1,                                                      /* iFirst */
     -1,                                                      /* iLast */
-    22,                                                      /* lineNo */
+    21,                                                      /* lineNo */
     8,                                                       /* colNo */
     "yhat",                                                  /* aName */
     "NMPC_cost",                                             /* fName */
@@ -295,7 +295,7 @@ static emlrtBCInfo h_emlrtBCI = {
 static emlrtBCInfo i_emlrtBCI = {
     -1,                                                      /* iFirst */
     -1,                                                      /* iLast */
-    37,                                                      /* lineNo */
+    36,                                                      /* lineNo */
     26,                                                      /* colNo */
     "yhat",                                                  /* aName */
     "NMPC_cost",                                             /* fName */
@@ -306,7 +306,7 @@ static emlrtBCInfo i_emlrtBCI = {
 static emlrtBCInfo j_emlrtBCI = {
     -1,                                                      /* iFirst */
     -1,                                                      /* iLast */
-    37,                                                      /* lineNo */
+    36,                                                      /* lineNo */
     56,                                                      /* colNo */
     "yhat",                                                  /* aName */
     "NMPC_cost",                                             /* fName */
@@ -317,7 +317,7 @@ static emlrtBCInfo j_emlrtBCI = {
 static emlrtBCInfo k_emlrtBCI = {
     -1,                                                      /* iFirst */
     -1,                                                      /* iLast */
-    37,                                                      /* lineNo */
+    36,                                                      /* lineNo */
     63,                                                      /* colNo */
     "u",                                                     /* aName */
     "NMPC_cost",                                             /* fName */
@@ -328,7 +328,7 @@ static emlrtBCInfo k_emlrtBCI = {
 static emlrtBCInfo l_emlrtBCI = {
     -1,                                                      /* iFirst */
     -1,                                                      /* iLast */
-    37,                                                      /* lineNo */
+    36,                                                      /* lineNo */
     12,                                                      /* colNo */
     "yhat",                                                  /* aName */
     "NMPC_cost",                                             /* fName */
@@ -339,7 +339,7 @@ static emlrtBCInfo l_emlrtBCI = {
 static emlrtBCInfo m_emlrtBCI = {
     -1,                                                      /* iFirst */
     -1,                                                      /* iLast */
-    39,                                                      /* lineNo */
+    38,                                                      /* lineNo */
     46,                                                      /* colNo */
     "yref",                                                  /* aName */
     "NMPC_cost",                                             /* fName */
@@ -350,7 +350,7 @@ static emlrtBCInfo m_emlrtBCI = {
 static emlrtBCInfo n_emlrtBCI = {
     -1,                                                      /* iFirst */
     -1,                                                      /* iLast */
-    39,                                                      /* lineNo */
+    38,                                                      /* lineNo */
     58,                                                      /* colNo */
     "yhat",                                                  /* aName */
     "NMPC_cost",                                             /* fName */
@@ -360,7 +360,7 @@ static emlrtBCInfo n_emlrtBCI = {
 
 static emlrtECInfo b_emlrtECI = {
     2,                                                      /* nDims */
-    45,                                                     /* lineNo */
+    44,                                                     /* lineNo */
     29,                                                     /* colNo */
     "NMPC_cost",                                            /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m" /* pName */
@@ -368,7 +368,7 @@ static emlrtECInfo b_emlrtECI = {
 
 static emlrtECInfo c_emlrtECI = {
     2,                                                      /* nDims */
-    45,                                                     /* lineNo */
+    44,                                                     /* lineNo */
     61,                                                     /* colNo */
     "NMPC_cost",                                            /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m" /* pName */
@@ -376,7 +376,7 @@ static emlrtECInfo c_emlrtECI = {
 
 static emlrtECInfo d_emlrtECI = {
     2,                                                      /* nDims */
-    45,                                                     /* lineNo */
+    44,                                                     /* lineNo */
     24,                                                     /* colNo */
     "NMPC_cost",                                            /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m" /* pName */
@@ -385,7 +385,7 @@ static emlrtECInfo d_emlrtECI = {
 static emlrtBCInfo o_emlrtBCI = {
     -1,                                                      /* iFirst */
     -1,                                                      /* iLast */
-    39,                                                      /* lineNo */
+    38,                                                      /* lineNo */
     7,                                                       /* colNo */
     "F",                                                     /* aName */
     "NMPC_cost",                                             /* fName */
@@ -396,7 +396,7 @@ static emlrtBCInfo o_emlrtBCI = {
 static emlrtBCInfo p_emlrtBCI = {
     -1,                                                      /* iFirst */
     -1,                                                      /* iLast */
-    39,                                                      /* lineNo */
+    38,                                                      /* lineNo */
     19,                                                      /* colNo */
     "F",                                                     /* aName */
     "NMPC_cost",                                             /* fName */
@@ -406,7 +406,7 @@ static emlrtBCInfo p_emlrtBCI = {
 
 static emlrtECInfo e_emlrtECI = {
     -1,                                                     /* nDims */
-    39,                                                     /* lineNo */
+    38,                                                     /* lineNo */
     5,                                                      /* colNo */
     "NMPC_cost",                                            /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m" /* pName */
@@ -422,7 +422,7 @@ static emlrtRTEInfo d_emlrtRTEI =
 };
 
 static emlrtDCInfo emlrtDCI = {
-    21,                                                      /* lineNo */
+    20,                                                      /* lineNo */
     16,                                                      /* colNo */
     "NMPC_cost",                                             /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m", /* pName */
@@ -430,7 +430,7 @@ static emlrtDCInfo emlrtDCI = {
 };
 
 static emlrtDCInfo b_emlrtDCI = {
-    21,                                                      /* lineNo */
+    20,                                                      /* lineNo */
     16,                                                      /* colNo */
     "NMPC_cost",                                             /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m", /* pName */
@@ -438,7 +438,7 @@ static emlrtDCInfo b_emlrtDCI = {
 };
 
 static emlrtDCInfo c_emlrtDCI = {
-    23,                                                      /* lineNo */
+    22,                                                      /* lineNo */
     13,                                                      /* colNo */
     "NMPC_cost",                                             /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m", /* pName */
@@ -446,7 +446,7 @@ static emlrtDCInfo c_emlrtDCI = {
 };
 
 static emlrtDCInfo d_emlrtDCI = {
-    23,                                                      /* lineNo */
+    22,                                                      /* lineNo */
     13,                                                      /* colNo */
     "NMPC_cost",                                             /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m", /* pName */
@@ -454,7 +454,7 @@ static emlrtDCInfo d_emlrtDCI = {
 };
 
 static emlrtDCInfo e_emlrtDCI = {
-    24,                                                      /* lineNo */
+    23,                                                      /* lineNo */
     15,                                                      /* colNo */
     "NMPC_cost",                                             /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m", /* pName */
@@ -462,7 +462,7 @@ static emlrtDCInfo e_emlrtDCI = {
 };
 
 static emlrtDCInfo f_emlrtDCI = {
-    26,                                                      /* lineNo */
+    25,                                                      /* lineNo */
     13,                                                      /* colNo */
     "NMPC_cost",                                             /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m", /* pName */
@@ -470,7 +470,7 @@ static emlrtDCInfo f_emlrtDCI = {
 };
 
 static emlrtDCInfo g_emlrtDCI = {
-    21,                                                      /* lineNo */
+    20,                                                      /* lineNo */
     1,                                                       /* colNo */
     "NMPC_cost",                                             /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m", /* pName */
@@ -478,7 +478,7 @@ static emlrtDCInfo g_emlrtDCI = {
 };
 
 static emlrtDCInfo h_emlrtDCI = {
-    21,                                                      /* lineNo */
+    20,                                                      /* lineNo */
     1,                                                       /* colNo */
     "NMPC_cost",                                             /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m", /* pName */
@@ -486,7 +486,7 @@ static emlrtDCInfo h_emlrtDCI = {
 };
 
 static emlrtDCInfo i_emlrtDCI = {
-    23,                                                      /* lineNo */
+    22,                                                      /* lineNo */
     1,                                                       /* colNo */
     "NMPC_cost",                                             /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m", /* pName */
@@ -494,7 +494,7 @@ static emlrtDCInfo i_emlrtDCI = {
 };
 
 static emlrtDCInfo j_emlrtDCI = {
-    24,                                                      /* lineNo */
+    23,                                                      /* lineNo */
     1,                                                       /* colNo */
     "NMPC_cost",                                             /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m", /* pName */
@@ -502,7 +502,7 @@ static emlrtDCInfo j_emlrtDCI = {
 };
 
 static emlrtDCInfo k_emlrtDCI = {
-    25,                                                      /* lineNo */
+    24,                                                      /* lineNo */
     14,                                                      /* colNo */
     "NMPC_cost",                                             /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m", /* pName */
@@ -510,7 +510,7 @@ static emlrtDCInfo k_emlrtDCI = {
 };
 
 static emlrtDCInfo l_emlrtDCI = {
-    26,                                                      /* lineNo */
+    25,                                                      /* lineNo */
     1,                                                       /* colNo */
     "NMPC_cost",                                             /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m", /* pName */
@@ -518,7 +518,7 @@ static emlrtDCInfo l_emlrtDCI = {
 };
 
 static emlrtDCInfo m_emlrtDCI = {
-    33,                                                      /* lineNo */
+    32,                                                      /* lineNo */
     1,                                                       /* colNo */
     "NMPC_cost",                                             /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m", /* pName */
@@ -528,7 +528,7 @@ static emlrtDCInfo m_emlrtDCI = {
 static emlrtBCInfo q_emlrtBCI = {
     -1,                                                      /* iFirst */
     -1,                                                      /* iLast */
-    36,                                                      /* lineNo */
+    35,                                                      /* lineNo */
     21,                                                      /* colNo */
     "m",                                                     /* aName */
     "NMPC_cost",                                             /* fName */
@@ -539,7 +539,7 @@ static emlrtBCInfo q_emlrtBCI = {
 static emlrtBCInfo r_emlrtBCI = {
     -1,                                                      /* iFirst */
     -1,                                                      /* iLast */
-    30,                                                      /* lineNo */
+    29,                                                      /* lineNo */
     10,                                                      /* colNo */
     "cons",                                                  /* aName */
     "NMPC_cost",                                             /* fName */
@@ -550,7 +550,7 @@ static emlrtBCInfo r_emlrtBCI = {
 static emlrtBCInfo s_emlrtBCI = {
     -1,                                                      /* iFirst */
     -1,                                                      /* iLast */
-    38,                                                      /* lineNo */
+    37,                                                      /* lineNo */
     27,                                                      /* colNo */
     "cons",                                                  /* aName */
     "NMPC_cost",                                             /* fName */
@@ -561,7 +561,7 @@ static emlrtBCInfo s_emlrtBCI = {
 static emlrtBCInfo t_emlrtBCI = {
     -1,                                                      /* iFirst */
     -1,                                                      /* iLast */
-    38,                                                      /* lineNo */
+    37,                                                      /* lineNo */
     7,                                                       /* colNo */
     "F",                                                     /* aName */
     "NMPC_cost",                                             /* fName */
@@ -572,7 +572,7 @@ static emlrtBCInfo t_emlrtBCI = {
 static emlrtBCInfo u_emlrtBCI = {
     -1,                                                      /* iFirst */
     -1,                                                      /* iLast */
-    41,                                                      /* lineNo */
+    40,                                                      /* lineNo */
     20,                                                      /* colNo */
     "m",                                                     /* aName */
     "NMPC_cost",                                             /* fName */
@@ -583,7 +583,7 @@ static emlrtBCInfo u_emlrtBCI = {
 static emlrtBCInfo v_emlrtBCI = {
     -1,                                                      /* iFirst */
     -1,                                                      /* iLast */
-    41,                                                      /* lineNo */
+    40,                                                      /* lineNo */
     33,                                                      /* colNo */
     "cons",                                                  /* aName */
     "NMPC_cost",                                             /* fName */
@@ -594,7 +594,7 @@ static emlrtBCInfo v_emlrtBCI = {
 static emlrtBCInfo w_emlrtBCI = {
     -1,                                                      /* iFirst */
     -1,                                                      /* iLast */
-    41,                                                      /* lineNo */
+    40,                                                      /* lineNo */
     11,                                                      /* colNo */
     "m",                                                     /* aName */
     "NMPC_cost",                                             /* fName */
@@ -603,119 +603,119 @@ static emlrtBCInfo w_emlrtBCI = {
 };
 
 static emlrtRTEInfo l_emlrtRTEI = {
-    21,                                                     /* lineNo */
+    20,                                                     /* lineNo */
     1,                                                      /* colNo */
     "NMPC_cost",                                            /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m" /* pName */
 };
 
 static emlrtRTEInfo m_emlrtRTEI = {
-    23,                                                     /* lineNo */
+    22,                                                     /* lineNo */
     1,                                                      /* colNo */
     "NMPC_cost",                                            /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m" /* pName */
 };
 
 static emlrtRTEInfo n_emlrtRTEI = {
-    24,                                                     /* lineNo */
+    23,                                                     /* lineNo */
     1,                                                      /* colNo */
     "NMPC_cost",                                            /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m" /* pName */
 };
 
 static emlrtRTEInfo o_emlrtRTEI = {
-    25,                                                     /* lineNo */
+    24,                                                     /* lineNo */
     8,                                                      /* colNo */
     "NMPC_cost",                                            /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m" /* pName */
 };
 
 static emlrtRTEInfo p_emlrtRTEI = {
-    26,                                                     /* lineNo */
+    25,                                                     /* lineNo */
     1,                                                      /* colNo */
     "NMPC_cost",                                            /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m" /* pName */
 };
 
 static emlrtRTEInfo q_emlrtRTEI = {
-    33,                                                     /* lineNo */
+    32,                                                     /* lineNo */
     1,                                                      /* colNo */
     "NMPC_cost",                                            /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m" /* pName */
 };
 
 static emlrtRTEInfo r_emlrtRTEI = {
-    45,                                                     /* lineNo */
+    44,                                                     /* lineNo */
     29,                                                     /* colNo */
     "NMPC_cost",                                            /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m" /* pName */
 };
 
 static emlrtRTEInfo s_emlrtRTEI = {
-    45,                                                     /* lineNo */
+    44,                                                     /* lineNo */
     42,                                                     /* colNo */
     "NMPC_cost",                                            /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m" /* pName */
 };
 
 static emlrtRTEInfo t_emlrtRTEI = {
-    45,                                                     /* lineNo */
+    44,                                                     /* lineNo */
     77,                                                     /* colNo */
     "NMPC_cost",                                            /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m" /* pName */
 };
 
 static emlrtRTEInfo u_emlrtRTEI = {
-    45,                                                     /* lineNo */
+    44,                                                     /* lineNo */
     87,                                                     /* colNo */
     "NMPC_cost",                                            /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m" /* pName */
 };
 
 static emlrtRTEInfo v_emlrtRTEI = {
-    45,                                                     /* lineNo */
+    44,                                                     /* lineNo */
     24,                                                     /* colNo */
     "NMPC_cost",                                            /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m" /* pName */
 };
 
 static emlrtRTEInfo w_emlrtRTEI = {
-    45,                                                     /* lineNo */
+    44,                                                     /* lineNo */
     57,                                                     /* colNo */
     "NMPC_cost",                                            /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m" /* pName */
 };
 
 static emlrtRTEInfo x_emlrtRTEI = {
-    45,                                                     /* lineNo */
+    44,                                                     /* lineNo */
     22,                                                     /* colNo */
     "NMPC_cost",                                            /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m" /* pName */
 };
 
 static emlrtRTEInfo y_emlrtRTEI = {
-    45,                                                     /* lineNo */
+    44,                                                     /* lineNo */
     10,                                                     /* colNo */
     "NMPC_cost",                                            /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m" /* pName */
 };
 
 static emlrtRTEInfo ab_emlrtRTEI = {
-    45,                                                     /* lineNo */
+    44,                                                     /* lineNo */
     9,                                                      /* colNo */
     "NMPC_cost",                                            /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m" /* pName */
 };
 
 static emlrtRTEInfo bb_emlrtRTEI = {
-    46,                                                     /* lineNo */
+    45,                                                     /* lineNo */
     1,                                                      /* colNo */
     "NMPC_cost",                                            /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m" /* pName */
 };
 
 static emlrtRTEInfo cb_emlrtRTEI = {
-    25,                                                     /* lineNo */
+    24,                                                     /* lineNo */
     1,                                                      /* colNo */
     "NMPC_cost",                                            /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m" /* pName */
@@ -729,7 +729,7 @@ static emlrtRTEInfo db_emlrtRTEI = {
 };
 
 static emlrtRTEInfo gb_emlrtRTEI = {
-    45,                                                     /* lineNo */
+    44,                                                     /* lineNo */
     61,                                                     /* colNo */
     "NMPC_cost",                                            /* fName */
     "P:\\Projects\\CNOEC\\CNOEC_Project\\NMPC\\NMPC_cost.m" /* pName */
@@ -997,22 +997,22 @@ void NMPC_cost(const emlrtStack *sp, real_T M, real_T Ts,
   x_data = x->data;
   emlrtHeapReferenceStackEnterFcnR2012b((emlrtCTX)sp);
   emxInit_real_T(sp, &yhat, 2, &l_emlrtRTEI);
-  /* COST Function calculates the cost of the orbital maneuvre considering */
+  /*    NMPC_COST Function calculates the cost of the orbital maneuvre
+   * considering */
   /*    arbitrary defined weigthed sums. The cost takes into account both the */
   /*    state error and the input magnitude. In addition, an hard constraint on
    */
   /*    the maximum value of the input has been considered. */
   /*    As inputs, the function needs: */
-  /*        M: prediction horizon */
-  /*        Ts: time step of the discrete system */
-  /*        y0: initial condition vector */
-  /*        u0: input vector from trajectory */
-  /*        ybar: desired state vector */
-  /*        umax: maximum value for inputs */
-  /*        x: optimization variables 3*M inputs */
-  /*        variables in this order */
-  /*        Q: state trajectory weights 6x6 */
-  /*        R: fuel consumption weight */
+  /*        M:      prediction horizon */
+  /*        Ts:     time step of the discrete system */
+  /*        x:      optimization variables 3*M */
+  /*        y0:     initial condition vector (zEOE state) */
+  /*        yref:   desired state vector evolution (zEOE trajectory) */
+  /*        Q:      state trajectory weights 6x6 */
+  /*        R:      fuel consumption weight */
+  /*        m0:     initial mass */
+  /*        Tmax:   maximum Thrust */
   /*  t = 0:Ts:Ts*M; % Time vector */
   i = yhat->size[0] * yhat->size[1];
   yhat->size[0] = 6;

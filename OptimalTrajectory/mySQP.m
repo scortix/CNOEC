@@ -233,6 +233,8 @@ while true
         if y'*s <= options.BFGS_gamma*s'*Hk*s
             y = y + (options.BFGS_gamma*s'*Hk*s-s'*y)/(s'*Hk*s-s'*y)*(Hk*s-y);
         end
+        % Additional strategies to ensure y'*s > 0 (used in fmincon by
+        % MathWorks) (Generally not used)
         if y'*s <= 0
             for attempt = 1:10
                 indMin = find(y.*s == min(y.*s),1);
@@ -265,7 +267,6 @@ while true
         HkOld = Hk;
         [Uh,Sh] = svd(Hk*s);
         [Uy,Sy] = svd(y);
-%         Hk = Hk - ((Hk*s)*(Hk*s)')/(s'*Hk*s) + (y*y')/(s'*y);
         Hk = Hk - (Uh*Sh*Sh'*Uh')/(s'*Hk*s) + (Uy*Sy*Sy'*Uy')/(s'*y);
         Hk = nearestSPD(Hk);
         if min(eig(Hk))/max(eig(Hk)) < -1e-6

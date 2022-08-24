@@ -21,7 +21,6 @@
 #include <string.h>
 
 /* Function Declarations */
-void EOEDerivatives(const emlrtStack *sp, const real_T x[6], const real_T u[3],
-                    real_T xdot[6]);
+void EOEDerivatives(const real_T x[6], const real_T u[3], real_T xdot[6]);
 
 /* End of code generation (EOEDerivatives.h) */

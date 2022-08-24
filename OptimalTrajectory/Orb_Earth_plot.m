@@ -26,7 +26,6 @@ ax2 = axes();
 set(ax2,'Visible','off');
 colormap(ax2,'parula')
 caxis([0 tmax/3600])
-% colormap("parula")
 c = colorbar;
 c.Limits = [0 tmax/3600];
 c.Label.Interpreter = "latex";
