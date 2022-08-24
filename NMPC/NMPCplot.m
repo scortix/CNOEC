@@ -111,14 +111,19 @@ xlim([0, t(end)/3600])
 
 legend("Reference","Real","FontSize",14,"Position",[0.27 0.7 0 0])
 saveas(fs,"zCompA"+alpha+dist+".eps","epsc")
+
 %% Mass plot
 fm = figure();
 fm.Position = [400 100 300 200];
+mRef = mfun(t,xiRef,Ts,coeffT);
+plot(t/3600,mRef,"LineWidth",1.5,"Color",refColor)
+hold on
 plot(t/3600,mReal,"LineWidth",1.5,"Color",realColor)
 grid on
 xlabel("Time $[h]$","FontSize",14)
 ylabel("Mass $[kg]$","FontSize",14)
 xlim([0, t(end)/3600])
+legend("Reference","Real","FontSize",12,"Position",[0.6 0.7 0 0])
 
 saveas(fm,"massA"+alpha+dist+".eps","epsc")
 
@@ -210,3 +215,11 @@ title("Normal direction","FontSize",14)
 legend("Input","Disturbance","FontSize",14,"Position",[0.2 0.85 0 0])
 
 saveas(fud,"udA"+alpha+dist+".eps","epsc")
+
+%%
+function m = mfun(t,csi,Ts,coeffT)
+m = t;
+for i = 1:length(t)
+    m(i) = 1000-Ts*sum(coeffT*csi(1:t(i)/Ts+1));
+end
+end
