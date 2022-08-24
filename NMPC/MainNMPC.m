@@ -1,6 +1,7 @@
 % Script to load the useful data before simulation, just set the alpha
 % value down below and run the code before running the simulation in the
-% respective simulink file desired. In the end there's code to test the
+% respective simulink file desired (sim_model_dist0X for NMPC with
+% disturbance knowledge). In the end there's commented code to test the
 % first iteration of the NMPC
 
 close all
