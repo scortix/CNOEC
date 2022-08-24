@@ -1456,9 +1456,9 @@ void NMPC_costDist(const emlrtStack *sp, real_T M, real_T Ts,
     }
     v_idx_2 = m_data[k];
     DJ2[0] =
-        u_data[3 * k] + ((DJ2[0] + a * b_r[0] / 1000.0 / v_idx_2) + v_rel[0]);
-    DJ2[1] = u_data[i] + ((DJ2[1] + a * b_r[1] / 1000.0 / v_idx_2) + v_rel[1]);
-    DJ2[2] = u_data[i1] + ((DJ2[2] + a * b_r[2] / 1000.0 / v_idx_2) + v_rel[2]);
+        u_data[3 * k] + ((DJ2[0] + a * b_r[0] * 1000.0 / v_idx_2) + v_rel[0]);
+    DJ2[1] = u_data[i] + ((DJ2[1] + a * b_r[1] * 1000.0 / v_idx_2) + v_rel[1]);
+    DJ2[2] = u_data[i1] + ((DJ2[2] + a * b_r[2] * 1000.0 / v_idx_2) + v_rel[2]);
     st.site = &g_emlrtRSI;
     EOEDerivatives(&st, *(real_T(*)[6]) & yhat_data[6 * k], DJ2, yCOE);
     if ((int32_T)(k + 1U) > yhat->size[1]) {

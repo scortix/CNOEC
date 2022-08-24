@@ -4,7 +4,7 @@ function J = NMPC_costDist(M,Ts,x,y0,yref,Q,R,coeffT,m0,Tmax,xp,yp,zp,S,Cd,rho_t
 %   arbitrary defined weigthed sums. The cost takes into account both the
 %   state error and the input magnitude. In addition, an hard constraint on
 %   the maximum value of the input has been considered. The future
-%   disturbances prediction is included passing the usefuel parameters too.
+%   disturbances prediction is included passing the required parameters too.
 %   As inputs, the function needs:
 %       M:          prediction horizon
 %       Ts:         time step of the discrete system
