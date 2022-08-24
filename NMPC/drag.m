@@ -30,7 +30,7 @@ it = cross(in,ir);
 Q = [ir it in];
 v_rel = Q'*(v-cross(w_e,r));
 
-Ddrag = Dconst*v_rel.^2/1e3;
+Ddrag = Dconst*v_rel.^2*1e3;
 % 1000 is a scaling factor since the surface S is given in m^2, the
 % relative velocity v_rel in km/s and the air density in kg/m^3
 
